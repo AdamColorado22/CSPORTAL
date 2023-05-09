@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TERMOSEGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="USUARIO_ROL">
+    <Key>
+      <PropertyRef Name="USUARIO_ID" />
+      <PropertyRef Name="MODULO_ID" />
+      <PropertyRef Name="ROL_ID" />
+    </Key>
+    <Property Name="USUARIO_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MODULO_ID" Type="Int32" Nullable="false" />
+    <Property Name="ROL_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TERMOSEGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="USUARIO_ROL" EntityType="Self.USUARIO_ROL" />
+  </EntityContainer>
+</Schema>

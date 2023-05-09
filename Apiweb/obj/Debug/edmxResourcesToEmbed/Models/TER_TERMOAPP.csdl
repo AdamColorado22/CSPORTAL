@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TERMOAPPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TER_COM_PEDIDOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_INGRESO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PART_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_ENTREGA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CANTIDAD" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="REF_COTIZACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DUI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SEGMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CLUSTER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COSTO" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="COMMODITY_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IDUSUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MARGEN" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PEDIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TOLERANCIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CARTILLA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="BASE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ORDENCOMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO_PED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="TERMOAPPEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TER_COM_PEDIDOS" EntityType="Self.TER_COM_PEDIDOS" />
+    <EntitySet Name="TER_MATERIAL" EntityType="TERMOAPPModel.TER_MATERIAL" />
+    <EntitySet Name="TER_DET_COMERCIAL" EntityType="TERMOAPPModel.TER_DET_COMERCIAL" />
+  </EntityContainer>
+  <EntityType Name="TER_MATERIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PART_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RESINA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PORCENTAJE" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PROCESO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PIEZA" Type="Int32" />
+    <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TER_DET_COMERCIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_COMERCIAL" Type="Int32" />
+    <Property Name="E_REP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="E_KG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="E_ROLL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="C_KG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="C_ROLLO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PRECIO_R" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PRECIO_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MC" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="C_REP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
