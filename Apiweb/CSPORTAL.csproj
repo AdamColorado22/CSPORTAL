@@ -1,0 +1,2141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A319746B-8654-406E-9A76-143B5564DEE8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Apiweb</RootNamespace>
+    <AssemblyName>Apiweb</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44319</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>4.2</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bold.Licensing, Version=4.2460.78.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bold.Licensing.4.2.78\lib\net46\Bold.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DataTables-Editor-Server, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\lib\net46\DataTables-Editor-Server.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.1.9, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.3.1\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.4\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.4\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.4\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.4\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.20.2.0.36\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.DocIO.AspNet.20.2.0.36\lib\net46\Syncfusion.DocIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.20.2.0.36\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.OfficeChart.Base.20.2.0.36\lib\net46\Syncfusion.OfficeChart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.AspNet.20.2.0.36\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Presentation.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Presentation.AspNet.20.2.0.36\lib\net46\Syncfusion.Presentation.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=20.2460.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.XlsIO.AspNet.20.2.0.36\lib\net46\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ArchivosController.cs" />
+    <Compile Include="Controllers\BodegaController.cs" />
+    <Compile Include="Controllers\ComercialController.cs" />
+    <Compile Include="Controllers\ComercialPedController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MaterialController.cs" />
+    <Compile Include="Controllers\orderController.cs" />
+    <Compile Include="Controllers\QW2Controller.cs" />
+    <Compile Include="Controllers\QW6Controller.cs" />
+    <Compile Include="Controllers\QW7Controller.cs" />
+    <Compile Include="Controllers\QW8Controller.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WorkFlowController.cs" />
+    <Compile Include="Filtro\VerificaSesion.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\Archivo.cs" />
+    <Compile Include="Models\Articulo.cs" />
+    <Compile Include="Models\Autocomplete.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Comercial.cs" />
+    <Compile Include="Models\Correo.cs" />
+    <Compile Include="Models\DetComercial.cs" />
+    <Compile Include="Models\FACTURACION.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FACTURACION.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FACTURACION.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FACTURACION.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FACTURACION.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FACTURACION.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inventarios.cs" />
+    <Compile Include="Models\INVENTORY_TRANS.cs">
+      <DependentUpon>Visual.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Logs.cs" />
+    <Compile Include="Models\Muestras.cs" />
+    <Compile Include="Models\order.cs" />
+    <Compile Include="Models\orderDetail.cs" />
+    <Compile Include="Models\Otros.cs" />
+    <Compile Include="Models\PRECIOMH.cs" />
+    <Compile Include="Models\PART.cs">
+      <DependentUpon>Visual.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Produccion.cs" />
+    <Compile Include="Models\SAR.cs" />
+    <Compile Include="Models\Seguridad.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Seguridad.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seguridad.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Seguridad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seguridad.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Seguridad.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TERMOAPP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TERMOAPP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TERMOAPP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TERMOAPP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TERMOAPP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_BODEGA.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_COMERCIAL.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_COM_PEDIDOS.cs">
+      <DependentUpon>TER_TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_DET_COMERCIAL.cs">
+      <DependentUpon>TER_TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_MATERIAL.cs">
+      <DependentUpon>TER_TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_PORC_TEXTIL.cs">
+      <DependentUpon>FACTURACION.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_PORC_TEXTIL_HIST.cs">
+      <DependentUpon>FACTURACION.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_PRECIO_SOCK.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW2_HBI.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW2_UNDERWEAR.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW3_PED.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW3_PED_HIST.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW3_PRECIO_MH.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW3_PRECIO_SMI.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW6_PLANTILLA.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW6_PLANTILLA_PED.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW7_SEGUIMIETO.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW7_SEGUIMIETO_CAMBIOS.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_QW_MH.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_REP_COMERCIAL.cs" />
+    <Compile Include="Models\TER_TERMOAPP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TER_TERMOAPP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_TERMOAPP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TER_TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_TERMOAPP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TER_TERMOAPP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_ADJUNTOS.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_FLUJO_ARTES.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_GRUPOS.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_OTROS.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_PARAMETROS_ACC.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_PARAMETROS_INS.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_PARAMETROS_MAQ.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_PARAMETROS_MAT.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_PARAMETROS_PAR.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_SERVICIOS_PRODUCCION.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_SLA.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_WORFLOW_CARTICULO.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_WORKFLOWB2B.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TER_W_WORKFLOW_MUESTRA.cs">
+      <DependentUpon>TERMOAPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TRACE.cs">
+      <DependentUpon>Visual.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TRACE_INV_TRANS.cs">
+      <DependentUpon>Visual.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Trazabilidad.cs" />
+    <Compile Include="Models\USUARIO_ROL.cs">
+      <DependentUpon>Seguridad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Visual.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Visual.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Visual.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Visual.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Visual.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Visual.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WORKFLOWB2B.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ckeditor\adapters\jquery.js" />
+    <Content Include="Content\ckeditor\build-config.js" />
+    <Content Include="Content\ckeditor\ckeditor.js" />
+    <Content Include="Content\ckeditor\config.js" />
+    <Content Include="Content\ckeditor\contents.css" />
+    <Content Include="Content\ckeditor\lang\af.js" />
+    <Content Include="Content\ckeditor\lang\ar.js" />
+    <Content Include="Content\ckeditor\lang\az.js" />
+    <Content Include="Content\ckeditor\lang\bg.js" />
+    <Content Include="Content\ckeditor\lang\bn.js" />
+    <Content Include="Content\ckeditor\lang\bs.js" />
+    <Content Include="Content\ckeditor\lang\ca.js" />
+    <Content Include="Content\ckeditor\lang\cs.js" />
+    <Content Include="Content\ckeditor\lang\cy.js" />
+    <Content Include="Content\ckeditor\lang\da.js" />
+    <Content Include="Content\ckeditor\lang\de-ch.js" />
+    <Content Include="Content\ckeditor\lang\de.js" />
+    <Content Include="Content\ckeditor\lang\el.js" />
+    <Content Include="Content\ckeditor\lang\en-au.js" />
+    <Content Include="Content\ckeditor\lang\en-ca.js" />
+    <Content Include="Content\ckeditor\lang\en-gb.js" />
+    <Content Include="Content\ckeditor\lang\en.js" />
+    <Content Include="Content\ckeditor\lang\eo.js" />
+    <Content Include="Content\ckeditor\lang\es-mx.js" />
+    <Content Include="Content\ckeditor\lang\es.js" />
+    <Content Include="Content\ckeditor\lang\et.js" />
+    <Content Include="Content\ckeditor\lang\eu.js" />
+    <Content Include="Content\ckeditor\lang\fa.js" />
+    <Content Include="Content\ckeditor\lang\fi.js" />
+    <Content Include="Content\ckeditor\lang\fo.js" />
+    <Content Include="Content\ckeditor\lang\fr-ca.js" />
+    <Content Include="Content\ckeditor\lang\fr.js" />
+    <Content Include="Content\ckeditor\lang\gl.js" />
+    <Content Include="Content\ckeditor\lang\gu.js" />
+    <Content Include="Content\ckeditor\lang\he.js" />
+    <Content Include="Content\ckeditor\lang\hi.js" />
+    <Content Include="Content\ckeditor\lang\hr.js" />
+    <Content Include="Content\ckeditor\lang\hu.js" />
+    <Content Include="Content\ckeditor\lang\id.js" />
+    <Content Include="Content\ckeditor\lang\is.js" />
+    <Content Include="Content\ckeditor\lang\it.js" />
+    <Content Include="Content\ckeditor\lang\ja.js" />
+    <Content Include="Content\ckeditor\lang\ka.js" />
+    <Content Include="Content\ckeditor\lang\km.js" />
+    <Content Include="Content\ckeditor\lang\ko.js" />
+    <Content Include="Content\ckeditor\lang\ku.js" />
+    <Content Include="Content\ckeditor\lang\lt.js" />
+    <Content Include="Content\ckeditor\lang\lv.js" />
+    <Content Include="Content\ckeditor\lang\mk.js" />
+    <Content Include="Content\ckeditor\lang\mn.js" />
+    <Content Include="Content\ckeditor\lang\ms.js" />
+    <Content Include="Content\ckeditor\lang\nb.js" />
+    <Content Include="Content\ckeditor\lang\nl.js" />
+    <Content Include="Content\ckeditor\lang\no.js" />
+    <Content Include="Content\ckeditor\lang\oc.js" />
+    <Content Include="Content\ckeditor\lang\pl.js" />
+    <Content Include="Content\ckeditor\lang\pt-br.js" />
+    <Content Include="Content\ckeditor\lang\pt.js" />
+    <Content Include="Content\ckeditor\lang\ro.js" />
+    <Content Include="Content\ckeditor\lang\ru.js" />
+    <Content Include="Content\ckeditor\lang\si.js" />
+    <Content Include="Content\ckeditor\lang\sk.js" />
+    <Content Include="Content\ckeditor\lang\sl.js" />
+    <Content Include="Content\ckeditor\lang\sq.js" />
+    <Content Include="Content\ckeditor\lang\sr-latn.js" />
+    <Content Include="Content\ckeditor\lang\sr.js" />
+    <Content Include="Content\ckeditor\lang\sv.js" />
+    <Content Include="Content\ckeditor\lang\th.js" />
+    <Content Include="Content\ckeditor\lang\tr.js" />
+    <Content Include="Content\ckeditor\lang\tt.js" />
+    <Content Include="Content\ckeditor\lang\ug.js" />
+    <Content Include="Content\ckeditor\lang\uk.js" />
+    <Content Include="Content\ckeditor\lang\vi.js" />
+    <Content Include="Content\ckeditor\lang\zh-cn.js" />
+    <Content Include="Content\ckeditor\lang\zh.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Content\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Content\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Content\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Content\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Content\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Content\ckeditor\plugins\dialog\styles\dialog.css" />
+    <Content Include="Content\ckeditor\plugins\icons.png" />
+    <Content Include="Content\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Content\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Content\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Content\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Content\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Content\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Content\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Content\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Content\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Content\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Content\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Content\ckeditor\plugins\pastefromgdocs\filter\default.js" />
+    <Content Include="Content\ckeditor\plugins\pastefromlibreoffice\filter\default.js" />
+    <Content Include="Content\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Content\ckeditor\plugins\pastetools\filter\common.js" />
+    <Content Include="Content\ckeditor\plugins\pastetools\filter\image.js" />
+    <Content Include="Content\ckeditor\plugins\scayt\dialogs\dialog.css" />
+    <Content Include="Content\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Content\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Content\ckeditor\plugins\scayt\skins\moono-lisa\scayt.css" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sr-latn.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sr.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Content\ckeditor\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="Content\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Content\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Content\ckeditor\plugins\widget\images\handle.png" />
+    <Content Include="Content\ckeditor\samples\css\samples.css" />
+    <Content Include="Content\ckeditor\samples\img\github-top.png" />
+    <Content Include="Content\ckeditor\samples\img\header-bg.png" />
+    <Content Include="Content\ckeditor\samples\img\header-separator.png" />
+    <Content Include="Content\ckeditor\samples\img\logo.png" />
+    <Content Include="Content\ckeditor\samples\img\logo.svg" />
+    <Content Include="Content\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="Content\ckeditor\samples\index.html" />
+    <Content Include="Content\ckeditor\samples\js\sample.js" />
+    <Content Include="Content\ckeditor\samples\js\sf.js" />
+    <Content Include="Content\ckeditor\samples\old\ajax.html" />
+    <Content Include="Content\ckeditor\samples\old\api.html" />
+    <Content Include="Content\ckeditor\samples\old\appendto.html" />
+    <Content Include="Content\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="Content\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Content\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="Content\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="Content\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="Content\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="Content\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="Content\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="Content\ckeditor\samples\old\divreplace.html" />
+    <Content Include="Content\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="Content\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="Content\ckeditor\samples\old\index.html" />
+    <Content Include="Content\ckeditor\samples\old\inlineall.html" />
+    <Content Include="Content\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="Content\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="Content\ckeditor\samples\old\jquery.html" />
+    <Content Include="Content\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="Content\ckeditor\samples\old\readonly.html" />
+    <Content Include="Content\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="Content\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="Content\ckeditor\samples\old\sample.css" />
+    <Content Include="Content\ckeditor\samples\old\sample.js" />
+    <Content Include="Content\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="Content\ckeditor\samples\old\tabindex.html" />
+    <Content Include="Content\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="Content\ckeditor\samples\old\uicolor.html" />
+    <Content Include="Content\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="Content\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="Content\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\dialog.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor_ie.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\icons.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\arrow.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\close.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\lock.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\refresh.png" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="Content\ckeditor\styles.js" />
+    <Content Include="Content\ckeditor\vendor\promise.js" />
+    <Content Include="Content\css\all.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\css\buttons.dataTables.min.css" />
+    <Content Include="Content\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\css\dataTables.dateTime.min.css" />
+    <Content Include="Content\css\editor.bootstrap4.min.css" />
+    <Content Include="Content\css\editor.dataTables.min.css" />
+    <Content Include="Content\css\Error.css" />
+    <Content Include="Content\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\jquery.dataTables.min.css" />
+    <Content Include="Content\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\css\Login.css" />
+    <Content Include="Content\css\menu.css" />
+    <Content Include="Content\css\navigation-round.css" />
+    <Content Include="Content\css\responsive.dataTables.min.css" />
+    <Content Include="Content\css\searchBuilder.dataTables.min.css" />
+    <Content Include="Content\css\select.bootstrap4.min.css" />
+    <Content Include="Content\css\select.dataTables.min.css" />
+    <Content Include="Content\css\summernote.min.css" />
+    <Content Include="Content\css\toastr.min.css" />
+    <Content Include="Content\images\boat.svg" />
+    <Content Include="Content\images\cropped-logo_footer-192x192.png" />
+    <Content Include="Content\images\island.svg" />
+    <Content Include="Content\images\Mundo-scaled.jpeg" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_asc_disabled.png" />
+    <Content Include="Content\images\sort_both.png" />
+    <Content Include="Content\images\sort_desc.png" />
+    <Content Include="Content\images\sort_desc_disabled.png" />
+    <Content Include="Content\images\Ternova-color.png" />
+    <Content Include="Content\images\wave-1.svg" />
+    <Content Include="Content\images\wave-2.svg" />
+    <Content Include="Content\images\wave-3.svg" />
+    <Content Include="Content\images\wave-4.svg" />
+    <Content Include="Content\images\wave-5.svg" />
+    <Content Include="Content\images\wave-6.svg" />
+    <Content Include="Content\images\wave-7.svg" />
+    <Content Include="Content\js\all.js" />
+    <Content Include="Content\js\bootstrap-datepicker.es.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\buttons.bootstrap4.min.js" />
+    <Content Include="Content\js\buttons.html5.min.js" />
+    <Content Include="Content\js\buttons.print.min.js" />
+    <Content Include="Content\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\js\dataTables.buttons.min.js" />
+    <Content Include="Content\js\dataTables.dateTime.min.js" />
+    <Content Include="Content\js\dataTables.editor.min.js" />
+    <Content Include="Content\js\dataTables.keyTable.min.js" />
+    <Content Include="Content\js\dataTables.responsive.min.js" />
+    <Content Include="Content\js\dataTables.searchBuilder.min.js" />
+    <Content Include="Content\js\dataTables.select.min.js" />
+    <Content Include="Content\js\datetime-moment.js" />
+    <Content Include="Content\js\editor.autoComplete.js" />
+    <Content Include="Content\js\editor.bootstrap4.min.js" />
+    <Content Include="Content\js\es.js" />
+    <Content Include="Content\js\jquery-3.5.1.js" />
+    <Content Include="Content\js\jquery-ui.js" />
+    <Content Include="Content\js\jquery.dataTables.min.js" />
+    <Content Include="Content\js\jszip.min.js" />
+    <Content Include="Content\js\moment-with-locales.min.js" />
+    <Content Include="Content\js\Moment.js" />
+    <Content Include="Content\js\moment.min.js" />
+    <Content Include="Content\js\papaparse.min.js" />
+    <Content Include="Content\js\pdfmake.min.js" />
+    <Content Include="Content\js\summernote-ext-rtl.js" />
+    <Content Include="Content\js\summernote.min.js" />
+    <Content Include="Content\js\toastr.min.js" />
+    <Content Include="Content\js\vfs_fonts.js" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_cs.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_da.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_de.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_en.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_es.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_fi.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_fr.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_hu.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_it.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_ja.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_ko.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_nb.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_nl.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_pl.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_pt.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_ru.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_sk.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_sv.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_th.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_tr.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_zh_CN.cab" />
+    <Content Include="Content\libreriaCrystal\ActiveXControls\PrintControl_res_zh_TW.cab" />
+    <Content Include="Content\libreriaCrystal\allInOne.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_cs.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_da.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_de.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_en.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_es.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_fi.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_fr.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_hu.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_it.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_ja.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_ko.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_nb.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_nl.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_pl.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_pt.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_ru.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_sk.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_sv.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_th.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_tr.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_zh_CN.js" />
+    <Content Include="Content\libreriaCrystal\allStrings_zh_TW.js" />
+    <Content Include="Content\libreriaCrystal\css\cedefault.css" />
+    <Content Include="Content\libreriaCrystal\css\default.css" />
+    <Content Include="Content\libreriaCrystal\css\exception.css" />
+    <Content Include="Content\libreriaCrystal\css\prompting.css" />
+    <Content Include="Content\libreriaCrystal\html\calendar.html" />
+    <Content Include="Content\libreriaCrystal\html\calendarbottom.html" />
+    <Content Include="Content\libreriaCrystal\html\calendartop.html" />
+    <Content Include="Content\libreriaCrystal\images\buttonl.gif" />
+    <Content Include="Content\libreriaCrystal\images\buttonm.gif" />
+    <Content Include="Content\libreriaCrystal\images\buttonr.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortActive100.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortActive150.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortActive200.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortActive250.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortActive300.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortActive350.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortActive400.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortActive50.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortHover100.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortHover150.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortHover200.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortHover250.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortHover300.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortHover350.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortHover400.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortHover50.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortInactive100.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortInactive150.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortInactive200.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortInactive250.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortInactive300.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortInactive400.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\DownArrowSortInactive50.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortActive100.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortActive150.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortActive200.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortActive250.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortActive300.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortActive350.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortActive400.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortActive50.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortHover100.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortHover150.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortHover200.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortHover250.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortHover300.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortHover350.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortHover400.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortHover50.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortInactive100.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortInactive150.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortInactive200.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortInactive250.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortInactive300.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortInactive400.gif" />
+    <Content Include="Content\libreriaCrystal\images\isort\UpArrowSortInactive50.gif" />
+    <Content Include="Content\libreriaCrystal\js\calendar.js" />
+    <Content Include="Content\libreriaCrystal\js\calendar_param.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewerinclude.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\api.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ArgumentNormalizer.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\bobjcallback.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ButtonList.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\Calendar.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\Colors.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\common.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\crv.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\Dialogs.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\dom.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\encoding.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\event.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\GroupTree.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\GroupTreeListener.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\GroupTreeNode.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\html.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ImageSprites.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\allInOne.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\allInOneBG.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\arrow_button_depressed.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\arrow_button_hover.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\breadcrumbSep.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\calendar.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\catalyst.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\clearValues.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\clear_x.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\closePanel.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\delete.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\drill_cursor.cur" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\export.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\filledCircle.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\first.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\grouptree_toggle.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\hollowCircle.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\last.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\leftTriangle.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\line.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\logo.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\magnify.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\min.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\next.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\open_parameter_arrow.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\panelHeaderBG.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\panelNavigatorItemHL.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\panelNavigatorItemSelectedBG.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\panel_toggle.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\param_datafetching.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\param_dirty.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\param_info.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\param_run.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\param_warning.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\plus.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\prev.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\print.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\refresh.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\rightTriangle.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\search.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\separator.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\StackedTab.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\style.css" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_background.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_buttongroup_background.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_buttongroup_left.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_buttongroup_right.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_button_depressed.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_button_hover.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_menuarrow_depressed.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_menuarrow_hover.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_pagenav_buttons.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\toolbar_separator_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\undo.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\up.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\images\WarningPopupTriangle.gif" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\initDhtmlLib.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\IOAdapters.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\LeftPanel.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\OptionalParameterUI.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\OptionalParameterValueRow.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\PanelHeader.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\PanelNavigator.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\PanelNavigatorItem.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\Parameter.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ParameterController.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ParameterDialog.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ParameterInfoRow.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ParameterPanel.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ParameterPanelToolbar.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ParameterUI.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ParameterValueRow.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\PromptPage.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\RangeField.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ReportAlbum.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ReportPage.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ReportView.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\Separator.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\SharedWidgetHolder.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\SignalDisposer.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\StackedPanel.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\StackedTab.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\StateManager.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\Statusbar.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_cs.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_da.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_de.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_en.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_es.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_fi.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_fr.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_hu.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_it.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_ja.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_ko.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_nb.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_nl.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_pl.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_pt.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_ru.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_sk.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_sv.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_th.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_tr.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_zh_CN.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\strings_zh_TW.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\TextCombo.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\TextField.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\Toolbar.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ToolPanel.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\Viewer.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ViewerFlexParameterAdapter.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\ViewerListener.js" />
+    <Content Include="Content\libreriaCrystal\js\crviewer\WarningPopup.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\bolist.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\calendar.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\dialog.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\dom.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\empty.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\borders.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\help.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\loading.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\lov.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\min.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\plus.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\print.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\print_fe.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\prompt.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\resizepattern.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\bolist.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\button.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\buttonIcons.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\critical_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\dialogelements.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\dialogframe.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\dialogframeleftright.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\dialogframetopbottom.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\dialogtitle.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\down.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\iconsep.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\information_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\left.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\menus.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\node.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\progress.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\resize.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\right.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\scroll_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\sep.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\sep_solid.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\style.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\style.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\style_fe.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\tabs.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\up.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\wait01.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\wait02.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_coloredline\warning_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\bolist.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\button.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\buttonIcons.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\critical_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\dialogelements.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\dialogframe.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\dialogframeleftright.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\dialogframetopbottom.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\dialogtitle.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\down.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\iconsep.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\information_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\left.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\menus.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\node.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\progress.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\resize.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\right.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\scroll_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\sep.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\sep_solid.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\style.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\style.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\style_fe.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\tabs.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\up.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\wait01.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\wait02.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_corporate\warning_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\bolist.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\button.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\buttonIcons.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\critical_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\dialogelements.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\dialogframe.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\dialogframeleftright.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\dialogframetopbottom.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\dialogtitle.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\down.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\iconsep.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\information_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\left.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\menus.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\node.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\progress.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\resize.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\right.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\scroll_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\sep.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\sep_solid.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\style.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\style.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\style_fe.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\tabs.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\up.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\wait01.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\wait02.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_default\warning_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\background_field.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\background_menusel.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\bolist.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\button.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\buttonIcons.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\critical_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\critical_icon.png" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\dialogelements.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\dialogframe.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\dialogframeleftright.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\dialogframetopbottom.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\dialogtitle.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\down.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\hgrab.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\horiz_tabs.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\iconsep.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\information_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\left.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\menuitem_check.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\menus.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\node.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\panemenu.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\panetitle.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\progress.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\resize.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\right.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\scroll_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\sep.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\sep_solid.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\style.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\style.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\style_fe.css" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\tabs.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\toolbar_elements.png" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\up.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\vgrab.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\wait01.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\wait02.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\skin_standard\warning_icon.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\swap.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\transp.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\images\tree.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\cs\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\da\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\de\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\en\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\es\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\fi\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\fr\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\hu\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\it\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\ja\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\ko\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\nb\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\nl\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\pl\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\pt\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\ru\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\sk\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\sv\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\th\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\tr\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\zh_CN\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\language\zh_TW\labels.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\lov.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\menu.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\palette.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\prompttree.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\psheet.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\andorwidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\basicDialog.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\blockWhileWait.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\bolist.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\borderswidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\buttons.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\calendar.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\checktree.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\default.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\dim.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\dim_close.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\dim_o.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\dim_open.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\empty.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\eventsDialog.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\fieldswidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\format.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\framezone.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\grabber.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\iconlistpopupwidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\iconscrollmenuwidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\imgtabs.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\inconwidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\infowidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\lov.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\measure.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\measure_o.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\menu.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\navigation.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\palettes.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\pane.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\parent_dialog.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\progressBar.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\prompttree.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\qualif.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\scrolltabs.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\simplelist.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\skinIntl.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\tabs.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\textcombowidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\tooltipwidget.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\treeicons.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\treeview.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\unv_close.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\unv_o.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\unv_open.gif" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\samples\waitDialog.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\treeview.js" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\validator\default.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\validator\validator_res.html" />
+    <Content Include="Content\libreriaCrystal\js\dhtmllib\waitdialog.js" />
+    <Content Include="Content\libreriaCrystal\js\dt_param.js" />
+    <Content Include="Content\libreriaCrystal\js\external\date.js" />
+    <Content Include="Content\libreriaCrystal\js\FlexParameterBridge.js" />
+    <Content Include="Content\libreriaCrystal\js\KeyDownEvent.js" />
+    <Content Include="Content\libreriaCrystal\js\log4javascript\log4javascript.js" />
+    <Content Include="Content\libreriaCrystal\js\log4javascript\log4javascript_lite.js" />
+    <Content Include="Content\libreriaCrystal\js\log4javascript\log4javascript_lite_uncompressed.js" />
+    <Content Include="Content\libreriaCrystal\js\log4javascript\log4javascript_production.js" />
+    <Content Include="Content\libreriaCrystal\js\log4javascript\log4javascript_production_uncompressed.js" />
+    <Content Include="Content\libreriaCrystal\js\log4javascript\log4javascript_uncompressed.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\3rdParty.txt" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Async.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Base.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Color.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Controls.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\DateTime.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\DOM.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\DragAndDrop.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Format.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Iter.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\License.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Logging.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\LoggingPane.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\MochiKit.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\MockDOM.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\New.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Signal.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Sortable.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Style.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Test.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\Visual.js" />
+    <Content Include="Content\libreriaCrystal\js\MochiKit\__package__.js" />
+    <Content Include="Content\libreriaCrystal\js\previewerror.js" />
+    <Content Include="Content\libreriaCrystal\js\prompts.js" />
+    <Content Include="Content\libreriaCrystal\js\prompts_param.js" />
+    <Content Include="Content\libreriaCrystal\js\swfobject\swfobject.js" />
+    <Content Include="Content\libreriaCrystal\parameterUIController-compressed.js" />
+    <Content Include="Content\libreriaCrystal\processindicator.js" />
+    <Content Include="Content\libreriaCrystal\promptengine-compressed.js" />
+    <Content Include="Content\libreriaCrystal\prompting\css\promptengine2.css" />
+    <Content Include="Content\libreriaCrystal\prompting\css\promptengine_default.css" />
+    <Content Include="Content\libreriaCrystal\prompting\html\calendar.html" />
+    <Content Include="Content\libreriaCrystal\prompting\html\calendarbottom.html" />
+    <Content Include="Content\libreriaCrystal\prompting\html\calendartop.html" />
+    <Content Include="Content\libreriaCrystal\prompting\images\addallfield.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\addallfield_over.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\addfield.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\addfield_over.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\back.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\background_field.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\back_over.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\button.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\button_left_normal.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\button_middle_normal.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\button_right_normal.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\calendar.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\cfilter.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\cfilter_over.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\dialogelements.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\dialogtitle.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\error.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\errormsg.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\filter.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\filter_over.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\forward.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\forward_over.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\info.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\infomsg.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\minus.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\next.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\next_over.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\plus.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\prev.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\prev_over.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\resize.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\transp.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\warning.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\images\warningmsg.gif" />
+    <Content Include="Content\libreriaCrystal\prompting\js\initDhtmlLib.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_calendar.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_calendar2.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_prompts.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_prompts2.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_cs.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_da.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_de.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_en.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_es.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_fi.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_fr.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_hu.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_it.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_ja.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_ko.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_nb.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_nl.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_pl.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_pt.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_ru.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_sk.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_sv.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_th.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_tr.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_zh_CN.js" />
+    <Content Include="Content\libreriaCrystal\prompting\js\promptengine_strings_zh_TW.js" />
+    <Content Include="Content\libreriaCrystal\urlreporting\activexviewer.js" />
+    <Content Include="Content\libreriaCrystal\urlreporting\appletviewer.js" />
+    <Content Include="Content\Login\app.js" />
+    <Content Include="Content\Login\bootstrap.min.css" />
+    <Content Include="Content\Login\bootstrap.min.js" />
+    <Content Include="Content\Login\jquery.min.js" />
+    <Content Include="Content\Login\lib\stats.js" />
+    <Content Include="Content\Login\particles.js" />
+    <Content Include="Content\Login\particles.min.js" />
+    <Content Include="Content\Login\stats.js" />
+    <Content Include="Content\Login\style.css" />
+    <Content Include="Content\plugin\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Content\plugin\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Content\plugin\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Content\plugin\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Content\plugin\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Content\plugin\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Content\plugin\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Content\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\FACTURACION.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FACTURACION.edmx</DependentUpon>
+      <LastGenOutput>FACTURACION.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FACTURACION.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FACTURACION.edmx</DependentUpon>
+      <LastGenOutput>FACTURACION.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Seguridad.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Seguridad.edmx</DependentUpon>
+      <LastGenOutput>Seguridad.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Seguridad.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Seguridad.edmx</DependentUpon>
+      <LastGenOutput>Seguridad.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TERMOAPP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TERMOAPP.edmx</DependentUpon>
+      <LastGenOutput>TERMOAPP.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TERMOAPP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TERMOAPP.edmx</DependentUpon>
+      <LastGenOutput>TERMOAPP.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TER_TERMOAPP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TER_TERMOAPP.edmx</DependentUpon>
+      <LastGenOutput>TER_TERMOAPP.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TER_TERMOAPP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TER_TERMOAPP.edmx</DependentUpon>
+      <LastGenOutput>TER_TERMOAPP.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Visual.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Visual.edmx</DependentUpon>
+      <LastGenOutput>Visual.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Visual.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Visual.edmx</DependentUpon>
+      <LastGenOutput>Visual.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Content\idioma\datatable.es-ES.json" />
+    <Content Include=".editorconfig" />
+    <EntityDeploy Include="Models\Visual.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Visual.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Visual.edmx.diagram">
+      <DependentUpon>Visual.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\TERMOAPP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TERMOAPP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TERMOAPP.edmx.diagram">
+      <DependentUpon>TERMOAPP.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\webfonts\fa-solid-900.woff2" />
+    <EntityDeploy Include="Models\Seguridad.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Seguridad.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Seguridad.edmx.diagram">
+      <DependentUpon>Seguridad.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\images\Sorting icons.psd" />
+    <EntityDeploy Include="Models\FACTURACION.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FACTURACION.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FACTURACION.edmx.diagram">
+      <DependentUpon>FACTURACION.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\idioma\es-ES.json" />
+    <Content Include="Content\ckeditor\bender-runner.config.json" />
+    <Content Include="Content\ckeditor\CHANGES.md" />
+    <Content Include="Content\ckeditor\LICENSE.md" />
+    <Content Include="Content\ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="Content\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Content\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Content\ckeditor\README.md" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="Content\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Content\ckeditor\SECURITY.md" />
+    <Content Include="Content\ckeditor\skins\moono-lisa\readme.md" />
+    <EntityDeploy Include="Models\TER_TERMOAPP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TER_TERMOAPP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TER_TERMOAPP.edmx.diagram">
+      <DependentUpon>TER_TERMOAPP.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\CodeMirror\addon\comment\comment.js" />
+    <Content Include="Scripts\CodeMirror\addon\comment\continuecomment.js" />
+    <Content Include="Scripts\CodeMirror\addon\dialog\dialog.css" />
+    <Content Include="Scripts\CodeMirror\addon\dialog\dialog.js" />
+    <Content Include="Scripts\CodeMirror\addon\display\autorefresh.js" />
+    <Content Include="Scripts\CodeMirror\addon\display\fullscreen.css" />
+    <Content Include="Scripts\CodeMirror\addon\display\fullscreen.js" />
+    <Content Include="Scripts\CodeMirror\addon\display\panel.js" />
+    <Content Include="Scripts\CodeMirror\addon\display\placeholder.js" />
+    <Content Include="Scripts\CodeMirror\addon\display\rulers.js" />
+    <Content Include="Scripts\CodeMirror\addon\edit\closebrackets.js" />
+    <Content Include="Scripts\CodeMirror\addon\edit\closetag.js" />
+    <Content Include="Scripts\CodeMirror\addon\edit\continuelist.js" />
+    <Content Include="Scripts\CodeMirror\addon\edit\matchbrackets.js" />
+    <Content Include="Scripts\CodeMirror\addon\edit\matchtags.js" />
+    <Content Include="Scripts\CodeMirror\addon\edit\trailingspace.js" />
+    <Content Include="Scripts\CodeMirror\addon\fold\brace-fold.js" />
+    <Content Include="Scripts\CodeMirror\addon\fold\comment-fold.js" />
+    <Content Include="Scripts\CodeMirror\addon\fold\foldcode.js" />
+    <Content Include="Scripts\CodeMirror\addon\fold\foldgutter.css" />
+    <Content Include="Scripts\CodeMirror\addon\fold\foldgutter.js" />
+    <Content Include="Scripts\CodeMirror\addon\fold\indent-fold.js" />
+    <Content Include="Scripts\CodeMirror\addon\fold\markdown-fold.js" />
+    <Content Include="Scripts\CodeMirror\addon\fold\xml-fold.js" />
+    <Content Include="Scripts\CodeMirror\addon\hint\anyword-hint.js" />
+    <Content Include="Scripts\CodeMirror\addon\hint\css-hint.js" />
+    <Content Include="Scripts\CodeMirror\addon\hint\html-hint.js" />
+    <Content Include="Scripts\CodeMirror\addon\hint\javascript-hint.js" />
+    <Content Include="Scripts\CodeMirror\addon\hint\show-hint.css" />
+    <Content Include="Scripts\CodeMirror\addon\hint\show-hint.js" />
+    <Content Include="Scripts\CodeMirror\addon\hint\sql-hint.js" />
+    <Content Include="Scripts\CodeMirror\addon\hint\xml-hint.js" />
+    <Content Include="Scripts\CodeMirror\addon\lint\coffeescript-lint.js" />
+    <Content Include="Scripts\CodeMirror\addon\lint\css-lint.js" />
+    <Content Include="Scripts\CodeMirror\addon\lint\html-lint.js" />
+    <Content Include="Scripts\CodeMirror\addon\lint\javascript-lint.js" />
+    <Content Include="Scripts\CodeMirror\addon\lint\json-lint.js" />
+    <Content Include="Scripts\CodeMirror\addon\lint\lint.css" />
+    <Content Include="Scripts\CodeMirror\addon\lint\lint.js" />
+    <Content Include="Scripts\CodeMirror\addon\lint\yaml-lint.js" />
+    <Content Include="Scripts\CodeMirror\addon\merge\merge.css" />
+    <Content Include="Scripts\CodeMirror\addon\merge\merge.js" />
+    <Content Include="Scripts\CodeMirror\addon\mode\loadmode.js" />
+    <Content Include="Scripts\CodeMirror\addon\mode\multiplex.js" />
+    <Content Include="Scripts\CodeMirror\addon\mode\multiplex_test.js" />
+    <Content Include="Scripts\CodeMirror\addon\mode\overlay.js" />
+    <Content Include="Scripts\CodeMirror\addon\mode\simple.js" />
+    <Content Include="Scripts\CodeMirror\addon\runmode\colorize.js" />
+    <Content Include="Scripts\CodeMirror\addon\runmode\runmode-standalone.js" />
+    <Content Include="Scripts\CodeMirror\addon\runmode\runmode.js" />
+    <Content Include="Scripts\CodeMirror\addon\runmode\runmode.node.js" />
+    <Content Include="Scripts\CodeMirror\addon\scroll\annotatescrollbar.js" />
+    <Content Include="Scripts\CodeMirror\addon\scroll\scrollpastend.js" />
+    <Content Include="Scripts\CodeMirror\addon\scroll\simplescrollbars.css" />
+    <Content Include="Scripts\CodeMirror\addon\scroll\simplescrollbars.js" />
+    <Content Include="Scripts\CodeMirror\addon\search\jump-to-line.js" />
+    <Content Include="Scripts\CodeMirror\addon\search\match-highlighter.js" />
+    <Content Include="Scripts\CodeMirror\addon\search\matchesonscrollbar.css" />
+    <Content Include="Scripts\CodeMirror\addon\search\matchesonscrollbar.js" />
+    <Content Include="Scripts\CodeMirror\addon\search\search.js" />
+    <Content Include="Scripts\CodeMirror\addon\search\searchcursor.js" />
+    <Content Include="Scripts\CodeMirror\addon\selection\active-line.js" />
+    <Content Include="Scripts\CodeMirror\addon\selection\mark-selection.js" />
+    <Content Include="Scripts\CodeMirror\addon\selection\selection-pointer.js" />
+    <Content Include="Scripts\CodeMirror\addon\tern\tern.css" />
+    <Content Include="Scripts\CodeMirror\addon\tern\tern.js" />
+    <Content Include="Scripts\CodeMirror\addon\tern\worker.js" />
+    <Content Include="Scripts\CodeMirror\addon\wrap\hardwrap.js" />
+    <Content Include="Scripts\CodeMirror\keymap\emacs.js" />
+    <Content Include="Scripts\CodeMirror\keymap\sublime.js" />
+    <Content Include="Scripts\CodeMirror\keymap\vim.js" />
+    <Content Include="Scripts\CodeMirror\lib\codemirror.css" />
+    <Content Include="Scripts\CodeMirror\lib\codemirror.js" />
+    <Content Include="Scripts\CodeMirror\mode\apl\apl.js" />
+    <Content Include="Scripts\CodeMirror\mode\apl\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\asciiarmor\asciiarmor.js" />
+    <Content Include="Scripts\CodeMirror\mode\asciiarmor\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\asn.1\asn.1.js" />
+    <Content Include="Scripts\CodeMirror\mode\asn.1\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\asterisk\asterisk.js" />
+    <Content Include="Scripts\CodeMirror\mode\asterisk\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\brainfuck\brainfuck.js" />
+    <Content Include="Scripts\CodeMirror\mode\brainfuck\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\clike\clike.js" />
+    <Content Include="Scripts\CodeMirror\mode\clike\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\clike\scala.html" />
+    <Content Include="Scripts\CodeMirror\mode\clike\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\clojure\clojure.js" />
+    <Content Include="Scripts\CodeMirror\mode\clojure\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\cmake\cmake.js" />
+    <Content Include="Scripts\CodeMirror\mode\cmake\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\cobol\cobol.js" />
+    <Content Include="Scripts\CodeMirror\mode\cobol\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\coffeescript\coffeescript.js" />
+    <Content Include="Scripts\CodeMirror\mode\coffeescript\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\commonlisp\commonlisp.js" />
+    <Content Include="Scripts\CodeMirror\mode\commonlisp\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\crystal\crystal.js" />
+    <Content Include="Scripts\CodeMirror\mode\crystal\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\css\css.js" />
+    <Content Include="Scripts\CodeMirror\mode\css\gss.html" />
+    <Content Include="Scripts\CodeMirror\mode\css\gss_test.js" />
+    <Content Include="Scripts\CodeMirror\mode\css\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\css\less.html" />
+    <Content Include="Scripts\CodeMirror\mode\css\less_test.js" />
+    <Content Include="Scripts\CodeMirror\mode\css\scss.html" />
+    <Content Include="Scripts\CodeMirror\mode\css\scss_test.js" />
+    <Content Include="Scripts\CodeMirror\mode\css\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\cypher\cypher.js" />
+    <Content Include="Scripts\CodeMirror\mode\cypher\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\cypher\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\dart\dart.js" />
+    <Content Include="Scripts\CodeMirror\mode\dart\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\diff\diff.js" />
+    <Content Include="Scripts\CodeMirror\mode\diff\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\django\django.js" />
+    <Content Include="Scripts\CodeMirror\mode\django\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\dockerfile\dockerfile.js" />
+    <Content Include="Scripts\CodeMirror\mode\dockerfile\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\dockerfile\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\dtd\dtd.js" />
+    <Content Include="Scripts\CodeMirror\mode\dtd\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\dylan\dylan.js" />
+    <Content Include="Scripts\CodeMirror\mode\dylan\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\dylan\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\d\d.js" />
+    <Content Include="Scripts\CodeMirror\mode\d\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\d\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\ebnf\ebnf.js" />
+    <Content Include="Scripts\CodeMirror\mode\ebnf\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\ecl\ecl.js" />
+    <Content Include="Scripts\CodeMirror\mode\ecl\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\eiffel\eiffel.js" />
+    <Content Include="Scripts\CodeMirror\mode\eiffel\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\elm\elm.js" />
+    <Content Include="Scripts\CodeMirror\mode\elm\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\erlang\erlang.js" />
+    <Content Include="Scripts\CodeMirror\mode\erlang\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\factor\factor.js" />
+    <Content Include="Scripts\CodeMirror\mode\factor\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\fcl\fcl.js" />
+    <Content Include="Scripts\CodeMirror\mode\fcl\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\forth\forth.js" />
+    <Content Include="Scripts\CodeMirror\mode\forth\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\fortran\fortran.js" />
+    <Content Include="Scripts\CodeMirror\mode\fortran\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\gas\gas.js" />
+    <Content Include="Scripts\CodeMirror\mode\gas\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\gfm\gfm.js" />
+    <Content Include="Scripts\CodeMirror\mode\gfm\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\gfm\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\gherkin\gherkin.js" />
+    <Content Include="Scripts\CodeMirror\mode\gherkin\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\go\go.js" />
+    <Content Include="Scripts\CodeMirror\mode\go\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\groovy\groovy.js" />
+    <Content Include="Scripts\CodeMirror\mode\groovy\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\haml\haml.js" />
+    <Content Include="Scripts\CodeMirror\mode\haml\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\haml\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\htmlembedded\htmlembedded.js" />
+    <Content Include="Scripts\CodeMirror\mode\htmlembedded\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\htmlmixed\htmlmixed.js" />
+    <Content Include="Scripts\CodeMirror\mode\htmlmixed\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\http\http.js" />
+    <Content Include="Scripts\CodeMirror\mode\http\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\idl\idl.js" />
+    <Content Include="Scripts\CodeMirror\mode\idl\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\javascript\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\javascript\javascript.js" />
+    <Content Include="Scripts\CodeMirror\mode\javascript\json-ld.html" />
+    <Content Include="Scripts\CodeMirror\mode\javascript\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\javascript\typescript.html" />
+    <Content Include="Scripts\CodeMirror\mode\jinja2\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\jinja2\jinja2.js" />
+    <Content Include="Scripts\CodeMirror\mode\jsx\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\jsx\jsx.js" />
+    <Content Include="Scripts\CodeMirror\mode\jsx\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\julia\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\julia\julia.js" />
+    <Content Include="Scripts\CodeMirror\mode\livescript\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\livescript\livescript.js" />
+    <Content Include="Scripts\CodeMirror\mode\lua\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\lua\lua.js" />
+    <Content Include="Scripts\CodeMirror\mode\markdown\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\markdown\markdown.js" />
+    <Content Include="Scripts\CodeMirror\mode\markdown\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\mathematica\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\mathematica\mathematica.js" />
+    <Content Include="Scripts\CodeMirror\mode\mbox\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\mbox\mbox.js" />
+    <Content Include="Scripts\CodeMirror\mode\meta.js" />
+    <Content Include="Scripts\CodeMirror\mode\mirc\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\mirc\mirc.js" />
+    <Content Include="Scripts\CodeMirror\mode\mllike\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\mllike\mllike.js" />
+    <Content Include="Scripts\CodeMirror\mode\modelica\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\modelica\modelica.js" />
+    <Content Include="Scripts\CodeMirror\mode\mscgen\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\mscgen\mscgen.js" />
+    <Content Include="Scripts\CodeMirror\mode\mscgen\mscgen_test.js" />
+    <Content Include="Scripts\CodeMirror\mode\mscgen\msgenny_test.js" />
+    <Content Include="Scripts\CodeMirror\mode\mscgen\xu_test.js" />
+    <Content Include="Scripts\CodeMirror\mode\mumps\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\mumps\mumps.js" />
+    <Content Include="Scripts\CodeMirror\mode\nginx\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\nginx\nginx.js" />
+    <Content Include="Scripts\CodeMirror\mode\nsis\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\nsis\nsis.js" />
+    <Content Include="Scripts\CodeMirror\mode\ntriples\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\ntriples\ntriples.js" />
+    <Content Include="Scripts\CodeMirror\mode\octave\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\octave\octave.js" />
+    <Content Include="Scripts\CodeMirror\mode\oz\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\oz\oz.js" />
+    <Content Include="Scripts\CodeMirror\mode\pascal\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\pascal\pascal.js" />
+    <Content Include="Scripts\CodeMirror\mode\pegjs\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\pegjs\pegjs.js" />
+    <Content Include="Scripts\CodeMirror\mode\perl\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\perl\perl.js" />
+    <Content Include="Scripts\CodeMirror\mode\php\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\php\php.js" />
+    <Content Include="Scripts\CodeMirror\mode\php\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\pig\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\pig\pig.js" />
+    <Content Include="Scripts\CodeMirror\mode\powershell\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\powershell\powershell.js" />
+    <Content Include="Scripts\CodeMirror\mode\powershell\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\properties\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\properties\properties.js" />
+    <Content Include="Scripts\CodeMirror\mode\protobuf\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\protobuf\protobuf.js" />
+    <Content Include="Scripts\CodeMirror\mode\pug\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\pug\pug.js" />
+    <Content Include="Scripts\CodeMirror\mode\puppet\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\puppet\puppet.js" />
+    <Content Include="Scripts\CodeMirror\mode\python\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\python\python.js" />
+    <Content Include="Scripts\CodeMirror\mode\python\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\q\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\q\q.js" />
+    <Content Include="Scripts\CodeMirror\mode\rpm\changes\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\rpm\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\rpm\rpm.js" />
+    <Content Include="Scripts\CodeMirror\mode\rst\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\rst\rst.js" />
+    <Content Include="Scripts\CodeMirror\mode\ruby\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\ruby\ruby.js" />
+    <Content Include="Scripts\CodeMirror\mode\ruby\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\rust\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\rust\rust.js" />
+    <Content Include="Scripts\CodeMirror\mode\rust\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\r\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\r\r.js" />
+    <Content Include="Scripts\CodeMirror\mode\sass\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\sass\sass.js" />
+    <Content Include="Scripts\CodeMirror\mode\sass\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\sas\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\sas\sas.js" />
+    <Content Include="Scripts\CodeMirror\mode\scheme\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\scheme\scheme.js" />
+    <Content Include="Scripts\CodeMirror\mode\shell\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\shell\shell.js" />
+    <Content Include="Scripts\CodeMirror\mode\shell\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\sieve\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\sieve\sieve.js" />
+    <Content Include="Scripts\CodeMirror\mode\slim\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\slim\slim.js" />
+    <Content Include="Scripts\CodeMirror\mode\slim\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\smalltalk\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\smalltalk\smalltalk.js" />
+    <Content Include="Scripts\CodeMirror\mode\smarty\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\smarty\smarty.js" />
+    <Content Include="Scripts\CodeMirror\mode\solr\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\solr\solr.js" />
+    <Content Include="Scripts\CodeMirror\mode\soy\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\soy\soy.js" />
+    <Content Include="Scripts\CodeMirror\mode\soy\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\sparql\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\sparql\sparql.js" />
+    <Content Include="Scripts\CodeMirror\mode\spreadsheet\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\spreadsheet\spreadsheet.js" />
+    <Content Include="Scripts\CodeMirror\mode\sql\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\sql\sql.js" />
+    <Content Include="Scripts\CodeMirror\mode\stex\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\stex\stex.js" />
+    <Content Include="Scripts\CodeMirror\mode\stex\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\stylus\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\stylus\stylus.js" />
+    <Content Include="Scripts\CodeMirror\mode\swift\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\swift\swift.js" />
+    <Content Include="Scripts\CodeMirror\mode\swift\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\tcl\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\tcl\tcl.js" />
+    <Content Include="Scripts\CodeMirror\mode\textile\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\textile\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\textile\textile.js" />
+    <Content Include="Scripts\CodeMirror\mode\tiddlywiki\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\tiddlywiki\tiddlywiki.css" />
+    <Content Include="Scripts\CodeMirror\mode\tiddlywiki\tiddlywiki.js" />
+    <Content Include="Scripts\CodeMirror\mode\tiki\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\tiki\tiki.css" />
+    <Content Include="Scripts\CodeMirror\mode\tiki\tiki.js" />
+    <Content Include="Scripts\CodeMirror\mode\toml\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\toml\toml.js" />
+    <Content Include="Scripts\CodeMirror\mode\tornado\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\tornado\tornado.js" />
+    <Content Include="Scripts\CodeMirror\mode\troff\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\troff\troff.js" />
+    <Content Include="Scripts\CodeMirror\mode\ttcn-cfg\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\ttcn-cfg\ttcn-cfg.js" />
+    <Content Include="Scripts\CodeMirror\mode\ttcn\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\ttcn\ttcn.js" />
+    <Content Include="Scripts\CodeMirror\mode\turtle\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\turtle\turtle.js" />
+    <Content Include="Scripts\CodeMirror\mode\twig\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\twig\twig.js" />
+    <Content Include="Scripts\CodeMirror\mode\vbscript\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\vbscript\vbscript.js" />
+    <Content Include="Scripts\CodeMirror\mode\vb\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\vb\vb.js" />
+    <Content Include="Scripts\CodeMirror\mode\velocity\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\velocity\velocity.js" />
+    <Content Include="Scripts\CodeMirror\mode\verilog\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\verilog\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\verilog\verilog.js" />
+    <Content Include="Scripts\CodeMirror\mode\vhdl\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\vhdl\vhdl.js" />
+    <Content Include="Scripts\CodeMirror\mode\vue\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\vue\vue.js" />
+    <Content Include="Scripts\CodeMirror\mode\webidl\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\webidl\webidl.js" />
+    <Content Include="Scripts\CodeMirror\mode\xml\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\xml\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\xml\xml.js" />
+    <Content Include="Scripts\CodeMirror\mode\xquery\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\xquery\test.js" />
+    <Content Include="Scripts\CodeMirror\mode\xquery\xquery.js" />
+    <Content Include="Scripts\CodeMirror\mode\yacas\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\yacas\yacas.js" />
+    <Content Include="Scripts\CodeMirror\mode\yaml-frontmatter\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\yaml-frontmatter\yaml-frontmatter.js" />
+    <Content Include="Scripts\CodeMirror\mode\yaml\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\yaml\yaml.js" />
+    <Content Include="Scripts\CodeMirror\mode\z80\index.html" />
+    <Content Include="Scripts\CodeMirror\mode\z80\z80.js" />
+    <Content Include="Scripts\CodeMirror\theme\3024-day.css" />
+    <Content Include="Scripts\CodeMirror\theme\3024-night.css" />
+    <Content Include="Scripts\CodeMirror\theme\abcdef.css" />
+    <Content Include="Scripts\CodeMirror\theme\ambiance-mobile.css" />
+    <Content Include="Scripts\CodeMirror\theme\ambiance.css" />
+    <Content Include="Scripts\CodeMirror\theme\base16-dark.css" />
+    <Content Include="Scripts\CodeMirror\theme\base16-light.css" />
+    <Content Include="Scripts\CodeMirror\theme\bespin.css" />
+    <Content Include="Scripts\CodeMirror\theme\blackboard.css" />
+    <Content Include="Scripts\CodeMirror\theme\cobalt.css" />
+    <Content Include="Scripts\CodeMirror\theme\colorforth.css" />
+    <Content Include="Scripts\CodeMirror\theme\dracula.css" />
+    <Content Include="Scripts\CodeMirror\theme\duotone-dark.css" />
+    <Content Include="Scripts\CodeMirror\theme\duotone-light.css" />
+    <Content Include="Scripts\CodeMirror\theme\eclipse.css" />
+    <Content Include="Scripts\CodeMirror\theme\elegant.css" />
+    <Content Include="Scripts\CodeMirror\theme\erlang-dark.css" />
+    <Content Include="Scripts\CodeMirror\theme\hopscotch.css" />
+    <Content Include="Scripts\CodeMirror\theme\icecoder.css" />
+    <Content Include="Scripts\CodeMirror\theme\isotope.css" />
+    <Content Include="Scripts\CodeMirror\theme\lesser-dark.css" />
+    <Content Include="Scripts\CodeMirror\theme\liquibyte.css" />
+    <Content Include="Scripts\CodeMirror\theme\material.css" />
+    <Content Include="Scripts\CodeMirror\theme\mbo.css" />
+    <Content Include="Scripts\CodeMirror\theme\mdn-like.css" />
+    <Content Include="Scripts\CodeMirror\theme\midnight.css" />
+    <Content Include="Scripts\CodeMirror\theme\monokai.css" />
+    <Content Include="Scripts\CodeMirror\theme\neat.css" />
+    <Content Include="Scripts\CodeMirror\theme\neo.css" />
+    <Content Include="Scripts\CodeMirror\theme\night.css" />
+    <Content Include="Scripts\CodeMirror\theme\oceanic-next.css" />
+    <Content Include="Scripts\CodeMirror\theme\panda-syntax.css" />
+    <Content Include="Scripts\CodeMirror\theme\paraiso-dark.css" />
+    <Content Include="Scripts\CodeMirror\theme\paraiso-light.css" />
+    <Content Include="Scripts\CodeMirror\theme\pastel-on-dark.css" />
+    <Content Include="Scripts\CodeMirror\theme\railscasts.css" />
+    <Content Include="Scripts\CodeMirror\theme\rubyblue.css" />
+    <Content Include="Scripts\CodeMirror\theme\seti.css" />
+    <Content Include="Scripts\CodeMirror\theme\shadowfox.css" />
+    <Content Include="Scripts\CodeMirror\theme\solarized.css" />
+    <Content Include="Scripts\CodeMirror\theme\the-matrix.css" />
+    <Content Include="Scripts\CodeMirror\theme\tomorrow-night-bright.css" />
+    <Content Include="Scripts\CodeMirror\theme\tomorrow-night-eighties.css" />
+    <Content Include="Scripts\CodeMirror\theme\ttcn.css" />
+    <Content Include="Scripts\CodeMirror\theme\twilight.css" />
+    <Content Include="Scripts\CodeMirror\theme\vibrant-ink.css" />
+    <Content Include="Scripts\CodeMirror\theme\xq-dark.css" />
+    <Content Include="Scripts\CodeMirror\theme\xq-light.css" />
+    <Content Include="Scripts\CodeMirror\theme\yeti.css" />
+    <Content Include="Scripts\CodeMirror\theme\zenburn.css" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\PrecioSMI.cshtml" />
+    <Content Include="Views\Home\PrecioMH.cshtml" />
+    <Content Include="Views\QW2\Index.cshtml" />
+    <Content Include="Views\Home\Inicio.cshtml" />
+    <Content Include="Views\QW2\Inicio.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Home.cshtml" />
+    <Content Include="Views\QW6\Index.cshtml" />
+    <Content Include="Views\QW7\Index.cshtml" />
+    <Content Include="Views\QW6\Plantilla.cshtml" />
+    <Content Include="Views\QW6\Inicio.cshtml" />
+    <Content Include="Views\Home\Historicos.cshtml" />
+    <Content Include="Views\QW2\Under.cshtml" />
+    <Content Include="Views\QW2\UnderMH.cshtml" />
+    <Content Include="Views\QW8\Index.cshtml" />
+    <Content Include="Views\Bodega\Index.cshtml" />
+    <Content Include="Views\Bodega\Recibo.cshtml" />
+    <Content Include="Views\QW2\Precios.cshtml" />
+    <Content Include="Views\WorkFlow\Index.cshtml" />
+    <Content Include="Views\WorkFlow\Muestras.cshtml" />
+    <Content Include="Views\WorkFlow\CreacionArt.cshtml" />
+    <Content Include="Views\WorkFlow\ServiciosProd.cshtml" />
+    <Content Include="Views\WorkFlow\Artes.cshtml" />
+    <Content Include="Views\WorkFlow\Otros.cshtml" />
+    <Content Include="Views\WorkFlow\Adjuntos.cshtml" />
+    <Content Include="Views\Archivos\Index.cshtml" />
+    <Content Include="Views\WorkFlow\Ver.cshtml" />
+    <Content Include="Views\Comercial\Index.cshtml" />
+    <Content Include="Views\ComercialPed\Index.cshtml" />
+    <Content Include="Views\ComercialPed\AutorizarP.cshtml" />
+    <Content Include="Views\ComercialPed\Autorizador.cshtml" />
+    <Content Include="Views\QW7\ConsultaTrazabilidad.cshtml" />
+    <Content Include="Views\Material\Index.cshtml" />
+    <Content Include="Views\ComercialPed\ListarTodo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\order\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52970</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44319/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TERMO9EAMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TER_PORC_TEXTIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO" Type="nvarchar" MaxLength="25" />
+          <Property Name="CLIENTE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ARTICULO" Type="nvarchar" MaxLength="150" />
+          <Property Name="PORCENTAJE" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="50" />
+          <Property Name="FECHA_HASTA" Type="varchar" MaxLength="200" />
+          <Property Name="FECHA_DESDE" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TER_PORC_TEXTIL_HIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FECHA_MODIFICACION" Type="varchar" MaxLength="200" />
+          <Property Name="TIPO" Type="nvarchar" MaxLength="25" />
+          <Property Name="CLIENTE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ARTICULO" Type="nvarchar" MaxLength="150" />
+          <Property Name="PORCENTAJE" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="50" />
+          <Property Name="FECHA_HASTA" Type="varchar" MaxLength="200" />
+          <Property Name="FECHA_DESDE" Type="varchar" MaxLength="200" />
+          <Property Name="ID_E" Type="int" />
+        </EntityType>
+        <EntityContainer Name="TERMO9EAMModelStoreContainer">
+          <EntitySet Name="TER_PORC_TEXTIL" EntityType="Self.TER_PORC_TEXTIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_PORC_TEXTIL_HIST" EntityType="Self.TER_PORC_TEXTIL_HIST" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TERMO9EAMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TERMOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TER_PORC_TEXTIL" EntityType="TERMO9EAMModel.TER_PORC_TEXTIL" />
+          <EntitySet Name="TER_PORC_TEXTIL_HIST" EntityType="TERMO9EAMModel.TER_PORC_TEXTIL_HIST" />
+        </EntityContainer>
+        <EntityType Name="TER_PORC_TEXTIL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ARTICULO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PORCENTAJE" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_HASTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_DESDE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_PORC_TEXTIL_HIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FECHA_MODIFICACION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ARTICULO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PORCENTAJE" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_HASTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_DESDE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ID_E" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TERMO9EAMModelStoreContainer" CdmEntityContainer="TERMOEntities">
+          <EntitySetMapping Name="TER_PORC_TEXTIL">
+            <EntityTypeMapping TypeName="TERMO9EAMModel.TER_PORC_TEXTIL">
+              <MappingFragment StoreEntitySet="TER_PORC_TEXTIL">
+                <ScalarProperty Name="FECHA_DESDE" ColumnName="FECHA_DESDE" />
+                <ScalarProperty Name="FECHA_HASTA" ColumnName="FECHA_HASTA" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+                <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_PORC_TEXTIL_HIST">
+            <EntityTypeMapping TypeName="TERMO9EAMModel.TER_PORC_TEXTIL_HIST">
+              <MappingFragment StoreEntitySet="TER_PORC_TEXTIL_HIST">
+                <ScalarProperty Name="ID_E" ColumnName="ID_E" />
+                <ScalarProperty Name="FECHA_DESDE" ColumnName="FECHA_DESDE" />
+                <ScalarProperty Name="FECHA_HASTA" ColumnName="FECHA_HASTA" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+                <ScalarProperty Name="ARTICULO" ColumnName="ARTICULO" />
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHA_MODIFICACION" ColumnName="FECHA_MODIFICACION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

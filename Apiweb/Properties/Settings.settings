@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Apiweb.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DBConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=TERMODATA;Database=TERMOAPP;User Id=aplicaciones;Password=@plicaci0n3$;</Value>
+    </Setting>
+    <Setting Name="DBTERMO" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=TERMODATA;Database=TERMO;User Id=aplicaciones;Password=@plicaci0n3$;</Value>
+    </Setting>
+    <Setting Name="DBCONSULTA" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=TERMODATA;Database=TERMOAPP;User Id=reportes;Password=termorep;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

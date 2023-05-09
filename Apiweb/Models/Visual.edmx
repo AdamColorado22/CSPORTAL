@@ -1,0 +1,930 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TERMCAR9Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="INVENTORY_TRANS">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="ROWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TRANSACTION_ID" Type="int" Nullable="false" />
+          <Property Name="WORKORDER_TYPE" Type="nchar" MaxLength="1" />
+          <Property Name="WORKORDER_BASE_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="WORKORDER_LOT_ID" Type="nvarchar" MaxLength="3" />
+          <Property Name="WORKORDER_SPLIT_ID" Type="nvarchar" MaxLength="3" />
+          <Property Name="WORKORDER_SUB_ID" Type="nvarchar" MaxLength="3" />
+          <Property Name="OPERATION_SEQ_NO" Type="smallint" />
+          <Property Name="REQ_PIECE_NO" Type="smallint" />
+          <Property Name="CUST_ORDER_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="CUST_ORDER_LINE_NO" Type="smallint" />
+          <Property Name="PURC_ORDER_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="PURC_ORDER_LINE_NO" Type="smallint" />
+          <Property Name="PART_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="TYPE" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="CLASS" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="COSTED_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="TRANSACTION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="WAREHOUSE_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="LOCATION_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="120" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="POSTING_CANDIDATE" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="ADJ_REASON_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="ACT_MATERIAL_COST" Type="decimal" Precision="23" Scale="8" Nullable="false" />
+          <Property Name="ACT_LABOR_COST" Type="decimal" Precision="23" Scale="8" Nullable="false" />
+          <Property Name="ACT_BURDEN_COST" Type="decimal" Precision="23" Scale="8" Nullable="false" />
+          <Property Name="ACT_SERVICE_COST" Type="decimal" Precision="23" Scale="8" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="ADD_BURDEN" Type="decimal" Precision="23" Scale="8" />
+          <Property Name="PIECE_COUNT" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="LENGTH" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="WIDTH" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="HEIGHT" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="DIMENSIONS_UM" Type="nvarchar" MaxLength="15" />
+          <Property Name="TRANSFER_TRANS_ID" Type="int" />
+          <Property Name="XFER_IN_TRANSIT" Type="nchar" MaxLength="1" />
+          <Property Name="IBT_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="IBT_LINE_NO" Type="smallint" />
+          <Property Name="GL_ADJ_ACCT_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="FROM_WBS_CODE" Type="nvarchar" MaxLength="30" />
+          <Property Name="TO_WBS_CODE" Type="nvarchar" MaxLength="30" />
+          <Property Name="WBS_CODE" Type="nvarchar" MaxLength="30" />
+          <Property Name="DEPARTMENT_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="COST_CATEGORY_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="PROJ_REF_SEQ_NO" Type="smallint" />
+          <Property Name="PROJ_REF_SUB_ID" Type="nvarchar" MaxLength="3" />
+          <Property Name="REVISION_ID" Type="nvarchar" MaxLength="8" />
+          <Property Name="STAGE_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="ISSUE_REAS_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="ACT_RATE_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="ACT_PERIOD_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="RETRO_RATE_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="RETRO_PERIOD_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="RETRO_RATE_CODE" Type="nchar" MaxLength="1" />
+          <Property Name="LAST_RETRO_DATE" Type="datetime" />
+          <Property Name="COUNT_SEQUENCE" Type="int" Nullable="false" />
+          <Property Name="SITE_ID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="USER_DIMENSION_1" Type="nvarchar" MaxLength="15" />
+          <Property Name="USER_DIMENSION_2" Type="nvarchar" MaxLength="15" />
+          <Property Name="LOCATION_HOLD_CODE_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="RET_COST_ZERO" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="PART">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ROWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="120" />
+          <Property Name="STOCK_UM" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PLANNING_LEADTIME" Type="smallint" Nullable="false" />
+          <Property Name="ORDER_POLICY" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="ORDER_POINT" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="SAFETY_STOCK_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="FIXED_ORDER_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="DAYS_OF_SUPPLY" Type="smallint" />
+          <Property Name="MINIMUM_ORDER_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="MAXIMUM_ORDER_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="PRODUCT_CODE" Type="nvarchar" MaxLength="15" />
+          <Property Name="COMMODITY_CODE" Type="nvarchar" MaxLength="24" />
+          <Property Name="MFG_NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="MFG_PART_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="FABRICATED" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="PURCHASED" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="STOCKED" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="DETAIL_ONLY" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="DEMAND_HISTORY" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="TOOL_OR_FIXTURE" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="INSPECTION_REQD" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="WEIGHT" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="WEIGHT_UM" Type="nvarchar" MaxLength="15" />
+          <Property Name="DRAWING_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="DRAWING_REV_NO" Type="nvarchar" MaxLength="8" />
+          <Property Name="PREF_VENDOR_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="MRP_REQUIRED" Type="nchar" MaxLength="1" />
+          <Property Name="MRP_EXCEPTIONS" Type="nchar" MaxLength="1" />
+          <Property Name="PRIVATE_UM_CONV" Type="nchar" MaxLength="1" />
+          <Property Name="AUTO_BACKFLUSH" Type="nchar" MaxLength="1" />
+          <Property Name="PLANNER_USER_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="BUYER_USER_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="ABC_CODE" Type="nchar" MaxLength="1" />
+          <Property Name="ANNUAL_USAGE_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="INVENTORY_LOCKED" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="MAT_GL_ACCT_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="LAB_GL_ACCT_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="BUR_GL_ACCT_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="SER_GL_ACCT_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="QTY_ON_HAND" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="QTY_AVAILABLE_ISS" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="QTY_AVAILABLE_MRP" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="QTY_ON_ORDER" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="QTY_IN_DEMAND" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="USER_1" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_2" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_3" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_4" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_5" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_6" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_7" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_8" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_9" Type="nvarchar" MaxLength="80" />
+          <Property Name="USER_10" Type="nvarchar" MaxLength="80" />
+          <Property Name="NMFC_CODE_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="PACKAGE_TYPE" Type="nvarchar" MaxLength="5" />
+          <Property Name="MRP_EXCEPTION_INFO" Type="nvarchar" MaxLength="80" />
+          <Property Name="MULTIPLE_ORDER_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="ADD_FORECAST" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="UDF_LAYOUT_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="PIECE_TRACKED" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="LENGTH_REQD" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="WIDTH_REQD" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="HEIGHT_REQD" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="DIMENSIONS_UM" Type="nvarchar" MaxLength="15" />
+          <Property Name="SHIP_DIMENSIONS" Type="nvarchar" MaxLength="50" />
+          <Property Name="DRAWING_FILE" Type="nvarchar" MaxLength="100" />
+          <Property Name="TARIFF_CODE" Type="nvarchar" MaxLength="15" />
+          <Property Name="TARIFF_TYPE" Type="nvarchar" MaxLength="20" />
+          <Property Name="ORIG_COUNTRY_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="NET_WEIGHT_2" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="GROSS_WEIGHT_2" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="WEIGHT_UM_2" Type="nvarchar" MaxLength="15" />
+          <Property Name="VOLUME" Type="decimal" Precision="11" Scale="2" />
+          <Property Name="VOLUME_UM" Type="nvarchar" MaxLength="15" />
+          <Property Name="VAT_CODE" Type="nvarchar" MaxLength="15" />
+          <Property Name="DEMAND_FENCE_1" Type="int" />
+          <Property Name="DEMAND_FENCE_2" Type="int" />
+          <Property Name="ROLL_FORECAST" Type="nchar" MaxLength="1" />
+          <Property Name="CONSUMABLE" Type="nchar" MaxLength="1" />
+          <Property Name="PRIMARY_SOURCE" Type="nchar" MaxLength="3" />
+          <Property Name="LABEL_UM" Type="nvarchar" MaxLength="15" />
+          <Property Name="HTS_CODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="DEF_ORIG_COUNTRY" Type="nvarchar" MaxLength="50" />
+          <Property Name="MATERIAL_CODE" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEF_LBL_FORMAT_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="VOLATILE_LEADTIME" Type="nchar" MaxLength="1" />
+          <Property Name="LT_PLUS_DAYS" Type="int" />
+          <Property Name="LT_MINUS_DAYS" Type="int" />
+          <Property Name="STATUS" Type="nchar" MaxLength="1" />
+          <Property Name="USE_SUPPLY_BEF_LT" Type="nchar" MaxLength="1" />
+          <Property Name="QTY_COMMITTED" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="intrastat_exempt" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="CASE_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="PALLET_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="MINIMUM_LEADTIME" Type="smallint" />
+          <Property Name="LEADTIME_BUFFER" Type="smallint" />
+          <Property Name="EMERGENCY_STOCKPCT" Type="int" />
+          <Property Name="REPLENISH_LEVEL" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="MIN_BATCH_SIZE" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="EFF_DATE_PRICE" Type="nchar" MaxLength="1" />
+          <Property Name="ECN_REVISION" Type="nchar" MaxLength="1" />
+          <Property Name="REVISION_ID" Type="nvarchar" MaxLength="8" />
+          <Property Name="STAGE_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="ECN_REV_CONTROL" Type="nchar" MaxLength="1" />
+          <Property Name="IS_KIT" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="YELLOW_STOCKPCT" Type="int" />
+          <Property Name="UNIV_PLAN_MATERIAL" Type="nvarchar" MaxLength="1" />
+          <Property Name="RLS_NEAR_DAYS" Type="smallint" />
+          <Property Name="SUGG_RLS_NEAR_DAYS" Type="smallint" />
+          <Property Name="ORDER_UP_TO_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="LAST_IMPLODE_DATE" Type="datetime" />
+          <Property Name="STATUS_EFF_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CONTROLLED_BY_ICS" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="PRICE_GROUP" Type="nvarchar" MaxLength="15" />
+          <Property Name="DEF_PACKAGE_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="DEF_PACKAGE_CAP" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="DEF_SLS_TAX_GRP_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="MRO_CLASS" Type="nvarchar" MaxLength="20" />
+          <Property Name="BUFFER_PROFILE_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="ADU_HORIZON" Type="smallint" />
+          <Property Name="ASR_LEADTIME" Type="smallint" />
+          <Property Name="ONHAND_ALERT_RED_PCT" Type="smallint" />
+          <Property Name="PROCESS_TYPE" Type="nvarchar" MaxLength="15" />
+          <Property Name="BID_RATE_CATEGORY_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="MODIFY_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TRACE">
+          <Key>
+            <PropertyRef Name="PART_ID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ROWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PART_ID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="NUMBERING_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="OUT_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="IN_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="REPORTED_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="ASSIGNED_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="APROPERTY_1" Type="nvarchar" MaxLength="80" />
+          <Property Name="APROPERTY_2" Type="nvarchar" MaxLength="80" />
+          <Property Name="APROPERTY_3" Type="nvarchar" MaxLength="80" />
+          <Property Name="APROPERTY_4" Type="nvarchar" MaxLength="80" />
+          <Property Name="APROPERTY_5" Type="nvarchar" MaxLength="80" />
+          <Property Name="NPROPERTY_1" Type="decimal" Precision="15" Scale="6" />
+          <Property Name="NPROPERTY_2" Type="decimal" Precision="15" Scale="6" />
+          <Property Name="NPROPERTY_3" Type="decimal" Precision="15" Scale="6" />
+          <Property Name="NPROPERTY_4" Type="decimal" Precision="15" Scale="6" />
+          <Property Name="NPROPERTY_5" Type="decimal" Precision="15" Scale="6" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="250" />
+          <Property Name="EXPIRATION_DATE" Type="datetime" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="DISP_IN_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="DISP_OUT_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="UNAVAILABLE_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="OWNER_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="LOT_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="SERIAL_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="COMMITTED_QTY" Type="decimal" Precision="20" Scale="8" />
+          <Property Name="PRODUCTION_DATE" Type="datetime" />
+          <Property Name="RECEIVE_BY_DATE" Type="datetime" />
+          <Property Name="AVAILABLE_DATE" Type="datetime" />
+          <Property Name="SHIP_BY_DATE" Type="datetime" />
+          <Property Name="SITE_ID" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="TRACE_INV_TRANS">
+          <Key>
+            <PropertyRef Name="PART_ID" />
+            <PropertyRef Name="TRACE_ID" />
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="ROWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PART_ID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TRACE_ID" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TRANSACTION_ID" Type="int" Nullable="false" />
+          <Property Name="QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="COSTED_QTY" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+        </EntityType>
+        <Association Name="FKEY0108">
+          <End Role="PART" Type="Self.PART" Multiplicity="1" />
+          <End Role="TRACE" Type="Self.TRACE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PART">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRACE">
+              <PropertyRef Name="PART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEY0241">
+          <End Role="TRACE" Type="Self.TRACE" Multiplicity="1" />
+          <End Role="TRACE_INV_TRANS" Type="Self.TRACE_INV_TRANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRACE">
+              <PropertyRef Name="PART_ID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRACE_INV_TRANS">
+              <PropertyRef Name="PART_ID" />
+              <PropertyRef Name="TRACE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEY0284">
+          <End Role="INVENTORY_TRANS" Type="Self.INVENTORY_TRANS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TRACE_INV_TRANS" Type="Self.TRACE_INV_TRANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVENTORY_TRANS">
+              <PropertyRef Name="TRANSACTION_ID" />
+            </Principal>
+            <Dependent Role="TRACE_INV_TRANS">
+              <PropertyRef Name="TRANSACTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TERMCAR9ModelStoreContainer">
+          <EntitySet Name="INVENTORY_TRANS" EntityType="Self.INVENTORY_TRANS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PART" EntityType="Self.PART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRACE" EntityType="Self.TRACE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRACE_INV_TRANS" EntityType="Self.TRACE_INV_TRANS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKEY0108" Association="Self.FKEY0108">
+            <End Role="PART" EntitySet="PART" />
+            <End Role="TRACE" EntitySet="TRACE" />
+          </AssociationSet>
+          <AssociationSet Name="FKEY0241" Association="Self.FKEY0241">
+            <End Role="TRACE" EntitySet="TRACE" />
+            <End Role="TRACE_INV_TRANS" EntitySet="TRACE_INV_TRANS" />
+          </AssociationSet>
+          <AssociationSet Name="FKEY0284" Association="Self.FKEY0284">
+            <End Role="INVENTORY_TRANS" EntitySet="INVENTORY_TRANS" />
+            <End Role="TRACE_INV_TRANS" EntitySet="TRACE_INV_TRANS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TERMCARModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="INVENTORY_TRANS">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="ROWID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TRANSACTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="WORKORDER_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="WORKORDER_BASE_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDER_LOT_ID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDER_SPLIT_ID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDER_SUB_ID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="OPERATION_SEQ_NO" Type="Int16" />
+          <Property Name="REQ_PIECE_NO" Type="Int16" />
+          <Property Name="CUST_ORDER_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_ORDER_LINE_NO" Type="Int16" />
+          <Property Name="PURC_ORDER_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PURC_ORDER_LINE_NO" Type="Int16" />
+          <Property Name="PART_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CLASS" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="COSTED_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="TRANSACTION_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WAREHOUSE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LOCATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="POSTING_CANDIDATE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ADJ_REASON_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ACT_MATERIAL_COST" Type="Decimal" Precision="23" Scale="8" Nullable="false" />
+          <Property Name="ACT_LABOR_COST" Type="Decimal" Precision="23" Scale="8" Nullable="false" />
+          <Property Name="ACT_BURDEN_COST" Type="Decimal" Precision="23" Scale="8" Nullable="false" />
+          <Property Name="ACT_SERVICE_COST" Type="Decimal" Precision="23" Scale="8" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ADD_BURDEN" Type="Decimal" Precision="23" Scale="8" />
+          <Property Name="PIECE_COUNT" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="LENGTH" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="WIDTH" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="HEIGHT" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="DIMENSIONS_UM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TRANSFER_TRANS_ID" Type="Int32" />
+          <Property Name="XFER_IN_TRANSIT" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="IBT_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IBT_LINE_NO" Type="Int16" />
+          <Property Name="GL_ADJ_ACCT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FROM_WBS_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TO_WBS_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="WBS_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DEPARTMENT_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="COST_CATEGORY_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PROJ_REF_SEQ_NO" Type="Int16" />
+          <Property Name="PROJ_REF_SUB_ID" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="REVISION_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="STAGE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ISSUE_REAS_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ACT_RATE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ACT_PERIOD_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RETRO_RATE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RETRO_PERIOD_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RETRO_RATE_CODE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="LAST_RETRO_DATE" Type="DateTime" Precision="3" />
+          <Property Name="COUNT_SEQUENCE" Type="Int32" Nullable="false" />
+          <Property Name="SITE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USER_DIMENSION_1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="USER_DIMENSION_2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LOCATION_HOLD_CODE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RET_COST_ZERO" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TRACE_INV_TRANS" Relationship="Self.FKEY0284" FromRole="INVENTORY_TRANS" ToRole="TRACE_INV_TRANS" />
+        </EntityType>
+        <EntityType Name="PART">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ROWID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="STOCK_UM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PLANNING_LEADTIME" Type="Int16" Nullable="false" />
+          <Property Name="ORDER_POLICY" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ORDER_POINT" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="SAFETY_STOCK_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="FIXED_ORDER_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="DAYS_OF_SUPPLY" Type="Int16" />
+          <Property Name="MINIMUM_ORDER_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="MAXIMUM_ORDER_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="PRODUCT_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="COMMODITY_CODE" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="MFG_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MFG_PART_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FABRICATED" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PURCHASED" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="STOCKED" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DETAIL_ONLY" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DEMAND_HISTORY" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TOOL_OR_FIXTURE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="INSPECTION_REQD" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="WEIGHT" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="WEIGHT_UM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DRAWING_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DRAWING_REV_NO" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="PREF_VENDOR_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MRP_REQUIRED" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="MRP_EXCEPTIONS" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="PRIVATE_UM_CONV" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="AUTO_BACKFLUSH" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="PLANNER_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BUYER_USER_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ABC_CODE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ANNUAL_USAGE_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="INVENTORY_LOCKED" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="MAT_GL_ACCT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LAB_GL_ACCT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BUR_GL_ACCT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SER_GL_ACCT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="QTY_ON_HAND" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="QTY_AVAILABLE_ISS" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="QTY_AVAILABLE_MRP" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="QTY_ON_ORDER" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="QTY_IN_DEMAND" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="USER_1" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_2" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_3" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_4" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_5" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_6" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_7" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_8" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_9" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="USER_10" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="NMFC_CODE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PACKAGE_TYPE" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="MRP_EXCEPTION_INFO" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="MULTIPLE_ORDER_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="ADD_FORECAST" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UDF_LAYOUT_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PIECE_TRACKED" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="LENGTH_REQD" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="WIDTH_REQD" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="HEIGHT_REQD" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DIMENSIONS_UM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SHIP_DIMENSIONS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DRAWING_FILE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TARIFF_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TARIFF_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ORIG_COUNTRY_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NET_WEIGHT_2" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="GROSS_WEIGHT_2" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="WEIGHT_UM_2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="VOLUME" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="VOLUME_UM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="VAT_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DEMAND_FENCE_1" Type="Int32" />
+          <Property Name="DEMAND_FENCE_2" Type="Int32" />
+          <Property Name="ROLL_FORECAST" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="CONSUMABLE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="PRIMARY_SOURCE" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="LABEL_UM" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HTS_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DEF_ORIG_COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MATERIAL_CODE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="DEF_LBL_FORMAT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="VOLATILE_LEADTIME" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="LT_PLUS_DAYS" Type="Int32" />
+          <Property Name="LT_MINUS_DAYS" Type="Int32" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="USE_SUPPLY_BEF_LT" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="QTY_COMMITTED" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="intrastat_exempt" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CASE_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="PALLET_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="MINIMUM_LEADTIME" Type="Int16" />
+          <Property Name="LEADTIME_BUFFER" Type="Int16" />
+          <Property Name="EMERGENCY_STOCKPCT" Type="Int32" />
+          <Property Name="REPLENISH_LEVEL" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="MIN_BATCH_SIZE" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="EFF_DATE_PRICE" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ECN_REVISION" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="REVISION_ID" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="STAGE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ECN_REV_CONTROL" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="IS_KIT" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="YELLOW_STOCKPCT" Type="Int32" />
+          <Property Name="UNIV_PLAN_MATERIAL" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="RLS_NEAR_DAYS" Type="Int16" />
+          <Property Name="SUGG_RLS_NEAR_DAYS" Type="Int16" />
+          <Property Name="ORDER_UP_TO_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="LAST_IMPLODE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="STATUS_EFF_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CONTROLLED_BY_ICS" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PRICE_GROUP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DEF_PACKAGE_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="DEF_PACKAGE_CAP" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="DEF_SLS_TAX_GRP_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MRO_CLASS" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BUFFER_PROFILE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ADU_HORIZON" Type="Int16" />
+          <Property Name="ASR_LEADTIME" Type="Int16" />
+          <Property Name="ONHAND_ALERT_RED_PCT" Type="Int16" />
+          <Property Name="PROCESS_TYPE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="BID_RATE_CATEGORY_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFY_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TRACE" Relationship="Self.FKEY0108" FromRole="PART" ToRole="TRACE" />
+        </EntityType>
+        <EntityType Name="TRACE">
+          <Key>
+            <PropertyRef Name="PART_ID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ROWID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PART_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NUMBERING_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="OUT_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="IN_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="REPORTED_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="ASSIGNED_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="APROPERTY_1" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="APROPERTY_2" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="APROPERTY_3" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="APROPERTY_4" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="APROPERTY_5" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="NPROPERTY_1" Type="Decimal" Precision="15" Scale="6" />
+          <Property Name="NPROPERTY_2" Type="Decimal" Precision="15" Scale="6" />
+          <Property Name="NPROPERTY_3" Type="Decimal" Precision="15" Scale="6" />
+          <Property Name="NPROPERTY_4" Type="Decimal" Precision="15" Scale="6" />
+          <Property Name="NPROPERTY_5" Type="Decimal" Precision="15" Scale="6" />
+          <Property Name="COMMENTS" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EXPIRATION_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DISP_IN_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="DISP_OUT_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="UNAVAILABLE_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="OWNER_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LOT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SERIAL_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="COMMITTED_QTY" Type="Decimal" Precision="20" Scale="8" />
+          <Property Name="PRODUCTION_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RECEIVE_BY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="AVAILABLE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SHIP_BY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SITE_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PART" Relationship="Self.FKEY0108" FromRole="TRACE" ToRole="PART" />
+          <NavigationProperty Name="TRACE_INV_TRANS" Relationship="Self.FKEY0241" FromRole="TRACE" ToRole="TRACE_INV_TRANS" />
+        </EntityType>
+        <EntityType Name="TRACE_INV_TRANS">
+          <Key>
+            <PropertyRef Name="PART_ID" />
+            <PropertyRef Name="TRACE_ID" />
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="ROWID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PART_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TRACE_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TRANSACTION_ID" Type="Int32" Nullable="false" />
+          <Property Name="QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="COSTED_QTY" Type="Decimal" Precision="20" Scale="8" Nullable="false" />
+          <NavigationProperty Name="INVENTORY_TRANS" Relationship="Self.FKEY0284" FromRole="TRACE_INV_TRANS" ToRole="INVENTORY_TRANS" />
+          <NavigationProperty Name="TRACE" Relationship="Self.FKEY0241" FromRole="TRACE_INV_TRANS" ToRole="TRACE" />
+        </EntityType>
+        <Association Name="FKEY0284">
+          <End Role="INVENTORY_TRANS" Type="Self.INVENTORY_TRANS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TRACE_INV_TRANS" Type="Self.TRACE_INV_TRANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVENTORY_TRANS">
+              <PropertyRef Name="TRANSACTION_ID" />
+            </Principal>
+            <Dependent Role="TRACE_INV_TRANS">
+              <PropertyRef Name="TRANSACTION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEY0108">
+          <End Role="PART" Type="Self.PART" Multiplicity="1" />
+          <End Role="TRACE" Type="Self.TRACE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PART">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRACE">
+              <PropertyRef Name="PART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEY0241">
+          <End Role="TRACE" Type="Self.TRACE" Multiplicity="1" />
+          <End Role="TRACE_INV_TRANS" Type="Self.TRACE_INV_TRANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRACE">
+              <PropertyRef Name="PART_ID" />
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRACE_INV_TRANS">
+              <PropertyRef Name="PART_ID" />
+              <PropertyRef Name="TRACE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TERMCAREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="INVENTORY_TRANS" EntityType="Self.INVENTORY_TRANS" />
+          <EntitySet Name="PART" EntityType="Self.PART" />
+          <EntitySet Name="TRACE" EntityType="Self.TRACE" />
+          <EntitySet Name="TRACE_INV_TRANS" EntityType="Self.TRACE_INV_TRANS" />
+          <AssociationSet Name="FKEY0284" Association="Self.FKEY0284">
+            <End Role="INVENTORY_TRANS" EntitySet="INVENTORY_TRANS" />
+            <End Role="TRACE_INV_TRANS" EntitySet="TRACE_INV_TRANS" />
+          </AssociationSet>
+          <AssociationSet Name="FKEY0108" Association="Self.FKEY0108">
+            <End Role="PART" EntitySet="PART" />
+            <End Role="TRACE" EntitySet="TRACE" />
+          </AssociationSet>
+          <AssociationSet Name="FKEY0241" Association="Self.FKEY0241">
+            <End Role="TRACE" EntitySet="TRACE" />
+            <End Role="TRACE_INV_TRANS" EntitySet="TRACE_INV_TRANS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TERMCAR9ModelStoreContainer" CdmEntityContainer="TERMCAREntities">
+          <EntitySetMapping Name="INVENTORY_TRANS">
+            <EntityTypeMapping TypeName="TERMCARModel.INVENTORY_TRANS">
+              <MappingFragment StoreEntitySet="INVENTORY_TRANS">
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                <ScalarProperty Name="WORKORDER_TYPE" ColumnName="WORKORDER_TYPE" />
+                <ScalarProperty Name="WORKORDER_BASE_ID" ColumnName="WORKORDER_BASE_ID" />
+                <ScalarProperty Name="WORKORDER_LOT_ID" ColumnName="WORKORDER_LOT_ID" />
+                <ScalarProperty Name="WORKORDER_SPLIT_ID" ColumnName="WORKORDER_SPLIT_ID" />
+                <ScalarProperty Name="WORKORDER_SUB_ID" ColumnName="WORKORDER_SUB_ID" />
+                <ScalarProperty Name="OPERATION_SEQ_NO" ColumnName="OPERATION_SEQ_NO" />
+                <ScalarProperty Name="REQ_PIECE_NO" ColumnName="REQ_PIECE_NO" />
+                <ScalarProperty Name="CUST_ORDER_ID" ColumnName="CUST_ORDER_ID" />
+                <ScalarProperty Name="CUST_ORDER_LINE_NO" ColumnName="CUST_ORDER_LINE_NO" />
+                <ScalarProperty Name="PURC_ORDER_ID" ColumnName="PURC_ORDER_ID" />
+                <ScalarProperty Name="PURC_ORDER_LINE_NO" ColumnName="PURC_ORDER_LINE_NO" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="COSTED_QTY" ColumnName="COSTED_QTY" />
+                <ScalarProperty Name="TRANSACTION_DATE" ColumnName="TRANSACTION_DATE" />
+                <ScalarProperty Name="WAREHOUSE_ID" ColumnName="WAREHOUSE_ID" />
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="POSTING_CANDIDATE" ColumnName="POSTING_CANDIDATE" />
+                <ScalarProperty Name="ADJ_REASON_ID" ColumnName="ADJ_REASON_ID" />
+                <ScalarProperty Name="ACT_MATERIAL_COST" ColumnName="ACT_MATERIAL_COST" />
+                <ScalarProperty Name="ACT_LABOR_COST" ColumnName="ACT_LABOR_COST" />
+                <ScalarProperty Name="ACT_BURDEN_COST" ColumnName="ACT_BURDEN_COST" />
+                <ScalarProperty Name="ACT_SERVICE_COST" ColumnName="ACT_SERVICE_COST" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="ADD_BURDEN" ColumnName="ADD_BURDEN" />
+                <ScalarProperty Name="PIECE_COUNT" ColumnName="PIECE_COUNT" />
+                <ScalarProperty Name="LENGTH" ColumnName="LENGTH" />
+                <ScalarProperty Name="WIDTH" ColumnName="WIDTH" />
+                <ScalarProperty Name="HEIGHT" ColumnName="HEIGHT" />
+                <ScalarProperty Name="DIMENSIONS_UM" ColumnName="DIMENSIONS_UM" />
+                <ScalarProperty Name="TRANSFER_TRANS_ID" ColumnName="TRANSFER_TRANS_ID" />
+                <ScalarProperty Name="XFER_IN_TRANSIT" ColumnName="XFER_IN_TRANSIT" />
+                <ScalarProperty Name="IBT_ID" ColumnName="IBT_ID" />
+                <ScalarProperty Name="IBT_LINE_NO" ColumnName="IBT_LINE_NO" />
+                <ScalarProperty Name="GL_ADJ_ACCT_ID" ColumnName="GL_ADJ_ACCT_ID" />
+                <ScalarProperty Name="FROM_WBS_CODE" ColumnName="FROM_WBS_CODE" />
+                <ScalarProperty Name="TO_WBS_CODE" ColumnName="TO_WBS_CODE" />
+                <ScalarProperty Name="WBS_CODE" ColumnName="WBS_CODE" />
+                <ScalarProperty Name="DEPARTMENT_ID" ColumnName="DEPARTMENT_ID" />
+                <ScalarProperty Name="COST_CATEGORY_ID" ColumnName="COST_CATEGORY_ID" />
+                <ScalarProperty Name="PROJ_REF_SEQ_NO" ColumnName="PROJ_REF_SEQ_NO" />
+                <ScalarProperty Name="PROJ_REF_SUB_ID" ColumnName="PROJ_REF_SUB_ID" />
+                <ScalarProperty Name="REVISION_ID" ColumnName="REVISION_ID" />
+                <ScalarProperty Name="STAGE_ID" ColumnName="STAGE_ID" />
+                <ScalarProperty Name="ISSUE_REAS_ID" ColumnName="ISSUE_REAS_ID" />
+                <ScalarProperty Name="ACT_RATE_ID" ColumnName="ACT_RATE_ID" />
+                <ScalarProperty Name="ACT_PERIOD_ID" ColumnName="ACT_PERIOD_ID" />
+                <ScalarProperty Name="RETRO_RATE_ID" ColumnName="RETRO_RATE_ID" />
+                <ScalarProperty Name="RETRO_PERIOD_ID" ColumnName="RETRO_PERIOD_ID" />
+                <ScalarProperty Name="RETRO_RATE_CODE" ColumnName="RETRO_RATE_CODE" />
+                <ScalarProperty Name="LAST_RETRO_DATE" ColumnName="LAST_RETRO_DATE" />
+                <ScalarProperty Name="COUNT_SEQUENCE" ColumnName="COUNT_SEQUENCE" />
+                <ScalarProperty Name="SITE_ID" ColumnName="SITE_ID" />
+                <ScalarProperty Name="USER_DIMENSION_1" ColumnName="USER_DIMENSION_1" />
+                <ScalarProperty Name="USER_DIMENSION_2" ColumnName="USER_DIMENSION_2" />
+                <ScalarProperty Name="LOCATION_HOLD_CODE_ID" ColumnName="LOCATION_HOLD_CODE_ID" />
+                <ScalarProperty Name="RET_COST_ZERO" ColumnName="RET_COST_ZERO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PART">
+            <EntityTypeMapping TypeName="TERMCARModel.PART">
+              <MappingFragment StoreEntitySet="PART">
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="STOCK_UM" ColumnName="STOCK_UM" />
+                <ScalarProperty Name="PLANNING_LEADTIME" ColumnName="PLANNING_LEADTIME" />
+                <ScalarProperty Name="ORDER_POLICY" ColumnName="ORDER_POLICY" />
+                <ScalarProperty Name="ORDER_POINT" ColumnName="ORDER_POINT" />
+                <ScalarProperty Name="SAFETY_STOCK_QTY" ColumnName="SAFETY_STOCK_QTY" />
+                <ScalarProperty Name="FIXED_ORDER_QTY" ColumnName="FIXED_ORDER_QTY" />
+                <ScalarProperty Name="DAYS_OF_SUPPLY" ColumnName="DAYS_OF_SUPPLY" />
+                <ScalarProperty Name="MINIMUM_ORDER_QTY" ColumnName="MINIMUM_ORDER_QTY" />
+                <ScalarProperty Name="MAXIMUM_ORDER_QTY" ColumnName="MAXIMUM_ORDER_QTY" />
+                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
+                <ScalarProperty Name="COMMODITY_CODE" ColumnName="COMMODITY_CODE" />
+                <ScalarProperty Name="MFG_NAME" ColumnName="MFG_NAME" />
+                <ScalarProperty Name="MFG_PART_ID" ColumnName="MFG_PART_ID" />
+                <ScalarProperty Name="FABRICATED" ColumnName="FABRICATED" />
+                <ScalarProperty Name="PURCHASED" ColumnName="PURCHASED" />
+                <ScalarProperty Name="STOCKED" ColumnName="STOCKED" />
+                <ScalarProperty Name="DETAIL_ONLY" ColumnName="DETAIL_ONLY" />
+                <ScalarProperty Name="DEMAND_HISTORY" ColumnName="DEMAND_HISTORY" />
+                <ScalarProperty Name="TOOL_OR_FIXTURE" ColumnName="TOOL_OR_FIXTURE" />
+                <ScalarProperty Name="INSPECTION_REQD" ColumnName="INSPECTION_REQD" />
+                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+                <ScalarProperty Name="WEIGHT_UM" ColumnName="WEIGHT_UM" />
+                <ScalarProperty Name="DRAWING_ID" ColumnName="DRAWING_ID" />
+                <ScalarProperty Name="DRAWING_REV_NO" ColumnName="DRAWING_REV_NO" />
+                <ScalarProperty Name="PREF_VENDOR_ID" ColumnName="PREF_VENDOR_ID" />
+                <ScalarProperty Name="MRP_REQUIRED" ColumnName="MRP_REQUIRED" />
+                <ScalarProperty Name="MRP_EXCEPTIONS" ColumnName="MRP_EXCEPTIONS" />
+                <ScalarProperty Name="PRIVATE_UM_CONV" ColumnName="PRIVATE_UM_CONV" />
+                <ScalarProperty Name="AUTO_BACKFLUSH" ColumnName="AUTO_BACKFLUSH" />
+                <ScalarProperty Name="PLANNER_USER_ID" ColumnName="PLANNER_USER_ID" />
+                <ScalarProperty Name="BUYER_USER_ID" ColumnName="BUYER_USER_ID" />
+                <ScalarProperty Name="ABC_CODE" ColumnName="ABC_CODE" />
+                <ScalarProperty Name="ANNUAL_USAGE_QTY" ColumnName="ANNUAL_USAGE_QTY" />
+                <ScalarProperty Name="INVENTORY_LOCKED" ColumnName="INVENTORY_LOCKED" />
+                <ScalarProperty Name="MAT_GL_ACCT_ID" ColumnName="MAT_GL_ACCT_ID" />
+                <ScalarProperty Name="LAB_GL_ACCT_ID" ColumnName="LAB_GL_ACCT_ID" />
+                <ScalarProperty Name="BUR_GL_ACCT_ID" ColumnName="BUR_GL_ACCT_ID" />
+                <ScalarProperty Name="SER_GL_ACCT_ID" ColumnName="SER_GL_ACCT_ID" />
+                <ScalarProperty Name="QTY_ON_HAND" ColumnName="QTY_ON_HAND" />
+                <ScalarProperty Name="QTY_AVAILABLE_ISS" ColumnName="QTY_AVAILABLE_ISS" />
+                <ScalarProperty Name="QTY_AVAILABLE_MRP" ColumnName="QTY_AVAILABLE_MRP" />
+                <ScalarProperty Name="QTY_ON_ORDER" ColumnName="QTY_ON_ORDER" />
+                <ScalarProperty Name="QTY_IN_DEMAND" ColumnName="QTY_IN_DEMAND" />
+                <ScalarProperty Name="USER_1" ColumnName="USER_1" />
+                <ScalarProperty Name="USER_2" ColumnName="USER_2" />
+                <ScalarProperty Name="USER_3" ColumnName="USER_3" />
+                <ScalarProperty Name="USER_4" ColumnName="USER_4" />
+                <ScalarProperty Name="USER_5" ColumnName="USER_5" />
+                <ScalarProperty Name="USER_6" ColumnName="USER_6" />
+                <ScalarProperty Name="USER_7" ColumnName="USER_7" />
+                <ScalarProperty Name="USER_8" ColumnName="USER_8" />
+                <ScalarProperty Name="USER_9" ColumnName="USER_9" />
+                <ScalarProperty Name="USER_10" ColumnName="USER_10" />
+                <ScalarProperty Name="NMFC_CODE_ID" ColumnName="NMFC_CODE_ID" />
+                <ScalarProperty Name="PACKAGE_TYPE" ColumnName="PACKAGE_TYPE" />
+                <ScalarProperty Name="MRP_EXCEPTION_INFO" ColumnName="MRP_EXCEPTION_INFO" />
+                <ScalarProperty Name="MULTIPLE_ORDER_QTY" ColumnName="MULTIPLE_ORDER_QTY" />
+                <ScalarProperty Name="ADD_FORECAST" ColumnName="ADD_FORECAST" />
+                <ScalarProperty Name="UDF_LAYOUT_ID" ColumnName="UDF_LAYOUT_ID" />
+                <ScalarProperty Name="PIECE_TRACKED" ColumnName="PIECE_TRACKED" />
+                <ScalarProperty Name="LENGTH_REQD" ColumnName="LENGTH_REQD" />
+                <ScalarProperty Name="WIDTH_REQD" ColumnName="WIDTH_REQD" />
+                <ScalarProperty Name="HEIGHT_REQD" ColumnName="HEIGHT_REQD" />
+                <ScalarProperty Name="DIMENSIONS_UM" ColumnName="DIMENSIONS_UM" />
+                <ScalarProperty Name="SHIP_DIMENSIONS" ColumnName="SHIP_DIMENSIONS" />
+                <ScalarProperty Name="DRAWING_FILE" ColumnName="DRAWING_FILE" />
+                <ScalarProperty Name="TARIFF_CODE" ColumnName="TARIFF_CODE" />
+                <ScalarProperty Name="TARIFF_TYPE" ColumnName="TARIFF_TYPE" />
+                <ScalarProperty Name="ORIG_COUNTRY_ID" ColumnName="ORIG_COUNTRY_ID" />
+                <ScalarProperty Name="NET_WEIGHT_2" ColumnName="NET_WEIGHT_2" />
+                <ScalarProperty Name="GROSS_WEIGHT_2" ColumnName="GROSS_WEIGHT_2" />
+                <ScalarProperty Name="WEIGHT_UM_2" ColumnName="WEIGHT_UM_2" />
+                <ScalarProperty Name="VOLUME" ColumnName="VOLUME" />
+                <ScalarProperty Name="VOLUME_UM" ColumnName="VOLUME_UM" />
+                <ScalarProperty Name="VAT_CODE" ColumnName="VAT_CODE" />
+                <ScalarProperty Name="DEMAND_FENCE_1" ColumnName="DEMAND_FENCE_1" />
+                <ScalarProperty Name="DEMAND_FENCE_2" ColumnName="DEMAND_FENCE_2" />
+                <ScalarProperty Name="ROLL_FORECAST" ColumnName="ROLL_FORECAST" />
+                <ScalarProperty Name="CONSUMABLE" ColumnName="CONSUMABLE" />
+                <ScalarProperty Name="PRIMARY_SOURCE" ColumnName="PRIMARY_SOURCE" />
+                <ScalarProperty Name="LABEL_UM" ColumnName="LABEL_UM" />
+                <ScalarProperty Name="HTS_CODE" ColumnName="HTS_CODE" />
+                <ScalarProperty Name="DEF_ORIG_COUNTRY" ColumnName="DEF_ORIG_COUNTRY" />
+                <ScalarProperty Name="MATERIAL_CODE" ColumnName="MATERIAL_CODE" />
+                <ScalarProperty Name="DEF_LBL_FORMAT_ID" ColumnName="DEF_LBL_FORMAT_ID" />
+                <ScalarProperty Name="VOLATILE_LEADTIME" ColumnName="VOLATILE_LEADTIME" />
+                <ScalarProperty Name="LT_PLUS_DAYS" ColumnName="LT_PLUS_DAYS" />
+                <ScalarProperty Name="LT_MINUS_DAYS" ColumnName="LT_MINUS_DAYS" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="USE_SUPPLY_BEF_LT" ColumnName="USE_SUPPLY_BEF_LT" />
+                <ScalarProperty Name="QTY_COMMITTED" ColumnName="QTY_COMMITTED" />
+                <ScalarProperty Name="intrastat_exempt" ColumnName="intrastat_exempt" />
+                <ScalarProperty Name="CASE_QTY" ColumnName="CASE_QTY" />
+                <ScalarProperty Name="PALLET_QTY" ColumnName="PALLET_QTY" />
+                <ScalarProperty Name="MINIMUM_LEADTIME" ColumnName="MINIMUM_LEADTIME" />
+                <ScalarProperty Name="LEADTIME_BUFFER" ColumnName="LEADTIME_BUFFER" />
+                <ScalarProperty Name="EMERGENCY_STOCKPCT" ColumnName="EMERGENCY_STOCKPCT" />
+                <ScalarProperty Name="REPLENISH_LEVEL" ColumnName="REPLENISH_LEVEL" />
+                <ScalarProperty Name="MIN_BATCH_SIZE" ColumnName="MIN_BATCH_SIZE" />
+                <ScalarProperty Name="EFF_DATE_PRICE" ColumnName="EFF_DATE_PRICE" />
+                <ScalarProperty Name="ECN_REVISION" ColumnName="ECN_REVISION" />
+                <ScalarProperty Name="REVISION_ID" ColumnName="REVISION_ID" />
+                <ScalarProperty Name="STAGE_ID" ColumnName="STAGE_ID" />
+                <ScalarProperty Name="ECN_REV_CONTROL" ColumnName="ECN_REV_CONTROL" />
+                <ScalarProperty Name="IS_KIT" ColumnName="IS_KIT" />
+                <ScalarProperty Name="YELLOW_STOCKPCT" ColumnName="YELLOW_STOCKPCT" />
+                <ScalarProperty Name="UNIV_PLAN_MATERIAL" ColumnName="UNIV_PLAN_MATERIAL" />
+                <ScalarProperty Name="RLS_NEAR_DAYS" ColumnName="RLS_NEAR_DAYS" />
+                <ScalarProperty Name="SUGG_RLS_NEAR_DAYS" ColumnName="SUGG_RLS_NEAR_DAYS" />
+                <ScalarProperty Name="ORDER_UP_TO_QTY" ColumnName="ORDER_UP_TO_QTY" />
+                <ScalarProperty Name="LAST_IMPLODE_DATE" ColumnName="LAST_IMPLODE_DATE" />
+                <ScalarProperty Name="STATUS_EFF_DATE" ColumnName="STATUS_EFF_DATE" />
+                <ScalarProperty Name="CONTROLLED_BY_ICS" ColumnName="CONTROLLED_BY_ICS" />
+                <ScalarProperty Name="PRICE_GROUP" ColumnName="PRICE_GROUP" />
+                <ScalarProperty Name="DEF_PACKAGE_QTY" ColumnName="DEF_PACKAGE_QTY" />
+                <ScalarProperty Name="DEF_PACKAGE_CAP" ColumnName="DEF_PACKAGE_CAP" />
+                <ScalarProperty Name="DEF_SLS_TAX_GRP_ID" ColumnName="DEF_SLS_TAX_GRP_ID" />
+                <ScalarProperty Name="MRO_CLASS" ColumnName="MRO_CLASS" />
+                <ScalarProperty Name="BUFFER_PROFILE_ID" ColumnName="BUFFER_PROFILE_ID" />
+                <ScalarProperty Name="ADU_HORIZON" ColumnName="ADU_HORIZON" />
+                <ScalarProperty Name="ASR_LEADTIME" ColumnName="ASR_LEADTIME" />
+                <ScalarProperty Name="ONHAND_ALERT_RED_PCT" ColumnName="ONHAND_ALERT_RED_PCT" />
+                <ScalarProperty Name="PROCESS_TYPE" ColumnName="PROCESS_TYPE" />
+                <ScalarProperty Name="BID_RATE_CATEGORY_ID" ColumnName="BID_RATE_CATEGORY_ID" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="MODIFY_DATE" ColumnName="MODIFY_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRACE">
+            <EntityTypeMapping TypeName="TERMCARModel.TRACE">
+              <MappingFragment StoreEntitySet="TRACE">
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUMBERING_ID" ColumnName="NUMBERING_ID" />
+                <ScalarProperty Name="OUT_QTY" ColumnName="OUT_QTY" />
+                <ScalarProperty Name="IN_QTY" ColumnName="IN_QTY" />
+                <ScalarProperty Name="REPORTED_QTY" ColumnName="REPORTED_QTY" />
+                <ScalarProperty Name="ASSIGNED_QTY" ColumnName="ASSIGNED_QTY" />
+                <ScalarProperty Name="APROPERTY_1" ColumnName="APROPERTY_1" />
+                <ScalarProperty Name="APROPERTY_2" ColumnName="APROPERTY_2" />
+                <ScalarProperty Name="APROPERTY_3" ColumnName="APROPERTY_3" />
+                <ScalarProperty Name="APROPERTY_4" ColumnName="APROPERTY_4" />
+                <ScalarProperty Name="APROPERTY_5" ColumnName="APROPERTY_5" />
+                <ScalarProperty Name="NPROPERTY_1" ColumnName="NPROPERTY_1" />
+                <ScalarProperty Name="NPROPERTY_2" ColumnName="NPROPERTY_2" />
+                <ScalarProperty Name="NPROPERTY_3" ColumnName="NPROPERTY_3" />
+                <ScalarProperty Name="NPROPERTY_4" ColumnName="NPROPERTY_4" />
+                <ScalarProperty Name="NPROPERTY_5" ColumnName="NPROPERTY_5" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="EXPIRATION_DATE" ColumnName="EXPIRATION_DATE" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="DISP_IN_QTY" ColumnName="DISP_IN_QTY" />
+                <ScalarProperty Name="DISP_OUT_QTY" ColumnName="DISP_OUT_QTY" />
+                <ScalarProperty Name="UNAVAILABLE_QTY" ColumnName="UNAVAILABLE_QTY" />
+                <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+                <ScalarProperty Name="LOT_ID" ColumnName="LOT_ID" />
+                <ScalarProperty Name="SERIAL_ID" ColumnName="SERIAL_ID" />
+                <ScalarProperty Name="COMMITTED_QTY" ColumnName="COMMITTED_QTY" />
+                <ScalarProperty Name="PRODUCTION_DATE" ColumnName="PRODUCTION_DATE" />
+                <ScalarProperty Name="RECEIVE_BY_DATE" ColumnName="RECEIVE_BY_DATE" />
+                <ScalarProperty Name="AVAILABLE_DATE" ColumnName="AVAILABLE_DATE" />
+                <ScalarProperty Name="SHIP_BY_DATE" ColumnName="SHIP_BY_DATE" />
+                <ScalarProperty Name="SITE_ID" ColumnName="SITE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRACE_INV_TRANS">
+            <EntityTypeMapping TypeName="TERMCARModel.TRACE_INV_TRANS">
+              <MappingFragment StoreEntitySet="TRACE_INV_TRANS">
+                <ScalarProperty Name="ROWID" ColumnName="ROWID" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="TRACE_ID" ColumnName="TRACE_ID" />
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="COSTED_QTY" ColumnName="COSTED_QTY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

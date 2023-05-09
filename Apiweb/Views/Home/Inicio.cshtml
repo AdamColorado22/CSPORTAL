@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Inicio</h2>
+
+<script type="text/javascript">
+   window.location.href = "@Url.Action(@ViewBag.error, @ViewBag.ruta)";
+</script>

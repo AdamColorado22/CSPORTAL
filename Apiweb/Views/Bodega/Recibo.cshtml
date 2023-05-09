@@ -1,0 +1,387 @@
+﻿
+@{
+    ViewBag.Title = "Recibo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Content/js/jquery-3.5.1.js"></script>
+@*<script src="~/Content/js/jquery.auto-complete.js"></script>*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+
+<style type="text/css">
+    div.DTE_Inline input {
+        border: none;
+        background-color: transparent;
+        padding: 0 !important;
+        font-size: 90%;
+    }
+
+        div.DTE_Inline input:focus {
+            outline: none;
+            background-color: transparent;
+        }
+
+    button.btn-space {
+        margin-left: 1em;
+    }
+
+    div.DTE_Body div.DTE_Body_Content div.DTE_Field {
+        float: left;
+        width: 50%;
+        padding: 5px 20px;
+        clear: none;
+        box-sizing: border-box;
+    }
+
+    div.DTE_Body div.DTE_Form_Content:after {
+        content: ' ';
+        display: block;
+        clear: both;
+    }
+</style>
+
+<div class="row m-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Ordenes de Bodega
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered" id="DTClientes" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ARTICULO</th>
+                            <th>ORDEN DE TRABAJO</th>
+                            <th>BODEGA</th>
+                            <th>LOCALIZACION</th>
+                            <th>CANTIDAD ENVIADA</th>
+                            <th>CANTIDAD RECIBIDA</th>
+                            <th>CAJAS ENVIADAS</th>
+                            <th>PARCIALES ENVIADOS</th>
+                            <th>DESCRIPCION</th>
+                            <th>FECHA</th>
+                            <th>USUARIO ENVIO</th>
+                            <th>USUARIO RECIBE</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@section scripts{
+
+
+    <script>
+
+        $("#exampleModal").draggable({
+            handle: ".modal-header"
+        });
+
+
+        $('#Bodega2').addClass('active');
+        $('#navhist').removeClass('active');
+        $('#navsmi').removeClass("active");
+        $('#navmh').removeClass("active");
+        $('#navhome').removeClass("active");
+        $('#navqw2').removeClass("active");
+        $('#navqw7').removeClass("active");
+        $('#navqw62').removeClass("active");
+
+        $(document).ready(function () {
+            editor = new $.fn.dataTable.Editor({
+                ajax: "/Bodega/Recibir",
+                table: "#DTClientes",
+
+                fields: [
+                    {
+                        label: "ARTICULO:",
+                        name: "PART_ID",
+                        type: "autoComplete",
+                        minLength: 2,
+                        opts: {
+
+                            source: /*"/QW6/AutoComplete/"*/
+                                function (request, response) {
+                                    $.ajax({
+                                        url: "/Bodega/AutoComplete/?tipo=P&valor=" + request.term,
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: { term: request.term },
+                                        success: function (data) {
+                                            response($.map(data, function (item) {
+                                                return { label: item.DESCRIPCION, value: item.ID };
+                                                /*   return { value: item.ID };*/
+                                            }))
+                                        },
+                                        messages: {
+                                            noResults: "", results: ""
+                                        }
+                                    })
+                                }
+
+                        }
+
+                    },
+
+
+                    {
+                        label: "ORDEN DE TRABAJO:",
+                        name: "WORKORDER_BASE_ID",
+                        type: "autoComplete",
+                        minLength: 2,
+                        opts: {
+
+                            source: /*"/QW6/AutoComplete/"*/
+                                function (request, response) {
+                                    $.ajax({
+                                        url: "/Bodega/AutoComplete/?tipo=W&valor=" + request.term,
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: { term: request.term },
+                                        success: function (data) {
+                                            response($.map(data, function (item) {
+                                                return { label: item.DESCRIPCION, value: item.ID };
+                                                /*   return { value: item.ID };*/
+                                            }))
+                                        },
+                                        messages: {
+                                            noResults: "", results: ""
+                                        }
+                                    })
+                                }
+
+                        }
+
+                    },
+                    {
+                        label: "BODEGA:",
+                        name: "WAREHOUSE_ID",
+                        type: "autoComplete",
+                        minLength: 2,
+                        opts: {
+
+                            source: /*"/QW6/AutoComplete/"*/
+                                function (request, response) {
+                                    $.ajax({
+                                        url: "/Bodega/AutoComplete/?tipo=B&valor=" + request.term,
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: { term: request.term },
+                                        success: function (data) {
+                                            response($.map(data, function (item) {
+                                                return { label: item.DESCRIPCION, value: item.ID };
+                                                /*   return { value: item.ID };*/
+                                            }))
+                                        },
+                                        messages: {
+                                            noResults: "", results: ""
+                                        }
+                                    })
+                                }
+
+                        }
+
+                    },
+
+                    {
+                        label: "LOCALIZACION:",
+                        name: "LOCATION_ID",
+                        type: "autoComplete",
+                        minLength: 2,
+                        opts: {
+
+                            source: /*"/QW6/AutoComplete/"*/
+                                function (request, response) {
+                                    $.ajax({
+                                        url: "/Bodega/AutoComplete/?tipo=L&valor=" + request.term,
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: { term: request.term },
+                                        success: function (data) {
+                                            response($.map(data, function (item) {
+                                                return { label: item.DESCRIPCION, value: item.ID };
+                                                /*   return { value: item.ID };*/
+                                            }))
+                                        },
+                                        messages: {
+                                            noResults: "", results: ""
+                                        }
+                                    })
+                                }
+
+                        }
+
+                    },
+                   
+                    {
+                        label: "CAJAS A ENVIAR:",
+                        name: "CAJAS_ENVIO"
+                    }
+                    ,
+                    {
+                        label: "CAJAS PARCIALES A ENVIAR:",
+                        name: "CAJAS_PARCIALES"
+                    },
+                    {
+                        label: "CAJAS A RECIBIDAS:",
+                        name: "CAJAS_RECIBO"
+                    }
+                    ,
+                     {
+                        label: "CANTIDAD RECIBIDA:",
+                        name: "CANTIDADRECIBIDA"
+                    }
+                     , {
+                         label: "RECHAZO:",
+                         name: "RECHAZO",
+                         type: "checkbox",
+                         separator: "|",
+                         options: [
+                             { label: '', value: "RECHAZADO" }
+                         ]
+                    }
+                    , {
+                        label: "DESCRIPCION:",
+                        name: "DESCRIPCION"
+                    }
+                    , {
+                        label: "FECHA:",
+                        name: "FECHA",
+                        type: 'datetime',
+                        def: function () { return new Date(); },
+                    }
+
+
+                ]
+            });
+
+            $('#DTClientes').on('click', 'tbody ul.dtr-details li', function (e) {
+                // Edit the value, but this selector allows clicking on label as well
+                editor.inline($('span.dtr-data', this));
+            });
+            editor.on('postEdit', function (e, json, data, action) {
+                $.ajax({
+                    type: 'post',
+                    url: "/Bodega/CorreoRechazo/?base_id=" + data["WORKORDER_BASE_ID"],
+                    //data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    success: function (response) {
+                       
+                    }
+                });
+                         
+            });
+
+
+            var table =   $('#DTClientes').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                "scrollY": "500px",
+                "iDisplayLength": -1,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/Bodega/Recibir",
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "PART_ID" },
+                    { data: "WORKORDER_BASE_ID" },
+                    { data: "WAREHOUSE_ID" },
+                    { data: "LOCATION_ID" },
+                    { data: "CANTIDADENVIADA" },
+                    { data: "CANTIDADRECIBIDA" },
+                    { data: "CAJAS_ENVIO" },
+                    { data: "CAJAS_PARCIALES" },
+                    { data: "DESCRIPCION" },
+                    { data: "FECHA" },
+                    { data: "USUARIO_ENVIO" },
+                    { data: "USUARIO_RECEPTOR" },
+
+                ],
+
+                order: [0, 'asc'],
+                keys: {
+                    /*columns: ':not(:first-child)',*/
+                    editor: editor
+                },
+                select: true,
+                buttons: [
+
+                    { extend: 'create', className: 'btn-light', editor: editor },
+                    { extend: 'edit', className: 'btn-light', editor: editor },
+                    { extend: 'remove', className: 'btn-light', editor: editor },
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+                   {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf" style="color:red"></i> ',
+                        titleAttr: 'Export  PDF',
+                        className: 'btn btn-danger'
+                    }, {
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> ',
+                        titleAttr: 'Print',
+                        className: 'btn btn-info'
+                    },
+
+                    {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                    },
+                   {
+                        extend: "selected",
+                        text: '<i class="fas fa-clone"></i>',
+                        titleAttr: 'Duplicar',
+                        action: function (e, dt, node, config) {
+                            // Start in edit mode, and then change to create
+                            editor
+                                .edit(table.rows({ selected: true }).indexes(), {
+                                    title: 'Duplicar seleccionado',
+                                    buttons: 'Duplicar'
+                                })
+                                .mode('create');
+                        }
+                    },
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/datatable.es-ES.json")"
+                }
+            });
+        });
+
+
+
+
+
+    </script>
+
+
+
+
+}
+
+

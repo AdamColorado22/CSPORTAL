@@ -1,0 +1,1732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="TERMOAPP.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+        <EntityType Name="TER_BODEGA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="WORKORDER_BASE_ID" MaxLength="50" Type="varchar" />
+          <Property Name="TIPO" MaxLength="1" Type="char" />
+          <Property Name="WAREHOUSE_ID" MaxLength="50" Type="varchar" />
+          <Property Name="LOCATION_ID" MaxLength="50" Type="varchar" />
+          <Property Name="CANTIDADENVIADA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CANTIDADRECIBIDA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="DESCRIPCION" MaxLength="500" Type="varchar" />
+          <Property Name="USUARIO_ENVIO" MaxLength="50" Type="varchar" />
+          <Property Name="USUARIO_RECEPTOR" MaxLength="50" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="1" Type="char" />
+          <Property Name="FECHA" MaxLength="50" Type="varchar" />
+          <Property Name="CAJAS_ENVIO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CAJAS_RECIBO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CAJAS_PARCIALES" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="RECHAZO" MaxLength="50" Type="varchar" />
+          <Property Name="MILLARES_CAJA" Precision="18" Scale="4" Type="decimal" />
+        </EntityType>
+        <EntityType Name="TER_COMERCIAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="PART_ID" MaxLength="100" Type="varchar" />
+          <Property Name="COTIZACION" MaxLength="100" Type="varchar" />
+          <Property Name="DUI" MaxLength="100" Type="varchar" />
+          <Property Name="ANCHO" MaxLength="50" Type="varchar" />
+          <Property Name="LARGO" MaxLength="50" Type="varchar" />
+          <Property Name="PESO_TOTAL" MaxLength="50" Type="varchar" />
+          <Property Name="PESO_MILLAR" MaxLength="50" Type="varchar" />
+          <Property Name="USUARIO" MaxLength="50" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="50" Type="varchar" />
+          <Property Name="FC_OTROS" MaxLength="50" Type="varchar" />
+          <Property Name="UN_X_M2" MaxLength="50" Type="varchar" />
+          <Property Name="UN_X_KG" MaxLength="50" Type="varchar" />
+          <Property Name="PESO_X_BOBINA" MaxLength="50" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_PRECIO_SOCK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="PRECIO1" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO2" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO3" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO4" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO5" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO6" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO7" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO8" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO9" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO10" Precision="18" Scale="4" Type="decimal" />
+        </EntityType>
+        <EntityType Name="TER_QW_MH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="HBI_PART" MaxLength="50" Type="varchar" />
+          <Property Name="MH_NUMBER" MaxLength="100" Type="varchar" />
+          <Property Name="STATUS" MaxLength="1" Type="char" />
+          <Property Name="WIP" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="ETA" MaxLength="30" Type="varchar" />
+          <Property Name="ATDR" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="TRANSITO1" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="TRANSITO2" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="TRANSITO3" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="TRANSITO4" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CASE_QTY" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="BOXES" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="COMMENTS" MaxLength="500" Type="varchar" />
+          <Property Name="DAYS" Type="int" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="ETIQUETA1" MaxLength="50" Type="varchar" />
+          <Property Name="ETIQUETA2" MaxLength="50" Type="varchar" />
+          <Property Name="ETIQUETA3" MaxLength="50" Type="varchar" />
+          <Property Name="ETIQUETA4" MaxLength="50" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_QW2_HBI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="CODES" MaxLength="50" Type="varchar" />
+          <Property Name="PO" MaxLength="50" Type="varchar" />
+          <Property Name="PRECIO_SV" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="HBI_TIL" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="SAFETY_SCTOCK" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="ON_HAND_CORDER" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="ON_HAND_SMI" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="QTY" MaxLength="50" Type="varchar" />
+          <Property Name="PERCENT_SMI" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="QTY_PROCESS" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="QTY_RED" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="DATE_INV_W" MaxLength="50" Type="varchar" />
+          <Property Name="VENDOR_COMENTS" MaxLength="500" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="3" Type="varchar" />
+          <Property Name="EDIT" MaxLength="1" Type="char" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="REVISION" MaxLength="1" Type="char" />
+          <Property Name="ORDEN" Type="int" />
+          <Property Name="PRECIO_ORDER" Precision="18" Scale="4" Type="decimal" />
+        </EntityType>
+        <EntityType Name="TER_QW2_UNDERWEAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="HBI_NUMBER" MaxLength="50" Type="varchar" />
+          <Property Name="ACTIVE_TILS" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="SUPLIER" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="WIP" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRODUCTION_DATE" MaxLength="50" Type="varchar" />
+          <Property Name="FGWIP" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRICING" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="TRANSITO1" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="TRANSITO2" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="SEMANA" Type="int" />
+          <Property Name="UPS" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CASE_QTY" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CTNS" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="NRQ" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="MAX_EXPOSURE" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="COMMENTS" MaxLength="500" Type="varchar" />
+          <Property Name="IDENTIFICADOR" MaxLength="50" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="1" Type="char" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="TRANSITO3" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="TRANSITO4" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="ETIQUETA1" MaxLength="50" Type="varchar" />
+          <Property Name="ETIQUETA2" MaxLength="50" Type="varchar" />
+          <Property Name="ETIQUETA3" MaxLength="50" Type="varchar" />
+          <Property Name="ETIQUETA4" MaxLength="50" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_QW3_PED">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="PO_NUMBER" MaxLength="100" Type="varchar" />
+          <Property Name="LINEA" Type="int" />
+          <Property Name="ITEM" MaxLength="200" Type="varchar" />
+          <Property Name="QUANTITY" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO_PO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO_OK" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="VALIDACION" MaxLength="1" Type="char" />
+          <Property Name="ON_HAND" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CANTIDAD_X_CAJA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CAJA_CERRADA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="DESPACHADO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CANTIDAD_ENVIAR" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="COMENTARIO" MaxLength="500" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="1" Type="char" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="CAJA_DESPACHAR" Precision="18" Scale="0" Type="decimal" />
+          <Property Name="DIRECCION" MaxLength="100" Type="varchar" />
+          <Property Name="Parciales" MaxLength="1" Type="char" />
+          <Property Name="DIFERENCIA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="ORDEN" Type="int" />
+        </EntityType>
+        <EntityType Name="TER_QW3_PED_HIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="PO_NUMBER" MaxLength="100" Type="varchar" />
+          <Property Name="LINEA" Type="int" />
+          <Property Name="ITEM" MaxLength="200" Type="varchar" />
+          <Property Name="QUANTITY" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO_PO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO_OK" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="VALIDACION" MaxLength="1" Type="char" />
+          <Property Name="ON_HAND" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CANTIDAD_X_CAJA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CAJA_CERRADA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="DESPACHADO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CANTIDAD_ENVIAR" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="COMENTARIO" MaxLength="500" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="1" Type="char" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="CAJA_DESPACHAR" Precision="18" Scale="0" Type="decimal" />
+          <Property Name="CLIENTE" MaxLength="30" Type="varchar" />
+          <Property Name="PEDIDO" MaxLength="100" Type="varchar" />
+          <Property Name="PED_LINE" Type="int" />
+          <Property Name="FECHA" MaxLength="100" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_QW3_PRECIO_MH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="MH_NUMBER" MaxLength="100" Type="varchar" />
+          <Property Name="MHDATE" MaxLength="200" Type="varchar" />
+          <Property Name="LINE" Type="int" />
+          <Property Name="RELEASE_NUMBER" MaxLength="100" Type="varchar" />
+          <Property Name="ITEM" MaxLength="100" Type="varchar" />
+          <Property Name="PRECIO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="REQUES_QTY" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRODUC_QTY" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PEDIDO_TERMO" MaxLength="100" Type="varchar" />
+          <Property Name="COMENTARIOS" MaxLength="500" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_QW3_PRECIO_SMI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="HBI_NUMBER" MaxLength="50" Type="varchar" />
+          <Property Name="PRECIO" Precision="18" Scale="4" Type="decimal" />
+        </EntityType>
+        <EntityType Name="TER_QW6_PLANTILLA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="PO_NUMBER" MaxLength="100" Type="varchar" />
+          <Property Name="CLIENT" MaxLength="50" Type="varchar" />
+          <Property Name="CUSTOMER_PART_ID" MaxLength="100" Type="varchar" />
+          <Property Name="QUANTITY" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRECIO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="COMENTARIO" MaxLength="300" Type="varchar" />
+          <Property Name="PART_ID" MaxLength="100" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="1" Type="char" />
+          <Property Name="ENCABEZADO" MaxLength="10" Type="varchar" />
+          <Property Name="MONEDA" MaxLength="10" Type="varchar" />
+          <Property Name="USUARIO" MaxLength="50" Type="varchar" />
+          <Property Name="BASE" MaxLength="50" Type="varchar" />
+          <Property Name="OC" MaxLength="30" Type="varchar" />
+          <Property Name="STAGE_ID" MaxLength="30" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_QW6_PLANTILLA_PED">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="ENCABEZADO" MaxLength="30" Type="varchar" />
+          <Property Name="CUSTOMER_ID" MaxLength="50" Type="varchar" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="CUSTOMER_PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="QUANTITY" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="PRICE" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="ESTADO" MaxLength="30" Type="varchar" />
+          <Property Name="MONEDA" MaxLength="20" Type="varchar" />
+          <Property Name="USUARIO" MaxLength="30" Type="varchar" />
+          <Property Name="BASE" MaxLength="50" Type="varchar" />
+          <Property Name="PEDIDO" MaxLength="30" Type="varchar" />
+          <Property Name="STAGE_ID" MaxLength="30" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_QW7_SEGUIMIETO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="NUM_PEDIDO" MaxLength="50" Type="varchar" />
+          <Property Name="OT" MaxLength="50" Type="varchar" />
+          <Property Name="PART_ID" MaxLength="50" Type="varchar" />
+          <Property Name="CANTIDAD_SOLICITADA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CANTIDAD_ENTREGADA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CUMPLIMIENTO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="FECHA_PROMESA" MaxLength="50" Type="varchar" />
+          <Property Name="FECHA" MaxLength="50" Type="varchar" />
+          <Property Name="CANTIDAD" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CAUSA" MaxLength="300" Type="varchar" />
+          <Property Name="ESTADO_PEDIDO" MaxLength="20" Type="varchar" />
+          <Property Name="LE" MaxLength="50" Type="varchar" />
+          <Property Name="FACTURA" MaxLength="50" Type="varchar" />
+          <Property Name="PRIORIDAD" MaxLength="20" Type="varchar" />
+          <Property Name="FECHA_PED" MaxLength="100" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="1" Type="char" />
+          <Property Name="USUARIO" MaxLength="100" Type="varchar" />
+          <Property Name="PO" MaxLength="100" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_QW7_SEGUIMIETO_CAMBIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="FECHA" MaxLength="100" Type="varchar" />
+          <Property Name="USUARIO" MaxLength="50" Type="varchar" />
+          <Property Name="CANTIDAD_SOLICITADA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CANTIDAD_ENTREGADA" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="FECHA_PROMESA" MaxLength="100" Type="varchar" />
+          <Property Name="CANTIDAD" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="CAUSA" MaxLength="300" Type="varchar" />
+          <Property Name="PRIORIDAD" MaxLength="20" Type="varchar" />
+          <Property Name="PEDIDO" MaxLength="50" Type="varchar" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'TERMOAPP.dbo.TER_W_ADJUNTOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="TER_W_ADJUNTOS">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Creado" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="IdWorkflow" />
+            <PropertyRef Name="Extension" />
+            <PropertyRef Name="Descargas" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="uniqueidentifier" />
+          <Property Name="Creado" Nullable="false" Type="datetime" />
+          <Property Name="Nombre" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="IdWorkflow" Nullable="false" Type="int" />
+          <Property Name="Extension" Nullable="false" MaxLength="4" Type="nvarchar" />
+          <Property Name="Descargas" Nullable="false" Type="int" />
+          <Property Name="tipo" MaxLength="50" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_FLUJO_ARTES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="TIPO" MaxLength="10" Type="varchar" />
+          <Property Name="ARTE" MaxLength="50" Type="varchar" />
+          <Property Name="DUI" MaxLength="50" Type="varchar" />
+          <Property Name="RETOQUE" MaxLength="50" Type="varchar" />
+          <Property Name="IMPRESION" MaxLength="50" Type="varchar" />
+          <Property Name="ASIGNADO" MaxLength="50" Type="varchar" />
+          <Property Name="PASO_ACTUAL" Type="int" />
+        </EntityType>
+        <EntityType Name="TER_W_GRUPOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="NOMBRE" MaxLength="100" Type="varchar" />
+          <Property Name="TIPO" MaxLength="30" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_OTROS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="TIPO" MaxLength="10" Type="varchar" />
+          <Property Name="TIPO_SERVICIO" MaxLength="50" Type="varchar" />
+          <Property Name="IDCLIENTE" MaxLength="50" Type="varchar" />
+          <Property Name="DUI" MaxLength="50" Type="varchar" />
+          <Property Name="CANTIDA_MAT_C" MaxLength="100" Type="varchar" />
+          <Property Name="CANTIDAD_DUMMIES" MaxLength="100" Type="varchar" />
+          <Property Name="ESPECIFICACIONES" Type="nvarchar(max)" />
+          <Property Name="ASIGNADA" MaxLength="50" Type="varchar" />
+          <Property Name="PASO_ACTUAL" Type="int" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_ACC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="IDWORKFLOW" Type="int" />
+          <Property Name="ACC_INVERSION" MaxLength="100" Type="varchar" />
+          <Property Name="ACC_LEADTIME" MaxLength="100" Type="varchar" />
+          <Property Name="DESCRIPCION" MaxLength="300" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_INS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="IDWORKFLOW" Type="int" />
+          <Property Name="INS_PRECIO" MaxLength="100" Type="varchar" />
+          <Property Name="INS_CODIGO" MaxLength="100" Type="varchar" />
+          <Property Name="INS_LEADTIME" MaxLength="100" Type="varchar" />
+          <Property Name="DESCRIPCION" MaxLength="300" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_MAQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="IDWORKFLOW" Type="int" />
+          <Property Name="MAQ_INVERSION" MaxLength="100" Type="varchar" />
+          <Property Name="MAQ_LEADTIME" MaxLength="100" Type="varchar" />
+          <Property Name="DESCRIPCION" MaxLength="300" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_MAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="IDWORKFLOW" Type="int" />
+          <Property Name="MAT_PRECIO" MaxLength="100" Type="varchar" />
+          <Property Name="MAT_CODIGO" MaxLength="100" Type="varchar" />
+          <Property Name="MAT_MATERIA" MaxLength="100" Type="varchar" />
+          <Property Name="MAT_PROVEDOR" MaxLength="100" Type="varchar" />
+          <Property Name="MAT_LEADTIME" MaxLength="100" Type="varchar" />
+          <Property Name="MAT_DENSIDAD" MaxLength="100" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_PAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="IDWORKFLOW" Type="int" />
+          <Property Name="PROCESO" MaxLength="50" Type="varchar" />
+          <Property Name="SETUP" MaxLength="50" Type="varchar" />
+          <Property Name="VELOCIDAD" MaxLength="50" Type="varchar" />
+          <Property Name="PA_DESPERDICIO_V" MaxLength="100" Type="varchar" />
+          <Property Name="PAR_DESPERDICIO_F" MaxLength="100" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_SERVICIOS_PRODUCCION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="TIPO" MaxLength="10" Type="varchar" />
+          <Property Name="TIPO_REQUERIMIENTO" MaxLength="100" Type="varchar" />
+          <Property Name="DESCRIPCION" Type="nvarchar(max)" />
+          <Property Name="IDCLIENTE" MaxLength="50" Type="varchar" />
+          <Property Name="DUI" MaxLength="50" Type="varchar" />
+          <Property Name="FECHA_REQUERIDA" MaxLength="50" Type="varchar" />
+          <Property Name="PERSONA_ASIGNADA" MaxLength="50" Type="varchar" />
+          <Property Name="TRABAJO_REALIZADO" MaxLength="50" Type="varchar" />
+          <Property Name="COMENTARIOS" Type="nvarchar(max)" />
+          <Property Name="FECHA_FINALIZACION" MaxLength="50" Type="varchar" />
+          <Property Name="PASO_ACTUAL" Type="int" />
+        </EntityType>
+        <EntityType Name="TER_W_SLA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="NOMBRE" MaxLength="100" Type="varchar" />
+          <Property Name="TIEMPO" MaxLength="50" Type="varchar" />
+          <Property Name="DURACION" Precision="8" Scale="2" Type="decimal" />
+        </EntityType>
+        <EntityType Name="TER_W_WORFLOW_CARTICULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="TIPO" MaxLength="10" Type="varchar" />
+          <Property Name="TITULO" MaxLength="100" Type="varchar" />
+          <Property Name="PASO_ACTUAL" Type="int" />
+          <Property Name="WORKFLOW_ANT" Type="int" />
+          <Property Name="IDCLIENTE" MaxLength="50" Type="varchar" />
+          <Property Name="PRODUCTO_EMP" MaxLength="100" Type="varchar" />
+          <Property Name="ESTRUCTURA" MaxLength="50" Type="varchar" />
+          <Property Name="FORMULA_EXT" MaxLength="200" Type="varchar" />
+          <Property Name="CANTIDAD_MAX" Precision="8" Scale="2" Type="decimal" />
+          <Property Name="NUM_PEDIDO" MaxLength="50" Type="varchar" />
+          <Property Name="VALIDACION" MaxLength="50" Type="varchar" />
+          <Property Name="CARTILLA_CALIDAD" MaxLength="10" Type="varchar" />
+          <Property Name="NUM_CARTILLA" MaxLength="10" Type="varchar" />
+          <Property Name="TIPO_PEDIDO" MaxLength="10" Type="varchar" />
+          <Property Name="NOTAS_PEDIDO" Type="nvarchar(max)" />
+          <Property Name="FECHA_ENTREGA" MaxLength="50" Type="varchar" />
+          <Property Name="FECHA_VALIDACION_IMP" MaxLength="50" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="50" Type="varchar" />
+          <Property Name="OBSERVACIONES" MaxLength="500" Type="varchar" />
+          <Property Name="FECHA_INICIO" MaxLength="50" Type="varchar" />
+          <Property Name="TIEMPO_PROCESO" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="TIEMPO_TOTAL" Precision="18" Scale="4" Type="decimal" />
+          <Property Name="FECHA_FINALIZACION" MaxLength="50" Type="varchar" />
+          <Property Name="DIAS_TOTALES" Type="int" />
+          <Property Name="FECHA_ESTIMADA" MaxLength="50" Type="varchar" />
+          <Property Name="PROCESO_ACTUAL" MaxLength="50" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_WORKFLOW_MUESTRA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="TIPO" MaxLength="10" Type="varchar" />
+          <Property Name="TITULO" MaxLength="100" Type="varchar" />
+          <Property Name="PASO_ACTUAL" Type="int" />
+          <Property Name="PRODUCTO" MaxLength="50" Type="varchar" />
+          <Property Name="DUI" MaxLength="50" Type="varchar" />
+          <Property Name="IDCLIENTE" MaxLength="50" Type="varchar" />
+          <Property Name="NOMBRE_PRODUCTO" MaxLength="100" Type="varchar" />
+          <Property Name="TIPO_PROYECTO" MaxLength="50" Type="varchar" />
+          <Property Name="FECHA_REQUERIDA" MaxLength="50" Type="varchar" />
+          <Property Name="MUESTRA" MaxLength="500" Type="varchar" />
+          <Property Name="CODIGO_U_MUESTRA" MaxLength="50" Type="varchar" />
+          <Property Name="PART_ID" MaxLength="100" Type="varchar" />
+          <Property Name="DUI_MUESTRA" MaxLength="50" Type="varchar" />
+          <Property Name="MAESTR_ING" MaxLength="100" Type="varchar" />
+          <Property Name="NUM_PEDIDO" MaxLength="50" Type="varchar" />
+          <Property Name="CANTIDAD" Precision="8" Scale="2" Type="decimal" />
+          <Property Name="FORMULA" MaxLength="50" Type="varchar" />
+          <Property Name="P_EQUIPO_TEC" MaxLength="100" Type="varchar" />
+          <Property Name="EXP_MATERIALES" MaxLength="100" Type="varchar" />
+          <Property Name="OT" MaxLength="50" Type="varchar" />
+          <Property Name="FECHA_EST_ENTRAGA" MaxLength="50" Type="varchar" />
+          <Property Name="TP_CANTIDAD" Precision="8" Scale="2" Type="decimal" />
+          <Property Name="COMENTARIOS" Type="nvarchar(max)" />
+          <Property Name="APROBADA" MaxLength="5" Type="varchar" />
+          <Property Name="FECHA_VALIDACION_C" MaxLength="50" Type="varchar" />
+          <Property Name="PASO" MaxLength="50" Type="varchar" />
+          <Property Name="CANTIDAD_LOTE" MaxLength="100" Type="varchar" />
+          <Property Name="ESTRUCTURA" MaxLength="60" Type="varchar" />
+        </EntityType>
+        <EntityType Name="TER_W_WORKFLOWB2B">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="TIPO" MaxLength="10" Type="varchar" />
+          <Property Name="ESTADO" MaxLength="1" Type="varchar" />
+          <Property Name="TITULO" MaxLength="100" Type="varchar" />
+          <Property Name="PASO_ACTUAL" Type="int" />
+          <Property Name="TIPO_SERVICIO" MaxLength="100" Type="varchar" />
+          <Property Name="IDCLIENTE" MaxLength="50" Type="varchar" />
+          <Property Name="NOTAS" Type="nvarchar(max)" />
+          <Property Name="REFERENCIA_COSTEO" MaxLength="100" Type="varchar" />
+          <Property Name="CELULA_TECNICA" MaxLength="2" Type="varchar" />
+          <Property Name="NECESITA_MUESTRA" MaxLength="1" Type="char" />
+          <Property Name="MAT_PRECIO" MaxLength="50" Type="varchar" />
+          <Property Name="MAT_CODIGO" MaxLength="100" Type="varchar" />
+          <Property Name="MAT_PROVEDOR" MaxLength="100" Type="varchar" />
+          <Property Name="MAT_LEADTIME" MaxLength="100" Type="varchar" />
+          <Property Name="MAT_DENSIDAD" MaxLength="100" Type="varchar" />
+          <Property Name="MAQ_INVERSION" MaxLength="100" Type="varchar" />
+          <Property Name="MAQ_LEADTIME" MaxLength="100" Type="varchar" />
+          <Property Name="ACC_INVERSION" MaxLength="100" Type="varchar" />
+          <Property Name="ACC_LEADTIME" MaxLength="100" Type="varchar" />
+          <Property Name="INS_PRECIO" MaxLength="50" Type="varchar" />
+          <Property Name="INS_CODIGO" MaxLength="100" Type="varchar" />
+          <Property Name="INS_LEADTIME" MaxLength="100" Type="varchar" />
+          <Property Name="PAR_PROCESO" MaxLength="100" Type="varchar" />
+          <Property Name="PAR_SETUP" MaxLength="100" Type="varchar" />
+          <Property Name="PAR_VELOCIDAD" MaxLength="100" Type="varchar" />
+          <Property Name="PA_DESPERDICIO_V" MaxLength="100" Type="varchar" />
+          <Property Name="PAR_DESPERDICIO_F" MaxLength="100" Type="varchar" />
+          <Property Name="UNIDAD_VENTA" MaxLength="50" Type="varchar" />
+          <Property Name="MARGEN" MaxLength="100" Type="varchar" />
+          <Property Name="LOTE_INDUSTRIAL" MaxLength="1" Type="char" />
+          <Property Name="DUI" MaxLength="50" Type="varchar" />
+          <Property Name="USUARIO" MaxLength="50" Type="varchar" />
+        </EntityType>
+        <EntityContainer Name="TERMOAPPStoreContainer">
+          <EntitySet Name="TER_BODEGA" EntityType="Self.TER_BODEGA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_COMERCIAL" EntityType="Self.TER_COMERCIAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_PRECIO_SOCK" EntityType="Self.TER_PRECIO_SOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW_MH" EntityType="Self.TER_QW_MH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW2_HBI" EntityType="Self.TER_QW2_HBI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW2_UNDERWEAR" EntityType="Self.TER_QW2_UNDERWEAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW3_PED" EntityType="Self.TER_QW3_PED" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW3_PED_HIST" EntityType="Self.TER_QW3_PED_HIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW3_PRECIO_MH" EntityType="Self.TER_QW3_PRECIO_MH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW3_PRECIO_SMI" EntityType="Self.TER_QW3_PRECIO_SMI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW6_PLANTILLA" EntityType="Self.TER_QW6_PLANTILLA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW6_PLANTILLA_PED" EntityType="Self.TER_QW6_PLANTILLA_PED" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW7_SEGUIMIETO" EntityType="Self.TER_QW7_SEGUIMIETO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_QW7_SEGUIMIETO_CAMBIOS" EntityType="Self.TER_QW7_SEGUIMIETO_CAMBIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_FLUJO_ARTES" EntityType="Self.TER_W_FLUJO_ARTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_GRUPOS" EntityType="Self.TER_W_GRUPOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_OTROS" EntityType="Self.TER_W_OTROS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_PARAMETROS_ACC" EntityType="Self.TER_W_PARAMETROS_ACC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_PARAMETROS_INS" EntityType="Self.TER_W_PARAMETROS_INS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_PARAMETROS_MAQ" EntityType="Self.TER_W_PARAMETROS_MAQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_PARAMETROS_MAT" EntityType="Self.TER_W_PARAMETROS_MAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_PARAMETROS_PAR" EntityType="Self.TER_W_PARAMETROS_PAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_SERVICIOS_PRODUCCION" EntityType="Self.TER_W_SERVICIOS_PRODUCCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_SLA" EntityType="Self.TER_W_SLA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_WORFLOW_CARTICULO" EntityType="Self.TER_W_WORFLOW_CARTICULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_WORKFLOW_MUESTRA" EntityType="Self.TER_W_WORKFLOW_MUESTRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_WORKFLOWB2B" EntityType="Self.TER_W_WORKFLOWB2B" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TER_W_ADJUNTOS" EntityType="Self.TER_W_ADJUNTOS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TER_W_ADJUNTOS].[Id] AS [Id], 
+    [TER_W_ADJUNTOS].[Creado] AS [Creado], 
+    [TER_W_ADJUNTOS].[Nombre] AS [Nombre], 
+    [TER_W_ADJUNTOS].[IdWorkflow] AS [IdWorkflow], 
+    [TER_W_ADJUNTOS].[Extension] AS [Extension], 
+    [TER_W_ADJUNTOS].[Descargas] AS [Descargas], 
+    [TER_W_ADJUNTOS].[tipo] AS [tipo]
+    FROM [dbo].[TER_W_ADJUNTOS] AS [TER_W_ADJUNTOS]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TERMOAPP" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TER_QW3_PRECIO_SMI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="HBI_NUMBER" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PRECIO" Precision="18" Scale="4" Type="Decimal" />
+        </EntityType>
+        <EntityContainer Name="TERMOAPPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TER_QW3_PRECIO_SMI" EntityType="Self.TER_QW3_PRECIO_SMI" />
+          <EntitySet Name="TER_QW3_PED" EntityType="TERMOAPP.TER_QW3_PED" />
+          <EntitySet Name="TER_QW3_PRECIO_MH" EntityType="TERMOAPP.TER_QW3_PRECIO_MH" />
+          <EntitySet Name="TER_QW2_HBI" EntityType="TERMOAPP.TER_QW2_HBI" />
+          <EntitySet Name="TER_QW3_PED_HIST" EntityType="TERMOAPP.TER_QW3_PED_HIST" />
+          <EntitySet Name="TER_QW6_PLANTILLA" EntityType="TERMOAPP.TER_QW6_PLANTILLA" />
+          <EntitySet Name="TER_QW7_SEGUIMIETO_CAMBIOS" EntityType="TERMOAPP.TER_QW7_SEGUIMIETO_CAMBIOS" />
+          <EntitySet Name="TER_QW6_PLANTILLA_PED" EntityType="TERMOAPP.TER_QW6_PLANTILLA_PED" />
+          <EntitySet Name="TER_PRECIO_SOCK" EntityType="TERMOAPP.TER_PRECIO_SOCK" />
+          <EntitySet Name="TER_QW_MH" EntityType="TERMOAPP.TER_QW_MH" />
+          <EntitySet Name="TER_QW7_SEGUIMIETO" EntityType="TERMOAPP.TER_QW7_SEGUIMIETO" />
+          <EntitySet Name="TER_QW2_UNDERWEAR" EntityType="TERMOAPP.TER_QW2_UNDERWEAR" />
+          <EntitySet Name="TER_BODEGA" EntityType="TERMOAPP.TER_BODEGA" />
+          <EntitySet Name="TER_W_FLUJO_ARTES" EntityType="TERMOAPP.TER_W_FLUJO_ARTES" />
+          <EntitySet Name="TER_W_GRUPOS" EntityType="TERMOAPP.TER_W_GRUPOS" />
+          <EntitySet Name="TER_W_SLA" EntityType="TERMOAPP.TER_W_SLA" />
+          <EntitySet Name="TER_W_PARAMETROS_ACC" EntityType="TERMOAPP.TER_W_PARAMETROS_ACC" />
+          <EntitySet Name="TER_W_PARAMETROS_MAQ" EntityType="TERMOAPP.TER_W_PARAMETROS_MAQ" />
+          <EntitySet Name="TER_W_PARAMETROS_PAR" EntityType="TERMOAPP.TER_W_PARAMETROS_PAR" />
+          <EntitySet Name="TER_W_ADJUNTOS" EntityType="TERMOAPP.TER_W_ADJUNTOS" />
+          <EntitySet Name="TER_W_PARAMETROS_INS" EntityType="TERMOAPP.TER_W_PARAMETROS_INS" />
+          <EntitySet Name="TER_W_PARAMETROS_MAT" EntityType="TERMOAPP.TER_W_PARAMETROS_MAT" />
+          <EntitySet Name="TER_W_SERVICIOS_PRODUCCION" EntityType="TERMOAPP.TER_W_SERVICIOS_PRODUCCION" />
+          <EntitySet Name="TER_W_WORKFLOWB2B" EntityType="TERMOAPP.TER_W_WORKFLOWB2B" />
+          <EntitySet Name="TER_W_OTROS" EntityType="TERMOAPP.TER_W_OTROS" />
+          <EntitySet Name="TER_W_WORKFLOW_MUESTRA" EntityType="TERMOAPP.TER_W_WORKFLOW_MUESTRA" />
+          <EntitySet Name="TER_W_WORFLOW_CARTICULO" EntityType="TERMOAPP.TER_W_WORFLOW_CARTICULO" />
+          <EntitySet Name="TER_COMERCIAL" EntityType="TERMOAPP.TER_COMERCIAL" />
+        </EntityContainer>
+        <EntityType Name="TER_QW3_PED">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="PO_NUMBER" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="LINEA" Type="Int32" />
+          <Property Name="ITEM" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="QUANTITY" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="PRECIO_PO" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="PRECIO_OK" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="VALIDACION" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="ON_HAND" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="CANTIDAD_X_CAJA" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="CAJA_CERRADA" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="DESPACHADO" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="CANTIDAD_ENVIAR" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="COMENTARIO" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ESTADO" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="PART_ID" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CAJA_DESPACHAR" Precision="18" Scale="0" Type="Decimal" />
+          <Property Name="DIFERENCIA" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="DIRECCION" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Parciales" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="ORDEN" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TER_QW3_PRECIO_MH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="MH_NUMBER" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="MHDATE" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="LINE" Type="Int32" />
+          <Property Name="RELEASE_NUMBER" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ITEM" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PRECIO" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="REQUES_QTY" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="PRODUC_QTY" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="PEDIDO_TERMO" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="COMENTARIOS" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="TER_QW2_HBI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="CODES" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PO" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PRECIO_SV" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="HBI_TIL" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="SAFETY_SCTOCK" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="ON_HAND_CORDER" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="ON_HAND_SMI" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="QTY" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PERCENT_SMI" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="QTY_PROCESS" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="QTY_RED" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="DATE_INV_W" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="VENDOR_COMENTS" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ESTADO" MaxLength="3" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="EDIT" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="PART_ID" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="REVISION" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="ORDEN" Type="Int32" />
+          <Property Name="PRECIO_ORDER" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="TER_QW3_PED_HIST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="PO_NUMBER" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="LINEA" Type="Int32" />
+          <Property Name="ITEM" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="QUANTITY" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="PRECIO_PO" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="PRECIO_OK" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="VALIDACION" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="ON_HAND" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="CANTIDAD_X_CAJA" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="CAJA_CERRADA" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="DESPACHADO" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="CANTIDAD_ENVIAR" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="COMENTARIO" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ESTADO" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="PART_ID" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CAJA_DESPACHAR" Precision="18" Scale="0" Type="Decimal" />
+          <Property Name="CLIENTE" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PEDIDO" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PED_LINE" Type="Int32" />
+          <Property Name="FECHA" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="TER_QW6_PLANTILLA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="PO_NUMBER" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CLIENT" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CUSTOMER_PART_ID" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="QUANTITY" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="PRECIO" Precision="18" Scale="4" Type="Decimal" />
+          <Property Name="COMENTARIO" MaxLength="300" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PART_ID" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ESTADO" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="ENCABEZADO" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="MONEDA" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USUARIO" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="BASE" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="OC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="STAGE_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_QW7_SEGUIMIETO_CAMBIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FECHA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD_SOLICITADA" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CANTIDAD_ENTREGADA" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="FECHA_PROMESA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CAUSA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PRIORIDAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PEDIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_QW6_PLANTILLA_PED">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ENCABEZADO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PART_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_PART_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QUANTITY" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ESTADO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MONEDA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BASE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PEDIDO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="STAGE_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_PRECIO_SOCK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PART_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO1" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO2" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO3" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO4" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO5" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO6" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO7" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO8" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO9" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRECIO10" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="TER_QW_MH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HBI_PART" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MH_NUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="WIP" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ETA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ATDR" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TRANSITO1" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TRANSITO2" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TRANSITO3" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TRANSITO4" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CASE_QTY" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="BOXES" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="COMMENTS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DAYS" Type="Int32" />
+          <Property Name="PART_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETIQUETA1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETIQUETA2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETIQUETA3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETIQUETA4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_QW7_SEGUIMIETO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUM_PEDIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PART_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD_SOLICITADA" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CANTIDAD_ENTREGADA" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CUMPLIMIENTO" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="FECHA_PROMESA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CAUSA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO_PEDIDO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FACTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRIORIDAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_PED" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_QW2_UNDERWEAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HBI_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE_TILS" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SUPLIER" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="WIP" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRODUCTION_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FGWIP" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PRICING" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TRANSITO1" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TRANSITO2" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SEMANA" Type="Int32" />
+          <Property Name="UPS" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CASE_QTY" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CTNS" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="NRQ" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="MAX_EXPOSURE" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="COMMENTS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IDENTIFICADOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PART_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TRANSITO3" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TRANSITO4" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ETIQUETA1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETIQUETA2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETIQUETA3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ETIQUETA4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_BODEGA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PART_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WORKORDER_BASE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="WAREHOUSE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDADENVIADA" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CANTIDADRECIBIDA" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_ENVIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO_RECEPTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAJAS_ENVIO" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CAJAS_RECIBO" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CAJAS_PARCIALES" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="RECHAZO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MILLARES_CAJA" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="TER_W_FLUJO_ARTES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ARTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DUI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RETOQUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMPRESION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ASIGNADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASO_ACTUAL" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TER_W_GRUPOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_W_SLA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIEMPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DURACION" Type="Decimal" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_ACC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDWORKFLOW" Type="Int32" />
+          <Property Name="ACC_INVERSION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_MAQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDWORKFLOW" Type="Int32" />
+          <Property Name="MAQ_INVERSION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAQ_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_PAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDWORKFLOW" Type="Int32" />
+          <Property Name="PROCESO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SETUP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VELOCIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PA_DESPERDICIO_V" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAR_DESPERDICIO_F" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_W_ADJUNTOS">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Creado" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="IdWorkflow" />
+            <PropertyRef Name="Extension" />
+            <PropertyRef Name="Descargas" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Creado" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdWorkflow" Type="Int32" Nullable="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Descargas" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_INS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDWORKFLOW" Type="Int32" />
+          <Property Name="INS_PRECIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="INS_CODIGO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="INS_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_W_PARAMETROS_MAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDWORKFLOW" Type="Int32" />
+          <Property Name="MAT_PRECIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_CODIGO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_MATERIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_PROVEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_DENSIDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_W_SERVICIOS_PRODUCCION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_REQUERIMIENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDCLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DUI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_REQUERIDA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PERSONA_ASIGNADA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TRABAJO_REALIZADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COMENTARIOS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_FINALIZACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASO_ACTUAL" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TER_W_WORKFLOWB2B">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TITULO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PASO_ACTUAL" Type="Int32" />
+          <Property Name="TIPO_SERVICIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IDCLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOTAS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REFERENCIA_COSTEO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CELULA_TECNICA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="NECESITA_MUESTRA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MAT_PRECIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_CODIGO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_PROVEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_DENSIDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAQ_INVERSION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAQ_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_INVERSION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="INS_PRECIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="INS_CODIGO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="INS_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAR_PROCESO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAR_SETUP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAR_VELOCIDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PA_DESPERDICIO_V" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAR_DESPERDICIO_F" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UNIDAD_VENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MARGEN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LOTE_INDUSTRIAL" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DUI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_W_OTROS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_SERVICIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDCLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DUI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDA_MAT_C" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD_DUMMIES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ESPECIFICACIONES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ASIGNADA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PASO_ACTUAL" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TER_W_WORKFLOW_MUESTRA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="TIPO" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="TITULO" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PASO_ACTUAL" Type="Int32" />
+          <Property Name="PRODUCTO" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="DUI" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="IDCLIENTE" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="NOMBRE_PRODUCTO" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="TIPO_PROYECTO" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="FECHA_REQUERIDA" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="MUESTRA" MaxLength="500" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CODIGO_U_MUESTRA" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PART_ID" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="DUI_MUESTRA" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="MAESTR_ING" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="NUM_PEDIDO" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CANTIDAD" Precision="8" Scale="2" Type="Decimal" />
+          <Property Name="FORMULA" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="P_EQUIPO_TEC" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="EXP_MATERIALES" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="OT" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="FECHA_EST_ENTRAGA" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="TP_CANTIDAD" Precision="8" Scale="2" Type="Decimal" />
+          <Property Name="COMENTARIOS" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="APROBADA" MaxLength="5" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="FECHA_VALIDACION_C" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="PASO" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="CANTIDAD_LOTE" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ESTRUCTURA" MaxLength="60" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="TER_W_WORFLOW_CARTICULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TITULO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PASO_ACTUAL" Type="Int32" />
+          <Property Name="WORKFLOW_ANT" Type="Int32" />
+          <Property Name="IDCLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCTO_EMP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ESTRUCTURA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FORMULA_EXT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD_MAX" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="NUM_PEDIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VALIDACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CARTILLA_CALIDAD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_CARTILLA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_PEDIDO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOTAS_PEDIDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_ENTREGA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_VALIDACION_IMP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_INICIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIEMPO_PROCESO" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TIEMPO_TOTAL" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="FECHA_FINALIZACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIAS_TOTALES" Type="Int32" />
+          <Property Name="FECHA_ESTIMADA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROCESO_ACTUAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TER_COMERCIAL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PART_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COTIZACION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DUI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ANCHO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LARGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PESO_TOTAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PESO_MILLAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FC_OTROS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UN_X_M2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UN_X_KG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PESO_X_BOBINA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TERMOAPPStoreContainer" CdmEntityContainer="TERMOAPPEntities">
+          <EntitySetMapping Name="TER_QW3_PRECIO_SMI">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW3_PRECIO_SMI">
+              <MappingFragment StoreEntitySet="TER_QW3_PRECIO_SMI">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HBI_NUMBER" ColumnName="HBI_NUMBER" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW3_PED">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW3_PED">
+              <MappingFragment StoreEntitySet="TER_QW3_PED">
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="Parciales" ColumnName="Parciales" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="DIFERENCIA" ColumnName="DIFERENCIA" />
+                <ScalarProperty Name="CAJA_DESPACHAR" ColumnName="CAJA_DESPACHAR" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+                <ScalarProperty Name="CANTIDAD_ENVIAR" ColumnName="CANTIDAD_ENVIAR" />
+                <ScalarProperty Name="DESPACHADO" ColumnName="DESPACHADO" />
+                <ScalarProperty Name="CAJA_CERRADA" ColumnName="CAJA_CERRADA" />
+                <ScalarProperty Name="CANTIDAD_X_CAJA" ColumnName="CANTIDAD_X_CAJA" />
+                <ScalarProperty Name="ON_HAND" ColumnName="ON_HAND" />
+                <ScalarProperty Name="VALIDACION" ColumnName="VALIDACION" />
+                <ScalarProperty Name="PRECIO_OK" ColumnName="PRECIO_OK" />
+                <ScalarProperty Name="PRECIO_PO" ColumnName="PRECIO_PO" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+                <ScalarProperty Name="LINEA" ColumnName="LINEA" />
+                <ScalarProperty Name="PO_NUMBER" ColumnName="PO_NUMBER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW3_PRECIO_MH">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW3_PRECIO_MH">
+              <MappingFragment StoreEntitySet="TER_QW3_PRECIO_MH">
+                <ScalarProperty Name="COMENTARIOS" ColumnName="COMENTARIOS" />
+                <ScalarProperty Name="PEDIDO_TERMO" ColumnName="PEDIDO_TERMO" />
+                <ScalarProperty Name="PRODUC_QTY" ColumnName="PRODUC_QTY" />
+                <ScalarProperty Name="REQUES_QTY" ColumnName="REQUES_QTY" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+                <ScalarProperty Name="RELEASE_NUMBER" ColumnName="RELEASE_NUMBER" />
+                <ScalarProperty Name="LINE" ColumnName="LINE" />
+                <ScalarProperty Name="MHDATE" ColumnName="MHDATE" />
+                <ScalarProperty Name="MH_NUMBER" ColumnName="MH_NUMBER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW2_HBI">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW2_HBI">
+              <MappingFragment StoreEntitySet="TER_QW2_HBI">
+                <ScalarProperty Name="PRECIO_ORDER" ColumnName="PRECIO_ORDER" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="REVISION" ColumnName="REVISION" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="EDIT" ColumnName="EDIT" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="VENDOR_COMENTS" ColumnName="VENDOR_COMENTS" />
+                <ScalarProperty Name="DATE_INV_W" ColumnName="DATE_INV_W" />
+                <ScalarProperty Name="QTY_RED" ColumnName="QTY_RED" />
+                <ScalarProperty Name="QTY_PROCESS" ColumnName="QTY_PROCESS" />
+                <ScalarProperty Name="PERCENT_SMI" ColumnName="PERCENT_SMI" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="ON_HAND_SMI" ColumnName="ON_HAND_SMI" />
+                <ScalarProperty Name="ON_HAND_CORDER" ColumnName="ON_HAND_CORDER" />
+                <ScalarProperty Name="SAFETY_SCTOCK" ColumnName="SAFETY_SCTOCK" />
+                <ScalarProperty Name="HBI_TIL" ColumnName="HBI_TIL" />
+                <ScalarProperty Name="PRECIO_SV" ColumnName="PRECIO_SV" />
+                <ScalarProperty Name="PO" ColumnName="PO" />
+                <ScalarProperty Name="CODES" ColumnName="CODES" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW3_PED_HIST">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW3_PED_HIST">
+              <MappingFragment StoreEntitySet="TER_QW3_PED_HIST">
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="PED_LINE" ColumnName="PED_LINE" />
+                <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="CAJA_DESPACHAR" ColumnName="CAJA_DESPACHAR" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+                <ScalarProperty Name="CANTIDAD_ENVIAR" ColumnName="CANTIDAD_ENVIAR" />
+                <ScalarProperty Name="DESPACHADO" ColumnName="DESPACHADO" />
+                <ScalarProperty Name="CAJA_CERRADA" ColumnName="CAJA_CERRADA" />
+                <ScalarProperty Name="CANTIDAD_X_CAJA" ColumnName="CANTIDAD_X_CAJA" />
+                <ScalarProperty Name="ON_HAND" ColumnName="ON_HAND" />
+                <ScalarProperty Name="VALIDACION" ColumnName="VALIDACION" />
+                <ScalarProperty Name="PRECIO_OK" ColumnName="PRECIO_OK" />
+                <ScalarProperty Name="PRECIO_PO" ColumnName="PRECIO_PO" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+                <ScalarProperty Name="LINEA" ColumnName="LINEA" />
+                <ScalarProperty Name="PO_NUMBER" ColumnName="PO_NUMBER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW6_PLANTILLA">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW6_PLANTILLA">
+              <MappingFragment StoreEntitySet="TER_QW6_PLANTILLA">
+                <ScalarProperty Name="STAGE_ID" ColumnName="STAGE_ID" />
+                <ScalarProperty Name="OC" ColumnName="OC" />
+                <ScalarProperty Name="BASE" ColumnName="BASE" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+                <ScalarProperty Name="ENCABEZADO" ColumnName="ENCABEZADO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="CUSTOMER_PART_ID" ColumnName="CUSTOMER_PART_ID" />
+                <ScalarProperty Name="CLIENT" ColumnName="CLIENT" />
+                <ScalarProperty Name="PO_NUMBER" ColumnName="PO_NUMBER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW7_SEGUIMIETO_CAMBIOS">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW7_SEGUIMIETO_CAMBIOS">
+              <MappingFragment StoreEntitySet="TER_QW7_SEGUIMIETO_CAMBIOS">
+                <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+                <ScalarProperty Name="PRIORIDAD" ColumnName="PRIORIDAD" />
+                <ScalarProperty Name="CAUSA" ColumnName="CAUSA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="FECHA_PROMESA" ColumnName="FECHA_PROMESA" />
+                <ScalarProperty Name="CANTIDAD_ENTREGADA" ColumnName="CANTIDAD_ENTREGADA" />
+                <ScalarProperty Name="CANTIDAD_SOLICITADA" ColumnName="CANTIDAD_SOLICITADA" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW6_PLANTILLA_PED">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW6_PLANTILLA_PED">
+              <MappingFragment StoreEntitySet="TER_QW6_PLANTILLA_PED">
+                <ScalarProperty Name="STAGE_ID" ColumnName="STAGE_ID" />
+                <ScalarProperty Name="PEDIDO" ColumnName="PEDIDO" />
+                <ScalarProperty Name="BASE" ColumnName="BASE" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="CUSTOMER_PART_ID" ColumnName="CUSTOMER_PART_ID" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="ENCABEZADO" ColumnName="ENCABEZADO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_PRECIO_SOCK">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_PRECIO_SOCK">
+              <MappingFragment StoreEntitySet="TER_PRECIO_SOCK">
+                <ScalarProperty Name="PRECIO10" ColumnName="PRECIO10" />
+                <ScalarProperty Name="PRECIO9" ColumnName="PRECIO9" />
+                <ScalarProperty Name="PRECIO8" ColumnName="PRECIO8" />
+                <ScalarProperty Name="PRECIO7" ColumnName="PRECIO7" />
+                <ScalarProperty Name="PRECIO6" ColumnName="PRECIO6" />
+                <ScalarProperty Name="PRECIO5" ColumnName="PRECIO5" />
+                <ScalarProperty Name="PRECIO4" ColumnName="PRECIO4" />
+                <ScalarProperty Name="PRECIO3" ColumnName="PRECIO3" />
+                <ScalarProperty Name="PRECIO2" ColumnName="PRECIO2" />
+                <ScalarProperty Name="PRECIO1" ColumnName="PRECIO1" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW_MH">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW_MH">
+              <MappingFragment StoreEntitySet="TER_QW_MH">
+                <ScalarProperty Name="ETIQUETA4" ColumnName="ETIQUETA4" />
+                <ScalarProperty Name="ETIQUETA3" ColumnName="ETIQUETA3" />
+                <ScalarProperty Name="ETIQUETA2" ColumnName="ETIQUETA2" />
+                <ScalarProperty Name="ETIQUETA1" ColumnName="ETIQUETA1" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="BOXES" ColumnName="BOXES" />
+                <ScalarProperty Name="CASE_QTY" ColumnName="CASE_QTY" />
+                <ScalarProperty Name="TRANSITO4" ColumnName="TRANSITO4" />
+                <ScalarProperty Name="TRANSITO3" ColumnName="TRANSITO3" />
+                <ScalarProperty Name="TRANSITO2" ColumnName="TRANSITO2" />
+                <ScalarProperty Name="TRANSITO1" ColumnName="TRANSITO1" />
+                <ScalarProperty Name="ATDR" ColumnName="ATDR" />
+                <ScalarProperty Name="ETA" ColumnName="ETA" />
+                <ScalarProperty Name="WIP" ColumnName="WIP" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="MH_NUMBER" ColumnName="MH_NUMBER" />
+                <ScalarProperty Name="HBI_PART" ColumnName="HBI_PART" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW7_SEGUIMIETO">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW7_SEGUIMIETO">
+              <MappingFragment StoreEntitySet="TER_QW7_SEGUIMIETO">
+                <ScalarProperty Name="PO" ColumnName="PO" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_PED" ColumnName="FECHA_PED" />
+                <ScalarProperty Name="PRIORIDAD" ColumnName="PRIORIDAD" />
+                <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+                <ScalarProperty Name="LE" ColumnName="LE" />
+                <ScalarProperty Name="ESTADO_PEDIDO" ColumnName="ESTADO_PEDIDO" />
+                <ScalarProperty Name="CAUSA" ColumnName="CAUSA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="FECHA_PROMESA" ColumnName="FECHA_PROMESA" />
+                <ScalarProperty Name="CUMPLIMIENTO" ColumnName="CUMPLIMIENTO" />
+                <ScalarProperty Name="CANTIDAD_ENTREGADA" ColumnName="CANTIDAD_ENTREGADA" />
+                <ScalarProperty Name="CANTIDAD_SOLICITADA" ColumnName="CANTIDAD_SOLICITADA" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="OT" ColumnName="OT" />
+                <ScalarProperty Name="NUM_PEDIDO" ColumnName="NUM_PEDIDO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_QW2_UNDERWEAR">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_QW2_UNDERWEAR">
+              <MappingFragment StoreEntitySet="TER_QW2_UNDERWEAR">
+                <ScalarProperty Name="ETIQUETA4" ColumnName="ETIQUETA4" />
+                <ScalarProperty Name="ETIQUETA3" ColumnName="ETIQUETA3" />
+                <ScalarProperty Name="ETIQUETA2" ColumnName="ETIQUETA2" />
+                <ScalarProperty Name="ETIQUETA1" ColumnName="ETIQUETA1" />
+                <ScalarProperty Name="TRANSITO4" ColumnName="TRANSITO4" />
+                <ScalarProperty Name="TRANSITO3" ColumnName="TRANSITO3" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="IDENTIFICADOR" ColumnName="IDENTIFICADOR" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="MAX_EXPOSURE" ColumnName="MAX_EXPOSURE" />
+                <ScalarProperty Name="NRQ" ColumnName="NRQ" />
+                <ScalarProperty Name="CTNS" ColumnName="CTNS" />
+                <ScalarProperty Name="CASE_QTY" ColumnName="CASE_QTY" />
+                <ScalarProperty Name="UPS" ColumnName="UPS" />
+                <ScalarProperty Name="SEMANA" ColumnName="SEMANA" />
+                <ScalarProperty Name="TRANSITO2" ColumnName="TRANSITO2" />
+                <ScalarProperty Name="TRANSITO1" ColumnName="TRANSITO1" />
+                <ScalarProperty Name="PRICING" ColumnName="PRICING" />
+                <ScalarProperty Name="FGWIP" ColumnName="FGWIP" />
+                <ScalarProperty Name="PRODUCTION_DATE" ColumnName="PRODUCTION_DATE" />
+                <ScalarProperty Name="WIP" ColumnName="WIP" />
+                <ScalarProperty Name="SUPLIER" ColumnName="SUPLIER" />
+                <ScalarProperty Name="ACTIVE_TILS" ColumnName="ACTIVE_TILS" />
+                <ScalarProperty Name="HBI_NUMBER" ColumnName="HBI_NUMBER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_BODEGA">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_BODEGA">
+              <MappingFragment StoreEntitySet="TER_BODEGA">
+                <ScalarProperty Name="MILLARES_CAJA" ColumnName="MILLARES_CAJA" />
+                <ScalarProperty Name="RECHAZO" ColumnName="RECHAZO" />
+                <ScalarProperty Name="CAJAS_PARCIALES" ColumnName="CAJAS_PARCIALES" />
+                <ScalarProperty Name="CAJAS_RECIBO" ColumnName="CAJAS_RECIBO" />
+                <ScalarProperty Name="CAJAS_ENVIO" ColumnName="CAJAS_ENVIO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="USUARIO_RECEPTOR" ColumnName="USUARIO_RECEPTOR" />
+                <ScalarProperty Name="USUARIO_ENVIO" ColumnName="USUARIO_ENVIO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CANTIDADRECIBIDA" ColumnName="CANTIDADRECIBIDA" />
+                <ScalarProperty Name="CANTIDADENVIADA" ColumnName="CANTIDADENVIADA" />
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="WAREHOUSE_ID" ColumnName="WAREHOUSE_ID" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="WORKORDER_BASE_ID" ColumnName="WORKORDER_BASE_ID" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_FLUJO_ARTES">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_FLUJO_ARTES">
+              <MappingFragment StoreEntitySet="TER_W_FLUJO_ARTES">
+                <ScalarProperty Name="PASO_ACTUAL" ColumnName="PASO_ACTUAL" />
+                <ScalarProperty Name="ASIGNADO" ColumnName="ASIGNADO" />
+                <ScalarProperty Name="IMPRESION" ColumnName="IMPRESION" />
+                <ScalarProperty Name="RETOQUE" ColumnName="RETOQUE" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="ARTE" ColumnName="ARTE" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_GRUPOS">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_GRUPOS">
+              <MappingFragment StoreEntitySet="TER_W_GRUPOS">
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_SLA">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_SLA">
+              <MappingFragment StoreEntitySet="TER_W_SLA">
+                <ScalarProperty Name="DURACION" ColumnName="DURACION" />
+                <ScalarProperty Name="TIEMPO" ColumnName="TIEMPO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_PARAMETROS_ACC">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_ACC">
+              <MappingFragment StoreEntitySet="TER_W_PARAMETROS_ACC">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ACC_LEADTIME" ColumnName="ACC_LEADTIME" />
+                <ScalarProperty Name="ACC_INVERSION" ColumnName="ACC_INVERSION" />
+                <ScalarProperty Name="IDWORKFLOW" ColumnName="IDWORKFLOW" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_PARAMETROS_MAQ">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_MAQ">
+              <MappingFragment StoreEntitySet="TER_W_PARAMETROS_MAQ">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="MAQ_LEADTIME" ColumnName="MAQ_LEADTIME" />
+                <ScalarProperty Name="MAQ_INVERSION" ColumnName="MAQ_INVERSION" />
+                <ScalarProperty Name="IDWORKFLOW" ColumnName="IDWORKFLOW" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_PARAMETROS_PAR">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_PAR">
+              <MappingFragment StoreEntitySet="TER_W_PARAMETROS_PAR">
+                <ScalarProperty Name="PAR_DESPERDICIO_F" ColumnName="PAR_DESPERDICIO_F" />
+                <ScalarProperty Name="PA_DESPERDICIO_V" ColumnName="PA_DESPERDICIO_V" />
+                <ScalarProperty Name="VELOCIDAD" ColumnName="VELOCIDAD" />
+                <ScalarProperty Name="SETUP" ColumnName="SETUP" />
+                <ScalarProperty Name="PROCESO" ColumnName="PROCESO" />
+                <ScalarProperty Name="IDWORKFLOW" ColumnName="IDWORKFLOW" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_ADJUNTOS">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_ADJUNTOS">
+              <MappingFragment StoreEntitySet="TER_W_ADJUNTOS">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="Descargas" ColumnName="Descargas" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="IdWorkflow" ColumnName="IdWorkflow" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Creado" ColumnName="Creado" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_PARAMETROS_INS">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_INS">
+              <MappingFragment StoreEntitySet="TER_W_PARAMETROS_INS">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="INS_LEADTIME" ColumnName="INS_LEADTIME" />
+                <ScalarProperty Name="INS_CODIGO" ColumnName="INS_CODIGO" />
+                <ScalarProperty Name="INS_PRECIO" ColumnName="INS_PRECIO" />
+                <ScalarProperty Name="IDWORKFLOW" ColumnName="IDWORKFLOW" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_PARAMETROS_MAT">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_MAT">
+              <MappingFragment StoreEntitySet="TER_W_PARAMETROS_MAT">
+                <ScalarProperty Name="MAT_DENSIDAD" ColumnName="MAT_DENSIDAD" />
+                <ScalarProperty Name="MAT_LEADTIME" ColumnName="MAT_LEADTIME" />
+                <ScalarProperty Name="MAT_PROVEDOR" ColumnName="MAT_PROVEDOR" />
+                <ScalarProperty Name="MAT_MATERIA" ColumnName="MAT_MATERIA" />
+                <ScalarProperty Name="MAT_CODIGO" ColumnName="MAT_CODIGO" />
+                <ScalarProperty Name="MAT_PRECIO" ColumnName="MAT_PRECIO" />
+                <ScalarProperty Name="IDWORKFLOW" ColumnName="IDWORKFLOW" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_SERVICIOS_PRODUCCION">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_SERVICIOS_PRODUCCION">
+              <MappingFragment StoreEntitySet="TER_W_SERVICIOS_PRODUCCION">
+                <ScalarProperty Name="PASO_ACTUAL" ColumnName="PASO_ACTUAL" />
+                <ScalarProperty Name="FECHA_FINALIZACION" ColumnName="FECHA_FINALIZACION" />
+                <ScalarProperty Name="COMENTARIOS" ColumnName="COMENTARIOS" />
+                <ScalarProperty Name="TRABAJO_REALIZADO" ColumnName="TRABAJO_REALIZADO" />
+                <ScalarProperty Name="PERSONA_ASIGNADA" ColumnName="PERSONA_ASIGNADA" />
+                <ScalarProperty Name="FECHA_REQUERIDA" ColumnName="FECHA_REQUERIDA" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="TIPO_REQUERIMIENTO" ColumnName="TIPO_REQUERIMIENTO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_WORKFLOWB2B">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_WORKFLOWB2B">
+              <MappingFragment StoreEntitySet="TER_W_WORKFLOWB2B">
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="LOTE_INDUSTRIAL" ColumnName="LOTE_INDUSTRIAL" />
+                <ScalarProperty Name="MARGEN" ColumnName="MARGEN" />
+                <ScalarProperty Name="UNIDAD_VENTA" ColumnName="UNIDAD_VENTA" />
+                <ScalarProperty Name="PAR_DESPERDICIO_F" ColumnName="PAR_DESPERDICIO_F" />
+                <ScalarProperty Name="PA_DESPERDICIO_V" ColumnName="PA_DESPERDICIO_V" />
+                <ScalarProperty Name="PAR_VELOCIDAD" ColumnName="PAR_VELOCIDAD" />
+                <ScalarProperty Name="PAR_SETUP" ColumnName="PAR_SETUP" />
+                <ScalarProperty Name="PAR_PROCESO" ColumnName="PAR_PROCESO" />
+                <ScalarProperty Name="INS_LEADTIME" ColumnName="INS_LEADTIME" />
+                <ScalarProperty Name="INS_CODIGO" ColumnName="INS_CODIGO" />
+                <ScalarProperty Name="INS_PRECIO" ColumnName="INS_PRECIO" />
+                <ScalarProperty Name="ACC_LEADTIME" ColumnName="ACC_LEADTIME" />
+                <ScalarProperty Name="ACC_INVERSION" ColumnName="ACC_INVERSION" />
+                <ScalarProperty Name="MAQ_LEADTIME" ColumnName="MAQ_LEADTIME" />
+                <ScalarProperty Name="MAQ_INVERSION" ColumnName="MAQ_INVERSION" />
+                <ScalarProperty Name="MAT_DENSIDAD" ColumnName="MAT_DENSIDAD" />
+                <ScalarProperty Name="MAT_LEADTIME" ColumnName="MAT_LEADTIME" />
+                <ScalarProperty Name="MAT_PROVEDOR" ColumnName="MAT_PROVEDOR" />
+                <ScalarProperty Name="MAT_CODIGO" ColumnName="MAT_CODIGO" />
+                <ScalarProperty Name="MAT_PRECIO" ColumnName="MAT_PRECIO" />
+                <ScalarProperty Name="NECESITA_MUESTRA" ColumnName="NECESITA_MUESTRA" />
+                <ScalarProperty Name="CELULA_TECNICA" ColumnName="CELULA_TECNICA" />
+                <ScalarProperty Name="REFERENCIA_COSTEO" ColumnName="REFERENCIA_COSTEO" />
+                <ScalarProperty Name="NOTAS" ColumnName="NOTAS" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="TIPO_SERVICIO" ColumnName="TIPO_SERVICIO" />
+                <ScalarProperty Name="PASO_ACTUAL" ColumnName="PASO_ACTUAL" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_OTROS">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_OTROS">
+              <MappingFragment StoreEntitySet="TER_W_OTROS">
+                <ScalarProperty Name="PASO_ACTUAL" ColumnName="PASO_ACTUAL" />
+                <ScalarProperty Name="ASIGNADA" ColumnName="ASIGNADA" />
+                <ScalarProperty Name="ESPECIFICACIONES" ColumnName="ESPECIFICACIONES" />
+                <ScalarProperty Name="CANTIDAD_DUMMIES" ColumnName="CANTIDAD_DUMMIES" />
+                <ScalarProperty Name="CANTIDA_MAT_C" ColumnName="CANTIDA_MAT_C" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="TIPO_SERVICIO" ColumnName="TIPO_SERVICIO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_WORKFLOW_MUESTRA">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_WORKFLOW_MUESTRA">
+              <MappingFragment StoreEntitySet="TER_W_WORKFLOW_MUESTRA">
+                <ScalarProperty Name="ESTRUCTURA" ColumnName="ESTRUCTURA" />
+                <ScalarProperty Name="CANTIDAD_LOTE" ColumnName="CANTIDAD_LOTE" />
+                <ScalarProperty Name="PASO" ColumnName="PASO" />
+                <ScalarProperty Name="FECHA_VALIDACION_C" ColumnName="FECHA_VALIDACION_C" />
+                <ScalarProperty Name="APROBADA" ColumnName="APROBADA" />
+                <ScalarProperty Name="COMENTARIOS" ColumnName="COMENTARIOS" />
+                <ScalarProperty Name="TP_CANTIDAD" ColumnName="TP_CANTIDAD" />
+                <ScalarProperty Name="FECHA_EST_ENTRAGA" ColumnName="FECHA_EST_ENTRAGA" />
+                <ScalarProperty Name="OT" ColumnName="OT" />
+                <ScalarProperty Name="EXP_MATERIALES" ColumnName="EXP_MATERIALES" />
+                <ScalarProperty Name="P_EQUIPO_TEC" ColumnName="P_EQUIPO_TEC" />
+                <ScalarProperty Name="FORMULA" ColumnName="FORMULA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="NUM_PEDIDO" ColumnName="NUM_PEDIDO" />
+                <ScalarProperty Name="MAESTR_ING" ColumnName="MAESTR_ING" />
+                <ScalarProperty Name="DUI_MUESTRA" ColumnName="DUI_MUESTRA" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="CODIGO_U_MUESTRA" ColumnName="CODIGO_U_MUESTRA" />
+                <ScalarProperty Name="MUESTRA" ColumnName="MUESTRA" />
+                <ScalarProperty Name="FECHA_REQUERIDA" ColumnName="FECHA_REQUERIDA" />
+                <ScalarProperty Name="TIPO_PROYECTO" ColumnName="TIPO_PROYECTO" />
+                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+                <ScalarProperty Name="PASO_ACTUAL" ColumnName="PASO_ACTUAL" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_W_WORFLOW_CARTICULO">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_W_WORFLOW_CARTICULO">
+              <MappingFragment StoreEntitySet="TER_W_WORFLOW_CARTICULO">
+                <ScalarProperty Name="PROCESO_ACTUAL" ColumnName="PROCESO_ACTUAL" />
+                <ScalarProperty Name="FECHA_ESTIMADA" ColumnName="FECHA_ESTIMADA" />
+                <ScalarProperty Name="DIAS_TOTALES" ColumnName="DIAS_TOTALES" />
+                <ScalarProperty Name="FECHA_FINALIZACION" ColumnName="FECHA_FINALIZACION" />
+                <ScalarProperty Name="TIEMPO_TOTAL" ColumnName="TIEMPO_TOTAL" />
+                <ScalarProperty Name="TIEMPO_PROCESO" ColumnName="TIEMPO_PROCESO" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_VALIDACION_IMP" ColumnName="FECHA_VALIDACION_IMP" />
+                <ScalarProperty Name="FECHA_ENTREGA" ColumnName="FECHA_ENTREGA" />
+                <ScalarProperty Name="NOTAS_PEDIDO" ColumnName="NOTAS_PEDIDO" />
+                <ScalarProperty Name="TIPO_PEDIDO" ColumnName="TIPO_PEDIDO" />
+                <ScalarProperty Name="NUM_CARTILLA" ColumnName="NUM_CARTILLA" />
+                <ScalarProperty Name="CARTILLA_CALIDAD" ColumnName="CARTILLA_CALIDAD" />
+                <ScalarProperty Name="VALIDACION" ColumnName="VALIDACION" />
+                <ScalarProperty Name="NUM_PEDIDO" ColumnName="NUM_PEDIDO" />
+                <ScalarProperty Name="CANTIDAD_MAX" ColumnName="CANTIDAD_MAX" />
+                <ScalarProperty Name="FORMULA_EXT" ColumnName="FORMULA_EXT" />
+                <ScalarProperty Name="ESTRUCTURA" ColumnName="ESTRUCTURA" />
+                <ScalarProperty Name="PRODUCTO_EMP" ColumnName="PRODUCTO_EMP" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="WORKFLOW_ANT" ColumnName="WORKFLOW_ANT" />
+                <ScalarProperty Name="PASO_ACTUAL" ColumnName="PASO_ACTUAL" />
+                <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TER_COMERCIAL">
+            <EntityTypeMapping TypeName="TERMOAPP.TER_COMERCIAL">
+              <MappingFragment StoreEntitySet="TER_COMERCIAL">
+                <ScalarProperty Name="PESO_X_BOBINA" ColumnName="PESO_X_BOBINA" />
+                <ScalarProperty Name="UN_X_KG" ColumnName="UN_X_KG" />
+                <ScalarProperty Name="UN_X_M2" ColumnName="UN_X_M2" />
+                <ScalarProperty Name="FC_OTROS" ColumnName="FC_OTROS" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="PESO_MILLAR" ColumnName="PESO_MILLAR" />
+                <ScalarProperty Name="PESO_TOTAL" ColumnName="PESO_TOTAL" />
+                <ScalarProperty Name="LARGO" ColumnName="LARGO" />
+                <ScalarProperty Name="ANCHO" ColumnName="ANCHO" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="COTIZACION" ColumnName="COTIZACION" />
+                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
