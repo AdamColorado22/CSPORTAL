@@ -1,0 +1,1682 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Apiweb.Models.Archivo>
+
+<script src="~/Content/js/jquery-3.5.1.js"></script>
+@*<script src="~/Content/js/jquery.auto-complete.js"></script>*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Content/js/toastr.min.js"></script>
+<link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+<style type="text/css">
+    div.DTE_Inline input {
+        border: none;
+        background-color: transparent;
+        padding: 0 !important;
+        font-size: 90%;
+    }
+
+        div.DTE_Inline input:focus {
+            outline: none;
+            background-color: transparent;
+        }
+
+    button.btn-space {
+        margin-left: 1em;
+    }
+
+    div.DTE_Body div.DTE_Body_Content div.DTE_Field {
+        float: left;
+        width: 50%;
+        padding: 5px 20px;
+        clear: none;
+        box-sizing: border-box;
+    }
+
+    div.DTE_Body div.DTE_Form_Content:after {
+        content: ' ';
+        display: block;
+        clear: both;
+    }
+    div.DTED DTED_Lightbox_Wrapper {
+        z-index: 65000 !important;
+    }
+
+  
+
+.container {
+    margin: 200px auto;
+}
+
+fieldset {
+    display: none;
+}
+
+fieldset.show {
+    display: block;
+}
+
+select:focus, input:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #2196F3 !important;
+    outline-width: 0 !important;
+    font-weight: 400;
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+}
+
+.tabs {
+    margin: 2px 5px 0px 5px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.tabs:hover, .tabs.active {
+    border-bottom: 1px solid #2196F3;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #1565C0;
+}
+
+.box {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.modal-backdrop {
+    background-color: #64B5F6;
+}
+
+.line {
+    background-color: #CFD8DC;
+    height: 1px;
+    width: 100%;
+}
+
+
+
+</style>
+
+
+
+<div class="row m-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Workflow B2B
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered" id="DTable" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE_PRODUCTO</th>
+                            <th>TIPO SERVICIO</th>
+                            <th>CLIENTE</th>
+                            <th>DUI</th>
+                            <th>REFERENCIA COTIZACION</th>
+                            <th>CUSTOMER PARTID</th>
+                            <th>COMMODITY</th>
+                            <th>PROCESO ACTUAL</th>
+                            <th>PASO ACTUAL</th>
+                            <th>FECHA INICIO</th>
+                            <th>TIEMPO TOTAL</th>
+                            <th>TIEMPO PROCESO</th>
+                            <th>FECHA FINALIZACION</th>
+                            <th>DIAS TOTALES</th>
+                            <th>FECHA ESTIMADA</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+@*modal parametros*@
+<div class="container">
+    <div class="row justify-content-center">
+
+        <!-- Modal-->
+        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+            <div role="document" class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                        <div class="tabs active" id="tab01">
+                            <h6 class="font-weight-bold">Materia Prima</h6>
+                        </div>
+                        <div class="tabs" id="tab02">
+                            <h6 class="text-muted">Maquinaria</h6>
+                        </div>
+                        <div class="tabs" id="tab03">
+                            <h6 class="text-muted">Accesorios</h6>
+                        </div>
+                        <div class="tabs" id="tab04">
+                            <h6 class="text-muted">Insumos</h6>
+                        </div>
+                        <div class="tabs" id="tab05">
+                            <h6 class="text-muted">Parametros</h6>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="modal-body p-0">
+                        <fieldset class="show" id="tab011">
+                            <h5 class="text-center mb-4 mt-0 pt-4">Ingreso de Materia Prima</h5>
+                            <table class="table table-sm" id="TMateriaPrima" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Workflow</th>
+                                        <th>Precio</th>
+                                        <th>Codigo</th>
+                                        <th>Proveedor</th>
+                                        <th>Leadtime</th>
+                                        <th>Densidad</th>
+                                        <th>Materia</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+
+                        </fieldset>
+                        <fieldset id="tab021">
+                            <div class="bg-light">
+                                <h5 class="text-center mb-4 mt-0 pt-4">Ingreso de Maquina</h5>
+                                <table class="table table-sm" id="TMaquina" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Workflow</th>
+                                            <th>Inversion</th>
+                                            <th>Leadtime</th>
+                                            <th>Descripcion</th>
+                                          
+                                        </tr>
+                                    </thead>
+
+                                </table>
+
+                            </div>
+                        </fieldset>
+                        <fieldset id="tab031">
+                            <div class="bg-light">
+                                <h5 class="text-center mb-4 mt-0 pt-4">Ingreso de Accesorios</h5>
+                                <table class="table table-sm" id="TAccesorios" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Workflow</th>
+                                            <th>Inversion</th>
+                                            <th>Leadtime</th>
+                                            <th>Descripcion</th>
+
+                                        </tr>
+                                    </thead>
+
+                                </table>
+
+                            </div>
+                            
+                        </fieldset>
+                        <fieldset id="tab041">
+                            <div class="bg-light">
+                                <h5 class="text-center mb-4 mt-0 pt-4">Ingreso de Insumos</h5>
+                                <table class="table table-sm" id="TInsumos" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Workflow</th>
+                                            <th>Precio</th>
+                                            <th>Codigo</th>
+                                            <th>Leadtime</th>
+                                            <th>Descripcion</th>
+
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                            
+                        </fieldset>
+                        <fieldset id="tab051">
+                            <div class="bg-light">
+                                <h5 class="text-center mb-4 mt-0 pt-4">Ingreso de Parametros</h5>
+                                <table class="table table-sm" id="TParametros" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Workflow</th>
+                                            <th>Proceso</th>
+                                            <th>Setup</th>
+                                            <th>Velocidad</th>
+                                            <th>Des Variable</th>
+                                            <th>Des Fijo</th>
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+                           
+                        </fieldset>
+                    </div>
+                    <div class="line"></div>
+                    <div class="modal-footer d-flex flex-column justify-content-center border-0">
+                        @*<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>*@
+                        <button type="button" class="btn btn-primary" onclick="Siguiente()">Siguiente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*!-- Modal Agregar o editar -->*@
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @*@using (Html.BeginForm("Guardar", "Workflow", FormMethod.Post, new {  enctype = "multipart/form-data" }))
+                {*@
+            <div class="modal-body">
+                <div class="form-row">
+
+
+                    <input type="hidden" id="txtid" />
+
+                    <div class="form-group col-md-12">
+                        <label for="txttitulo">TITULO REQUERIMIENTO:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txttitulo">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txttipos">TIPO SERVICIO:</label>
+                        <select class="form-control" id="txttipos">
+                            @*<option value="Servicio">Servicio</option>*@
+                            <option selected value="Cotización">Cotización</option>
+                            @*<option value="Recosteo">Recosteo</option>
+                            <option value="Revisión de Cotización">Revisión de Cotización</option>
+                            <option value="Licitación">Licitación</option>
+                            <option value="Creación de artículo">Creación de artículo</option>
+                            <option value="Creación de artículo LI">Creación de artículo LI</option>
+                            <option value="Muestra Bobina">Muestra Bobina</option>
+                            <option value="Muestra Bolsa Preformada">Muestra Bolsa Preformada</option>
+                            <option value="Ficha Técnica">Ficha Técnica</option>
+                            <option value="Adaptación de Artes">Adaptación de Artes</option>
+                            <option value="Arrastre de tinta - Igualación de color">Arrastre de tinta - Igualación de color</option>
+                            <option value="Caracterización de Empaque">Caracterización de Empaque</option>
+                            <option value="Elaboración de Dummies">Elaboración de Dummies</option>
+                            <option value="documentación Varios">documentación Varios </option>*@
+                        </select>
+
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="txtNombre">Cliente:</label>
+                        <input type="text" class="form-control" id="txtNombre" name="q">
+                    </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label for="txtnotas">NOTAS:</label>
+                        <textarea class="form-control" id="txtnotas" rows="3"></textarea>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button"  id="btnguardari" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+            @*<div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-sm btn-secondary btn-block">Subir archivo</button>
+                </div>*@
+
+            @*}*@
+
+        </div>
+
+    </div>
+</div>
+
+@*!--Paso 20 -->*@
+<div class="modal fade" id="FormModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+
+
+
+
+                    <div class="form-group col-md-12">
+                        <label for="txtedui">EDUI:</label>
+                        <input type="text" class="form-control" id="txtedui">
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@*!--Paso 30 -->*@
+<div class="modal fade" id="FormModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+
+
+
+
+                    <div class="form-group col-md-12">
+                        <label for="txtcosteo">REFERENCIA DE COTIZACION:</label>
+                        <input type="text" class="form-control" id="txtcosteo">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="txtnotasreq">NOTAS:</label>
+                        <input type="text" class="form-control" id="txtnotasreq">
+                    </div>
+
+
+
+                    <div class="form-group col-md-12">
+                        <label for="txtcelula">CELULA TECNICA:</label>
+                        <select class="form-control" id="txtcelula">
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+
+
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="txtinformacionreq">INFORMACION REQUERIDA:</label>
+                        <input type="text" class="form-control" id="txtinformacionreq">
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@*!--Paso 40 -->*@
+<div class="modal fade" id="FormModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">MATERIA PRIMA</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">MAQUINARIA</a>
+                        <a class="nav-item nav-link" id="nav-conciliacion-tab" data-toggle="tab" href="#nav-conciliacion" role="tab" aria-controls="nav-conciliacion" aria-selected="false">ACCESORIOS</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                       
+                            @*<table class="table table-sm" id="TMateriaPrima" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Workflow</th>
+                                        <th>Precio</th>
+                                        <th>Codigo</th>
+                                        <th>Proveedor</th>
+                                        <th>Leadtime</th>
+                                        <th>Densidad</th>
+                                        <th>Materia</th>
+                                    </tr>
+                                </thead>
+
+                            </table>*@
+                        </div>
+                    </div>
+
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                    <table class="table table-sm" id="TMaquinaria" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>IDa</th>
+                                <th>Workflow</th>
+                                <th>Precio</th>
+                                <th>Codigo</th>
+                                <th>Proveedor</th>
+                                <th>Leadtime</th>
+                                <th>Densidad</th>
+                                <th>Materia</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+                    <div class="tab-pane fade" id="nav-conciliacion" role="tabpanel" aria-labelledby="nav-conciliacion-tab">
+
+                        <div class="form-group col-md-12">
+                            <label for="txtpreciom">ACCESORIOS</label>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label for="txtinversiona">Inversion:</label>
+                            <input type="text" class="form-control" id="txtinversiona">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtleadtimema">Leadtime:</label>
+                            <input type="text" class="form-control" id="txtleadtimema">
+                        </div>
+                    </div>
+                </div>
+
+                   
+
+
+
+
+            
+            @*<div class="form-group col-md-12">
+                <label for="txtpreciom">INSUMOS</label>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="txtprecioin">Precio:</label>
+                <input type="text" class="form-control" id="txtprecioin">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="txtcodigoin">Codigo:</label>
+                <input type="text" class="form-control" id="txtcodigoin">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="txtleadtimein">Leadtime:</label>
+                <input type="text" class="form-control" id="txtleadtimein">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="txtpreciom">PARAMETROS</label>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="txtprocesop">Proceso:</label>
+                <input type="text" class="form-control" id="txtprocesop">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="txtsetupp">Setup:</label>
+                <input type="text" class="form-control" id="txtsetupp">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="txtvelocidadp">Velocidad:</label>
+                <input type="text" class="form-control" id="txtvelocidadp">
+            </div> <div class="form-group col-md-6">
+                <label for="txtdesperdiciov">Desperdicio Variable:</label>
+                <input type="text" class="form-control" id="txtdesperdiciov">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="desperdiciofp">Desperdicio Fijo:</label>
+                <input type="text" class="form-control" id="desperdiciofp">
+            </div>*@
+
+
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+    </div>
+</div>
+
+
+
+@*!--Paso 50 -->*@
+<div class="modal fade" id="FormModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+
+
+
+
+                    <div class="form-group col-md-12">
+                        <label for="txtunidadventa">UNIDAD DE VENTA:</label>
+                        <input type="text" class="form-control" id="txtunidadventa">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="txtmargen">MARGEN:</label>
+                        <input type="text" class="form-control" id="txtmargen">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="txtmuestra">NECESITA MUESTRA:</label>
+                        <select class="form-control" id="txtmuestra">
+                            <option value="1">SI</option>
+                            <option value="0">NO</option>
+                        </select>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+@*!--ARchivos -->*@
+<div class="modal fade " id="FormModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <div class="container">
+                    @*@using (Html.BeginForm("SubirArchivo", "Workflow",FormMethod.Post,new { id= "frm-adjuntar" }))
+                        {*@
+                    <form id="uploader">
+                        <input type="hidden" id="idWorkflow" name="idWorkflow" />
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input id="fileInput" type="file" multiple>
+                            </div>
+                            <div class="col-md-6 left">
+                                <button type="submit" id="btnsubmit" class="btn btn-sm btn-primary">
+                                    <span class="glyphicon glyphicon-open"></span>
+                                    &nbsp;Subir archivo
+                                </button>
+                            </div>
+                        </div>
+                        @*}*@
+                    </form>
+                    <hr />
+                    <div class="row">
+                        <input type="hidden" id="txtguiid" />
+                        <table class="table table-sm" id="Adjuntos" style="width:100%">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>FECHA SUBIDA</th>
+                                    <th>NOMBRE</th>
+                                    <th>DESCARGAS</th>
+                                    
+
+                                </tr>
+                            </thead>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            @*<div class="modal-footer">
+
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
+
+                </div>*@
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+
+
+    <script>
+        var table, tableA, Tmateria, TMaquina, TAccesorios, TInsumos, TParametros;
+        var editor, Meditor, Aeditor, Ieditor, Peditor;
+        $("#exampleModal").draggable({
+            handle: ".modal-header"
+        });
+
+        //$('#FormModal6').on('hidden.bs.modal', function (e) {
+        //    tableA.destroy();
+        //})
+        //$('#FormModal4').on('hidden.bs.modal', function (e) {
+        //    Tmateria.destroy();
+        //})
+
+        //$('#myModal').on('hidden.bs.modal', function (e) {
+        //    Tmateria.destroy();
+        //    TMaquina.destroy();
+        //    TAccesorios.destroy();
+        //    TInsumos.destroy();
+        //    TParametros.destroy();
+        //    Tmateria.destroy();
+        //})
+
+        $('#Workflowb2b').addClass('active');
+        $('#Bodega1').removeClass('active');
+        $('#navhist').removeClass('active');
+        $('#navsmi').removeClass("active");
+        $('#navmh').removeClass("active");
+        $('#navhome').removeClass("active");
+        $('#navqw2').removeClass("active");
+        $('#navqw7').removeClass("active");
+        $('#navqw62').removeClass("active");
+
+        $(document).ready(function () {
+
+
+            $(".tabs").click(function () {
+
+                $(".tabs").removeClass("active");
+                $(".tabs h6").removeClass("font-weight-bold");
+                $(".tabs h6").addClass("text-muted");
+                $(this).children("h6").removeClass("text-muted");
+                $(this).children("h6").addClass("font-weight-bold");
+                $(this).addClass("active");
+
+                current_fs = $(".active");
+
+                next_fs = $(this).attr('id');
+                next_fs = "#" + next_fs + "1";
+
+                $("fieldset").removeClass("show");
+                $(next_fs).addClass("show");
+
+                current_fs.animate({}, {
+                    step: function () {
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'display': 'block'
+                        });
+                    }
+                });
+            });
+
+            mostrar();
+
+            
+
+            document.getElementById('uploader').onsubmit = function () {
+                var formdata = new FormData(); //FormData object
+                var idworkflow = document.getElementById('idWorkflow').value;
+                var fileInput = document.getElementById('fileInput');
+
+                //Iterating through each files selected in fileInput
+                formdata.append('idWorkflow', idworkflow);
+                formdata.append('tipo', 'B2B');
+                for (i = 0; i < fileInput.files.length; i++) {
+                    //Appending each file to FormData object
+                    formdata.append(fileInput.files[i].name, fileInput.files[i]);
+                }
+                //Creating an XMLHttpRequest and sending
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Workflow/SubirArchivo');
+                xhr.send(formdata);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        //toastr.success('Archivo Adjuntado', 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                        tableA.destroy();
+                        tableA.ajax.reload();
+
+                        archivos(table.rows({ selected: true }).data()[0].ID);
+                            //limpiar();
+                    }
+                }
+                return false;
+            }
+
+        });
+
+
+        function MateriaPrima(ID)
+        {
+            $('#TMateriaPrima').DataTable().destroy();
+             editor = new $.fn.dataTable.Editor({
+                 ajax: "/Workflow/MateriaPrima?id=" + ID,
+                 table: "#TMateriaPrima",
+                "createdRow": function (row, data, dataIndex) {
+                    },
+
+                fields: [
+
+                   /* { label: "ID:", name: "ID" },*/
+                    { label: "IDWORKFLOW:", name: "IDWORKFLOW", def: table.rows({ selected: true }).data()[0].ID, type: "readonly"},
+                    { label: "MAT_PRECIO:", name: "MAT_PRECIO" },
+                    { label: "MAT_CODIGO:", name: "MAT_CODIGO" },
+                    { label: "MAT_MATERIA:", name: "MAT_MATERIA" },
+                    { label: "MAT_PROVEDOR:", name: "MAT_PROVEDOR" },
+                    { label: "MAT_LEADTIME:", name: "MAT_LEADTIME" },
+                    { label: "MAT_DENSIDAD:", name: "MAT_DENSIDAD" },
+
+
+
+                ]
+            });
+
+            $('#TMateriaPrima').on('click', 'tbody ul.dtr-details li', function (e) {
+                // Edit the value, but this selector allows clicking on label as well
+                editor.inline($('span.dtr-data', this));
+            });
+
+           
+
+             Tmateria = $('#TMateriaPrima').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                /*"scrollY": "500px",*/
+                "iDisplayLength": 5,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/Workflow/MateriaPrima?id=" + ID,
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "IDWORKFLOW" },
+                    { data: "MAT_PRECIO" },
+                    { data: "MAT_CODIGO" },
+                    { data: "MAT_MATERIA" },
+                    { data: "MAT_PROVEDOR" },
+                    { data: "MAT_LEADTIME" },
+                    { data: "MAT_DENSIDAD" },
+                ],
+
+                order: [0, 'asc'],
+                keys: {
+                    /*columns: ':not(:first-child)',*/
+                    editor: editor
+                },
+                select: true,
+                buttons: [
+
+                    {
+                        extend: "createInline",
+                        editor: editor,
+                        formOptions: {
+                            submitTrigger: -7,
+                            submitHtml: '<i class="fa fa-play"/>'
+                        }
+                    }, {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+
+                    { extend: 'remove', className: 'btn-light', editor: editor },
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+        }
+
+
+        function Maquina(ID)
+        {
+            $('#TMaquina').DataTable().destroy();
+             Meditor = new $.fn.dataTable.Editor({
+                 ajax: "/Workflow/Maquina?id=" + ID,
+                 table: "#TMaquina",
+                fields: [
+
+                   /* { label: "ID:", name: "ID" },*/
+                    { label: "IDWORKFLOW:", name: "IDWORKFLOW", def: table.rows({ selected: true }).data()[0].ID, type: "readonly"},
+                    { label: "MAQ_INVERSION:", name: "MAQ_INVERSION" },
+                    { label: "MAQ_LEADTIME:", name: "MAQ_LEADTIME" },
+                    { label: "DESCRIPCION:", name: "DESCRIPCION" },
+                   
+                ]
+            });
+
+            $('#TMaquina').on('click', 'tbody ul.dtr-details li', function (e) {
+                // Edit the value, but this selector allows clicking on label as well
+                Meditor.inline($('span.dtr-data', this));
+            });
+
+
+
+            TMaquina = $('#TMaquina').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                //"scrollY": "500px",
+                "iDisplayLength": 5,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/Workflow/Maquina?id=" + ID,
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "IDWORKFLOW" },
+                    { data: "MAQ_INVERSION" },
+                    { data: "MAQ_LEADTIME" },
+                    { data: "DESCRIPCION" },
+                   
+                ],
+
+                order: [0, 'asc'],
+                keys: {
+                    /*columns: ':not(:first-child)',*/
+                    editor: Meditor
+                },
+                select: true,
+                buttons: [
+
+                    {
+                        extend: "createInline",
+                        editor: Meditor,
+                        formOptions: {
+                            submitTrigger: -4,
+                            submitHtml: '<i class="fa fa-play"/>'
+                        }
+                    }, {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+
+                    { extend: 'remove', className: 'btn-light', editor: Meditor },
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+        }
+
+
+        function Accesorios(ID)
+        {
+            $('#TAccesorios').DataTable().destroy();
+             Aeditor = new $.fn.dataTable.Editor({
+                 ajax: "/Workflow/Accesorios?id=" + ID,
+                 table: "#TAccesorios",
+                
+                fields: [
+
+                   /* { label: "ID:", name: "ID" },*/
+                    { label: "IDWORKFLOW:", name: "IDWORKFLOW", def: table.rows({ selected: true }).data()[0].ID, type: "readonly"},
+                    { label: "ACC_INVERSION:", name: "ACC_INVERSION" },
+                    { label: "ACC_LEADTIME:", name: "ACC_LEADTIME" },
+                    { label: "DESCRIPCION:", name: "DESCRIPCION" },
+             
+
+
+
+                ]
+            });
+
+            $('#TAccesorios').on('click', 'tbody ul.dtr-details li', function (e) {
+                // Edit the value, but this selector allows clicking on label as well
+                Aeditor.inline($('span.dtr-data', this));
+            });
+
+
+
+            TAccesorios = $('#TAccesorios').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                //"scrollY": "500px",
+                "iDisplayLength": 5,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                 ajax: "/Workflow/Accesorios?id=" + ID,
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "IDWORKFLOW" },
+                    { data: "ACC_INVERSION" },
+                    { data: "ACC_LEADTIME" },
+                    { data: "DESCRIPCION" },
+                    
+                ],
+
+                order: [0, 'asc'],
+                keys: {
+                    /*columns: ':not(:first-child)',*/
+                    editor: Aeditor
+                },
+                select: true,
+                buttons: [
+
+                    {
+                        extend: "createInline",
+                        editor: Aeditor,
+                        formOptions: {
+                            submitTrigger: -4,
+                            submitHtml: '<i class="fa fa-play"/>'
+                        }
+                    }, {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+
+                    { extend: 'remove', className: 'btn-light', editor: Aeditor },
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+        }
+
+
+        function Insumos(ID)
+        {
+
+            $('#TInsumos').DataTable().destroy();
+             Ieditor = new $.fn.dataTable.Editor({
+                 ajax: "/Workflow/Insumos?id=" + ID,
+                 table: "#TInsumos",
+                "createdRow": function (row, data, dataIndex) {
+                    },
+
+                fields: [
+
+                   /* { label: "ID:", name: "ID" },*/
+                    { label: "IDWORKFLOW:", name: "IDWORKFLOW", def: table.rows({ selected: true }).data()[0].ID, type: "readonly"},
+                    { label: "INS_PRECIO:", name: "INS_PRECIO" },
+                    { label: "INS_CODIGO:", name: "INS_CODIGO" },
+                    { label: "INS_LEADTIME:", name: "INS_LEADTIME" },
+                    { label: "DESCRIPCION:", name: "DESCRIPCION" },
+                ]
+            });
+
+            $('#TInsumos').on('click', 'tbody ul.dtr-details li', function (e) {
+                // Edit the value, but this selector allows clicking on label as well
+                Ieditor.inline($('span.dtr-data', this));
+            });
+
+
+
+            TInsumos = $('#TInsumos').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                //"scrollY": "500px",
+                "iDisplayLength": 5,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/Workflow/Insumos?id=" + ID,
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "IDWORKFLOW" },
+                    { data: "INS_PRECIO" },
+                    { data: "INS_CODIGO" },
+                    { data: "INS_LEADTIME" },
+                    { data: "DESCRIPCION" },
+                 
+                ],
+
+                order: [0, 'asc'],
+                keys: {
+                    /*columns: ':not(:first-child)',*/
+                    editor: Ieditor
+                },
+                select: true,
+                buttons: [
+
+                    {
+                        extend: "createInline",
+                        editor: Ieditor,
+                        formOptions: {
+                            submitTrigger: -5,
+                            submitHtml: '<i class="fa fa-play"/>'
+                        }
+                    }, {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+
+                    { extend: 'remove', className: 'btn-light', editor: Ieditor },
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+        }
+
+
+        function Parametros(ID)
+        {
+
+            $('#TParametros').DataTable().destroy();
+             Peditor = new $.fn.dataTable.Editor({
+                 ajax: "/Workflow/Parametros?id=" + ID,
+                 table: "#TParametros",
+                "createdRow": function (row, data, dataIndex) {
+                    },
+
+                fields: [
+
+                   /* { label: "ID:", name: "ID" },*/
+                    { label: "IDWORKFLOW:", name: "IDWORKFLOW", def: table.rows({ selected: true }).data()[0].ID, type: "readonly"},
+                    {
+                        label: "PROCESO:", name: "PROCESO",
+                        type: "select",
+                        /*def: "",*/
+                        attr: { style: "width:75px; text-align:center" },
+                        ipOpts: [
+                           /* { label: "", value: "" },*/
+                            { label: "Extrusion", value: "Extrusion" },
+                            { label: "Impresion", value: "Impresion" },
+                            { label: "Laminacion 1", value: "Laminacion 1" },
+                            { label: "Laminacion 2", value: "Laminacion 2" },
+                            { label: "Corte", value: "Corte" },
+                            { label: "Sellado", value: "Sellado" }
+                        ]
+                    },
+                    { label: "SETUP:", name: "SETUP" },
+                    { label: "VELOCIDAD:", name: "VELOCIDAD" },
+                    { label: "PA_DESPERDICIO_V:", name: "PA_DESPERDICIO_V" },
+                    { label: "PAR_DESPERDICIO_F:", name: "PAR_DESPERDICIO_F" },
+                   
+
+
+
+                ]
+            });
+
+            $('#TParametros').on('click', 'tbody ul.dtr-details li', function (e) {
+                // Edit the value, but this selector allows clicking on label as well
+                Peditor.inline($('span.dtr-data', this));
+            });
+
+
+
+            Tmateria = $('#TParametros').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                //"scrollY": "500px",
+                "iDisplayLength": 5,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/Workflow/Parametros?id=" + ID,
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "IDWORKFLOW" },
+                    { data: "PROCESO" },
+                    { data: "SETUP" },
+                    { data: "VELOCIDAD" },
+                    { data: "PA_DESPERDICIO_V" },
+                    { data: "PAR_DESPERDICIO_F" },
+                   
+                ],
+
+                order: [0, 'asc'],
+                keys: {
+                    /*columns: ':not(:first-child)',*/
+                    editor: Peditor
+                },
+                select: true,
+                buttons: [
+
+                    {
+                        extend: "createInline",
+                        editor: Peditor,
+                        formOptions: {
+                            submitTrigger: -6,
+                            submitHtml: '<i class="fa fa-play"/>'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+                    { extend: 'remove', className: 'btn-light', editor: Peditor },
+                   
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+        }
+
+        function mostrar()
+        {
+
+            table = $('#DTable').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                "scrollY": "500px",
+                "iDisplayLength": -1,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/Workflow/ListarB2BJ",
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "TITULO" },
+                    { data: "TIPO_SERVICIO" },
+                    { data: "IDCLIENTE" },
+                    { data: "DUI" },
+                    { data: "COTIZACION" },
+                    { data: "CUST_PART_ID" },
+                    { data: "COMMODITY_CODE" },
+                    { data: "PROCESO_ACTUAL" },
+                    { data: "PASO_ACTUAL" },
+                    { data: "FECHA_INICIO" },
+                    {
+                        data: null,
+                        title: "TIEMPO PROCESO",
+                        render: function (data, row, meta) {
+                            var cumplimiento, estilo;
+                            if (data.TIEMPO_PROCESO > 0) {
+                                cumplimiento = (data.TIEMPO_PROCESO * 100).toFixed(2);
+                                if (cumplimiento > 0 && cumplimiento < 40) {
+                                    estilo = 'width:' + cumplimiento + '%; background-color: green';
+                                }
+                                else if (cumplimiento >= 40 && cumplimiento < 80) {
+
+                                    estilo = 'width:' + cumplimiento + '%; background-color: yellow';
+                                }
+                                else if (cumplimiento >= 80) {
+
+                                    estilo = 'width:' + cumplimiento + '%; background-color: red';
+                                }
+
+                            }
+                            else
+                                cumplimiento = 0;
+                            return '<div class="progress"> <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="' + estilo + '" aria-valuenow="' + cumplimiento + '" aria-valuemin="0" aria-valuemax="100"> <span style="color:black" >' + cumplimiento + '% </span></div></div>';
+
+                        }
+                    },
+                    {
+                        data: null,
+                        title: "TIEMPO TOTAL",
+                        render: function (data, row, meta) {
+                            var cumplimiento, estilo;
+                            if (data.TIEMPO_TOTAL > 0) {
+                                cumplimiento = (data.TIEMPO_TOTAL * 100).toFixed(2);
+                                if (cumplimiento > 0 && cumplimiento < 40) {
+                                    estilo = 'width:' + cumplimiento + '%; background-color: green';
+                                }
+                                else if (cumplimiento >= 40 && cumplimiento < 80) {
+
+                                    estilo = 'width:' + cumplimiento + '%; background-color: yellow';
+                                }
+                                else if (cumplimiento >= 80) {
+
+                                    estilo = 'width:' + cumplimiento + '%; background-color: red';
+                                }
+
+                            }
+                            else
+                                cumplimiento = 0;
+                            return '<div class="progress"> <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="' + estilo + '" aria-valuenow="' + cumplimiento + '" aria-valuemin="0" aria-valuemax="100"> <span style="color:black" >' + cumplimiento + '% </span></div></div>';
+
+                        }
+                    },
+                    { data: "FECHA_FINALIZACION" },
+
+                    { data: "DIAS_TOTALES" },
+                    { data: "FECHA_ESTIMADA" },
+                ],
+
+                order: [0, 'asc'],
+
+                select: true,
+                buttons: [
+                    {
+                        text: '<a ><i class="fas fa-plus-circle fa-lg"  style="color:#007bff"></i>&nbsp; Nuevo</a>',
+                        titleAttr: 'Agregar Nuevo',
+                        action: function (e, dt, node, config) {
+                            $('#btnguardari').prop("disabled", false);
+                            $('#FormModal').modal('show');
+                        }
+                    },
+
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> ',
+                        titleAttr: 'Print',
+                        className: 'btn btn-info'
+                    },
+
+                    {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<a><i class="fas fa-caret-square-right" style="color:#229E51"></i>&nbsp; Siguiente Proceso</a>',
+                        titleAttr: 'Siguiente',
+                        action: function (e, dt, node, config) {
+
+                            /*$('#DTable').DataTable().ajax.reload();*/
+                            if (table.rows('.selected').data().length > 0) { Paso(table.rows({ selected: true }).data()[0].PASO_ACTUAL, table.rows({ selected: true }).data()[0].ID); }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
+
+                        }
+                    },
+                    {
+                        text: '<a><i class="fas fa-clipboard-list" style="color:red"></i>&nbsp; Flujo Articulo</a>',
+                        titleAttr: 'Finalizar',
+                        action: function (e, dt, node, config) {
+                            if (table.rows('.selected').data().length > 0 && table.rows({ selected: true }).data()[0].PASO_ACTUAL == 70) { Siguiente(); }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro y en estado Finalizado', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
+
+                        }
+                    },
+                    {
+                        text: '<i class="fas fa-link"></i>',
+                        titleAttr: 'Adjuntos',
+                        action: function (e, dt, node, config) {
+                            if (table.rows('.selected').data().length > 0) { archivos(table.rows({ selected: true }).data()[0].ID); }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro y en estado Finalizado', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
+
+                        }
+                    },
+                    {
+                        text: '<i class="fas fa-sync-alt" style="color:green"></i>',
+                        titleAttr: 'Actualizar',
+                        action: function (e, dt, node, config) {
+                            $('#DTable').DataTable().ajax.reload();
+
+                        }
+                    },
+                    {
+                        text: '<i class="fas fa-info-circle" style="color:#CDC432"></i>',
+                        titleAttr: 'Detalles',
+                        action: function (e, dt, node, config) {
+
+                            var id = table.rows({ selected: true }).data()[0].ID;
+                            MateriaPrima(id);
+                            
+                            Maquina(id);
+                            
+                            Accesorios(id);
+                            Insumos(id);
+                            Parametros(id);
+                            Meditor.disable();
+                            editor.disable();
+                            Aeditor.disable();
+                            Ieditor.disable();
+                            Peditor.disable();
+                            $('#myModal').modal('show');
+
+                        }
+                    },
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/datatable.es-ES.json")"
+                }
+            });
+        }
+
+        function Paso($CORREL,$ID) {
+
+            switch ($CORREL)
+
+            {
+                case 10:
+                    Siguiente();
+                    $('#DTable').DataTable().ajax.reload();
+                    break;
+                case 20:
+                    $('#FormModal2').modal('show');
+                    break;
+                case 30:
+                    $('#FormModal3').modal('show');
+                    break;
+                case 40:
+                    MateriaPrima($ID);
+                    Maquina($ID)
+                    Accesorios($ID)
+                    Insumos($ID)
+                    Parametros($ID)
+
+                    Meditor.enable();
+                    editor.enable();
+                    Aeditor.enable();
+                    Ieditor.enable();
+                    Peditor.enable();
+                    $('#myModal').modal('show');
+                    break;
+                case 50:
+                    $('#FormModal5').modal('show');
+                    break;
+            }
+
+
+
+
+
+        }
+
+
+
+
+        function limpiar()
+        {
+            table.clear().draw();
+            table.destroy();
+            mostrar();
+        }
+
+        function TablaAdjuntos($ID)
+        {
+           /* $.fn.dataTable.moment('DD/MM/YYYY');*/
+
+
+            tableA= $('#Adjuntos').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                "scrollY": "300px",
+                "iDisplayLength": 10,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/Workflow/Ver?idworkflow=" + $ID+"&tipo=B2B",
+
+
+                columns: [
+
+                    { data: "Extension" },
+                    /*{ data: "Nombre" },*/
+                    {
+                        data: "Nombre", "render": function (data, type, row) {
+
+                            return "<a  href='/Workflow/DescargarArchivo/?id=" + row.Id + "'><i class='fas fa-cloud-download-alt'></i> " + row.Nombre  + "</a>"
+
+                        }
+
+                    },
+                    { data: "Descargas" },
+
+
+
+                ],
+
+                buttons: [
+                    {
+                        text: '<a ><i class="fas fa-trash" style="color:red" ></i></a>',
+                        titleAttr: 'Eliminar',
+                        action: function (e, dt, node, config) {
+                            if (table.rows('.selected').data().length > 0) { Eliminar(tableA.rows({ selected: true }).data()[0].Id); }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
+                        }
+                    },],
+
+                order: [0, 'asc'],
+
+                select: true,
+
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+        }
+
+        function archivos($ID) {
+            $("#idWorkflow").val($ID);
+            TablaAdjuntos($ID);
+            $('#FormModal6').modal('show');
+        }
+
+        function Eliminar(id) {
+
+            jQuery.ajax({
+                url: "@Url.Action("EliminarArchivo", "Workflow")" + "?valor=" + id,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    if (response.success === true) {
+                        tableA.destroy();
+
+                     archivos(table.rows({ selected: true }).data()[0].ID);
+                    }
+                    else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                }
+                });
+
+        }
+
+        function borrar()
+        {
+            $("#txtcosteo").val("");
+            $("#txtnotasreq").val("");
+            $("#txtinformacionreq").val("");
+            
+        }
+
+
+        function Siguiente() {
+            
+            var Seleccion = table.rows({ selected: true }).data()[0];
+
+            switch (Seleccion.PASO_ACTUAL) {
+                case 10:
+
+                    var adicional = { TIPO: "B2B" };
+                    Object.assign(Seleccion, adicional);
+                    break;
+
+                case 20:
+                    Seleccion.DUI = $("#txtedui").val();
+                    var adicional = {  TIPO: "B2B" };
+                    Object.assign(Seleccion, adicional);
+                    break;
+                case 30:
+                    Seleccion.COTIZACION = $("#txtcosteo").val();
+                    var adicional = { CELULA_TECNICA: $("#txtcelula").val(), TIPO: "B2B", INFORMACIONREQ: $("#txtinformacionreq").val(), NOTASREQ: $("#txtnotasreq").val() };
+                    Object.assign(Seleccion, adicional);
+                    if (Seleccion.CELULA_TECNICA == "NO") { Seleccion.PASO_ACTUAL = 80; }
+                    
+
+                    break;
+                case 40:
+                    Seleccion.COTIZACION = $("#txtcosteo").val();
+                    var adicional = { TIPO: "B2B" };
+                    Object.assign(Seleccion, adicional);
+                    break;
+                case 50:
+                    var lote = "";
+                    if ($("#txtmuestra").val() == "1") { lote = "1"; } else { lote = "0";}
+                    var adicional = { UNIDAD_VENTA: $("#txtunidadventa").val(), MARGEN: $("#txtmargen").val(), NECESITA_MUESTRA: $("#txtmuestra").val(), LOTE_INDUSTRIAL: lote, TIPO: "B2B" };
+                    Object.assign(Seleccion, adicional);
+                    break;
+
+                case 70:
+                    var adicional = { TIPO: "B2B" };
+                    Object.assign(Seleccion, adicional);
+                    break;
+            }
+
+
+
+            jQuery.ajax({
+                    url: "@Url.Action("Siguiente","Workflow")",
+                    type: "POST",
+                data: JSON.stringify({ objeto: Seleccion }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                 success: function (response) {
+                     if (response.success === true) {
+                          toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            $('#FormModal').modal('hide');
+                            limpiar();
+
+                        }
+                        else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                    }
+
+            });
+            borrar();
+            $('#FormModal2').modal('hide');
+            $('#FormModal3').modal('hide');
+            $('#FormModal4').modal('hide');
+            $('#FormModal5').modal('hide');
+        }
+
+        function Guardar($CLIENTE_CORREL)
+        {
+
+            $('#btnguardari').prop("disabled", true);
+
+                var Workflow = {
+                    ID: 0,
+                    TITULO: $("#txttitulo").val(),
+                    TIPO_SERVICIO: $("#txttipos").val(),
+                    IDCLIENTE: $("#txtNombre").val(),
+                    NOTAS: $("#txtnotas").val(),
+                    ARCHIVO: $("#txtadjunto").val(),
+                    PASO_ACTUAL:10
+                }
+
+
+
+             jQuery.ajax({
+                    url: "@Url.Action("Guardar","Workflow")",
+                    type: "POST",
+                 data: JSON.stringify({ objeto: Workflow }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                 success: function (response) {
+                     if (response.success === true) {
+                          toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            $('#FormModal').modal('hide');
+                            limpiar();
+
+                        }
+                        else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                    }
+
+
+
+             });
+
+
+
+        }
+
+    </script>
+
+
+
+
+}
+

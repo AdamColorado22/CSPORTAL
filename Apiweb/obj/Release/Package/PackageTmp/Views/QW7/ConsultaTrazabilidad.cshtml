@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "ConsultaTrazabilidad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/js/jquery-3.5.1.js"></script>
+@*<script src="~/Content/js/jquery.auto-complete.js"></script>*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Content/js/toastr.min.js"></script>
+<link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+
+
+<div class="row m-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+
+                Seguimiento
+            </div>
+            <div class="card-body">
+
+                
+                <table class="table table-hover" id="DTClientes" style="width:100%">
+                    <thead class="thead-light">
+                        <tr>
+
+                            <th>BASE</th>
+                            <th>PART_ID</th>
+                            <th>VENDOR PART_ID</th>
+                            <th>INVENTARIO</th>
+                            <th>DAYS HAND ON HAND </th>
+                            <th>TRACE_ID</th>
+                            <th>STAGE_ID</th>
+                            <th>PRECIO</th>
+                            <th>OC</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+@section scripts{
+
+
+    <script>
+
+
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
+        $('#datepicker2').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
+        $('#traza').addClass('active');
+
+        var table;
+
+        $(document).ready(function () {
+            Tabla();
+        });
+        function Tabla() {
+
+            $('#DTClientes').DataTable().destroy();
+             table =   $('#DTClientes').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                "scrollY": "500px",
+                /*"scrollX": "100px",*/
+                "iDisplayLength": 100,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: {
+                    url: "/QW7/Trazabilidad/",
+                type: "POST",
+                },
+
+                /*serverSide: true,*/
+                columns: [
+
+                    /*{ data: "ID" },*/
+                    { data: "BASE" },
+                    { data: "PART_ID" },
+                    { data: "VENDORPART" },
+                    { data: "INVENTARIO" },
+                    { data: "DAYHAND" },
+                    { data: "TRACE_ID" },
+                    { data: "STAGE_ID" },
+                    { data: "PRECIO" },
+                    { data: "DESCRIPCION" },
+                ],
+
+                order: [0, 'asc'],
+
+                select: true,
+                buttons: [
+
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm',
+                   },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf" style="color:red"></i> ',
+                        titleAttr: 'Exportar a PDF',
+                        className: 'btn btn-danger'
+                    }, {
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> ',
+                        titleAttr: 'Imprimir',
+                        className: 'btn btn-info'
+                    },
+
+                    {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                    },
+
+                   {
+                        text: '<i class="fas fa-sync-alt" style="color:green"></i>',
+                        titleAttr: 'Actualizar',
+                        action: function (e, dt, node, config) {
+                            $('#DTClientes').DataTable().ajax.reload();
+
+                        }
+                    },
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/datatable.es-ES.json")"
+                }
+            });
+        }
+
+
+    </script>
+
+
+
+
+}
+
+

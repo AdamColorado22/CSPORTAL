@@ -58,6 +58,7 @@ namespace Apiweb.Controllers
                 .Field(new Field("PEDIDO"))
                 .Field(new Field("ESTADO"))
                 .Field(new Field("FECHA_INGRESO"))
+                .Field(new Field("FECHADESPACHO"))
                 .Field(new Field("CLIENTE"))
                 .Field(new Field("OC"))
                 .Field(new Field("TIPO"))
@@ -323,7 +324,7 @@ namespace Apiweb.Controllers
                 smtp.Port = 25;
                 smtp.EnableSsl = false;
                 smtp.UseDefaultCredentials = true;
-                smtp.Send(correo);
+                //smtp.Send(correo);
                 return true;
 
             }

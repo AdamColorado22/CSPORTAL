@@ -1,0 +1,514 @@
+﻿<script src="~/Content/js/jquery-3.5.1.js"></script>
+@*<script src="~/Content/js/jquery.auto-complete.js"></script>*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Content/js/toastr.min.js"></script>
+<link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    div.DTE_Inline input {
+        border: none;
+        background-color: transparent;
+        padding: 0 !important;
+        font-size: 90%;
+    }
+
+        div.DTE_Inline input:focus {
+            outline: none;
+            background-color: transparent;
+        }
+
+    button.btn-space {
+        margin-left: 1em;
+    }
+
+    div.DTE_Body div.DTE_Body_Content div.DTE_Field {
+        float: left;
+        width: 50%;
+        padding: 5px 20px;
+        clear: none;
+        box-sizing: border-box;
+    }
+
+    div.DTE_Body div.DTE_Form_Content:after {
+        content: ' ';
+        display: block;
+        clear: both;
+    }
+</style>
+
+<div class="row m-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Comercial
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="DTComercial" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PART ID</th>
+                            <th>COTIZACION</th>
+                            <th>DUI</th>
+                            <th>ANCHO</th>
+                            <th>LARGO</th>
+                            <th>PESO_TOTAL</th>
+                            <th>PESO_MILLAR</th>
+                            <th>FC</th>
+                            <th>UN X M2</th>
+                            <th>UN X KG</th>
+                            <th>PESO X BOBINA</th>
+                            <th>USUARIO</th>
+
+                        </tr>
+                    </thead>
+
+                </table>
+                <table class="table table-hover" id="DTDetalle" style="width:100%">
+                    <thead class="thead-light">
+                        <tr>
+                            <th colspan="3">ESCALA</th>
+                            <th colspan="3">COSTOS</th>
+                            <th colspan="4">PRECIOS</th>
+                        </tr>
+                        <tr>
+                            <th>REP MILL</th>
+                            <th>KG</th>
+                            <th>ROLL</th>
+                            <th>KG</th>
+                            <th>MILL</th>
+                            <th>ROLLO</th>
+                            <th>MC</th>
+                            <th>PRECIO KG</th>
+                            <th>PRECIO ROLLO</th>
+                            <th>PRECIO MILL</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@*!-- Modal Agregar o editar -->*@
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @*@using (Html.BeginForm("Guardar", "Workflow", FormMethod.Post, new {  enctype = "multipart/form-data" }))
+                {*@
+            <div class="modal-body">
+                <div class="form-row">
+
+
+                    <input type="hidden" id="txtid" />
+
+                    <div class="form-group col-md-12">
+                        <label for="txttitulo">Señores:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txttitulo">
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        <label for="txtcontacto">Vendedor:</label>
+                        <input type="text" class="form-control" id="txtcontacto" >
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="txtcontactot">Telefono Contacto:</label>
+                        <input type="text" class="form-control" id="txtcontactot" >
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                @*<a href="Comercial/Download_PDF?ID=1&sr=ADAM&att=JOSUE&tel=2222-2222" target="_blank" class="btn btn-primary" style="margin-top:20px;">Generar Reporte</a>*@
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" id="btnguardari" class="btn btn-primary" onclick="Imprimir()">Imprimir</button>
+            </div>
+            @*<div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-sm btn-secondary btn-block">Subir archivo</button>
+                </div>*@
+
+            @*}*@
+
+        </div>
+
+    </div>
+</div>
+
+
+
+@section scripts{
+
+
+    <script>
+        var table,table2,Fila;
+        var editor,editor2;
+       $('#comercial').addClass('active');
+       $(document).ready(function () {
+            editor = new $.fn.dataTable.Editor({
+                ajax: "/Comercial/Listar",
+                table: "#DTComercial",
+                fields: [
+
+                     {
+                        label: "PART_ID:",
+                        name: "PART_ID"
+                    }
+                    ,
+                    {
+                        label: "COTIZACION:",
+                        name: "COTIZACION"
+                    }
+                    , {
+                        label: "DUI:",
+                        name: "DUI"
+                    }
+
+                    , {
+                        label: "FC:",
+                        name: "FC_OTROS",
+                        type: "select",
+                        ipOpts: [
+                            { label: "", value: "" },
+                            { label: "MILL", value: "MILL" },
+                            { label: "KG", value: "KG" },
+                            { label: "FA", value: "FA" },
+                            { label: "LB", value: "LB" },
+                            { label: "MILL REP", value: "MILL REP" },
+                            { label: "ROLLO", value: "ROLLO" },
+                            { label: "M2XKG", value: "M2XKG" }
+                        ]
+                    }
+
+
+                ]
+            });
+
+            $('#DTComercial').on('click', 'tbody ul.dtr-details li', function (e) {
+                // Edit the value, but this selector allows clicking on label as well
+                editor.inline($('span.dtr-data', this));
+            });
+
+
+
+            var table =   $('#DTComercial').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                /*"scrollY": "200px",*/
+                "iDisplayLength": 10,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/Comercial/Listar",
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "PART_ID" },
+                    { data: "COTIZACION" },
+                    { data: "DUI" },
+                    { data: "ANCHO" },
+                    { data: "LARGO" },
+                    { data: "PESO_TOTAL" },
+                    { data: "PESO_MILLAR" },
+                    { data: "FC_OTROS" },
+                    { data: "UN_X_M2" },
+                    { data: "UN_X_KG" },
+                    { data: "PESO_X_BOBINA" },
+                    { data: "USUARIO" },
+
+
+                ],
+
+                order: [0, 'asc'],
+                keys: {
+                    /*columns: ':not(:first-child)',*/
+                    editor: editor
+                },
+                select: {
+                    style: 'single'
+                },
+                buttons: [
+
+                    { extend: 'create', className: 'btn-light', editor: editor },
+                    { extend: 'edit', className: 'btn-light', editor: editor },
+                    { extend: 'remove', className: 'btn-light', editor: editor },
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+
+
+                    {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                    },
+                   {
+                        extend: "selected",
+                        text: '<i class="fas fa-clone"></i>',
+                        titleAttr: 'Duplicar',
+                        action: function (e, dt, node, config) {
+                            // Start in edit mode, and then change to create
+                            editor
+                                .edit(table.rows({ selected: true }).indexes(), {
+                                    title: 'Duplicar seleccionado',
+                                    buttons: 'Duplicar'
+                                })
+                                .mode('create');
+                        }
+                    },
+                    {
+                        text: '<i class="fas fa-sync-alt" style="color:green"></i>',
+                        titleAttr: 'Actualizar',
+                        action: function (e, dt, node, config) {
+                            $('#DTComercial').DataTable().ajax.reload();
+
+                        }
+                    },
+                    {
+                        text: '<a><i class="fas fa-file-invoice" style="color:#14B7E3"></i> &nbsp; Imprimir</a>',
+                        titleAttr: 'Reporte',
+                        action: function (e, dt, node, config) {
+
+                            if (table.rows('.selected').data().length > 0) {
+                                $('#FormModal').modal('show');
+                               /* Imprimir(table.rows({ selected: true }).data().ID);*/
+
+                            }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
+
+                        }
+                    },
+                    {
+                        text: '<a><i class="fas fa-window-close" style="color:red"></i> &nbsp; Cerrar</a>',
+                        titleAttr: 'Lineas',
+                        action: function (e, dt, node, config) {
+
+                            if (confirm("Quiere Cerrar Propuesta") == true) {
+                                Cerrar(table.rows({ selected: true }).data().ID);
+                            } 
+                        }
+                    },
+                    {
+                        text: '<a> <i class="fas fa-database" style="color:blue"></i> &nbsp; Procesar</a>',
+                        titleAttr: 'Procesar',
+                        action: function (e, dt, node, config) {
+
+
+                            Processar(table.rows({ selected: true }).data().ID);
+                            $('#DTDetalle').DataTable().ajax.reload();
+
+                        }
+                    },
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+           $('#DTComercial tbody').on('click', 'tr', function () {
+               $(this).toggleClass('selected');
+               var data = table.row(this).data();
+               Fila = data.ID;
+               hijo(Fila);
+
+
+           });
+           $.fn.dataTable.ext.errMode = function (settings, helpPage, message) {
+               toastr.error(message, "Error", { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" })
+
+           };
+
+
+
+        });
+
+
+       
+
+        function Imprimir() {
+
+            var titulo = $("#txttitulo").val();
+            var contact = $("#txtcontacto").val();
+            var txtcontactot = $("#txtcontactot").val();
+            var url = "http://termorep1/ReportServer?/Comercial/Propuesta_comercial_B2B&ID=" + Fila + "&SENOR=" + titulo + "&ATT=" + contact + "&TEL=" + txtcontactot+"";
+            window.open(url, '_blank');
+
+        }
+         function Processar(id) {
+
+            jQuery.ajax({
+                url: "@Url.Action("Procesar", "Comercial")" + "?ID=" + Fila,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    if (response.success === true) {
+                        toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                    }
+                    else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                }
+                });
+
+        }
+
+
+               function Cerrar(id) {
+
+            jQuery.ajax({
+                url: "@Url.Action("Cerrar", "Comercial")" + "?ID=" + Fila,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    if (response.success === true) {
+                        toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                    }
+                    else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                }
+                });
+
+        }
+
+         function hijo($ID)
+        {
+             $('#DTDetalle').DataTable().destroy();
+
+             editor2 = new $.fn.dataTable.Editor({
+                 ajax: "/Comercial/ListarDetalle?ID=" + Fila,
+                 table: "#DTDetalle",
+                 fields: [
+
+                     {
+                         label: "MC:",
+                         name: "MC"
+                     }
+                     
+
+
+
+
+                 ]
+             });
+
+             $('#DTDetalle').on('click', 'tbody ul.dtr-details li', function (e) {
+                 // Edit the value, but this selector allows clicking on label as well
+                 editor2.inline($('span.dtr-data', this));
+             });
+             table2 = $('#DTDetalle').DataTable({
+                responsive: true,
+               dom: "Bfrtip",
+              "iDisplayLength": 10,
+                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+
+                 ajax: "/Comercial/ListarDetalle?ID=" + $ID,
+
+
+               columns: [
+
+
+                   { data: "E_REP", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "E_KG", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "E_ROLL", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "C_KG", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "C_REP", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "C_ROLLO", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "MC", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "PRECIO_R", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "PRECIO_2", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   { data: "PRECIO_3", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+                   
+
+
+  ],
+
+                 order: [0, 'asc'],
+                 keys: {
+                     /*columns: ':not(:first-child)',*/
+                     editor: editor2
+                 },
+
+               select: {
+                   style: 'single'
+               },
+                 buttons: [
+                     //{ extend: 'create', className: 'btn-light', editor: editor2 },
+                     { extend: 'edit', className: 'btn-light', editor: editor2 },
+                     //{ extend: 'remove', className: 'btn-light', editor: editor2 },
+
+
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+                     {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                     },
+                     {
+                         text: '<i class="fas fa-sync-alt" style="color:green"></i>',
+                         titleAttr: 'Actualizar',
+                         action: function (e, dt, node, config) {
+                             $('#DTDetalle').DataTable().ajax.reload();
+
+                         }
+                     },
+
+
+
+
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+           });
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+}
