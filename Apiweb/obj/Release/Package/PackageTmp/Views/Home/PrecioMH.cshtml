@@ -1,0 +1,287 @@
+﻿
+@{
+    ViewBag.Title = "PrecioMH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Content/js/jquery-3.5.1.js"></script>
+@*<script src="~/Content/js/jquery.auto-complete.js"></script>*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Content/js/jquery-ui.js"></script>
+<script src="~/Content/js/moment.min.js"></script>
+
+
+<style type="text/css">
+    div.DTE_Inline input {
+        border: none;
+        background-color: transparent;
+        padding: 0 !important;
+        font-size: 90%;
+    }
+
+        div.DTE_Inline input:focus {
+            outline: none;
+            background-color: transparent;
+        }
+
+    button.btn-space {
+        margin-left: 1em;
+    }
+</style>
+
+<div class="row m-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Precios MH
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered" id="DTClientes" style="width:100%">
+                    <thead>
+                        <tr>
+
+                            @*<th></th>*@
+                            <th>MH_NUMBER</th>
+                            <th>MHDATE</th>
+                            <th>LINE</th>
+                            <th>RELEASE_NUMBER</th>
+                            <th>ITEM</th>
+                            <th>PRECIO</th>
+                            <th>REQUES_QTY</th>
+                            <th>PRODUC_QTY</th>
+                            <th>PEDIDO_TERMO</th>
+                            <th>COMENTARIOS</th>
+
+
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="FormModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+
+                    @using (Html.BeginForm("DataImportAllMH", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "form1" }))
+                    {
+
+                        <div style="margin-top: 20px; font-size:12px; width:80%; padding-left:20px;">
+                            <fieldset id="myfieldset1">
+                                <legend> Import Excel</legend>
+                                <p>
+                                    Select File:
+                                    <input id="FileUpload" type="file" name="FileUpload" style="width: 250px; height: 24px; background: White" />
+                                    <input id="btnImport" type="submit" value="Importar" style="width: 60px; height: 24px;" />
+                                </p>
+                                <p style="color: Red; text-align: center;"> @ViewBag.error </p> @* Información de solicitud (éxito o fracaso) *@
+                            </fieldset>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts{
+
+
+    <script>
+
+
+        
+        $("#FormModal2").draggable({
+            handle: ".modal-header"
+        });
+
+        $('#navmh').addClass('active');
+        $('#navhome').removeClass("active");
+        $('#navsmi').removeClass("active");
+        $('#navhist').removeClass("active");
+        $('#navqw2').removeClass("active");
+        $('#navqw6').removeClass("active");
+        $('#navqw7').removeClass("active");
+        $('#navqw62').removeClass("active");
+        $(document).ready(function () {
+           /* $.fn.dataTable.moment('yyyy-MM-dd');*/
+            editor = new $.fn.dataTable.Editor({
+                ajax: "/Home/PrecioMHV",
+                table: "#DTClientes",
+
+                fields: [
+                 {
+                        label: "MH_NUMBER:",
+                        name: "MH_NUMBER"
+                }, {
+                        label: "MHDATE:",
+                        name: "MHDATE",
+                        type: 'datetime',
+                        def: function () { return new Date(); },
+                        displayFormat: 'DD/MM/YYYY',
+                        wireFormat: 'DD/MM/YYYY',
+
+
+                }, {
+                        label: "LINE:",
+                        name: "LINE"
+                }, {
+                        label: "RELEASE_NUMBER:",
+                        name: "RELEASE_NUMBER"
+                }, {
+                        label: "ITEM:",
+                        name: "ITEM"
+
+                }, {
+                        label: "PRECIO:",
+                        name: "PRECIO"
+                    }
+                    , {
+                        label: "REQUES_QTY:",
+                        name: "REQUES_QTY"
+                    }
+                    , {
+                        label: "PRODUC_QTY:",
+                        name: "PRODUC_QTY"
+                    }
+                    , {
+                        label: "PEDIDO_TERMO:",
+                        name: "PEDIDO_TERMO"
+                    }
+                    , {
+                        label: "COMENTARIOS:",
+                        name: "COMENTARIOS"
+                    }
+
+                ]
+            });
+            //$('#DTClientes').on('click', 'tbody td:not(:first-child)', function (e) {
+            //    editor.inline(this);
+            //});
+
+
+
+
+            var table = $('#DTClientes').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                "scrollY": "500px",
+                "iDisplayLength": -1,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+               
+                ajax: {
+                    url: "/Home/PrecioMHV",
+                    type: "POST",
+                },
+             
+                serverSide: true,
+                columns: [
+
+                    //{   // Responsive control column
+                    //    data: null,
+                    //    defaultContent: '',
+                    //    className: 'control',
+                    //    orderable: false
+                    //},
+
+                    { data: "MH_NUMBER" },
+                    { data: "MHDATE" },
+                    { data: "LINE" },
+                    { data: "RELEASE_NUMBER" },
+                    { data: "ITEM" },
+                    { data: "PRECIO" },
+                    { data: "REQUES_QTY" },
+                    { data: "PRODUC_QTY" },
+                    { data: "PEDIDO_TERMO" },
+                    { data: "COMENTARIOS" }
+                ],
+
+                keys: {
+                   /* columns: ':not(:first-child)',*/
+                    editor: editor
+                },
+                select: true,
+                buttons: [
+
+                    { extend: 'create', className: 'btn-light', editor: editor },
+                    { extend: 'edit', className: 'btn-light', editor: editor },
+                    { extend: 'remove', className: 'btn-light', editor: editor },
+                    {
+                        text: '<a ><i class="fas fa-cloud-upload-alt"></i>&nbsp;Import</a>',
+                        titleAttr: 'Import',
+                        action: function (e, dt, node, config) {
+                            $('#FormModal2').modal('show');
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf" style="color:red"></i> ',
+                        titleAttr: 'Exportar a PDF',
+                        className: 'btn btn-danger'
+                    }, {
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> ',
+                        titleAttr: 'Imprimir',
+                        className: 'btn btn-info'
+                    },
+
+                    {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                    },
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/datatable.es-ES.json")"
+                }
+            });
+        });
+
+
+
+
+
+    </script>
+
+
+
+
+}
+
+
+
+
+

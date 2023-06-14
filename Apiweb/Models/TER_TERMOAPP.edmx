@@ -35,6 +35,7 @@
           <Property Name="BASE" Type="varchar" MaxLength="50" />
           <Property Name="ORDENCOMPRA" Type="varchar" MaxLength="50" />
           <Property Name="ESTADO_PED" Type="varchar" MaxLength="50" />
+          <Property Name="FECHADESPACHO" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TER_DET_COMERCIAL">
           <Key>
@@ -63,6 +64,7 @@
           <Property Name="PROCESO" Type="varchar" MaxLength="20" />
           <Property Name="PIEZA" Type="int" />
           <Property Name="ESTADO" Type="varchar" MaxLength="50" />
+          <Property Name="OPERATION_SEQ" Type="int" />
         </EntityType>
         <EntityContainer Name="TERMOAPPModelStoreContainer">
           <EntitySet Name="TER_COM_PEDIDOS" EntityType="Self.TER_COM_PEDIDOS" Schema="dbo" store:Type="Tables" />
@@ -103,6 +105,7 @@
           <Property Name="BASE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ORDENCOMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO_PED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHADESPACHO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="TERMOAPPEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TER_COM_PEDIDOS" EntityType="Self.TER_COM_PEDIDOS" />
@@ -120,6 +123,7 @@
           <Property Name="PROCESO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="PIEZA" Type="Int32" />
           <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OPERATION_SEQ" Type="Int32" />
         </EntityType>
         <EntityType Name="TER_DET_COMERCIAL">
           <Key>
@@ -146,6 +150,7 @@
           <EntitySetMapping Name="TER_COM_PEDIDOS">
             <EntityTypeMapping TypeName="TERMOAPPModel.TER_COM_PEDIDOS">
               <MappingFragment StoreEntitySet="TER_COM_PEDIDOS">
+                <ScalarProperty Name="FECHADESPACHO" ColumnName="FECHADESPACHO" />
                 <ScalarProperty Name="ESTADO_PED" ColumnName="ESTADO_PED" />
                 <ScalarProperty Name="ORDENCOMPRA" ColumnName="ORDENCOMPRA" />
                 <ScalarProperty Name="BASE" ColumnName="BASE" />
@@ -178,6 +183,7 @@
           <EntitySetMapping Name="TER_MATERIAL">
             <EntityTypeMapping TypeName="TERMOAPPModel.TER_MATERIAL">
               <MappingFragment StoreEntitySet="TER_MATERIAL">
+                <ScalarProperty Name="OPERATION_SEQ" ColumnName="OPERATION_SEQ" />
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="PIEZA" ColumnName="PIEZA" />
                 <ScalarProperty Name="PROCESO" ColumnName="PROCESO" />

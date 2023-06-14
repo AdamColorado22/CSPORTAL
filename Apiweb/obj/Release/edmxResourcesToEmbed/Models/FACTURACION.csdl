@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TERMO9EAMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TERMOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TER_PORC_TEXTIL" EntityType="TERMO9EAMModel.TER_PORC_TEXTIL" />
+    <EntitySet Name="TER_PORC_TEXTIL_HIST" EntityType="TERMO9EAMModel.TER_PORC_TEXTIL_HIST" />
+  </EntityContainer>
+  <EntityType Name="TER_PORC_TEXTIL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TIPO" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ARTICULO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PORCENTAJE" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_HASTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_DESDE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TER_PORC_TEXTIL_HIST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FECHA_MODIFICACION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ARTICULO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PORCENTAJE" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_HASTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_DESDE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ID_E" Type="Int32" />
+  </EntityType>
+</Schema>

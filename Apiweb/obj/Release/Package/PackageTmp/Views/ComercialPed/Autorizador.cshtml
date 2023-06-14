@@ -1,0 +1,362 @@
+﻿
+<script src="~/Content/js/jquery-3.5.1.js"></script>
+@*<script src="~/Content/js/jquery.auto-complete.js"></script>*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Content/js/toastr.min.js"></script>
+<link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Autorizador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    div.DTE_Inline input {
+        border: none;
+        background-color: transparent;
+        padding: 0 !important;
+        font-size: 90%;
+    }
+
+        div.DTE_Inline input:focus {
+            outline: none;
+            background-color: transparent;
+        }
+
+    button.btn-space {
+        margin-left: 1em;
+    }
+
+    div.DTE_Body div.DTE_Body_Content div.DTE_Field {
+        float: left;
+        width: 50%;
+        padding: 5px 20px;
+        clear: none;
+        box-sizing: border-box;
+    }
+
+    div.DTE_Body div.DTE_Form_Content:after {
+        content: ' ';
+        display: block;
+        clear: both;
+    }
+</style>
+
+<div class="row m-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Comercial
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered" id="DTComercial" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ESTADO</th>
+                            <th>FECHA_INGRESO</th>
+                            <th>CLIENTE</th>
+                            <th>OC</th>
+                            <th>TIPO</th>
+                            <th>PART_ID</th>
+                            <th>FECHA_ENTREGA</th>
+                            <th>CANTIDAD</th>
+                            <th>PRECIO</th>
+                            <th>REF_COTIZACION</th>
+                            <th>DUI</th>
+                            <th>SEGMENTO</th>
+                            <th>CLUSTER</th>
+                            <th>COSTO</th>
+                            <th>COMMODITY_CODE</th>
+                            <th>UN</th>
+                            <th>FC</th>
+                            <th>IDUSUARIO</th>
+                            <th>MARGEN</th>
+                            <th>MONTO INGRESADO</th>
+                            <th>KG</th>
+                            <th>UTILIDAD</th>
+                        </tr>
+                    </thead>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts{
+
+
+    <script>
+
+
+        $('#comercialped2').addClass('active');
+        var table, table2, Fila;
+        var editor, editor2;
+          $(document).ready(function () {
+            editor = new $.fn.dataTable.Editor({
+                ajax: "/ComercialPed/Listar",
+                table: "#DTComercial",
+                fields: [
+
+                    { label: "ESTADO:", name: "ESTADO" ,def: "NUEVO", type: "readonly"},
+                    { label: "FECHA INGRESO:", name: "FECHA_INGRESO", type: 'datetime', def: function () { return new Date(); } },
+                    { label: "CLIENTE:", name: "CLIENTE" },
+                    { label: "OC:", name: "OC" },
+
+                     {
+                        label: "TIPO:",
+                        name: "TIPO",
+                        type: "select",
+                        ipOpts: [
+                            { label: "", value: "" },
+                            { label: "NUEVO", value: "NUEVO" },
+                            { label: "REPETICION", value: "REPETICION" },
+
+                        ]
+                    },
+                    { label: "PART_ID:", name: "PART_ID" },
+                    { label: "FECHA ENTREGA:", name: "FECHA_ENTREGA", type: 'datetime', def: function () { return new Date(); } },
+                    { label: "CANTIDAD:", name: "CANTIDAD" },
+                    { label: "PRECIO:", name: "PRECIO" },
+                    { label: "REF_COTIZACION:", name: "REF_COTIZACION" },
+                    { label: "DUI:", name: "DUI" },
+                    { label: "MARGEN:", name: "MARGEN" },
+
+
+
+
+                ]
+            });
+
+            $('#DTComercial').on('click', 'tbody ul.dtr-details li', function (e) {
+                // Edit the value, but this selector allows clicking on label as well
+                editor.inline($('span.dtr-data', this));
+            });
+
+
+
+             table =   $('#DTComercial').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+                /*"scrollY": "200px",*/
+                "iDisplayLength": 10,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/ComercialPed/Listar2",
+
+
+                columns: [
+                    { data: "ID" },
+                    { data: "ESTADO" },
+                    { data: "FECHA_INGRESO" },
+                    { data: "CLIENTE" },
+                    { data: "OC" },
+                    { data: "TIPO" },
+                    { data: "PART_ID" },
+                    { data: "FECHA_ENTREGA" },
+                    { data: "CANTIDAD" },
+                    { data: "PRECIO" },
+                    { data: "REF_COTIZACION" },
+                    { data: "DUI" },
+                    { data: "SEGMENTO" },
+                    { data: "CLUSTER" },
+                    { data: "COSTO" },
+                    { data: "COMMODITY_CODE" },
+                    { data: "UN" },
+                    { data: "FC" },
+                    { data: "IDUSUARIO" },
+                    { data: "MARGEN" },
+                    {
+                        data: null,
+                        /*  title: "SAFETY SCTOCK",*/
+                        render: function (data, type, row) {
+
+                            if (data.PRECIO === null)
+                                return "";
+                            else
+                                var info = ((data.PRECIO).toFixed(2) * (data.CANTIDAD).toFixed(2));
+                            return $.fn.dataTable.render.number(',', ',', 2, '').display(info);
+
+                        }
+                    },
+                    {
+                        data: null,
+                        /*  title: "SAFETY SCTOCK",*/
+                        render: function (data, type, row) {
+
+                            if (data.CANTIDAD === null)
+                                return "";
+                            else
+                                var info2 = data.CANTIDAD* data.FC;
+                            return $.fn.dataTable.render.number(',', ',', 2, '').display(info2);
+
+                        }
+                    },
+                    {
+                        data: null,
+                        /*  title: "SAFETY SCTOCK",*/
+                        render: function (data, type, row) {
+
+                            if (data.MARGEN === null)
+                                return "";
+                            else
+                                var info3 = (data.MARGEN/100) * data.PRECIO * data.CANTIDAD;
+                            return $.fn.dataTable.render.number(',', ',', 2, '').display(info3);
+
+                        }
+                    },
+
+
+                ],
+
+                order: [0, 'asc'],
+                keys: {
+                    /*columns: ':not(:first-child)',*/
+                    editor: editor
+                },
+                 select: {
+                     style: 'multi'
+                 },
+                buttons: [
+
+                    { extend: 'create', className: 'btn-light', editor: editor },
+                    { extend: 'edit', className: 'btn-light', editor: editor },
+                    { extend: 'remove', className: 'btn-light', editor: editor },
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+
+
+                    {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                    },
+                   {
+                        extend: "selected",
+                        text: '<i class="fas fa-clone"></i>',
+                        titleAttr: 'Duplicar',
+                        action: function (e, dt, node, config) {
+                            // Start in edit mode, and then change to create
+                            editor
+                                .edit(table.rows({ selected: true }).indexes(), {
+                                    title: 'Duplicar seleccionado',
+                                    buttons: 'Duplicar'
+                                })
+                                .mode('create');
+                        }
+                    },
+                    {
+                        text: '<i class="fas fa-sync-alt" style="color:green"></i>',
+                        titleAttr: 'Actualizar',
+                        action: function (e, dt, node, config) {
+                            $('#DTComercial').DataTable().ajax.reload();
+
+                        }
+                    },
+                    {
+                        text: '<a><i class="fas fa-stream" style="color:blue" ></i> &nbsp; Aprobar</a>',
+                        titleAttr: 'Reporte',
+                        action: function (e, dt, node, config) {
+                            if (table.rows('.selected').data().length > 0) {
+
+                                Autorizar();
+
+                            }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
+                        }
+                    },
+                    //{
+                    //    text: '<a><i class="fas fa-stream" style="color:blue" ></i> &nbsp; Aprobar</a>',
+                    //    titleAttr: 'Reporte',
+                    //    action: function (e, dt, node, config) {
+
+                    //        Autorizar();
+                    //    }
+                    //},
+
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+           //$('#DTComercial tbody').on('click', 'tr', function () {
+           //    $(this).toggleClass('selected');
+           //    var data = table.row(this).data();
+           //    Fila = data.ID;
+           //    hijo(Fila);
+
+
+           //});
+           $.fn.dataTable.ext.errMode = function (settings, helpPage, message) {
+               toastr.error(message, "Error", { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" })
+
+           };
+
+
+
+          });
+
+
+
+        function Autorizar() {
+            var data = table.rows({ selected: true }).data().toArray();
+            $.ajax({
+                type: 'post',
+                url: "/ComercialPed/Aprobar/",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                traditional: true,
+                success: function (response) {
+                    if (response.success === true) {
+                        toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                    }
+                    else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                }
+            });
+
+
+        }
+
+
+        function Pedido() {
+            /* document.getElementById("FileUpload").value = "";*/
+            /* Validamos los precios respecto a SMI  y MH*/
+                jQuery.ajax({
+                    url: "@Url.Action("Pedido", "ComercialPed")",
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        if (response.success === true) {
+                            toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                        }
+                        else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                    }
+                });
+
+        }
+
+    </script>
+
+
+
+
+}
