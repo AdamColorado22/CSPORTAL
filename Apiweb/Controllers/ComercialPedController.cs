@@ -182,8 +182,10 @@ namespace Apiweb.Controllers
                 .Field(new Field("TIPO"))
                 .Field(new Field("PART_ID"))
                 .Field(new Field("FECHA_ENTREGA"))
-                .Field(new Field("CANTIDAD"))
-                .Field(new Field("PRECIO"))
+                .Field(new Field("CANTIDAD")
+                .Validator(Validation.Numeric("es-SV", new ValidationOpts { Message = "Este Campo debe ser Numero" })))
+                .Field(new Field("PRECIO")
+                .Validator(Validation.Numeric("es-SV", new ValidationOpts { Message = "Este Campo debe ser Numero" })))
                 .Field(new Field("REF_COTIZACION"))
                 .Field(new Field("DUI"))
                 .Field(new Field("SEGMENTO"))
@@ -196,6 +198,7 @@ namespace Apiweb.Controllers
                 .Field(new Field("IDUSUARIO")
                 .SetValue(usuario))
                 .Field(new Field("ORDENCOMPRA"))
+                .Field(new Field("USER_7"))
                 .Field(new Field("BASE")
                 .SetValue(entidad))
                 .Field(new Field("MARGEN")
@@ -320,11 +323,11 @@ namespace Apiweb.Controllers
                 //configuracion smtmp
                 SmtpClient smtp = new SmtpClient();
                 //smtp.Host = "192.168.60.47";
-                smtp.Host = "172.16.1.17";
+                smtp.Host = "smtp3.termonet.com";
                 smtp.Port = 25;
                 smtp.EnableSsl = false;
                 smtp.UseDefaultCredentials = true;
-                //smtp.Send(correo);
+                smtp.Send(correo);
                 return true;
 
             }

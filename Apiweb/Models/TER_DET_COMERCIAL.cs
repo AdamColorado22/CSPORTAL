@@ -40,6 +40,8 @@ public partial class TER_DET_COMERCIAL
 
     public string C_REP { get; set; }
 
+    public string PRECIO_3 { get; set; }
+
 }
 
 }

@@ -228,7 +228,7 @@ namespace Apiweb.Controllers
                 correo.Priority = MailPriority.Normal;
                 //configuracion smtmp
                 SmtpClient smtp = new SmtpClient();
-                smtp.Host = "172.16.1.17";
+                smtp.Host = "smtp3.termonet.com";
                 smtp.Port = 25;
                 smtp.EnableSsl = false;
                 smtp.UseDefaultCredentials = true;

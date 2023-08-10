@@ -33,9 +33,10 @@
           <Property Name="TOLERANCIA" Type="varchar" MaxLength="50" />
           <Property Name="CARTILLA" Type="varchar" MaxLength="500" />
           <Property Name="BASE" Type="varchar" MaxLength="50" />
-          <Property Name="ORDENCOMPRA" Type="varchar" MaxLength="50" />
           <Property Name="ESTADO_PED" Type="varchar" MaxLength="50" />
+          <Property Name="ORDENCOMPRA" Type="varchar" MaxLength="50" />
           <Property Name="FECHADESPACHO" Type="varchar" MaxLength="50" />
+          <Property Name="USER_7" Type="varchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="TER_DET_COMERCIAL">
           <Key>
@@ -52,24 +53,11 @@
           <Property Name="PRECIO_2" Type="varchar" MaxLength="50" />
           <Property Name="MC" Type="decimal" Precision="18" Scale="2" />
           <Property Name="C_REP" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="TER_MATERIAL">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PART_ID" Type="varchar" MaxLength="100" />
-          <Property Name="RESINA" Type="varchar" MaxLength="500" />
-          <Property Name="PORCENTAJE" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="PROCESO" Type="varchar" MaxLength="20" />
-          <Property Name="PIEZA" Type="int" />
-          <Property Name="ESTADO" Type="varchar" MaxLength="50" />
-          <Property Name="OPERATION_SEQ" Type="int" />
+          <Property Name="PRECIO_3" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="TERMOAPPModelStoreContainer">
           <EntitySet Name="TER_COM_PEDIDOS" EntityType="Self.TER_COM_PEDIDOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TER_DET_COMERCIAL" EntityType="Self.TER_DET_COMERCIAL" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TER_MATERIAL" EntityType="Self.TER_MATERIAL" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -106,25 +94,12 @@
           <Property Name="ORDENCOMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO_PED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FECHADESPACHO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USER_7" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="TERMOAPPEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TER_COM_PEDIDOS" EntityType="Self.TER_COM_PEDIDOS" />
-          <EntitySet Name="TER_MATERIAL" EntityType="TERMOAPPModel.TER_MATERIAL" />
           <EntitySet Name="TER_DET_COMERCIAL" EntityType="TERMOAPPModel.TER_DET_COMERCIAL" />
         </EntityContainer>
-        <EntityType Name="TER_MATERIAL">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PART_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="RESINA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="PORCENTAJE" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="PROCESO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PIEZA" Type="Int32" />
-          <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OPERATION_SEQ" Type="Int32" />
-        </EntityType>
         <EntityType Name="TER_DET_COMERCIAL">
           <Key>
             <PropertyRef Name="ID" />
@@ -140,6 +115,7 @@
           <Property Name="PRECIO_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MC" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="C_REP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -150,6 +126,7 @@
           <EntitySetMapping Name="TER_COM_PEDIDOS">
             <EntityTypeMapping TypeName="TERMOAPPModel.TER_COM_PEDIDOS">
               <MappingFragment StoreEntitySet="TER_COM_PEDIDOS">
+                <ScalarProperty Name="USER_7" ColumnName="USER_7" />
                 <ScalarProperty Name="FECHADESPACHO" ColumnName="FECHADESPACHO" />
                 <ScalarProperty Name="ESTADO_PED" ColumnName="ESTADO_PED" />
                 <ScalarProperty Name="ORDENCOMPRA" ColumnName="ORDENCOMPRA" />
@@ -180,23 +157,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TER_MATERIAL">
-            <EntityTypeMapping TypeName="TERMOAPPModel.TER_MATERIAL">
-              <MappingFragment StoreEntitySet="TER_MATERIAL">
-                <ScalarProperty Name="OPERATION_SEQ" ColumnName="OPERATION_SEQ" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="PIEZA" ColumnName="PIEZA" />
-                <ScalarProperty Name="PROCESO" ColumnName="PROCESO" />
-                <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
-                <ScalarProperty Name="RESINA" ColumnName="RESINA" />
-                <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TER_DET_COMERCIAL">
             <EntityTypeMapping TypeName="TERMOAPPModel.TER_DET_COMERCIAL">
               <MappingFragment StoreEntitySet="TER_DET_COMERCIAL">
+                <ScalarProperty Name="PRECIO_3" ColumnName="PRECIO_3" />
                 <ScalarProperty Name="C_REP" ColumnName="C_REP" />
                 <ScalarProperty Name="MC" ColumnName="MC" />
                 <ScalarProperty Name="PRECIO_2" ColumnName="PRECIO_2" />

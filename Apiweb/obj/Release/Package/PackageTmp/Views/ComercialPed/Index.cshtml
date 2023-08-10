@@ -56,6 +56,7 @@
                         <tr>
                             <th>ID</th>
                             <th>PEDIDO</th>
+                            <th>PART_ID</th>
                             <th>ESTADO DEL PED</th>
                             <th>ESTADO ACTUAL</th>
                             <th>FECHA INGRESO</th>
@@ -63,14 +64,13 @@
                             <th>CLIENTE</th>
                             <th>OC</th>
                             <th>TIPO</th>
-                            <th>PART_ID</th>
-                            <th>FECHA_ENTREGA</th>
+<th>FECHA_ENTREGA</th>
                             <th>CANTIDAD</th>
                             <th>PRECIO</th>
                             <th>REF_COTIZACION</th>
                             <th>DUI</th>
                             <th>SEGMENTO</th>
-                            @*<th>CLUSTER</th>*@
+                            <th>UNIDAD NEGOCIO</th>
                             <th>COSTO</th>
                             <th>COMMODITY_CODE</th>
                             <th>UN</th>
@@ -191,6 +191,17 @@
                     { label: "PRECIO:", name: "PRECIO" },
                     { label: "REF_COTIZACION:", name: "REF_COTIZACION" },
                     { label: "DUI:", name: "DUI" },
+                    {
+                        label: "UNIDAD NEGOCIO:", name: "USER_7", type: "select",
+                        ipOpts: [
+
+                            { label: "B2B-SEG", value: "B2B-SEG" },
+                            { label: "B2B-TX", value: "B2B-TX" },
+                            { label: "B2C", value: "B2C" },
+                            { label: "B2D", value: "B2D" }
+
+                        ] },
+                    
                     { label: "TOLERANCIA:", name: "TOLERANCIA" },
                     {
                         label: "CARTILLA:", name: "CARTILLA"
@@ -210,7 +221,7 @@
 
             table=   $('#DTComercial').DataTable({
                 responsive: true,
-                dom: "Bfrltip",
+                dom: "QBfrtip",
                 /*"scrollY": "200px",*/
                 "iDisplayLength": 10,
                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
@@ -226,6 +237,7 @@
                 columns: [
                     { data: "ID" },
                     { data: "PEDIDO" },
+                    { data: "PART_ID" },
                     { data: "ESTADO_PED" },
                     { data: "ESTADO" },
                     { data: "FECHA_INGRESO" },
@@ -233,13 +245,12 @@
                     { data: "CLIENTE" },
                     { data: "OC" },
                     { data: "TIPO" },
-                    { data: "PART_ID" },
                     { data: "FECHA_ENTREGA" },
                     { data: "CANTIDAD" },
                     { data: "PRECIO" },
                     { data: "REF_COTIZACION" },
                     { data: "DUI" },
-                    /*{ data: "SEGMENTO" },*/
+                    { data: "USER_7" },
                     { data: "CLUSTER" },
                     { data: "COSTO" },
                     { data: "COMMODITY_CODE" },

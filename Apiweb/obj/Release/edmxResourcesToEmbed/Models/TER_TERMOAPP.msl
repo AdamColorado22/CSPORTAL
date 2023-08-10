@@ -4,6 +4,7 @@
     <EntitySetMapping Name="TER_COM_PEDIDOS">
       <EntityTypeMapping TypeName="TERMOAPPModel.TER_COM_PEDIDOS">
         <MappingFragment StoreEntitySet="TER_COM_PEDIDOS">
+          <ScalarProperty Name="USER_7" ColumnName="USER_7" />
           <ScalarProperty Name="FECHADESPACHO" ColumnName="FECHADESPACHO" />
           <ScalarProperty Name="ESTADO_PED" ColumnName="ESTADO_PED" />
           <ScalarProperty Name="ORDENCOMPRA" ColumnName="ORDENCOMPRA" />
@@ -34,23 +35,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TER_MATERIAL">
-      <EntityTypeMapping TypeName="TERMOAPPModel.TER_MATERIAL">
-        <MappingFragment StoreEntitySet="TER_MATERIAL">
-          <ScalarProperty Name="OPERATION_SEQ" ColumnName="OPERATION_SEQ" />
-          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-          <ScalarProperty Name="PIEZA" ColumnName="PIEZA" />
-          <ScalarProperty Name="PROCESO" ColumnName="PROCESO" />
-          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
-          <ScalarProperty Name="RESINA" ColumnName="RESINA" />
-          <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TER_DET_COMERCIAL">
       <EntityTypeMapping TypeName="TERMOAPPModel.TER_DET_COMERCIAL">
         <MappingFragment StoreEntitySet="TER_DET_COMERCIAL">
+          <ScalarProperty Name="PRECIO_3" ColumnName="PRECIO_3" />
           <ScalarProperty Name="C_REP" ColumnName="C_REP" />
           <ScalarProperty Name="MC" ColumnName="MC" />
           <ScalarProperty Name="PRECIO_2" ColumnName="PRECIO_2" />

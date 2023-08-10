@@ -72,6 +72,8 @@ public partial class TER_COM_PEDIDOS
 
     public string FECHADESPACHO { get; set; }
 
+    public string USER_7 { get; set; }
+
 }
 
 }

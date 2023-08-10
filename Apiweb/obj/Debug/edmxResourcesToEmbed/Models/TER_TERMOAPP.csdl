@@ -31,25 +31,12 @@
     <Property Name="ORDENCOMPRA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ESTADO_PED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="FECHADESPACHO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USER_7" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="TERMOAPPEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="TER_COM_PEDIDOS" EntityType="Self.TER_COM_PEDIDOS" />
-    <EntitySet Name="TER_MATERIAL" EntityType="TERMOAPPModel.TER_MATERIAL" />
     <EntitySet Name="TER_DET_COMERCIAL" EntityType="TERMOAPPModel.TER_DET_COMERCIAL" />
   </EntityContainer>
-  <EntityType Name="TER_MATERIAL">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PART_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="RESINA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="PORCENTAJE" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="PROCESO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="PIEZA" Type="Int32" />
-    <Property Name="ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OPERATION_SEQ" Type="Int32" />
-  </EntityType>
   <EntityType Name="TER_DET_COMERCIAL">
     <Key>
       <PropertyRef Name="ID" />
@@ -65,5 +52,6 @@
     <Property Name="PRECIO_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="MC" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="C_REP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PRECIO_3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

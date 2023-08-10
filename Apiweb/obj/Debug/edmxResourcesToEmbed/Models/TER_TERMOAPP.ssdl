@@ -28,9 +28,10 @@
     <Property Name="TOLERANCIA" Type="varchar" MaxLength="50" />
     <Property Name="CARTILLA" Type="varchar" MaxLength="500" />
     <Property Name="BASE" Type="varchar" MaxLength="50" />
-    <Property Name="ORDENCOMPRA" Type="varchar" MaxLength="50" />
     <Property Name="ESTADO_PED" Type="varchar" MaxLength="50" />
+    <Property Name="ORDENCOMPRA" Type="varchar" MaxLength="50" />
     <Property Name="FECHADESPACHO" Type="varchar" MaxLength="50" />
+    <Property Name="USER_7" Type="varchar" MaxLength="400" />
   </EntityType>
   <EntityType Name="TER_DET_COMERCIAL">
     <Key>
@@ -47,23 +48,10 @@
     <Property Name="PRECIO_2" Type="varchar" MaxLength="50" />
     <Property Name="MC" Type="decimal" Precision="18" Scale="2" />
     <Property Name="C_REP" Type="varchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="TER_MATERIAL">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PART_ID" Type="varchar" MaxLength="100" />
-    <Property Name="RESINA" Type="varchar" MaxLength="500" />
-    <Property Name="PORCENTAJE" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="PROCESO" Type="varchar" MaxLength="20" />
-    <Property Name="PIEZA" Type="int" />
-    <Property Name="ESTADO" Type="varchar" MaxLength="50" />
-    <Property Name="OPERATION_SEQ" Type="int" />
+    <Property Name="PRECIO_3" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="TERMOAPPModelStoreContainer">
     <EntitySet Name="TER_COM_PEDIDOS" EntityType="Self.TER_COM_PEDIDOS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TER_DET_COMERCIAL" EntityType="Self.TER_DET_COMERCIAL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TER_MATERIAL" EntityType="Self.TER_MATERIAL" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

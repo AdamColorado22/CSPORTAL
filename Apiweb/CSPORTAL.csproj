@@ -329,9 +329,6 @@
     <Compile Include="Models\TER_DET_COMERCIAL.cs">
       <DependentUpon>TER_TERMOAPP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TER_MATERIAL.cs">
-      <DependentUpon>TER_TERMOAPP.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TER_PORC_TEXTIL.cs">
       <DependentUpon>FACTURACION.tt</DependentUpon>
     </Compile>

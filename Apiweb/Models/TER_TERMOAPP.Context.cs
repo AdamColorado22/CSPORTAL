@@ -34,8 +34,6 @@ public partial class TERMOAPPEntities1 : DbContext
 
     public virtual DbSet<TER_COM_PEDIDOS> TER_COM_PEDIDOS { get; set; }
 
-    public virtual DbSet<TER_MATERIAL> TER_MATERIAL { get; set; }
-
     public virtual DbSet<TER_DET_COMERCIAL> TER_DET_COMERCIAL { get; set; }
 
 }
