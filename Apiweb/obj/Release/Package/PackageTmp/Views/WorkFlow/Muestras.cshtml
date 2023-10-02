@@ -13,7 +13,7 @@
 <link href="~/Content/Site.css" rel="stylesheet" />
 <script src="~/Content/js/toastr.min.js"></script>
 <link href="~/Content/css/toastr.min.css" rel="stylesheet" />
-
+<script src="~/Content/js/FormularioCorreo.js" asp-append-version="true"></script>
 <script src="~/Content/ckeditor/ckeditor.js"></script>
 
 <div class="row m-4">
@@ -68,6 +68,34 @@
 </div>
 
 
+<!-- Modal para Muestra y Arte -->
+<div class="modal fade" id="ModalCorreo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">listado de Correos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-sm" id="DtCorreos" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Correo</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 @*!-- Modal Agregar o editar -->*@
 <div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -90,9 +118,9 @@
 
 
                     @*<div class="form-group col-md-6">
-                        <label for="txtcodigoarticulo">CODIGO ARTICULO:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtcodigoarticulo">
-                    </div>*@
+                            <label for="txtcodigoarticulo">CODIGO ARTICULO:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtcodigoarticulo">
+                        </div>*@
                     <div class="form-group col-md-6">
                         <label for="txtdui">DUI:</label>
                         <input type="text" autocomplete="off" class="form-control" id="txtdui">
@@ -117,7 +145,29 @@
 
 
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtcantidadMuestra">CANT MUESTRA REQ:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtcantidadMuestra">
+                    </div>
 
+                    <div class="form-group col-md-6">
+                        <label for="txttiposImpresion">TIPO DE IMPRESION:</label>
+                        <select class="form-control" id="txttiposImpresion">
+                            @*<option value="Servicio">Servicio</option>*@
+                            <option selected value="SIN IMPRESION">SIN IMPRESION</option>
+                            <option value="FOTOCELDA/ARTE">FOTOCELDA/ARTE</option>
+                            <option value="GENERICO">GENERICO</option>
+                            <option value="FULL IMPRESION">FULL IMPRESION</option>
+                        </select>
+
+
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chkalimentos">
+                            <label class="form-check-label" for="chkalimentos">Empaque para alimentos</label>
+                        </div>
+                    </div>
 
                     <div class="form-group col-md-12">
                         <label for="datepicker">FECHA REQUERIDA:</label>
@@ -209,68 +259,68 @@
 
 
 
-<div class="modal fade" id="FormModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="txtmuestra">MUESTRA:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtmuestra">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="txtmuestracodigo">CODIGO UNICO MUESTRA:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtmuestracodigo">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="txtcodigodui">NUMERO DE DUI MUESTRA:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtcodigodui">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="txtmaestro">MAESTRO DE INGENIERIA:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtmaestro">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="txtcantidadmuestra">CANTIDAD:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtcantidadmuestra">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="txtformulae">FORMULA:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtformulae">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="estructurae">ESTRUCTURA:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="estructurae">
-                    </div>
+@*<div class="modal fade" id="FormModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="txtmuestra">MUESTRA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtmuestra">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtmuestracodigo">CODIGO UNICO MUESTRA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtmuestracodigo">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtcodigodui">NUMERO DE DUI MUESTRA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtcodigodui">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtmaestro">MAESTRO DE INGENIERIA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtmaestro">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtcantidadmuestra">CANTIDAD:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtcantidadmuestra">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtformulae">FORMULA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtformulae">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="estructurae">ESTRUCTURA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="estructurae">
+                        </div>
 
-                    <div class="form-group col-md-12">
-                        <label for="txtequipotec">PRESENCIA EQUIPO TECNICO:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtequipotec">
+                        <div class="form-group col-md-12">
+                            <label for="txtequipotec">PRESENCIA EQUIPO TECNICO:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtequipotec">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="txtexplosion">EXPLOSION DE MATERIALES:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtexplosion">
+                        </div>
+
                     </div>
-                    <div class="form-group col-md-12">
-                        <label for="txtexplosion">EXPLOSION DE MATERIALES:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtexplosion">
-                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
 
                 </div>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
 
             </div>
 
         </div>
-
-    </div>
-</div>
+    </div>*@
 
 
 <div class="modal fade" id="FormModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -291,7 +341,7 @@
                         <input type="text" autocomplete="off" class="form-control" id="txtot">
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="datepicker4">FECHA ESTIMADA:</label>
+                        <label for="datepicker4">FECHA ESTIMADA DE ENTREGA:</label>
                         <input type="text" id="datepicker4" class="form-control" autocomplete="off">
                     </div>
 
@@ -310,6 +360,89 @@
 </div>
 
 
+
+<!-- Modal -->
+<div id="FormModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#tab02">Detalle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab03">Comentarios</a>
+                    </li>
+                </ul>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="modal-body">
+                <div class="tab-content">
+                    <div id="tab02" class="tab-pane fade show active">
+                        <h5 class="text-center mb-4 mt-0 pt-4">Detalle</h5>
+                        <div class="form-group col-md-12">
+                            <label for="txtmuestra">MUESTRA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtmuestra">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="txtmuestracodigo">CODIGO UNICO MUESTRA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtmuestracodigo">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="txtcodigodui">NUMERO DE DUI MUESTRA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtcodigodui">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="txtmaestro">MAESTRO DE INGENIERIA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtmaestro">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="txtcantidadmuestra">CANTIDAD:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtcantidadmuestra">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="txtformulae">FORMULA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtformulae">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="estructurae">ESTRUCTURA:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="estructurae">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="txtequipotec">PRESENCIA EQUIPO TECNICO:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtequipotec">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="txtexplosion">EXPLOSION DE MATERIALES:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtexplosion">
+                        </div>
+                    </div>
+                    <div id="tab03" class="tab-pane fade">
+                        <div class="bg-light">
+                            <h5 class="text-center mb-4 mt-0 pt-4">Comentarios</h5>
+                            <div class="form-group col-md-12">
+                                <label for="txtcomentarios2">COMENTARIOS:</label>
+                                <textarea class="form-control" id="txtcomentarios2" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <div class="modal fade" id="FormModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -319,32 +452,30 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-           
-                <div class="modal-body">
 
-                    <div class="form-row">
+            <div class="modal-body">
 
-
-                        <div class="form-group col-md-12">
-                            <label for="txtcantidades">CANTIDADES:</label>
-                            <input type="text" autocomplete="off" class="form-control" id="txtcantidades">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="txtcomentarios">COMENTARIOS:</label>
-                            <textarea class="form-control" id="txtcomentarios" rows="5"></textarea>
-
-                        </div>
-
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="txtcantidades">CANTIDADES:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtcantidades">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="txtcomentarios">COMENTARIOS:</label>
+                        <textarea class="form-control" id="txtcomentarios" rows="5"></textarea>
 
                     </div>
-                </div>
-                <div class="modal-footer">
 
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
 
                 </div>
-         
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
+
+            </div>
+
         </div>
 
     </div>
@@ -364,7 +495,7 @@
                 <div class="form-row">
 
                     <div class="form-group col-md-12">
-                        <label for="txtaprovada">APROVADA:</label>
+                        <label for="txtaprovada">APROBADA:</label>
                         <select class="form-control" id="txtaprovada">
                             @*<option value="Servicio">Servicio</option>*@
                             <option selected value="SI">SI</option>
@@ -448,7 +579,7 @@
 
 
     <script>
-      
+
         var table, tableA;
         $("#exampleModal").draggable({
             handle: ".modal-header"
@@ -490,10 +621,10 @@
         $(document).ready(function () {
 
             CKEDITOR.replace('txtcomentarios');
-            
+            CKEDITOR.replace('txtcomentarios2');
             mostrar();
 
-       
+
             document.getElementById('uploader').onsubmit = function () {
                 var formdata = new FormData(); //FormData object
                 var idworkflow = document.getElementById('idWorkflow').value;
@@ -638,7 +769,7 @@
 
                 ],
 
-                order: [0, 'asc'],
+                order: [0, 'desc'],
 
                 select: true,
                 buttons: [
@@ -695,7 +826,7 @@
                         }
                     },
                     {
-                        text: '<i class="fas fa-link"></i>',
+                        text: '<i class="fas fa-file-upload"></i>',
                         titleAttr: 'Adjuntos',
                         action: function (e, dt, node, config) {
                             if (table.rows('.selected').data().length > 0) { archivos(table.rows({ selected: true }).data()[0].ID); }
@@ -706,7 +837,17 @@
                         }
                     },
 
+                    {
+                        text: '<a><i class="fas fa-at"></i></i>&nbsp; Correo</a>',
+                        titleAttr: 'Correo',
+                        action: function (e, dt, node, config) {
+                            if (table.rows('.selected').data().length > 0) { habilitarCorreo("MUE", table.rows({ selected: true }).data()[0].PASO_ACTUAL); }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro y en estado Finalizado', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
 
+                        }
+                    },
 
                 ],
                 language: {
@@ -748,7 +889,7 @@
             tableA= $('#Adjuntos').DataTable({
                 responsive: true,
                 dom: "Bfrltip",
-                "scrollY": "500px",
+                /*"scrollY": "500px",*/
                 "iDisplayLength": 10,
                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                 ajax: "/Workflow/Ver?idworkflow=" + $ID+"&tipo=MUE",
@@ -798,6 +939,24 @@
 
         function limpiar()
         {
+
+            $("#txtequipotec").val("");
+            $("#txtexplosion").val("");
+            $("#txtmuestra").val("");
+            $("#txtmuestracodigo").val("");
+            $("#txtmaestro").val("");
+            $("#txtcodigodui").val("");
+            $("#txtcantidadmuestra").val("");
+            $("#txtformulae").val("");
+            $("#estructurae").val("");
+            $("#txtdui").val("");
+            $("#txtcliente").val("");
+            $("#txtnombreprod").val("");
+            $("#txttipos").val("");
+            $("#datepicker").val("");
+            $("#txtcantidadMuestra").val("");
+            $("#txttiposImpresion").val("");
+            $("#chkalimentos").val("");
             table.clear().draw();
             table.destroy();
             mostrar();
@@ -810,6 +969,7 @@
             switch (Seleccion.PASO_ACTUAL) {
 
                 case 10:
+                    $('#txtcomentarios2').val(CKEDITOR.instances["txtcomentarios2"].getData());
                     Seleccion.P_EQUIPO_TEC = $("#txtequipotec").val();
                     Seleccion.EXP_MATERIALES = $("#txtexplosion").val();
                     Seleccion.MUESTRA = $("#txtmuestra").val();
@@ -819,6 +979,7 @@
                     Seleccion.CANTIDAD = $("#txtcantidadmuestra").val();
                     Seleccion.FORMULA = $("#txtformulae").val();
                     Seleccion.ESTRUCTURA = $("#estructurae").val();
+                    Seleccion.COMENTARIOS2 = $("#txtcomentarios2").val();
 
                     var adicional = { TIPO: "MUE" };
                     Object.assign(Seleccion, adicional);
@@ -837,6 +998,7 @@
                 case 40:
                     var adicional = { APROBADA: $("#txtaprovada").val(), FECHA_VALIDACION_C: $("#datepicker5").val(), TIPO: "MUE" };
                     Object.assign(Seleccion, adicional);
+
                     break;
                 case 50:
                     var adicional = { PASO: $("#txtpaso").val(), CANTIDAD_LOTE: $("#txtcantidalote").val(), TIPO: "MUE" };
@@ -876,16 +1038,19 @@
 
         function Guardar()
         {
-                var Workflow = {
-                    ID: 0,
-                    PASO_ACTUAL: 10,
-                    DUI: $("#txtdui").val(),
-                    IDCLIENTE: $("#txtcliente").val(),
-                    NOMBRE_PRODUCTO: $("#txtnombreprod").val(),
-                    TIPO_PROYECTO: $("#txttipos").val(),
-                    FECHA_REQUERIDA: $("#datepicker").val()
+            var Workflow = {
+                ID: 0,
+                PASO_ACTUAL: 0,
+                DUI: $("#txtdui").val(),
+                IDCLIENTE: $("#txtcliente").val(),
+                NOMBRE_PRODUCTO: $("#txtnombreprod").val(),
+                TIPO_PROYECTO: $("#txttipos").val(),
+                FECHA_REQUERIDA: $("#datepicker").val(),
+                CANT_MUESTRA_REQ: $("#txtcantidadMuestra").val(),
+                TIPO_IMPRESION: $("#txttiposImpresion").val(),
+                EMPAQUE_ALIMENTOS: $('#chkalimentos').prop('checked'),
+            }
 
-                }
 
 
 

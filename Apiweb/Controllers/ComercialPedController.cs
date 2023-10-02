@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Apiweb.Models;
 using Apiweb.Properties;
+using Apiweb.Utilidad;
 using Dapper;
 using DataTables;
 using log4net;
@@ -19,12 +20,12 @@ namespace Apiweb.Controllers
     {
         // GET: ComercialPed
         private static readonly ILog Log = Logs.GetLogger();
-        AppDbContext _dbContext;
+        
         Correo correos = new Correo();
         // GET: WorkFlow
         Settings settings = Properties.Settings.Default;
-        string usuario = (System.Web.HttpContext.Current.Session["User"] as String).ToUpper();
-        string entidad = System.Web.HttpContext.Current.Session["Base"] as String;
+        string usuario = SessionManager.GetUsuario();
+        string entidad = SessionManager.GetEntidad();
         public ActionResult Index()
         {
             return View();

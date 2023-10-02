@@ -37,6 +37,7 @@
     <EntitySet Name="TER_W_WORKFLOW_MUESTRA" EntityType="TERMOAPP.TER_W_WORKFLOW_MUESTRA" />
     <EntitySet Name="TER_W_WORFLOW_CARTICULO" EntityType="TERMOAPP.TER_W_WORFLOW_CARTICULO" />
     <EntitySet Name="TER_COMERCIAL" EntityType="TERMOAPP.TER_COMERCIAL" />
+    <EntitySet Name="TER_W_CORREOS" EntityType="TERMOAPP.TER_W_CORREOS" />
   </EntityContainer>
   <EntityType Name="TER_QW3_PED">
     <Key>
@@ -316,6 +317,10 @@
     <Property Name="IMPRESION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ASIGNADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PASO_ACTUAL" Type="Int32" />
+    <Property Name="NOMBRE_PRODUCTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIO_INICIADOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="REGION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CLIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TER_W_GRUPOS">
     <Key>
@@ -343,6 +348,7 @@
     <Property Name="ACC_INVERSION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ACC_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TER_W_PARAMETROS_MAQ">
     <Key>
@@ -353,6 +359,7 @@
     <Property Name="MAQ_INVERSION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="MAQ_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TER_W_PARAMETROS_PAR">
     <Key>
@@ -365,6 +372,7 @@
     <Property Name="VELOCIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PA_DESPERDICIO_V" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="PAR_DESPERDICIO_F" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TER_W_ADJUNTOS">
     <Key>
@@ -393,6 +401,7 @@
     <Property Name="INS_CODIGO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="INS_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TER_W_PARAMETROS_MAT">
     <Key>
@@ -406,6 +415,7 @@
     <Property Name="MAT_PROVEDOR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="MAT_LEADTIME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="MAT_DENSIDAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TER_W_SERVICIOS_PRODUCCION">
     <Key>
@@ -461,6 +471,9 @@
     <Property Name="LOTE_INDUSTRIAL" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="DUI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIO_INI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_RECEPCION" Type="DateTime" Precision="3" />
+    <Property Name="INFORMACION_REQ" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TER_W_OTROS">
     <Key>
@@ -561,5 +574,15 @@
     <Property Name="UN_X_M2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UN_X_KG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PESO_X_BOBINA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TER_W_CORREOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PASO_ACTUAL" Type="Int32" />
   </EntityType>
 </Schema>

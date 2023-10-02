@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Apiweb.Filtro;
 using Apiweb.Models;
 using Apiweb.Properties;
+using Apiweb.Utilidad;
 using Dapper;
 using DataTables;
 using log4net;
@@ -69,10 +70,11 @@ namespace Apiweb.Controllers
 
         }
 
-        String usuario = System.Web.HttpContext.Current.Session["User"] as String;
+        string usuario = SessionManager.GetUsuario();
+        string entidad = SessionManager.GetEntidad();
 
-        
-       
+
+
         public ActionResult Index()
         { 
             ViewBag.Base = System.Web.HttpContext.Current.Session["Base"] as String;
