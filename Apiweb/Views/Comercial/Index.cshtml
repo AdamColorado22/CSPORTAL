@@ -450,7 +450,14 @@
 
 
   ],
-
+                 columnDefs: [
+                     {
+                         targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], // Índices de las columnas numéricas
+                         render: $.fn.dataTable.render.number(',', '.', 2, ''),
+                         type: 'num' // Tipo de dato numérico
+                     },
+                     // Agrega más definiciones de columnas si es necesario
+                 ],
                  order: [0, 'asc'],
                  keys: {
                      /*columns: ':not(:first-child)',*/
