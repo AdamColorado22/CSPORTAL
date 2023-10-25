@@ -626,6 +626,7 @@
 
 
             document.getElementById('uploader').onsubmit = function () {
+                $("#btnsubmit").prop("disabled", true);
                 var formdata = new FormData(); //FormData object
                 var idworkflow = document.getElementById('idWorkflow').value;
                 var fileInput = document.getElementById('fileInput');
@@ -646,10 +647,11 @@
                         //toastr.success('Archivo Adjuntado', 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
                         tableA.destroy();
                         tableA.ajax.reload();
-
+                        $("#btnsubmit").prop("disabled", false);
                         archivos(table.rows({ selected: true }).data()[0].ID);
                         //limpiar();
                     }
+                    $("#btnsubmit").prop("disabled", false);
                 }
                 return false;
             }
@@ -664,6 +666,24 @@
             $('#FormModal6').modal('show');
         }
 
+        function Eliminar(id) {
+
+            jQuery.ajax({
+                url: "@Url.Action("EliminarArchivo", "Workflow")" + "?valor=" + id,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    if (response.success === true) {
+                        tableA.destroy();
+
+                     archivos(table.rows({ selected: true }).data()[0].ID);
+                    }
+                    else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                }
+                });
+
+        }
 
         function mostrar()
         {
