@@ -49,8 +49,9 @@
                     Boolean ComercialPedA = false;
                     Boolean ComercialPedT = false;
                     Boolean Material = false;
-                    
-                            String usuario = "";
+                    Boolean Part_id = false;
+
+                    String usuario = "";
                     try
                     {
                         List<Apiweb.Models.USUARIO_ROL> ROl = System.Web.HttpContext.Current.Session["Rol"] as List<Apiweb.Models.USUARIO_ROL>;
@@ -131,6 +132,9 @@
                                     break;
                                 case 24:
                                     Material = true;
+                                    break;
+                                case 25:
+                                    Part_id = true;
                                     break;
 
 
@@ -299,6 +303,12 @@
                 {
                     <li id="comercialpedT" class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index", "Material")"><i class="fas fa-store"></i>Material</a>
+                    </li>
+                }
+                @if (Part_id)
+                {
+                    <li id="part" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "PartDescription")"><i class="fas fa-sitemap"></i>Part</a>
                     </li>
                 }
                 <li id="Salir" class="nav-item">

@@ -1,0 +1,284 @@
+﻿
+<script src="~/Content/js/jquery-3.5.1.js"></script>
+@*<script src="~/Content/js/jquery.auto-complete.js"></script>*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Content/js/toastr.min.js"></script>
+<link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Lang Description";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+
+
+
+
+                    <div class="form-group col-md-12">
+                        <label for="txtpart_id">PART ID:</label>
+                        <input type="text" class="form-control" id="txtpart_id">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="txtequivalente">EQUIVALENTE:</label>
+                        <input type="text" class="form-control" id="txtequivalente">
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" id="btnguardari" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+ 
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="base">Base</label>
+                        </div>
+                        <select class="custom-select" id="base">
+                            <option>Seleccionar...</option>
+                            <option value="TERMO9">TERMO9</option>
+                            <option value="TEXPORT9">TEXPORT9</option>
+                            <option value="TERMHON9">TERMHON9</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-sm">
+                    <button class="btn btn-primary me-md-2" type="button" onclick="Visualizar(document.getElementById('base').value);">Buscar</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover" id="DTConsulta" style="width:100%">
+            <thead class="thead-light">
+                <tr>
+
+                    <th>PART ID</th>
+                    <th>EQUIVALENTE</th>
+
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+
+    @section scripts{
+
+
+        <script>
+
+
+        $('#part').addClass('active');
+        var table;
+
+            function Visualizar($base) {
+                $('#DTConsulta').DataTable().destroy();
+            table = $('#DTConsulta').DataTable({
+                responsive: true,
+                dom: "QBfrtip",
+                /*"scrollY": "200px",*/
+                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/PartDescription/ListarPartDescription?Base=" + $base,
+
+                select: true,
+
+                columns: [
+                    { data: "part_id" },
+                    { data: "part_description" },
+
+                ],
+
+                order: [0, 'asc'],
+                buttons: [
+                    {
+                        text: '<a ><i class="fas fa-plus-circle fa-lg"  style="color:#007bff"></i>&nbsp; Nuevo</a>',
+                        titleAttr: 'Agregar Nuevo',
+                        action: function (e, dt, node, config) {
+                            $('#btnguardari').prop("disabled", false);
+                            $('#btnguardari').data('accion', 1);
+                            $('#FormModal').modal('show');
+                        }
+                    },
+
+                    {
+                        text: '<a><i class="fas fa-pencil-alt fa-lg" style="color:#007bff"></i>&nbsp; Modificar</a>',
+                        titleAttr: 'Modificar',
+                        action: function (e, dt, node, config) {
+                            var selectedData = table.rows({ selected: true }).data()[0];
+
+                            if (selectedData) {
+                                // Llena el formulario con los datos seleccionados
+                                $('#txtpart_id').val(selectedData.part_id);
+                                $('#txtequivalente').val(selectedData.part_description);
+
+                                // Deshabilita el campo part_id
+                                $('#txtpart_id').prop('disabled', true);
+
+                                // Configura la acción como 2 (actualización)
+                                $('#btnguardari').data('accion', 2);
+
+                                // Muestra la modal
+                                $('#FormModal').modal('show');
+                            } else {
+                                // Muestra un mensaje si no se ha seleccionado ninguna fila
+                                alert('Por favor, seleccione una fila para modificar.');
+                            }
+                        }
+                    },
+                    {
+    text: '<a><i class="fas fa-trash-alt fa-lg" style="color:red"></i>&nbsp; Eliminar</a>',
+    titleAttr: 'Eliminar',
+    action: function (e, dt, node, config) {
+        var selectedData = table.rows({ selected: true }).data()[0];
+
+        var selectedData = table.rows({ selected: true }).data()[0];
+        if (selectedData) {
+            toastr.warning('¿Estás seguro de que deseas eliminar este registro?', 'Confirmar Eliminación', {
+                closeButton: true,
+                positionClass: 'toast-top-center',
+                timeOut: 0,
+                extendedTimeOut: 0,
+                onclick: function () {
+                    // Si el usuario hace clic en la notificación Toast, realiza la eliminación
+                     var formulario = {
+                    accion: 3, // Acción 3 para eliminar
+                    base_id: $("#base").val(),
+                    part_id: selectedData.part_id,
+                    part_description: selectedData.part_description
+                };
+
+                jQuery.ajax({
+                    url: "@Url.Action("Accion", "PartDescription")",
+                    type: "POST",
+                    data: JSON.stringify({ objeto: formulario }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        if (response.success === true) {
+                            toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            $('#DTConsulta').DataTable().ajax.reload();
+                        } else {
+                            toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                        }
+                    }
+                });
+                }
+            });
+        } else {
+            alert('Por favor, seleccione una fila para eliminar.');
+        }
+
+
+    }
+},
+
+
+
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+
+
+                    {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                    },
+
+                    {
+                        text: '<i class="fas fa-sync-alt" style="color:green"></i>',
+                        titleAttr: 'Actualizar',
+                        action: function (e, dt, node, config) {
+                            $('#DTConsulta').DataTable().ajax.reload();
+
+                        }
+                    }
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+
+        };
+
+            function Guardar() {
+    $('#btnguardari').prop('disabled', true);
+
+    var formulario = {
+        accion: $('#btnguardari').data('accion'), // Obtiene la acción del botón
+        base_id: $("#base").val(),
+        part_id: $("#txtpart_id").val(),
+        part_description: $("#txtequivalente").val()
+    };
+
+    debugger;
+
+    jQuery.ajax({
+        url: "@Url.Action("Accion", "PartDescription")",
+        type: "POST",
+        data: JSON.stringify({ objeto: formulario }),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (response) {
+            if (response.success === true) {
+                toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                $('#FormModal').modal('hide');
+                $("#txtpart_id").val('');
+                $("#txtequivalente").val('');
+                $('#txtpart_id').prop('disabled', false); // Habilita el campo part_id nuevamente
+                $('#btnguardari').data('accion', 1); // Restablece la acción a 1 (inserción)
+                $('#DTConsulta').DataTable().ajax.reload();
+            } else {
+                toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+            }
+        }
+    });
+}
+
+
+
+        </script>
+
+
+
+
+    }
