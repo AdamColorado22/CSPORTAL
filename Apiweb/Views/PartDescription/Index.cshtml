@@ -53,51 +53,52 @@
 </div>
 
 <div class="container">
- 
 
-        <div class="container">
 
-            <div class="row">
-                <div class="col-sm">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="base">Base</label>
-                        </div>
-                        <select class="custom-select" id="base">
-                            <option>Seleccionar...</option>
-                            <option value="TERMO">TERMO</option>
-                            <option value="TEXPORT">TEXPORT</option>
-                            <option value="TERMHON">TERMHON</option>
-                            <option value="TERMGUA">TERMGUA</option>
-                            <option value="TERMNIC">TERMNIC</option>
-                            <option value="TERMCR">TERMCR</option>
-                        </select>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="base">Base</label>
                     </div>
-                </div>
+                    <select class="custom-select" id="base">
+                        <option>Seleccionar...</option>
+                        <option value="TERMO">TERMO</option>
+                        <option value="TEXPORT">TEXPORT</option>
+                        <option value="TERMHON">TERMHON</option>
+                        <option value="TERMGUA">TERMGUA</option>
+                        <option value="TERMNIC">TERMNIC</option>
+                        <option value="TERMCR">TERMCR</option>
 
-
-                <div class="col-sm">
-                    <button class="btn btn-primary me-md-2" type="button" onclick="Visualizar(document.getElementById('base').value);">Buscar</button>
+                    </select>
                 </div>
             </div>
+
+
+            <div class="col-sm">
+                <button class="btn btn-primary me-md-2" type="button" onclick="Visualizar(document.getElementById('base').value);">Buscar</button>
+            </div>
         </div>
-        <table class="table table-hover" id="DTConsulta" style="width:100%">
-            <thead class="thead-light">
-                <tr>
-
-                    <th>PART ID</th>
-                    <th>EQUIVALENTE</th>
-
-                </tr>
-            </thead>
-
-        </table>
     </div>
+    <table class="table table-hover" id="DTConsulta" style="width:100%">
+        <thead class="thead-light">
+            <tr>
 
-    @section scripts{
+                <th>PART ID</th>
+                <th>EQUIVALENTE</th>
+
+            </tr>
+        </thead>
+
+    </table>
+</div>
+
+@section scripts{
 
 
-        <script>
+    <script>
 
 
         $('#part').addClass('active');
@@ -126,7 +127,10 @@
                         text: '<a ><i class="fas fa-plus-circle fa-lg"  style="color:#007bff"></i>&nbsp; Nuevo</a>',
                         titleAttr: 'Agregar Nuevo',
                         action: function (e, dt, node, config) {
-                            $('#btnguardari').prop("disabled", false);
+						$('#txtpart_id').val('');
+                                $('#txtequivalente').val('');
+						$('#txtpart_id').prop('disabled', false);
+
                             $('#btnguardari').data('accion', 1);
                             $('#FormModal').modal('show');
                         }
@@ -243,7 +247,7 @@
         };
 
             function Guardar() {
-    $('#btnguardari').prop('disabled', true);
+
 
     var formulario = {
         accion: $('#btnguardari').data('accion'), // Obtiene la acción del botón
@@ -278,9 +282,9 @@
 
 
 
-        </script>
+    </script>
 
 
 
 
-    }
+}
