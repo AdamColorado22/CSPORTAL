@@ -81,10 +81,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/14/2023 17:54:47</publishTime>
     </File>
     <File Include="bin/Apiweb.dll">
-      <publishTime>10/25/2023 21:32:32</publishTime>
+      <publishTime>10/31/2023 16:03:55</publishTime>
     </File>
     <File Include="bin/Apiweb.pdb">
-      <publishTime>10/25/2023 21:32:32</publishTime>
+      <publishTime>10/31/2023 16:03:55</publishTime>
     </File>
     <File Include="bin/Bold.Licensing.dll">
       <publishTime>06/14/2023 17:54:47</publishTime>
@@ -4754,6 +4754,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/ComercialPed/ListarTodo.cshtml">
       <publishTime>05/09/2023 21:46:24</publishTime>
     </File>
+    <File Include="Views/ComercialPed/Otif.cshtml">
+      <publishTime>10/31/2023 15:39:30</publishTime>
+    </File>
     <File Include="Views/Home/Historicos.cshtml">
       <publishTime>05/09/2023 21:46:24</publishTime>
     </File>
@@ -4779,7 +4782,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/09/2023 21:46:24</publishTime>
     </File>
     <File Include="Views/PartDescription/Index.cshtml">
-      <publishTime>10/25/2023 21:31:01</publishTime>
+      <publishTime>10/25/2023 22:33:18</publishTime>
     </File>
     <File Include="Views/QW2/Index.cshtml">
       <publishTime>05/09/2023 21:46:24</publishTime>
@@ -4851,7 +4854,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/09/2023 21:46:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/25/2023 21:32:33</publishTime>
+      <publishTime>10/31/2023 16:03:56</publishTime>
     </File>
   </ItemGroup>
 </Project>
