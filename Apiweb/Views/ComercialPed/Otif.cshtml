@@ -16,7 +16,40 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
-                OTIF
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="categoria">Fecha</label>
+                                </div>
+                                <select class="custom-select" id="categoria">
+                                    <option>Choose...</option>
+                                    <option value="INGRESO">FECHA INGRESO</option>
+                                    <option value="PLANTA">FECHA PLANTA</option>
+                                    <option value="FACTURACION">FECHA FACTURACION</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm">
+                            <input type="text" id="datepicker3" class="form-control" autocomplete="off" placeholder="Fecha Inicio">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" id="datepicker4" class="form-control" autocomplete="off" placeholder="Fecha Final">
+                        </div>
+
+                        <div class="col-sm">
+                            <input type="text" class="form-control" id="txtcliente" placeholder="Cliente">
+                        </div>
+
+                        <div class="col-sm">
+                            <button class="btn btn-primary me-md-2" type="button" onclick="Mostrar(document.getElementById('datepicker3').value,document.getElementById('datepicker4').value,document.getElementById('categoria').value,document.getElementById('txtcliente').value);">Buscar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <table class="table table-striped table-bordered" id="DTComercial" style="width:100%">
@@ -52,22 +85,30 @@
 
 
     <script>
-
+        $('#datepicker3').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
+        $('#datepicker4').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
 
         $('#comercialpedT').addClass('active');
         var table;
-       
-          $(document).ready(function () {
-            
 
+
+
+        function Mostrar(Fechai, FechaF, tipo, Cliente) {
+            if ($('#DTComercial')) { $('#DTComercial').DataTable().destroy(); }
             table=   $('#DTComercial').DataTable({
                 responsive: true,
                 dom: "Bfrltip",
-         
+
                 "iDisplayLength": 10,
                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                ajax: "/ComercialPed/ReporteOtif",
-              
+                ajax: "/ComercialPed/ReporteOtif?tipo=" + tipo + "&Fechai=" + Fechai + "&FechaF=" + FechaF + "&Cliente=" + Cliente,
+
                 columns: [
                     { data: "FECHA_INGRESO" },
                     { data: "FECHA_PLANTA" },
@@ -86,7 +127,7 @@
                 ],
 
                 order: [0, 'asc'],
-                
+
                 buttons: [
 
 
@@ -116,13 +157,16 @@
                    url: "@Url.Content("~/Content/idioma/es-ES.json")"
                 }
             });
-         
-      
+         }
+          $(document).ready(function () {
+
+
+
 
           });
 
 
-        
+
 
     </script>
 

@@ -50,6 +50,7 @@
                     Boolean ComercialPedT = false;
                     Boolean Material = false;
                     Boolean Part_id = false;
+                    Boolean Otif = false;
 
                     String usuario = "";
                     try
@@ -135,6 +136,9 @@
                                     break;
                                 case 25:
                                     Part_id = true;
+                                    break;
+                                case 26:
+                                    Otif = true;
                                     break;
 
 
@@ -309,6 +313,12 @@
                 {
                     <li id="part" class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index", "PartDescription")"><i class="fas fa-sitemap"></i>Part</a>
+                    </li>
+                }
+                @if (Otif)
+                {
+                    <li id="part" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Otif", "ComercialPed")"><i class="fas fa-sitemap"></i>Otif</a>
                     </li>
                 }
                 <li id="Salir" class="nav-item">
