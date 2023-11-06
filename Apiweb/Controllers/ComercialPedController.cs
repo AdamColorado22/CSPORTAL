@@ -74,6 +74,7 @@ namespace Apiweb.Controllers
             var Data = ds.Tables[0].AsEnumerable()
                 .Select(dataRow => new Otif
                 {
+                    BASE = dataRow.Field<string>("BASE"),
                     FECHA_INGRESO = dataRow.Field<string>("FECHA_INGRESO"),
                     FECHA_PLANTA = dataRow.Field<string>("FECHA_PLANTA"),
                     INVOICED_DATE = dataRow.Field<string>("INVOICED_DATE"),

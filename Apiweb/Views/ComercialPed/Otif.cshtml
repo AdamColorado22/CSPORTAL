@@ -8,8 +8,37 @@
 <script src="~/Content/js/toastr.min.js"></script>
 <link href="~/Content/css/toastr.min.css" rel="stylesheet" />
 @{ ViewBag.Title = "Pedidos Termo";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<style>
+    #metricsTable {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+    }
 
+        #metricsTable th, #metricsTable td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        #metricsTable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #metricsTable th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .red {
+        color: red;
+    }
+
+    .green {
+        color: green;
+    }
+</style>
 
 
 <div class="row m-4">
@@ -55,6 +84,7 @@
                 <table class="table table-striped table-bordered" id="DTComercial" style="width:100%">
                     <thead>
                         <tr>
+                            <th>Base</th>
                             <th>Fecha de ingreso pedido</th>
                             <th>Fecha solicitada a planta</th>
                             <th>Fecha de facturación</th>
@@ -75,8 +105,27 @@
 
             </div>
         </div>
+        <table id="metricsTable">
+
+            <tr>
+                <td>PROMEDIO % META LT</td>
+                <td>91</td>
+
+            </tr>
+            <tr>
+                <td>PROMEDIO % CANTIDAD META</td>
+                <td>102</td>
+
+            </tr>
+            <tr>
+                <td>OTIF</td>
+                <td>93.109917355371900</td>
+
+            </tr>
+        </table>
 
     </div>
+
 
 </div>
 
@@ -110,6 +159,7 @@
                 ajax: "/ComercialPed/ReporteOtif?tipo=" + tipo + "&Fechai=" + Fechai + "&FechaF=" + FechaF + "&Cliente=" + Cliente,
 
                 columns: [
+                    { data: "BASE" },
                     { data: "FECHA_INGRESO" },
                     { data: "FECHA_PLANTA" },
                     { data: "INVOICED_DATE" },
@@ -157,6 +207,10 @@
                    url: "@Url.Content("~/Content/idioma/es-ES.json")"
                 }
             });
+            setTimeout(function () {
+                color();
+            }, 10000);  // 10000 milisegundos (10 segundos)
+
          }
           $(document).ready(function () {
 
@@ -164,6 +218,49 @@
 
 
           });
+
+        function color() {
+            var table = document.getElementById("metricsTable");
+            var rows = table.getElementsByTagName("tr");
+
+            // Loop through the rows and calculate colors
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName("td");
+                var value = parseFloat(cells[1].textContent);
+
+                if (!isNaN(value)) {
+                    cells[1].textContent = value.toFixed(2) + "%";
+
+                    if (value >= 90) {
+                        cells[1].classList.add("green");
+                    } else {
+                        cells[1].classList.add("red");
+                    }
+                }
+            }
+
+            var table = $('#DTComercial').DataTable();
+            var totalRows = table.data().count(); // Obtén el total de elementos en la tabla
+
+            var ontimeColumn = table.column(5).data().toArray();
+            var ontimeCount = ontimeColumn.filter(function (value) {
+                return value === 100;
+            }).length;
+
+
+            var promedioMetaLT = (ontimeCount / totalRows) * 100;  // Calcula el PROMEDIO % META LT
+            // Obtén la segunda fila (fila 1) y la segunda celda (celda 1) usando el índice base cero
+            var cellToUpdate = table.cell(1, 1); // 1 representa la fila y 1 representa la columna
+
+            // Asigna el nuevo valor a la celda
+            cellToUpdate.data(promedioMetaLT).draw();
+
+
+
+
+        }
+
+     
 
 
 

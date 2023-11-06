@@ -7,6 +7,7 @@ namespace Apiweb.Models
 {
     public class Otif
     {
+        public string BASE { get; set; }
         public string FECHA_INGRESO { get; set; }
         public string FECHA_PLANTA { get; set; }
         public string INVOICED_DATE { get; set; }
