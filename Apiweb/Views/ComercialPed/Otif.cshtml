@@ -109,17 +109,17 @@
 
             <tr>
                 <td>PROMEDIO % META LT</td>
-                <td>91</td>
+                <td>0</td>
 
             </tr>
             <tr>
                 <td>PROMEDIO % CANTIDAD META</td>
-                <td>102</td>
+                <td>0</td>
 
             </tr>
             <tr>
                 <td>OTIF</td>
-                <td>93.109917355371900</td>
+                <td>0</td>
 
             </tr>
         </table>
@@ -209,7 +209,7 @@
             });
             setTimeout(function () {
                 color();
-            }, 10000);  // 10000 milisegundos (10 segundos)
+            }, 3000);  // 10000 milisegundos (10 segundos)
 
          }
           $(document).ready(function () {
@@ -220,6 +220,34 @@
           });
 
         function color() {
+            
+            var table = $('#DTComercial').DataTable();
+            var totalRows = table.data().count(); // Obtén el total de elementos en la tabla
+
+            var ontimeColumn = table.column(5).data().toArray();
+            var ontimeCount = ontimeColumn.filter(function (value) {
+                return value === 100;
+            }).length;
+            debugger;
+
+            var promedioMetaLT = (ontimeCount / totalRows) * 100;  // Calcula el PROMEDIO % META LT
+            // Obtén la segunda fila (fila 1) y la segunda celda (celda 1) usando el índice base cero
+            var infull = table.column(12).data().toArray();
+            var suma = infull.reduce(function (a, b) {
+                return a + b;
+            }, 0);
+
+            // Calcula el promedio dividiendo la suma por la cantidad de elementos
+            var promedio = suma / infull.length;
+
+            var newValues = [(promedioMetaLT).toFixed(2), (promedio * 100).toFixed(2), ((ontimeCount / totalRows) * promedio).toFixed(2)];
+
+            // Actualiza los valores en la segunda columna de cada fila
+            $('#metricsTable tr').each(function (index) {
+                var $row = $(this);
+                $row.find('td:eq(1)').text(newValues[index]);
+            });
+
             var table = document.getElementById("metricsTable");
             var rows = table.getElementsByTagName("tr");
 
@@ -238,24 +266,6 @@
                     }
                 }
             }
-
-            var table = $('#DTComercial').DataTable();
-            var totalRows = table.data().count(); // Obtén el total de elementos en la tabla
-
-            var ontimeColumn = table.column(5).data().toArray();
-            var ontimeCount = ontimeColumn.filter(function (value) {
-                return value === 100;
-            }).length;
-
-
-            var promedioMetaLT = (ontimeCount / totalRows) * 100;  // Calcula el PROMEDIO % META LT
-            // Obtén la segunda fila (fila 1) y la segunda celda (celda 1) usando el índice base cero
-            var cellToUpdate = table.cell(1, 1); // 1 representa la fila y 1 representa la columna
-
-            // Asigna el nuevo valor a la celda
-            cellToUpdate.data(promedioMetaLT).draw();
-
-
 
 
         }
