@@ -12,6 +12,8 @@
 <link href="~/Content/Site.css" rel="stylesheet" />
 <script src="~/Content/js/toastr.min.js"></script>
 <link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Content/js/FormularioCorreo.js" asp-append-version="true"></script>
 
 <div class="row m-4">
     <div class="col-sm-12">
@@ -54,6 +56,106 @@
 
 
 
+<!-- Modal para Muestra y Arte -->
+<div class="modal fade" id="ModalCorreo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">listado de Correos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-sm" id="DtCorreos" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Correo</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@*!-- Modal Agregar o editar -->*@
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @*@using (Html.BeginForm("Guardar", "Workflow", FormMethod.Post, new {  enctype = "multipart/form-data" }))
+                {*@
+            <div class="modal-body">
+                <div class="form-row">
+
+
+                    <input type="hidden" id="txtid" />
+
+
+
+                    @*<div class="form-group col-md-6">
+                            <label for="txtcodigoarticulo">CODIGO ARTICULO:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtcodigoarticulo">
+                        </div>*@
+                    <div class="form-group col-md-6">
+                        <label for="txtdui">DUI:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtdui">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtcliente">CLIENTE:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtcliente">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtsar">SAR:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtsar">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txttipos">TIPO PROYECTO:</label>
+                        <select class="form-control" id="txttipos">
+                            @*<option value="Servicio">Servicio</option>*@
+                            <option selected value="Nueva Aplicacion">Nueva Aplicacion</option>
+                            <option value="Aplicacion Existente">Aplicacion Existente</option>
+                            <option value="Modificación">Modificación</option>
+
+                        </select>
+
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtcantidadSsol">OC/CANTIDAD SOLICITADA:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtcantidadSsol">
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" id="btnguardari" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+            @*<div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-sm btn-secondary btn-block">Subir archivo</button>
+                </div>*@
+
+            @*}*@
+
+        </div>
+
+    </div>
+</div>
 
 @*!--Paso 20 -->*@
 <div class="modal fade" id="FormModal21" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -140,13 +242,55 @@
                     <input type="hidden" id="txtid" />
 
                     <div class="form-group col-md-12">
-                        <label for="datepicker">FECHA ENTREGA:</label>
+                        <label for="datepicker">FECHA ENTREGA ORDEN DE TRABAJO:</label>
                         <input type="text" id="datepicker" class="form-control" autocomplete="off">
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="datepicker2">FECHA ENTREGA VALIDACION DE IMPRESION:</label>
                         <input type="text" id="datepicker2" class="form-control" autocomplete="off">
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+@*!--Paso 30 -->*@
+<div class="modal fade" id="FormModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+
+
+                    <input type="hidden" id="txtid" />
+
+                    <div class="form-group col-md-12">
+                        <label for="datepicker3">FECHA DE DESPACHO:</label>
+                        <input type="text" id="datepicker3" class="form-control" autocomplete="off">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="datepicker4">FECHA ENTREGA VALIDACION DE IMPRESION:</label>
+                        <input type="text" id="datepicker4" class="form-control" autocomplete="off">
                     </div>
 
                 </div>
@@ -179,7 +323,7 @@
                     <div class="form-group col-md-12">
                         <label for="txtestado4"><br>ESTADO:</label>
                         <select class="form-control" id="txtestado4">
-                            <option value="APROVADO">APROVADO</option>
+                            <option value="APROBADO">APROBADO</option>
                             <option value="RECHAZADO">RECHAZADO</option>
                         </select>
                     </div>
@@ -224,8 +368,9 @@
                     <input type="hidden" id="txtid" />
 
                     <div class="form-group col-md-12">
-                        <label for="txtformulae">FORMULA A EXTRUIR:</label>
-                        <input type="text" class="form-control" id="txtformulae">
+                        <label for="txtcomentarios">COMENTARIOS:</label>
+                        @*<input type="text" class="form-control" id="txtformulae">*@
+                        <textarea class="form-control" id="txtcomentarios" rows="5"></textarea>
                     </div>
                     <div class="form-group col-md-12">
                         <label for="txtcantidadm">CANTIDAD MAXIMA PEDIDO:</label>
@@ -377,6 +522,15 @@
             uiLibrary: 'bootstrap4',
             dateFormat: 'dd/mm/yy'
         });
+
+        $('#datepicker3').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
+        $('#datepicker4').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
         $('#FormModal6').on('hidden.bs.modal', function (e) {
             tableA.destroy();
         })
@@ -392,7 +546,7 @@
         $('#navqw62').removeClass("active");
 
         $(document).ready(function () {
-
+            CKEDITOR.replace('txtcomentarios');
             mostrar();
 
             document.getElementById('uploader').onsubmit = function () {
@@ -521,11 +675,18 @@
 
                 ],
 
-                order: [0, 'asc'],
+                order: [0, 'desc'],
 
                 select: true,
                 buttons: [
-
+                    {
+                        text: '<a ><i class="fas fa-plus-circle fa-lg"  style="color:#007bff"></i>&nbsp; Nuevo</a>',
+                        titleAttr: 'Agregar Nuevo',
+                        action: function (e, dt, node, config) {
+                           /* $('#btnguardari').prop("disabled", false);*/
+                            $('#FormModal').modal('show');
+                        }
+                    },
 
                     {
                         extend: 'excelHtml5',
@@ -570,7 +731,7 @@
                         }
                     },
                     {
-                        text: '<i class="fas fa-link"></i>',
+                        text: '<i class="fas fa-file-upload"></i>',
                         titleAttr: 'Adjuntos',
                         action: function (e, dt, node, config) {
                             if (table.rows('.selected').data().length > 0) { archivos(table.rows({ selected: true }).data()[0].ID); }
@@ -580,7 +741,17 @@
 
                         }
                     },
+                    {
+                        text: '<a><i class="fas fa-at"></i></i>&nbsp; Correo</a>',
+                        titleAttr: 'Correo',
+                        action: function (e, dt, node, config) {
+                            if (table.rows('.selected').data().length > 0) { habilitarCorreo("ART", table.rows({ selected: true }).data()[0].PASO_ACTUAL); }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro y en estado Finalizado', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
 
+                        }
+                    },
 
 
                 ],
@@ -608,6 +779,13 @@
                     $('#FormModal3').modal('show');
                     break;
                 case 50:
+                    $('#FormModal5').modal('show');
+                    break;
+
+                case 60:
+                    $('#FormModal6').modal('show');
+                    break;
+                case 70:
                     $('#FormModal4').modal('show');
                     break;
 
@@ -672,12 +850,6 @@
 
 
 
-        function limpiar()
-        {
-            table.clear().draw();
-            table.destroy();
-            mostrar();
-        }
 
         function Siguiente() {
 
@@ -686,8 +858,8 @@
             switch (Seleccion.PASO_ACTUAL) {
 
                 case 10:
-
-                    var adicional = { TIPO: "ART", FORMULA_EXT: $("#txtformulae").val(), CANTIDAD_MAX: $("#txtcantidadm").val() };
+                    $('#txtcomentarios').val(CKEDITOR.instances["txtcomentarios"].getData());
+                    var adicional = { TIPO: "ART", COMENTARIOS: $("#txtcomentarios").val(), CANTIDAD_MAX: $("#txtcantidadm").val() };
                     Object.assign(Seleccion, adicional);
                     break;
                 case 20:
@@ -736,7 +908,7 @@
                     }
 
             });
-            
+
             $('#FormModaltp').modal('hide');
             $('#FormModal21').modal('hide');
             $('#FormModal2').modal('hide');
@@ -745,12 +917,30 @@
             $('#FormModal5').modal('hide');
         }
 
+        function limpiar() {
+            // Limpia los campos del formulario
+            $("#txtdui").val('');
+            $("#txtcliente").val('');
+            $("#txtsar").val('');
+            $("#txttipos").val('');
+            $("#txtcantidadSsol").val('');
+            table.clear().draw();
+            table.destroy();
+            mostrar();
+        }
+
+
         function Guardar($CLIENTE_CORREL)
         {
                 var Workflow = {
                     ID: 0,
-                    TITULO: $("#txttitulo").val(),
-                    PASO_ACTUAL: 10
+                    DUI: $("#txtdui").val(),
+                    IDCLIENTE: $("#txtcliente").val(),
+                    SAR: $("#txtsar").val(),
+                    TIPO_PROYECTO: $("#txttipos").val(),
+                    OC_CANTIDAD_SOLICITADA: $("#txtcantidadSsol").val(),
+
+
                 }
 
 

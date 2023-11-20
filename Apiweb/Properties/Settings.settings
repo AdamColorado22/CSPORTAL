@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="DBConnection" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=TERMODATA;Database=TERMOAPP;User Id=aplicaciones;Password=@plicaci0n3$;</Value>
+      <Value Profile="(Default)">Data Source=TERMOVM9;Database=TERMOAPP;User Id=aplicaciones;Password=@plicaci0n3$;</Value>
     </Setting>
     <Setting Name="DBTERMO" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=TERMODATA;Database=TERMO;User Id=aplicaciones;Password=@plicaci0n3$;</Value>
+      <Value Profile="(Default)">Data Source=TERMOVM9;Database=TERMO9;User Id=aplicaciones;Password=@plicaci0n3$;</Value>
     </Setting>
     <Setting Name="DBCONSULTA" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=TERMODATA;Database=TERMOAPP;User Id=reportes;Password=termorep;</Value>
+      <Value Profile="(Default)">Data Source=TERMOVM9;Database=TERMOAPP;User Id=reportes;Password=termorep;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

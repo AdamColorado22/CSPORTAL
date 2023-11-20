@@ -291,6 +291,10 @@
     <EntitySetMapping Name="TER_W_FLUJO_ARTES">
       <EntityTypeMapping TypeName="TERMOAPP.TER_W_FLUJO_ARTES">
         <MappingFragment StoreEntitySet="TER_W_FLUJO_ARTES">
+          <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+          <ScalarProperty Name="REGION" ColumnName="REGION" />
+          <ScalarProperty Name="USUARIO_INICIADOR" ColumnName="USUARIO_INICIADOR" />
+          <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
           <ScalarProperty Name="PASO_ACTUAL" ColumnName="PASO_ACTUAL" />
           <ScalarProperty Name="ASIGNADO" ColumnName="ASIGNADO" />
           <ScalarProperty Name="IMPRESION" ColumnName="IMPRESION" />
@@ -324,6 +328,7 @@
     <EntitySetMapping Name="TER_W_PARAMETROS_ACC">
       <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_ACC">
         <MappingFragment StoreEntitySet="TER_W_PARAMETROS_ACC">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
           <ScalarProperty Name="ACC_LEADTIME" ColumnName="ACC_LEADTIME" />
           <ScalarProperty Name="ACC_INVERSION" ColumnName="ACC_INVERSION" />
@@ -335,6 +340,7 @@
     <EntitySetMapping Name="TER_W_PARAMETROS_MAQ">
       <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_MAQ">
         <MappingFragment StoreEntitySet="TER_W_PARAMETROS_MAQ">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
           <ScalarProperty Name="MAQ_LEADTIME" ColumnName="MAQ_LEADTIME" />
           <ScalarProperty Name="MAQ_INVERSION" ColumnName="MAQ_INVERSION" />
@@ -346,6 +352,7 @@
     <EntitySetMapping Name="TER_W_PARAMETROS_PAR">
       <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_PAR">
         <MappingFragment StoreEntitySet="TER_W_PARAMETROS_PAR">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="PAR_DESPERDICIO_F" ColumnName="PAR_DESPERDICIO_F" />
           <ScalarProperty Name="PA_DESPERDICIO_V" ColumnName="PA_DESPERDICIO_V" />
           <ScalarProperty Name="VELOCIDAD" ColumnName="VELOCIDAD" />
@@ -372,6 +379,7 @@
     <EntitySetMapping Name="TER_W_PARAMETROS_INS">
       <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_INS">
         <MappingFragment StoreEntitySet="TER_W_PARAMETROS_INS">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
           <ScalarProperty Name="INS_LEADTIME" ColumnName="INS_LEADTIME" />
           <ScalarProperty Name="INS_CODIGO" ColumnName="INS_CODIGO" />
@@ -384,6 +392,7 @@
     <EntitySetMapping Name="TER_W_PARAMETROS_MAT">
       <EntityTypeMapping TypeName="TERMOAPP.TER_W_PARAMETROS_MAT">
         <MappingFragment StoreEntitySet="TER_W_PARAMETROS_MAT">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="MAT_DENSIDAD" ColumnName="MAT_DENSIDAD" />
           <ScalarProperty Name="MAT_LEADTIME" ColumnName="MAT_LEADTIME" />
           <ScalarProperty Name="MAT_PROVEDOR" ColumnName="MAT_PROVEDOR" />
@@ -416,6 +425,9 @@
     <EntitySetMapping Name="TER_W_WORKFLOWB2B">
       <EntityTypeMapping TypeName="TERMOAPP.TER_W_WORKFLOWB2B">
         <MappingFragment StoreEntitySet="TER_W_WORKFLOWB2B">
+          <ScalarProperty Name="INFORMACION_REQ" ColumnName="INFORMACION_REQ" />
+          <ScalarProperty Name="FECHA_RECEPCION" ColumnName="FECHA_RECEPCION" />
+          <ScalarProperty Name="USUARIO_INI" ColumnName="USUARIO_INI" />
           <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
           <ScalarProperty Name="DUI" ColumnName="DUI" />
           <ScalarProperty Name="LOTE_INDUSTRIAL" ColumnName="LOTE_INDUSTRIAL" />
@@ -552,6 +564,17 @@
           <ScalarProperty Name="DUI" ColumnName="DUI" />
           <ScalarProperty Name="COTIZACION" ColumnName="COTIZACION" />
           <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TER_W_CORREOS">
+      <EntityTypeMapping TypeName="TERMOAPP.TER_W_CORREOS">
+        <MappingFragment StoreEntitySet="TER_W_CORREOS">
+          <ScalarProperty Name="PASO_ACTUAL" ColumnName="PASO_ACTUAL" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

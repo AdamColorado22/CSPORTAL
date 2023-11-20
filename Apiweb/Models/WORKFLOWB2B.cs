@@ -34,7 +34,7 @@ namespace Apiweb.Models
         public string PAR_VELOCIDAD { get; set; }
         public string PA_DESPERDICIO_V { get; set; }
         public string PAR_DESPERDICIO_F { get; set; }
-       
+
         public string UNIDAD_VENTA { get; set; }
         public string MARGEN { get; set; }
         public string LOTE_INDUSTRIAL { get; set; }
@@ -42,7 +42,7 @@ namespace Apiweb.Models
         public string CUST_PART_ID { get; set; }
         public string COMMODITY_CODE { get; set; }
         public string PROCESO_ACTUAL { get; set; }
-        public int  PASO_ACTUAL { get; set; }
+        public int PASO_ACTUAL { get; set; }
         public string FECHA_INICIO { get; set; }
         public Decimal TIEMPO_TOTAL { get; set; }
         public Decimal TIEMPO_PROCESO { get; set; }
@@ -54,5 +54,9 @@ namespace Apiweb.Models
         public string ARCHIVO { get; set; }
         public string NOTASREQ { get; set; }
         public string INFORMACIONREQ { get; set; }
+        public string USUARIO_INI { get; set; }
+        public DateTime FECHA { get; set; }
+        public List<string> CORREOS { get; set; }
+        public string WORKFLOWS { get; set; }
     }
 }

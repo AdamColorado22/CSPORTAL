@@ -14,6 +14,8 @@
 <link href="~/Content/Site.css" rel="stylesheet" />
 <script src="~/Content/js/toastr.min.js"></script>
 <link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+<script src="~/Content/js/FormularioCorreo.js" asp-append-version="true"></script>
+
 <style type="text/css">
     div.DTE_Inline input {
         border: none;
@@ -44,73 +46,71 @@
         display: block;
         clear: both;
     }
+
     div.DTED DTED_Lightbox_Wrapper {
         z-index: 65000 !important;
     }
 
-  
-
-.container {
-    margin: 200px auto;
-}
-
-fieldset {
-    display: none;
-}
-
-fieldset.show {
-    display: block;
-}
-
-select:focus, input:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #2196F3 !important;
-    outline-width: 0 !important;
-    font-weight: 400;
-}
-
-button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0;
-}
-
-.tabs {
-    margin: 2px 5px 0px 5px;
-    padding-bottom: 10px;
-    cursor: pointer;
-}
-
-.tabs:hover, .tabs.active {
-    border-bottom: 1px solid #2196F3;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #1565C0;
-}
-
-.box {
-    margin-bottom: 10px;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.modal-backdrop {
-    background-color: #64B5F6;
-}
-
-.line {
-    background-color: #CFD8DC;
-    height: 1px;
-    width: 100%;
-}
 
 
+    .container {
+        margin: 200px auto;
+    }
 
+    fieldset {
+        display: none;
+    }
+
+        fieldset.show {
+            display: block;
+        }
+
+    select:focus, input:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid #2196F3 !important;
+        outline-width: 0 !important;
+        font-weight: 400;
+    }
+
+    button:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0;
+    }
+
+    .tabs {
+        margin: 2px 5px 0px 5px;
+        padding-bottom: 10px;
+        cursor: pointer;
+    }
+
+        .tabs:hover, .tabs.active {
+            border-bottom: 1px solid #2196F3;
+        }
+
+    a:hover {
+        text-decoration: none;
+        color: #1565C0;
+    }
+
+    .box {
+        margin-bottom: 10px;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .modal-backdrop {
+        background-color: #64B5F6;
+    }
+
+    .line {
+        background-color: #CFD8DC;
+        height: 1px;
+        width: 100%;
+    }
 </style>
 
 
@@ -127,7 +127,8 @@ a:hover {
                         <tr>
                             <th>ID</th>
                             <th>NOMBRE_PRODUCTO</th>
-                            <th>TIPO SERVICIO</th>
+                            <th>USUARIO INICIADOR</th>
+                            <th>REGION</th>
                             <th>CLIENTE</th>
                             <th>DUI</th>
                             <th>REFERENCIA COTIZACION</th>
@@ -141,6 +142,7 @@ a:hover {
                             <th>FECHA FINALIZACION</th>
                             <th>DIAS TOTALES</th>
                             <th>FECHA ESTIMADA</th>
+
                         </tr>
                     </thead>
 
@@ -150,6 +152,67 @@ a:hover {
 
     </div>
 
+</div>
+
+
+
+<!-- Modal para Muestra y Arte -->
+<div class="modal fade" id="ModalCorreo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">listado de Correos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-sm" id="DtCorreos" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Correo</th>
+                             </tr>
+                    </thead>
+
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal para Muestra y Arte -->
+<div class="modal fade" id="MuestraArteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Seleccionar a que FLujo enviar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="txtmuestraarte">Selecciona Flujo:</label>
+                        <select class="form-control" id="txtmuestraarte" multiple>
+                            <option value="Muestra">Muestra</option>
+                            <option value="Arte">Arte</option>
+                            <!-- Agrega más opciones aquí -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="EnviarMuestraArte()">Enviar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -196,6 +259,7 @@ a:hover {
                                         <th>Leadtime</th>
                                         <th>Densidad</th>
                                         <th>Materia</th>
+                                        <th>Estado</th>
                                     </tr>
                                 </thead>
 
@@ -213,7 +277,7 @@ a:hover {
                                             <th>Inversion</th>
                                             <th>Leadtime</th>
                                             <th>Descripcion</th>
-                                          
+                                            <th>Estado</th>
                                         </tr>
                                     </thead>
 
@@ -232,14 +296,14 @@ a:hover {
                                             <th>Inversion</th>
                                             <th>Leadtime</th>
                                             <th>Descripcion</th>
-
+                                            <th>Estado</th>
                                         </tr>
                                     </thead>
 
                                 </table>
 
                             </div>
-                            
+
                         </fieldset>
                         <fieldset id="tab041">
                             <div class="bg-light">
@@ -253,13 +317,13 @@ a:hover {
                                             <th>Codigo</th>
                                             <th>Leadtime</th>
                                             <th>Descripcion</th>
-
+                                            <th>Estado</th>
                                         </tr>
                                     </thead>
 
                                 </table>
                             </div>
-                            
+
                         </fieldset>
                         <fieldset id="tab051">
                             <div class="bg-light">
@@ -274,12 +338,13 @@ a:hover {
                                             <th>Velocidad</th>
                                             <th>Des Variable</th>
                                             <th>Des Fijo</th>
+                                            <th>Estado</th>
                                         </tr>
                                     </thead>
 
                                 </table>
                             </div>
-                           
+
                         </fieldset>
                     </div>
                     <div class="line"></div>
@@ -292,6 +357,9 @@ a:hover {
         </div>
     </div>
 </div>
+
+
+
 
 
 
@@ -318,29 +386,22 @@ a:hover {
                         <input type="text" autocomplete="off" class="form-control" id="txttitulo">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="txttipos">TIPO SERVICIO:</label>
+                        <label for="txttipos">Region:</label>
                         <select class="form-control" id="txttipos">
-                            @*<option value="Servicio">Servicio</option>*@
-                            <option selected value="Cotización">Cotización</option>
-                            @*<option value="Recosteo">Recosteo</option>
-                            <option value="Revisión de Cotización">Revisión de Cotización</option>
-                            <option value="Licitación">Licitación</option>
-                            <option value="Creación de artículo">Creación de artículo</option>
-                            <option value="Creación de artículo LI">Creación de artículo LI</option>
-                            <option value="Muestra Bobina">Muestra Bobina</option>
-                            <option value="Muestra Bolsa Preformada">Muestra Bolsa Preformada</option>
-                            <option value="Ficha Técnica">Ficha Técnica</option>
-                            <option value="Adaptación de Artes">Adaptación de Artes</option>
-                            <option value="Arrastre de tinta - Igualación de color">Arrastre de tinta - Igualación de color</option>
-                            <option value="Caracterización de Empaque">Caracterización de Empaque</option>
-                            <option value="Elaboración de Dummies">Elaboración de Dummies</option>
-                            <option value="documentación Varios">documentación Varios </option>*@
+                            <option value="MEX">MEX</option>
+                            <option value="USA">USA</option>
+                            <option value="CAM">CAM</option>
+                            <option value="ASIA">ASIA</option>
+
                         </select>
 
 
                     </div>
-
                     <div class="form-group col-md-6">
+                        <label for="frecepcion">Fecha Recepcion:</label>
+                        <input type="text" id="frecepcion" class="form-control" autocomplete="off">
+                    </div>
+                    <div class="form-group col-md-12">
                         <label for="txtNombre">Cliente:</label>
                         <input type="text" class="form-control" id="txtNombre" name="q">
                     </div>
@@ -358,7 +419,7 @@ a:hover {
             <div class="modal-footer">
 
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                <button type="button"  id="btnguardari" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+                <button type="button" id="btnguardari" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
             @*<div class="form-group col-md-6">
                     <button type="submit" class="btn btn-sm btn-secondary btn-block">Subir archivo</button>
@@ -421,24 +482,10 @@ a:hover {
             <div class="modal-body">
                 <div class="form-row">
 
-
-
-
-                    <div class="form-group col-md-12">
-                        <label for="txtcosteo">REFERENCIA DE COTIZACION:</label>
-                        <input type="text" class="form-control" id="txtcosteo">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="txtnotasreq">NOTAS:</label>
-                        <input type="text" class="form-control" id="txtnotasreq">
-                    </div>
-
-
-
                     <div class="form-group col-md-12">
                         <label for="txtcelula">CELULA TECNICA:</label>
                         <select class="form-control" id="txtcelula">
+                            <option selected value="0">Seleccionar..</option>
                             <option value="SI">SI</option>
                             <option value="NO">NO</option>
                         </select>
@@ -448,7 +495,33 @@ a:hover {
 
                     <div class="form-group col-md-12">
                         <label for="txtinformacionreq">INFORMACION REQUERIDA:</label>
-                        <input type="text" class="form-control" id="txtinformacionreq">
+                        <select class="form-control" id="txtinformacionreq" multiple>
+                            <option value="Materia Prima">Materia Prima</option>
+                            <option value="Maquinaria">Maquinaria</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Insumos">Insumos</option>
+                            <option value="Parametros">Parámetros</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label for="txtcosteo">REFERENCIA DE COTIZACION:</label>
+                        <input type="text" class="form-control" id="txtcosteo">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="txtnotasreq">NOTAS DE COSTEO:</label>
+                        <input type="text" class="form-control" id="txtnotasreq">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="txtmuestra">NECESITA MUESTRA:</label>
+                        <select class="form-control" id="txtmuestra">
+                            <option value="1">SI</option>
+                            <option value="0">NO</option>
+                        </select>
+
+
                     </div>
 
 
@@ -487,8 +560,8 @@ a:hover {
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                       
-                            @*<table class="table table-sm" id="TMateriaPrima" style="width:100%">
+
+                        @*<table class="table table-sm" id="TMateriaPrima" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -503,8 +576,8 @@ a:hover {
                                 </thead>
 
                             </table>*@
-                        </div>
                     </div>
+                </div>
 
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
@@ -524,82 +597,82 @@ a:hover {
 
                     </table>
                 </div>
-                    <div class="tab-pane fade" id="nav-conciliacion" role="tabpanel" aria-labelledby="nav-conciliacion-tab">
+                <div class="tab-pane fade" id="nav-conciliacion" role="tabpanel" aria-labelledby="nav-conciliacion-tab">
 
-                        <div class="form-group col-md-12">
-                            <label for="txtpreciom">ACCESORIOS</label>
-                        </div>
+                    <div class="form-group col-md-12">
+                        <label for="txtpreciom">ACCESORIOS</label>
+                    </div>
 
 
-                        <div class="form-group col-md-6">
-                            <label for="txtinversiona">Inversion:</label>
-                            <input type="text" class="form-control" id="txtinversiona">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="txtleadtimema">Leadtime:</label>
-                            <input type="text" class="form-control" id="txtleadtimema">
-                        </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtinversiona">Inversion:</label>
+                        <input type="text" class="form-control" id="txtinversiona">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtleadtimema">Leadtime:</label>
+                        <input type="text" class="form-control" id="txtleadtimema">
                     </div>
                 </div>
-
-                   
-
+            </div>
 
 
 
-            
+
+
+
+
             @*<div class="form-group col-md-12">
-                <label for="txtpreciom">INSUMOS</label>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="txtprecioin">Precio:</label>
-                <input type="text" class="form-control" id="txtprecioin">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="txtcodigoin">Codigo:</label>
-                <input type="text" class="form-control" id="txtcodigoin">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="txtleadtimein">Leadtime:</label>
-                <input type="text" class="form-control" id="txtleadtimein">
-            </div>
-            <div class="form-group col-md-12">
-                <label for="txtpreciom">PARAMETROS</label>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="txtprocesop">Proceso:</label>
-                <input type="text" class="form-control" id="txtprocesop">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="txtsetupp">Setup:</label>
-                <input type="text" class="form-control" id="txtsetupp">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="txtvelocidadp">Velocidad:</label>
-                <input type="text" class="form-control" id="txtvelocidadp">
-            </div> <div class="form-group col-md-6">
-                <label for="txtdesperdiciov">Desperdicio Variable:</label>
-                <input type="text" class="form-control" id="txtdesperdiciov">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="desperdiciofp">Desperdicio Fijo:</label>
-                <input type="text" class="form-control" id="desperdiciofp">
-            </div>*@
-
-
-
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
-
-                    </div>
+                    <label for="txtpreciom">INSUMOS</label>
                 </div>
+                <div class="form-group col-md-4">
+                    <label for="txtprecioin">Precio:</label>
+                    <input type="text" class="form-control" id="txtprecioin">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="txtcodigoin">Codigo:</label>
+                    <input type="text" class="form-control" id="txtcodigoin">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="txtleadtimein">Leadtime:</label>
+                    <input type="text" class="form-control" id="txtleadtimein">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="txtpreciom">PARAMETROS</label>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="txtprocesop">Proceso:</label>
+                    <input type="text" class="form-control" id="txtprocesop">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="txtsetupp">Setup:</label>
+                    <input type="text" class="form-control" id="txtsetupp">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="txtvelocidadp">Velocidad:</label>
+                    <input type="text" class="form-control" id="txtvelocidadp">
+                </div> <div class="form-group col-md-6">
+                    <label for="txtdesperdiciov">Desperdicio Variable:</label>
+                    <input type="text" class="form-control" id="txtdesperdiciov">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="desperdiciofp">Desperdicio Fijo:</label>
+                    <input type="text" class="form-control" id="desperdiciofp">
+                </div>*@
 
+
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Siguiente()">Guardar</button>
 
             </div>
+        </div>
+
 
     </div>
+
+</div>
 </div>
 
 
@@ -629,15 +702,7 @@ a:hover {
                         <input type="text" class="form-control" id="txtmargen">
                     </div>
 
-                    <div class="form-group col-md-12">
-                        <label for="txtmuestra">NECESITA MUESTRA:</label>
-                        <select class="form-control" id="txtmuestra">
-                            <option value="1">SI</option>
-                            <option value="0">NO</option>
-                        </select>
 
-
-                    </div>
 
                 </div>
             </div>
@@ -690,11 +755,11 @@ a:hover {
                         <table class="table table-sm" id="Adjuntos" style="width:100%">
                             <thead>
                                 <tr>
-                                    
+
                                     <th>FECHA SUBIDA</th>
                                     <th>NOMBRE</th>
                                     <th>DESCARGAS</th>
-                                    
+
 
                                 </tr>
                             </thead>
@@ -726,6 +791,38 @@ a:hover {
             handle: ".modal-header"
         });
 
+        $("#myModal").draggable({
+            handle: ".modal-header"
+        });
+
+
+ 
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const txtCelula = document.getElementById("txtcelula");
+            const txtInformacionReq = document.getElementById("txtinformacionreq");
+      
+            const txtCosteo = document.getElementById("txtcosteo");
+            const txtNotasReq = document.getElementById("txtnotasreq");
+            const txtNecesitaMuestra = document.getElementById("txtmuestra");
+
+            txtCelula.addEventListener("change", function () {
+                if (txtCelula.value === "SI") {
+                    txtInformacionReq.disabled = false;
+                
+                    txtCosteo.disabled = true;
+                    txtNotasReq.disabled = true;
+                    txtNecesitaMuestra.disabled = true;
+                } else if (txtCelula.value === "NO") {
+                    txtInformacionReq.disabled = true;
+                 
+                    txtCosteo.disabled = false;
+                    txtNotasReq.disabled = false;
+                    txtNecesitaMuestra.disabled = false;
+                }
+            });
+        });
+
         //$('#FormModal6').on('hidden.bs.modal', function (e) {
         //    tableA.destroy();
         //})
@@ -754,6 +851,10 @@ a:hover {
 
         $(document).ready(function () {
 
+            $('#frecepcion').datepicker({
+                uiLibrary: 'bootstrap4',
+                dateFormat: 'dd/mm/yy'
+            });
 
             $(".tabs").click(function () {
 
@@ -787,7 +888,7 @@ a:hover {
 
             mostrar();
 
-            
+
 
             document.getElementById('uploader').onsubmit = function () {
                 var formdata = new FormData(); //FormData object
@@ -840,6 +941,17 @@ a:hover {
                     { label: "MAT_PROVEDOR:", name: "MAT_PROVEDOR" },
                     { label: "MAT_LEADTIME:", name: "MAT_LEADTIME" },
                     { label: "MAT_DENSIDAD:", name: "MAT_DENSIDAD" },
+                    {
+                        label: "ESTADO:",
+                        name: "ESTADO",
+                        type: "select",
+                        options: [
+                            { label: "COMPLETADO", value: "COMPLETADO" },
+                            { label: "PENDIENTE", value: "PENDIENTE" },
+
+
+                        ], def: "PENDIENTE"
+                    },
 
 
 
@@ -851,7 +963,7 @@ a:hover {
                 editor.inline($('span.dtr-data', this));
             });
 
-           
+
 
              Tmateria = $('#TMateriaPrima').DataTable({
                 responsive: true,
@@ -871,6 +983,7 @@ a:hover {
                     { data: "MAT_PROVEDOR" },
                     { data: "MAT_LEADTIME" },
                     { data: "MAT_DENSIDAD" },
+                    { data: "ESTADO" },
                 ],
 
                 order: [0, 'asc'],
@@ -885,7 +998,7 @@ a:hover {
                         extend: "createInline",
                         editor: editor,
                         formOptions: {
-                            submitTrigger: -7,
+                            submitTrigger: -8,
                             submitHtml: '<i class="fa fa-play"/>'
                         }
                     }, {
@@ -918,7 +1031,18 @@ a:hover {
                     { label: "MAQ_INVERSION:", name: "MAQ_INVERSION" },
                     { label: "MAQ_LEADTIME:", name: "MAQ_LEADTIME" },
                     { label: "DESCRIPCION:", name: "DESCRIPCION" },
-                   
+                    {
+                        label: "ESTADO:",
+                        name: "ESTADO",
+                        type: "select",
+                        options: [
+                            { label: "COMPLETADO", value: "COMPLETADO" },
+                            { label: "PENDIENTE", value: "PENDIENTE" },
+
+
+                        ], def: "PENDIENTE"
+                    },
+
                 ]
             });
 
@@ -944,7 +1068,7 @@ a:hover {
                     { data: "MAQ_INVERSION" },
                     { data: "MAQ_LEADTIME" },
                     { data: "DESCRIPCION" },
-                   
+                    { data: "ESTADO" },
                 ],
 
                 order: [0, 'asc'],
@@ -959,7 +1083,7 @@ a:hover {
                         extend: "createInline",
                         editor: Meditor,
                         formOptions: {
-                            submitTrigger: -4,
+                            submitTrigger: -5,
                             submitHtml: '<i class="fa fa-play"/>'
                         }
                     }, {
@@ -985,7 +1109,7 @@ a:hover {
              Aeditor = new $.fn.dataTable.Editor({
                  ajax: "/Workflow/Accesorios?id=" + ID,
                  table: "#TAccesorios",
-                
+
                 fields: [
 
                    /* { label: "ID:", name: "ID" },*/
@@ -993,7 +1117,17 @@ a:hover {
                     { label: "ACC_INVERSION:", name: "ACC_INVERSION" },
                     { label: "ACC_LEADTIME:", name: "ACC_LEADTIME" },
                     { label: "DESCRIPCION:", name: "DESCRIPCION" },
-             
+                    {
+                        label: "ESTADO:",
+                        name: "ESTADO",
+                        type: "select",
+                        options: [
+                            { label: "COMPLETADO", value: "COMPLETADO" },
+                            { label: "PENDIENTE", value: "PENDIENTE" },
+
+
+                        ], def: "PENDIENTE"
+                    },
 
 
 
@@ -1022,7 +1156,7 @@ a:hover {
                     { data: "ACC_INVERSION" },
                     { data: "ACC_LEADTIME" },
                     { data: "DESCRIPCION" },
-                    
+                    { data: "ESTADO" },
                 ],
 
                 order: [0, 'asc'],
@@ -1037,7 +1171,7 @@ a:hover {
                         extend: "createInline",
                         editor: Aeditor,
                         formOptions: {
-                            submitTrigger: -4,
+                            submitTrigger: -5,
                             submitHtml: '<i class="fa fa-play"/>'
                         }
                     }, {
@@ -1075,6 +1209,17 @@ a:hover {
                     { label: "INS_CODIGO:", name: "INS_CODIGO" },
                     { label: "INS_LEADTIME:", name: "INS_LEADTIME" },
                     { label: "DESCRIPCION:", name: "DESCRIPCION" },
+                    {
+                        label: "ESTADO:",
+                        name: "ESTADO",
+                        type: "select",
+                        options: [
+                            { label: "COMPLETADO", value: "COMPLETADO" },
+                            { label: "PENDIENTE", value: "PENDIENTE" },
+
+
+                        ], def: "PENDIENTE"
+                    },
                 ]
             });
 
@@ -1101,7 +1246,7 @@ a:hover {
                     { data: "INS_CODIGO" },
                     { data: "INS_LEADTIME" },
                     { data: "DESCRIPCION" },
-                 
+                    { data: "ESTADO" },
                 ],
 
                 order: [0, 'asc'],
@@ -1116,7 +1261,7 @@ a:hover {
                         extend: "createInline",
                         editor: Ieditor,
                         formOptions: {
-                            submitTrigger: -5,
+                            submitTrigger: -6,
                             submitHtml: '<i class="fa fa-play"/>'
                         }
                     }, {
@@ -1169,7 +1314,17 @@ a:hover {
                     { label: "VELOCIDAD:", name: "VELOCIDAD" },
                     { label: "PA_DESPERDICIO_V:", name: "PA_DESPERDICIO_V" },
                     { label: "PAR_DESPERDICIO_F:", name: "PAR_DESPERDICIO_F" },
-                   
+                    {
+                        label: "ESTADO:",
+                        name: "ESTADO",
+                        type: "select",
+                        options: [
+                            { label: "COMPLETADO", value: "COMPLETADO" },
+                            { label: "PENDIENTE", value: "PENDIENTE" },
+
+
+                        ], def: "PENDIENTE"
+                    },
 
 
 
@@ -1200,7 +1355,7 @@ a:hover {
                     { data: "VELOCIDAD" },
                     { data: "PA_DESPERDICIO_V" },
                     { data: "PAR_DESPERDICIO_F" },
-                   
+                    { data: "ESTADO" },
                 ],
 
                 order: [0, 'asc'],
@@ -1215,7 +1370,7 @@ a:hover {
                         extend: "createInline",
                         editor: Peditor,
                         formOptions: {
-                            submitTrigger: -6,
+                            submitTrigger: -7,
                             submitHtml: '<i class="fa fa-play"/>'
                         }
                     },
@@ -1226,7 +1381,7 @@ a:hover {
                         className: 'btn btn-success btn-sm'
                     },
                     { extend: 'remove', className: 'btn-light', editor: Peditor },
-                   
+
 
                 ],
                 language: {
@@ -1241,8 +1396,8 @@ a:hover {
             table = $('#DTable').DataTable({
                 responsive: true,
                 dom: "Bfrltip",
-                "scrollY": "500px",
-                "iDisplayLength": -1,
+                //"scrollY": "500px",
+                "iDisplayLength": 10,
                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                 ajax: "/Workflow/ListarB2BJ",
 
@@ -1250,6 +1405,7 @@ a:hover {
                 columns: [
                     { data: "ID" },
                     { data: "TITULO" },
+                    { data: "USUARIO_INI" },
                     { data: "TIPO_SERVICIO" },
                     { data: "IDCLIENTE" },
                     { data: "DUI" },
@@ -1315,9 +1471,10 @@ a:hover {
 
                     { data: "DIAS_TOTALES" },
                     { data: "FECHA_ESTIMADA" },
+
                 ],
 
-                order: [0, 'asc'],
+                order: [0, 'desc'],
 
                 select: true,
                 buttons: [
@@ -1367,10 +1524,10 @@ a:hover {
                         }
                     },
                     {
-                        text: '<a><i class="fas fa-clipboard-list" style="color:red"></i>&nbsp; Flujo Articulo</a>',
-                        titleAttr: 'Finalizar',
+                        text: '<a><i class="fas fa-clipboard-list" style="color:red"></i>&nbsp; Copiar a Flujo</a>',
+                        titleAttr: 'Copiar',
                         action: function (e, dt, node, config) {
-                            if (table.rows('.selected').data().length > 0 && table.rows({ selected: true }).data()[0].PASO_ACTUAL == 70) { Siguiente(); }
+                            if (table.rows('.selected').data().length > 0 && table.rows({ selected: true }).data()[0].PASO_ACTUAL == 70) { $('#MuestraArteModal').modal('show');}
                             else {
                                 toastr.error('Debe Seleccionar al menos un Registro y en estado Finalizado', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
                             }
@@ -1378,7 +1535,7 @@ a:hover {
                         }
                     },
                     {
-                        text: '<i class="fas fa-link"></i>',
+                        text: '<i class="fas fa-file-upload"></i>',
                         titleAttr: 'Adjuntos',
                         action: function (e, dt, node, config) {
                             if (table.rows('.selected').data().length > 0) { archivos(table.rows({ selected: true }).data()[0].ID); }
@@ -1403,9 +1560,9 @@ a:hover {
 
                             var id = table.rows({ selected: true }).data()[0].ID;
                             MateriaPrima(id);
-                            
+
                             Maquina(id);
-                            
+
                             Accesorios(id);
                             Insumos(id);
                             Parametros(id);
@@ -1418,6 +1575,17 @@ a:hover {
 
                         }
                     },
+                    {
+                        text: '<a><i class="fas fa-at"></i></i>&nbsp; Correo</a>',
+                        titleAttr: 'Correo',
+                        action: function (e, dt, node, config) {
+                            if (table.rows('.selected').data().length > 0) { habilitarCorreo("B2B",table.rows({ selected: true }).data()[0].PASO_ACTUAL); }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro y en estado Finalizado', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
+
+                        }
+                    },
 
                 ],
                 language: {
@@ -1425,6 +1593,11 @@ a:hover {
                 }
             });
         }
+
+       
+
+
+        
 
         function Paso($CORREL,$ID) {
 
@@ -1560,12 +1733,12 @@ a:hover {
             $("#txtcosteo").val("");
             $("#txtnotasreq").val("");
             $("#txtinformacionreq").val("");
-            
+
         }
 
 
         function Siguiente() {
-            
+
             var Seleccion = table.rows({ selected: true }).data()[0];
 
             switch (Seleccion.PASO_ACTUAL) {
@@ -1581,14 +1754,26 @@ a:hover {
                     Object.assign(Seleccion, adicional);
                     break;
                 case 30:
+                    
+                    var seleccionados = [];
+                    var select = document.getElementById("txtinformacionreq");
+                    for (var i = 0; i < select.options.length; i++) {
+                        if (select.options[i].selected) {
+                            seleccionados.push(select.options[i].value);
+                        }
+                    }
+
+                    var cadenaSeleccionados = seleccionados.join(",");
+
                     Seleccion.COTIZACION = $("#txtcosteo").val();
-                    var adicional = { CELULA_TECNICA: $("#txtcelula").val(), TIPO: "B2B", INFORMACIONREQ: $("#txtinformacionreq").val(), NOTASREQ: $("#txtnotasreq").val() };
+                    var adicional = { CELULA_TECNICA: $("#txtcelula").val(), TIPO: "B2B", INFORMACIONREQ: cadenaSeleccionados, NECESITA_MUESTRA: $("#txtmuestra").val(), NOTASREQ: $("#txtnotasreq").val()};
                     Object.assign(Seleccion, adicional);
                     if (Seleccion.CELULA_TECNICA == "NO") { Seleccion.PASO_ACTUAL = 80; }
-                    
+
 
                     break;
                 case 40:
+                    debugger;
                     Seleccion.COTIZACION = $("#txtcosteo").val();
                     var adicional = { TIPO: "B2B" };
                     Object.assign(Seleccion, adicional);
@@ -1596,7 +1781,7 @@ a:hover {
                 case 50:
                     var lote = "";
                     if ($("#txtmuestra").val() == "1") { lote = "1"; } else { lote = "0";}
-                    var adicional = { UNIDAD_VENTA: $("#txtunidadventa").val(), MARGEN: $("#txtmargen").val(), NECESITA_MUESTRA: $("#txtmuestra").val(), LOTE_INDUSTRIAL: lote, TIPO: "B2B" };
+                    var adicional = { UNIDAD_VENTA: $("#txtunidadventa").val(), MARGEN: $("#txtmargen").val(), LOTE_INDUSTRIAL: lote, TIPO: "B2B" };
                     Object.assign(Seleccion, adicional);
                     break;
 
@@ -1630,7 +1815,43 @@ a:hover {
             $('#FormModal3').modal('hide');
             $('#FormModal4').modal('hide');
             $('#FormModal5').modal('hide');
+            $('#myModal').modal('hide');
         }
+
+
+        function EnviarMuestraArte()
+        {
+
+            var Seleccion = table.rows({ selected: true }).data()[0];
+
+            debugger;
+            var WORKFLOWS = [];
+        var select = document.getElementById("txtmuestraarte");
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].selected) {
+                WORKFLOWS.push(select.options[i].value);
+            }
+            }
+            Seleccion.WORKFLOWS = WORKFLOWS.join(","); ;
+
+
+        jQuery.ajax({
+            url: "@Url.Action("Copiarworkflow", "Workflow")",
+            type: "POST",
+            data: JSON.stringify(Seleccion),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response.success === true) {
+                    toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                    $('#MuestraArteModal').modal('hide');
+                    limpiar();
+                } else {
+                    toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                }
+            }
+        });
+    }
 
         function Guardar($CLIENTE_CORREL)
         {
@@ -1644,6 +1865,7 @@ a:hover {
                     IDCLIENTE: $("#txtNombre").val(),
                     NOTAS: $("#txtnotas").val(),
                     ARCHIVO: $("#txtadjunto").val(),
+                    FECHA: $("#frecepcion").val(),
                     PASO_ACTUAL:10
                 }
 

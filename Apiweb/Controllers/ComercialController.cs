@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Apiweb.Models;
 using Apiweb.Properties;
+using Apiweb.Utilidad;
 using CrystalDecisions.CrystalReports.Engine;
 using DataTables;
 using log4net;
@@ -17,11 +18,12 @@ namespace Apiweb.Controllers
     public class ComercialController : Controller
     {
         private static readonly ILog Log = Logs.GetLogger();
-        AppDbContext _dbContext;
+     
 
         // GET: WorkFlow
         Settings settings = Properties.Settings.Default;
-        string usuario = (System.Web.HttpContext.Current.Session["User"] as String).ToUpper();
+        string usuario = SessionManager.GetUsuario();
+        string entidad = SessionManager.GetEntidad();
         // GET: Comercial
         public ActionResult Index()
         {

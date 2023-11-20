@@ -32,5 +32,10 @@ namespace Apiweb.Models
         public string FECHA_REQUERIDA { get; set; }
 
         public Int32 DIAS_TOTALES { get; set; }
+        public string NOMBRE_PRODUCTO { get; set; }
+        public string USUARIO_INICIADOR { get; set; }
+        public string REGION { get; set; }
+        public string CLIENTE { get; set; }
+        
     }
 }

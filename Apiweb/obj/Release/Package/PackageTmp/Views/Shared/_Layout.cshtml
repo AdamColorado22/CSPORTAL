@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
 
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/plugin/css")
-   
+   @using Apiweb.Utilidad;
  
 </head>
 <body>
@@ -24,9 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                @{
-
-                    Boolean PedidoDominicana = false;
+                @{ Boolean PedidoDominicana = false;
                     Boolean PreciosSMI = false;
                     Boolean PreciosMH = false;
                     Boolean Historico = false;
@@ -49,14 +47,14 @@
                     Boolean ComercialPedA = false;
                     Boolean ComercialPedT = false;
                     Boolean Material = false;
-                    Boolean Part_id = false;
 
                     String usuario = "";
                     try
                     {
                         List<Apiweb.Models.USUARIO_ROL> ROl = System.Web.HttpContext.Current.Session["Rol"] as List<Apiweb.Models.USUARIO_ROL>;
 
-                        usuario = System.Web.HttpContext.Current.Session["User"] as String;
+                        usuario = SessionManager.GetUsuario();
+                        string entidad = SessionManager.GetEntidad();
                         foreach (var item in ROl)
                         {
                             switch (item.ROL_ID)
@@ -133,9 +131,6 @@
                                 case 24:
                                     Material = true;
                                     break;
-                                case 25:
-                                    Part_id = true;
-                                    break;
 
 
 
@@ -145,172 +140,167 @@
                     catch (Exception e)
                     {
                         Response.Redirect(@Url.Action("logoff", "Login"));
-                    }
-
-                }
+                    } }
 
 
 
 
                 @if (PedidoDominicana)
                 {
-                    <li id="navhome" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home")"><i class="fas fa-home"></i> Pedidos Dominicana</a>
-                    </li>
-                }
+            <li id="navhome" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Home")"><i class="fas fa-home"></i> Pedidos Dominicana</a>
+            </li>
+}
                 @if (PreciosSMI)
                 {
-                    <li id="navsmi" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("PrecioSMI", "Home")"><i class="fas fa-user"></i> Precios SMI</a>
-                    </li>
-                }
+            <li id="navsmi" class="nav-item">
+                <a class="nav-link" href="@Url.Action("PrecioSMI", "Home")"><i class="fas fa-user"></i> Precios SMI</a>
+            </li>
+}
                 @if (PreciosMH)
                 {
-                    <li id="navmh" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("PrecioMH", "Home")"><i class="fas fa-users-cog"></i> Precios MH</a>
-                    </li>
-                }
+            <li id="navmh" class="nav-item">
+                <a class="nav-link" href="@Url.Action("PrecioMH", "Home")"><i class="fas fa-users-cog"></i> Precios MH</a>
+            </li>
+}
                 @if (Historico)
                 {
-                    <li id="navhist" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Historicos", "Home")"><i class="fas fa-server"></i> Historico</a>
-                    </li>
-                }
+            <li id="navhist" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Historicos", "Home")"><i class="fas fa-server"></i> Historico</a>
+            </li>
+}
                 @if (TexportSocks)
                 {
-                    <li id="navqw2" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "QW2")"><i class="fas fa-book"></i> Texport Socks</a>
-                    </li>
-                }
+            <li id="navqw2" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "QW2")"><i class="fas fa-book"></i> Texport Socks</a>
+            </li>
+}
 
                 @if (Underwear)
                 {
-                    <li id="navqw2U" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Under", "QW2")"><i class="fas fa-boxes"></i> UnderWear</a>
-                    </li>
-                }
+            <li id="navqw2U" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Under", "QW2")"><i class="fas fa-boxes"></i> UnderWear</a>
+            </li>
+}
                 @if (Underwear)
                 {
-                    <li id="navqw2UMH" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("UnderMH", "QW2")"><i class="fas fa-box"></i> UnderWear MH</a>
-                    </li>
-                }
+            <li id="navqw2UMH" class="nav-item">
+                <a class="nav-link" href="@Url.Action("UnderMH", "QW2")"><i class="fas fa-box"></i> UnderWear MH</a>
+            </li>
+}
                 @if (ColocacionOC)
                 {
-                    <li id="navqw6" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "QW6")"><i class="fas fa-shopping-cart"></i> Purchase Orders for Production</a>
-                    </li>
-                }
+            <li id="navqw6" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "QW6")"><i class="fas fa-shopping-cart"></i> Purchase Orders for Production</a>
+            </li>
+}
                 @if (ColocacionPedido)
                 {
-                    <li id="navqw62" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Plantilla", "QW6")"><i class="fas fa-tags"></i> Purchase Orders for Dispatch</a>
-                    </li>
-                }
+            <li id="navqw62" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Plantilla", "QW6")"><i class="fas fa-tags"></i> Purchase Orders for Dispatch</a>
+            </li>
+}
                 @if (CortosProduccion)
                 {
-                    <li id="navqw7" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "QW7")"><i class="far fa-calendar-check"></i> Cortos de Produccion</a>
-                    </li>
-                }
+            <li id="navqw7" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "QW7")"><i class="far fa-calendar-check"></i> Cortos de Produccion</a>
+            </li>
+}
                 @if (Trazabilidad)
                 {
-                    <li id="traza" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("ConsultaTrazabilidad", "QW7")"><i class="far fa-calendar-check"></i> Trazabilidad</a>
-                    </li>
-                }
+            <li id="traza" class="nav-item">
+                <a class="nav-link" href="@Url.Action("ConsultaTrazabilidad", "QW7")"><i class="far fa-calendar-check"></i> Trazabilidad</a>
+            </li>
+}
                 @if (Facturacion)
                 {
-                    <li id="navqw8" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "QW8")"><i class="fas fa-file-invoice-dollar"></i>Facturacion</a>
-                    </li>
-                }
+            <li id="navqw8" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "QW8")"><i class="fas fa-file-invoice-dollar"></i>Facturacion</a>
+            </li>
+}
                 @if (Bodegas)
                 {
-                    <li id="Bodega1" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Bodega")"><i class="fas fa-file-invoice-dollar"></i>Bodega Envio</a>
-                    </li>
-                }
+            <li id="Bodega1" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "Bodega")"><i class="fas fa-file-invoice-dollar"></i>Bodega Envio</a>
+            </li>
+}
 
                 @if (Bodegas)
                 {
-                    <li id="Bodega2" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Recibo", "Bodega")"><i class="fas fa-file-invoice-dollar"></i>Bodega Recepcion</a>
-                    </li>
-                }
+            <li id="Bodega2" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Recibo", "Bodega")"><i class="fas fa-file-invoice-dollar"></i>Bodega Recepcion</a>
+            </li>
+}
                 @if (Workflow)
                 {
-                    <li id="Workflowb2b" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Workflow")"><i class="fas fa-water"></i> Costeo</a>
-                    </li>
-                }
-                @if (creacion)
-                {
-                    <li id="Workflowbart" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("CreacionArt", "Workflow")"><i class="fas fa-wrench"></i> Creacion Articulo</a>
-                    </li>
-                }
-                @if (muestras)
-                {
-                    <li id="WorkflowMuestra" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Muestras", "Workflow")"><i class="fas fa-vial"></i> Muestras</a>
-                    </li>
-                }
-                @if (servicios)
-                {
-                    <li id="WorkflowServicio" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("ServiciosProd", "Workflow")"><i class="fas fa-tty"></i> Servicios</a>
-                    </li>
-                }
+            <li id="Workflowb2b" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "Workflow")"><i class="fas fa-water"></i> Costeo</a>
+            </li>
+}
                 @if (artes)
                 {
-                    <li id="WorkflowArtes" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Artes", "Workflow")"><i class="fas fa-tty"></i> Artes</a>
-                    </li>
-                }
+            <li id="WorkflowArtes" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Artes", "Workflow")"><i class="fas fa-tty"></i> Artes</a>
+            </li>
+}
+
+                @if (muestras)
+                {
+            <li id="WorkflowMuestra" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Muestras", "Workflow")"><i class="fas fa-vial"></i> Muestras</a>
+            </li>
+}
+                @if (creacion)
+                {
+            <li id="Workflowbart" class="nav-item">
+                <a class="nav-link" href="@Url.Action("CreacionArt", "Workflow")"><i class="fas fa-wrench"></i> Creacion Articulo</a>
+            </li>
+}
+
+                @if (servicios)
+                {
+            <li id="WorkflowServicio" class="nav-item">
+                <a class="nav-link" href="@Url.Action("ServiciosProd", "Workflow")"><i class="fas fa-tty"></i> Servicios</a>
+            </li>
+}
+
                 @if (otros)
                 {
-                    <li id="WorkflowOtros" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Otros", "Workflow")"><i class="fas fa-th-list"></i> Otros</a>
-                    </li>
-                }
+            <li id="WorkflowOtros" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Otros", "Workflow")"><i class="fas fa-th-list"></i> Otros</a>
+            </li>
+}
                 @if (comercial)
                 {
-                    <li id="comercial" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Comercial")"><i class="fas fa-stream"></i> Comercial</a>
-                    </li>
-                }
+            <li id="comercial" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "Comercial")"><i class="fas fa-stream"></i> Comercial</a>
+            </li>
+}
                 @if (ComercialPed)
                 {
-                    <li id="comercialped" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "ComercialPed")"><i class="fas fa-store"></i> Pedidos</a>
-                    </li>
-                }
+            <li id="comercialped" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "ComercialPed")"><i class="fas fa-store"></i> Pedidos</a>
+            </li>
+}
                 @if (ComercialPedA)
                 {
-                    <li id="comercialped2" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Autorizador", "ComercialPed")"><i class="fas fa-store"></i> Autorizador</a>
-                    </li>
-                }
+            <li id="comercialped2" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Autorizador", "ComercialPed")"><i class="fas fa-store"></i> Autorizador</a>
+            </li>
+}
                 @if (ComercialPedT)
                 {
-                    <li id="comercialpedT" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("ListarTodo", "ComercialPed")"><i class="fas fa-store"></i>Lista de Pedidos</a>
-                    </li>
-                }
+            <li id="comercialpedT" class="nav-item">
+                <a class="nav-link" href="@Url.Action("ListarTodo", "ComercialPed")"><i class="fas fa-store"></i>Lista de Pedidos</a>
+            </li>
+}
 
                 @if (Material)
                 {
-                    <li id="comercialpedT" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Material")"><i class="fas fa-store"></i>Material</a>
-                    </li>
-                }
-                @if (Part_id)
-                {
-                    <li id="part" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "PartDescription")"><i class="fas fa-sitemap"></i>Part</a>
-                    </li>
-                }
+            <li id="comercialpedT" class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "Material")"><i class="fas fa-store"></i>Material</a>
+            </li>
+}
                 <li id="Salir" class="nav-item">
                     <a class="nav-link" href="@Url.Action("logoff", "Login")"><i class="fas fa-sign-out-alt"></i> @usuario -  Log out</a>
                 </li>

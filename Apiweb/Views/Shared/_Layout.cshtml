@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
 
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/plugin/css")
-   
+   @using Apiweb.Utilidad;
  
 </head>
 <body>
@@ -24,9 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                @{
-
-                    Boolean PedidoDominicana = false;
+                @{ Boolean PedidoDominicana = false;
                     Boolean PreciosSMI = false;
                     Boolean PreciosMH = false;
                     Boolean Historico = false;
@@ -56,7 +54,8 @@
                     {
                         List<Apiweb.Models.USUARIO_ROL> ROl = System.Web.HttpContext.Current.Session["Rol"] as List<Apiweb.Models.USUARIO_ROL>;
 
-                        usuario = System.Web.HttpContext.Current.Session["User"] as String;
+                        usuario = SessionManager.GetUsuario();
+                        string entidad = SessionManager.GetEntidad();
                         foreach (var item in ROl)
                         {
                             switch (item.ROL_ID)
@@ -136,7 +135,12 @@
                                 case 25:
                                     Part_id = true;
                                     break;
-
+                                    @if (Part_id)
+                                    {
+                                        <li id="part" class="nav-item">
+                                            <a class="nav-link" href="@Url.Action("Index", "PartDescription")"><i class="fas fa-sitemap"></i>Part</a>
+                                        </li>
+                                    }
 
 
                             }
@@ -145,9 +149,7 @@
                     catch (Exception e)
                     {
                         Response.Redirect(@Url.Action("logoff", "Login"));
-                    }
-
-                }
+                    } }
 
 
 
@@ -244,30 +246,33 @@
                         <a class="nav-link" href="@Url.Action("Index", "Workflow")"><i class="fas fa-water"></i> Costeo</a>
                     </li>
                 }
-                @if (creacion)
-                {
-                    <li id="Workflowbart" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("CreacionArt", "Workflow")"><i class="fas fa-wrench"></i> Creacion Articulo</a>
-                    </li>
-                }
-                @if (muestras)
-                {
-                    <li id="WorkflowMuestra" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Muestras", "Workflow")"><i class="fas fa-vial"></i> Muestras</a>
-                    </li>
-                }
-                @if (servicios)
-                {
-                    <li id="WorkflowServicio" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("ServiciosProd", "Workflow")"><i class="fas fa-tty"></i> Servicios</a>
-                    </li>
-                }
                 @if (artes)
                 {
                     <li id="WorkflowArtes" class="nav-item">
                         <a class="nav-link" href="@Url.Action("Artes", "Workflow")"><i class="fas fa-tty"></i> Artes</a>
                     </li>
                 }
+
+                @if (muestras)
+                {
+                    <li id="WorkflowMuestra" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Muestras", "Workflow")"><i class="fas fa-vial"></i> Muestras</a>
+                    </li>
+                }
+                @if (creacion)
+                {
+                    <li id="Workflowbart" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("CreacionArt", "Workflow")"><i class="fas fa-wrench"></i> Creacion Articulo</a>
+                    </li>
+                }
+
+                @if (servicios)
+                {
+                    <li id="WorkflowServicio" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("ServiciosProd", "Workflow")"><i class="fas fa-tty"></i> Servicios</a>
+                    </li>
+                }
+
                 @if (otros)
                 {
                     <li id="WorkflowOtros" class="nav-item">
@@ -305,6 +310,7 @@
                         <a class="nav-link" href="@Url.Action("Index", "Material")"><i class="fas fa-store"></i>Material</a>
                     </li>
                 }
+
                 @if (Part_id)
                 {
                     <li id="part" class="nav-item">
