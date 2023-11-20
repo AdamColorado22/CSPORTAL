@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\Adam\OneDrive\Documentos\deploy\CSPORTAL</_PublishTargetUrl>
-    <History>True|2023-07-10T20:48:19.8868674Z;True|2023-06-08T22:33:08.2144217+02:00;</History>
+    <History>True|2023-11-07T18:14:55.7029208Z;True|2023-07-10T22:48:19.8868674+02:00;True|2023-06-08T22:33:08.2144217+02:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include=".editorconfig">
@@ -81,10 +81,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/14/2023 17:54:47</publishTime>
     </File>
     <File Include="bin/Apiweb.dll">
-      <publishTime>10/31/2023 16:03:55</publishTime>
+      <publishTime>11/07/2023 19:15:19</publishTime>
     </File>
     <File Include="bin/Apiweb.pdb">
-      <publishTime>10/31/2023 16:03:55</publishTime>
+      <publishTime>11/07/2023 19:15:19</publishTime>
     </File>
     <File Include="bin/Bold.Licensing.dll">
       <publishTime>06/14/2023 17:54:47</publishTime>
@@ -4749,13 +4749,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/09/2023 21:46:24</publishTime>
     </File>
     <File Include="Views/ComercialPed/Index.cshtml">
-      <publishTime>10/25/2023 21:31:02</publishTime>
+      <publishTime>11/03/2023 16:07:10</publishTime>
     </File>
     <File Include="Views/ComercialPed/ListarTodo.cshtml">
-      <publishTime>05/09/2023 21:46:24</publishTime>
+      <publishTime>11/07/2023 19:09:52</publishTime>
     </File>
     <File Include="Views/ComercialPed/Otif.cshtml">
-      <publishTime>10/31/2023 15:39:30</publishTime>
+      <publishTime>11/07/2023 19:05:15</publishTime>
     </File>
     <File Include="Views/Home/Historicos.cshtml">
       <publishTime>05/09/2023 21:46:24</publishTime>
@@ -4782,7 +4782,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/09/2023 21:46:24</publishTime>
     </File>
     <File Include="Views/PartDescription/Index.cshtml">
-      <publishTime>10/25/2023 22:33:18</publishTime>
+      <publishTime>11/03/2023 20:46:18</publishTime>
     </File>
     <File Include="Views/QW2/Index.cshtml">
       <publishTime>05/09/2023 21:46:24</publishTime>
@@ -4821,7 +4821,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/09/2023 21:46:24</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/25/2023 21:31:02</publishTime>
+      <publishTime>11/07/2023 19:15:16</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>05/09/2023 21:46:24</publishTime>
@@ -4854,7 +4854,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/09/2023 21:46:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/31/2023 16:03:56</publishTime>
+      <publishTime>11/07/2023 19:14:46</publishTime>
     </File>
   </ItemGroup>
 </Project>

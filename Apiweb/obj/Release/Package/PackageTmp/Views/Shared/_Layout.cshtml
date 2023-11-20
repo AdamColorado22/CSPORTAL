@@ -47,9 +47,10 @@
                     Boolean ComercialPed = false;
                     Boolean Trazabilidad = false;
                     Boolean ComercialPedA = false;
-                    Boolean ComercialPedT = false;
+                    Boolean ComercialPedT = true;
                     Boolean Material = false;
                     Boolean Part_id = false;
+                    Boolean Otif = true;
 
                     String usuario = "";
                     try
@@ -62,79 +63,82 @@
                             switch (item.ROL_ID)
                             {
                                 case 2:
-                                    PedidoDominicana = true;
+                                    PedidoDominicana = false;
                                     break;
                                 case 3:
-                                    PreciosSMI = true;
+                                    PreciosSMI = false;
                                     break;
                                 case 4:
-                                    PreciosMH = true;
+                                    PreciosMH = false;
                                     break;
                                 case 5:
-                                    Historico = true;
+                                    Historico = false;
                                     break;
                                 case 6:
-                                    TexportSocks = true;
+                                    TexportSocks = false;
                                     break;
                                 case 7:
-                                    ColocacionOC = true;
+                                    ColocacionOC = false;
                                     break;
                                 case 8:
-                                    ColocacionPedido = true;
+                                    ColocacionPedido = false;
                                     break;
                                 case 9:
-                                    CortosProduccion = true;
+                                    CortosProduccion = false;
                                     break;
                                 case 10:
-                                    Underwear = true;
+                                    Underwear = false;
                                     break;
                                 case 11:
-                                    Facturacion = true;
+                                    Facturacion = false;
                                     break;
                                 case 12:
-                                    Bodegas = true;
+                                    Bodegas = false;
                                     break;
                                 case 13:
-                                    Workflow = true;
+                                    Workflow = false;
                                     break;
 
                                 case 14:
-                                    creacion = true;
+                                    creacion = false;
                                     break;
                                 case 15:
-                                    muestras = true;
+                                    muestras = false;
                                     break;
                                 case 16:
-                                    servicios = true;
+                                    servicios = false;
                                     break;
 
                                 case 17:
-                                    artes = true;
+                                    artes = false;
                                     break;
 
                                 case 18:
-                                    otros = true;
+                                    otros = false;
                                     break;
                                 case 19:
-                                    comercial = true;
+                                    comercial = false;
                                     break;
                                 case 20:
-                                    ComercialPed = true;
+                                    ComercialPed = false;
                                     break;
                                 case 21:
-                                    Trazabilidad = true;
+                                    Trazabilidad = false;
                                     break;
                                 case 22:
-                                    ComercialPedA = true;
+                                    ComercialPedA = false;
                                     break;
                                 case 23:
                                     ComercialPedT = true;
                                     break;
                                 case 24:
-                                    Material = true;
+                                    Material = false;
                                     break;
                                 case 25:
-                                    Part_id = true;
+                                    Part_id = false;
+                                    break;
+                                case 26:
+                                    Otif = true;
                                     break;
 
 
@@ -309,6 +313,12 @@
                 {
                     <li id="part" class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index", "PartDescription")"><i class="fas fa-sitemap"></i>Part</a>
+                    </li>
+                }
+                @if (Otif)
+                {
+                    <li id="part" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Otif", "ComercialPed")"><i class="fas fa-sitemap"></i>Otif</a>
                     </li>
                 }
                 <li id="Salir" class="nav-item">
