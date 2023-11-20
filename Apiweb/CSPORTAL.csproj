@@ -213,6 +213,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MaterialController.cs" />
     <Compile Include="Controllers\orderController.cs" />
+    <Compile Include="Controllers\PartDescriptionController.cs" />
     <Compile Include="Controllers\QW2Controller.cs" />
     <Compile Include="Controllers\QW6Controller.cs" />
     <Compile Include="Controllers\QW7Controller.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Models\INVENTORY_TRANS.cs">
       <DependentUpon>Visual.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LANG_DESCRIPTION.cs" />
     <Compile Include="Models\Logs.cs" />
     <Compile Include="Models\Muestras.cs" />
     <Compile Include="Models\order.cs" />
@@ -2003,6 +2005,7 @@
     <Content Include="Views\QW7\ConsultaTrazabilidad.cshtml" />
     <Content Include="Views\Material\Index.cshtml" />
     <Content Include="Views\ComercialPed\ListarTodo.cshtml" />
+    <Content Include="Views\PartDescription\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
