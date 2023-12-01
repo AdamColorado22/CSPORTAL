@@ -36,6 +36,63 @@ namespace Apiweb.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Otif()
+        {
+            return View();
+        }
+
+
+        public JsonResult ReporteOtif(string tipo, string Fechai, string FechaF, string Cliente)
+        {
+            Log.Info("Listando Reporte Otif");
+
+            DataSet ds = new DataSet();
+            string constr = settings.DBConnection;
+
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string query = " EXEC TER_SP_OTIF @Tipo, @FechaInicio, @FechaFin, @Cliente";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+
+                    cmd.Parameters.AddWithValue("@Tipo", tipo);
+                    cmd.Parameters.AddWithValue("@FechaInicio", Fechai);
+                    cmd.Parameters.AddWithValue("@FechaFin", FechaF);
+                    cmd.Parameters.AddWithValue("@Cliente", Cliente);
+
+                    cmd.CommandType = CommandType.Text;
+
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        sda.Fill(ds);
+                    }
+                }
+            }
+
+            var Data = ds.Tables[0].AsEnumerable()
+                .Select(dataRow => new Otif
+                {
+                    BASE = dataRow.Field<string>("BASE"),
+                    FECHA_INGRESO = dataRow.Field<string>("FECHA_INGRESO"),
+                    FECHA_PLANTA = dataRow.Field<string>("FECHA_PLANTA"),
+                    INVOICED_DATE = dataRow.Field<string>("INVOICED_DATE"),
+                    LEAD_TIME = dataRow.Field<int>("LEAD_TIME"),
+                    ONTIME = dataRow.Field<int>("ONTIME"),
+                    ORDENCOMPRA = dataRow.Field<string>("ORDENCOMPRA"),
+                    PART_ID = dataRow.Field<string>("PART_ID"),
+                    UN = dataRow.Field<string>("UN"),
+                    CANTIDAD = dataRow.Field<decimal>("CANTIDAD"),
+                    CANTIDAD_FACTURADA = dataRow.Field<decimal>("CANTIDAD_FACTURADA"),
+                    DEUDA = dataRow.Field<decimal>("DEUDA"),
+                    INFULL = dataRow.Field<decimal>("INFULL"),
+                }).ToList();
+
+            return Json(new { data = Data }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Listar()
         {
 
@@ -98,7 +155,7 @@ namespace Apiweb.Controllers
         {
             return View();
         }
-        public ActionResult ListarTodoV()
+        public ActionResult ListarTodoV(String Fechai,String Fechaf)
         {
 
             Log.Info("Listando Lista Comercial");
@@ -110,6 +167,10 @@ namespace Apiweb.Controllers
 
 
                 var response = new Editor(db, "TER_COM_PEDIDOS", "ID")
+                  .Where(q => q
+            .Where("CONVERT(DATE, FECHA_INGRESO, 103)", Fechai, ">=") // Adjust format code (103) as needed
+            .Where("CONVERT(DATE, FECHA_INGRESO, 103)", Fechaf, "<=") // Adjust format code (103) as needed
+        )
                 .Model<TER_COM_PEDIDOS>()
                 .Field(new Field("ID"))
                 .Field(new Field("PEDIDO"))

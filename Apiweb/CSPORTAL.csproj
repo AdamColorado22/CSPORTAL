@@ -256,6 +256,7 @@
     <Compile Include="Models\Muestras.cs" />
     <Compile Include="Models\order.cs" />
     <Compile Include="Models\orderDetail.cs" />
+    <Compile Include="Models\Otif.cs" />
     <Compile Include="Models\Otros.cs" />
     <Compile Include="Models\PRECIOMH.cs" />
     <Compile Include="Models\PART.cs">
@@ -2006,6 +2007,7 @@
     <Content Include="Views\Material\Index.cshtml" />
     <Content Include="Views\ComercialPed\ListarTodo.cshtml" />
     <Content Include="Views\PartDescription\Index.cshtml" />
+    <Content Include="Views\ComercialPed\Otif.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

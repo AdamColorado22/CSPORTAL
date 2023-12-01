@@ -1,0 +1,303 @@
+﻿
+<script src="~/Content/js/jquery-3.5.1.js"></script>
+@*<script src="~/Content/js/jquery.auto-complete.js"></script>*@
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/js/bootstrap.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Content/js/toastr.min.js"></script>
+<link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+@{ ViewBag.Title = "Pedidos Termo";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<style>
+    #metricsTable {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+    }
+
+        #metricsTable th, #metricsTable td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        #metricsTable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #metricsTable th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .red {
+        color: red;
+    }
+
+    .green {
+        color: green;
+    }
+</style>
+
+
+<div class="row m-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="categoria">Fecha</label>
+                                </div>
+                                <select class="custom-select" id="categoria">
+                                    <option>Choose...</option>
+                                    <option value="INGRESO">FECHA INGRESO</option>
+                                    <option value="PLANTA">FECHA PLANTA</option>
+                                    <option value="FACTURACION">FECHA FACTURACION</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm">
+                            <input type="text" id="datepicker3" class="form-control" autocomplete="off" placeholder="Fecha Inicio">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" id="datepicker4" class="form-control" autocomplete="off" placeholder="Fecha Final">
+                        </div>
+
+                        <div class="col-sm">
+                            <input type="text" class="form-control" id="txtcliente" placeholder="Cliente">
+                        </div>
+
+                        <div class="col-sm">
+                            <button class="btn btn-primary me-md-2" type="button" onclick="Mostrar(document.getElementById('datepicker3').value,document.getElementById('datepicker4').value,document.getElementById('categoria').value,document.getElementById('txtcliente').value);">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered" id="DTComercial" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Base</th>
+                            <th>Fecha de ingreso pedido</th>
+                            <th>Fecha solicitada a planta</th>
+                            <th>Fecha de facturación</th>
+                            <th>Lead Time</th>
+                            <th>On Time</th>
+                            <th>Orden de Compra</th>
+                            <th>Part Id</th>
+                            <th>Unidad de Medida</th>
+                            <th>Cantidad requerida</th>
+                            <th>Cantidad facturada</th>
+                            <th>Deuda</th>
+                            <th>In Full</th>
+
+                        </tr>
+                    </thead>
+
+                </table>
+
+            </div>
+        </div>
+        <table id="metricsTable">
+
+            <tr>
+                <td>On Time</td>
+                <td>0</td>
+
+            </tr>
+            <tr>
+                <td>In full</td>
+                <td>0</td>
+
+            </tr>
+            <tr>
+                <td>OTIF</td>
+                <td>0</td>
+
+            </tr>
+        </table>
+
+    </div>
+
+
+</div>
+
+
+@section scripts{
+
+
+    <script>
+        $('#datepicker3').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
+        $('#datepicker4').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
+
+        $('#comercialpedT').addClass('active');
+        var table;
+
+
+
+        function Mostrar(Fechai, FechaF, tipo, Cliente) {
+            if ($('#DTComercial')) { $('#DTComercial').DataTable().destroy(); }
+            table=   $('#DTComercial').DataTable({
+                responsive: true,
+                dom: "Bfrltip",
+
+                "iDisplayLength": 10,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                ajax: "/ComercialPed/ReporteOtif?tipo=" + tipo + "&Fechai=" + Fechai + "&FechaF=" + FechaF + "&Cliente=" + Cliente,
+
+                columns: [
+                    { data: "BASE" },
+                    {
+                        data: "FECHA_INGRESO",
+                        render: function (data, type, row) {
+                            // Formatear la fecha
+                            return formatarFecha(data);
+                        }
+                    },
+                    { data: "FECHA_PLANTA" },
+                    { data: "INVOICED_DATE" },
+                    { data: "LEAD_TIME" },
+                    { data: "ONTIME" },
+                    { data: "ORDENCOMPRA" },
+                    { data: "PART_ID" },
+                    { data: "UN" },
+                    { data: "CANTIDAD" },
+                    { data: "CANTIDAD_FACTURADA" },
+                    { data: "DEUDA" },
+                    { data: "INFULL" },
+
+
+                ],
+
+                order: [0, 'asc'],
+
+                buttons: [
+
+
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel" style="color:green"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success btn-sm'
+                    },
+
+
+                    {
+                        text: '<i class="fas fa-check-square"></i>',
+                        extend: 'selectAll',
+                        className: 'btn-space'
+                    },
+                    {
+                        text: '<i class="far fa-check-square"></i>',
+                        extend: 'selectNone',
+                        className: 'btn-space'
+                    },
+
+
+
+                ],
+                language: {
+                   url: "@Url.Content("~/Content/idioma/es-ES.json")"
+                }
+            });
+            setTimeout(function () {
+                color();
+            }, 3000);  // 10000 milisegundos (10 segundos)
+
+        }
+
+
+        function formatarFecha(date) {
+            // Extraer el valor numérico de milisegundos desde la época
+            var timestamp = parseInt(date.replace("/Date(", "").replace(")/", ""));
+
+            // Crear un objeto de fecha utilizando el timestamp
+            var fecha = new Date(timestamp);
+
+            // Formatear la fecha como desees, por ejemplo, usando toLocaleDateString
+            var fechaFormateada = fecha.toLocaleDateString();
+
+            return fechaFormateada;
+        }
+          $(document).ready(function () {
+
+
+
+
+          });
+
+        function color() {
+            
+            var table = $('#DTComercial').DataTable();
+            var totalRows = table.data().count(); // Obtén el total de elementos en la tabla
+
+            var ontimeColumn = table.column(5).data().toArray();
+            var ontimeCount = ontimeColumn.filter(function (value) {
+                return value === 100;
+            }).length;
+            debugger;
+
+            var promedioMetaLT = (ontimeCount / totalRows) * 100;  // Calcula el PROMEDIO % META LT
+            // Obtén la segunda fila (fila 1) y la segunda celda (celda 1) usando el índice base cero
+            var infull = table.column(12).data().toArray();
+            var suma = infull.reduce(function (a, b) {
+                return a + b;
+            }, 0);
+
+            // Calcula el promedio dividiendo la suma por la cantidad de elementos
+            var promedio = suma / infull.length;
+
+            var newValues = [(promedioMetaLT).toFixed(2), (promedio * 100).toFixed(2), ((ontimeCount / totalRows) * promedio).toFixed(2)];
+
+            // Actualiza los valores en la segunda columna de cada fila
+            $('#metricsTable tr').each(function (index) {
+                var $row = $(this);
+                $row.find('td:eq(1)').text(newValues[index]);
+            });
+
+            var table = document.getElementById("metricsTable");
+            var rows = table.getElementsByTagName("tr");
+
+            // Loop through the rows and calculate colors
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName("td");
+                var value = parseFloat(cells[1].textContent);
+
+                if (!isNaN(value)) {
+                    cells[1].textContent = value.toFixed(2) + "%";
+
+                    if (value >= 90) {
+                        cells[1].classList.add("green");
+                    } else {
+                        cells[1].classList.add("red");
+                    }
+                }
+            }
+
+
+        }
+
+     
+
+
+
+
+    </script>
+
+
+
+
+}
