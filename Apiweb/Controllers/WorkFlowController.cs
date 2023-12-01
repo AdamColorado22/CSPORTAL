@@ -1151,7 +1151,7 @@ namespace Apiweb.Controllers
                 smtp.Port = 25;
                 smtp.EnableSsl = false;
                 smtp.UseDefaultCredentials = true;
-                smtp.Send(correo);
+                //smtp.Send(correo);
                 return true;
 
             }

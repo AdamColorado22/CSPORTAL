@@ -108,12 +108,12 @@
         <table id="metricsTable">
 
             <tr>
-                <td>PROMEDIO % META LT</td>
+                <td>On Time</td>
                 <td>0</td>
 
             </tr>
             <tr>
-                <td>PROMEDIO % CANTIDAD META</td>
+                <td>In full</td>
                 <td>0</td>
 
             </tr>
@@ -160,13 +160,7 @@
 
                 columns: [
                     { data: "BASE" },
-                    {
-                        data: "FECHA_INGRESO",
-                        render: function (data, type, row) {
-                            // Formatear la fecha
-                            return formatarFecha(data);
-                        }
-                    },
+                    { data: "FECHA_INGRESO" },
                     { data: "FECHA_PLANTA" },
                     { data: "INVOICED_DATE" },
                     { data: "LEAD_TIME" },
@@ -220,18 +214,7 @@
         }
 
 
-        function formatarFecha(date) {
-            // Extraer el valor numérico de milisegundos desde la época
-            var timestamp = parseInt(date.replace("/Date(", "").replace(")/", ""));
-
-            // Crear un objeto de fecha utilizando el timestamp
-            var fecha = new Date(timestamp);
-
-            // Formatear la fecha como desees, por ejemplo, usando toLocaleDateString
-            var fechaFormateada = fecha.toLocaleDateString();
-
-            return fechaFormateada;
-        }
+      
           $(document).ready(function () {
 
 
@@ -260,7 +243,7 @@
             // Calcula el promedio dividiendo la suma por la cantidad de elementos
             var promedio = suma / infull.length;
 
-            var newValues = [(promedioMetaLT).toFixed(2), (promedio * 100).toFixed(2), ((ontimeCount / totalRows) * promedio).toFixed(2)];
+            var newValues = [(promedioMetaLT).toFixed(2), (promedio ).toFixed(2), ((ontimeCount / totalRows) * promedio).toFixed(2)];
 
             // Actualiza los valores en la segunda columna de cada fila
             $('#metricsTable tr').each(function (index) {

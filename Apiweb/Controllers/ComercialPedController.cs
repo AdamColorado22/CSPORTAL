@@ -154,7 +154,7 @@ namespace Apiweb.Controllers
         {
             return View();
         }
-        public ActionResult ListarTodoV()
+        public ActionResult ListarTodoV(String Fechai,String Fechaf)
         {
 
             Log.Info("Listando Lista Comercial");
@@ -166,6 +166,10 @@ namespace Apiweb.Controllers
 
 
                 var response = new Editor(db, "TER_COM_PEDIDOS", "ID")
+                  .Where(q => q
+            .Where("CONVERT(DATE, FECHA_INGRESO, 103)", Fechai, ">=") // Adjust format code (103) as needed
+            .Where("CONVERT(DATE, FECHA_INGRESO, 103)", Fechaf, "<=") // Adjust format code (103) as needed
+        )
                 .Model<TER_COM_PEDIDOS>()
                 .Field(new Field("ID"))
                 .Field(new Field("PEDIDO"))

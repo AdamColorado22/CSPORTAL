@@ -48,7 +48,22 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
-                Comercial
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-sm">
+                            <input type="text" id="datepicker3" class="form-control" autocomplete="off" placeholder="Fecha Inicio">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" id="datepicker4" class="form-control" autocomplete="off" placeholder="Fecha Final">
+                        </div>
+
+                        <div class="col-sm">
+                            <button class="btn btn-primary me-md-2" type="button" onclick="Mostrar(document.getElementById('datepicker3').value,document.getElementById('datepicker4').value);">Buscar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <table class="table table-striped table-bordered" id="DTComercial" style="width:100%">
@@ -99,25 +114,29 @@
 
 
     <script>
-
+        $('#datepicker3').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
+        $('#datepicker4').datepicker({
+            uiLibrary: 'bootstrap4',
+            dateFormat: 'dd/mm/yy'
+        });
 
         $('#comercialpedT').addClass('active');
         var table, table2, Fila;
         var editor, editor2;
-          $(document).ready(function () {
-            editor = new $.fn.dataTable.Editor({
-                ajax: "/ComercialPed/Listar",
+        function Mostrar(Fechai, FechaF)
+        {
+             editor = new $.fn.dataTable.Editor({
+                 ajax: "/ComercialPed/ListarTodoV?Fechai=" + Fechai + "&Fechaf=" + FechaF,
                 table: "#DTComercial",
                 fields: [
-
-                   
-
-
 
                 ]
             });
 
-           
+
 
 
             table=   $('#DTComercial').DataTable({
@@ -126,7 +145,7 @@
                 /*"scrollY": "200px",*/
                 "iDisplayLength": 10,
                 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                ajax: "/ComercialPed/ListarTodoV",
+                ajax: "/ComercialPed/ListarTodoV?Fechai=" + Fechai+"&Fechaf="+FechaF,
                 "createdRow": function (row, data, dataIndex) {
                     if (data.ESTADO==="PENDIENTE") {
                         /*$($(row).find("td")[10]).css("background-color", "#E15B3D");*/
@@ -226,7 +245,7 @@
                 },
                 buttons: [
 
-                  
+
                     {
                         extend: 'excelHtml5',
                         text: '<i class="fas fa-file-excel" style="color:green"></i> ',
@@ -245,9 +264,9 @@
                         extend: 'selectNone',
                         className: 'btn-space'
                     },
-                  
 
-                   
+
+
                 ],
                 language: {
                    url: "@Url.Content("~/Content/idioma/es-ES.json")"
@@ -263,9 +282,15 @@
            //});
            $.fn.dataTable.ext.errMode = function (settings, helpPage, message) {
                toastr.error(message, "Error", { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" })
+            };
 
-           };
+        }
 
+
+          $(document).ready(function () {
+
+
+      
 
 
           });

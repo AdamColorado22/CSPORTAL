@@ -108,12 +108,12 @@
         <table id="metricsTable">
 
             <tr>
-                <td>PROMEDIO % META LT</td>
+                <td>On Time</td>
                 <td>0</td>
 
             </tr>
             <tr>
-                <td>PROMEDIO % CANTIDAD META</td>
+                <td>In full</td>
                 <td>0</td>
 
             </tr>
@@ -160,7 +160,13 @@
 
                 columns: [
                     { data: "BASE" },
-                    { data: "FECHA_INGRESO" },
+                    {
+                        data: "FECHA_INGRESO",
+                        render: function (data, type, row) {
+                            // Formatear la fecha
+                            return formatarFecha(data);
+                        }
+                    },
                     { data: "FECHA_PLANTA" },
                     { data: "INVOICED_DATE" },
                     { data: "LEAD_TIME" },
@@ -211,7 +217,21 @@
                 color();
             }, 3000);  // 10000 milisegundos (10 segundos)
 
-         }
+        }
+
+
+        function formatarFecha(date) {
+            // Extraer el valor numérico de milisegundos desde la época
+            var timestamp = parseInt(date.replace("/Date(", "").replace(")/", ""));
+
+            // Crear un objeto de fecha utilizando el timestamp
+            var fecha = new Date(timestamp);
+
+            // Formatear la fecha como desees, por ejemplo, usando toLocaleDateString
+            var fechaFormateada = fecha.toLocaleDateString();
+
+            return fechaFormateada;
+        }
           $(document).ready(function () {
 
 
