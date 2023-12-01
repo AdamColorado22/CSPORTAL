@@ -20,6 +20,7 @@ namespace Apiweb.Controllers
 
         Settings settings = Properties.Settings.Default;
         // GET: Bodega
+
         public ActionResult Index()
         {
             return View();
@@ -180,7 +181,7 @@ namespace Apiweb.Controllers
 
         public JsonResult AutoComplete(string tipo, string valor)
         {
-            Array array;
+            
             IList<String> intermediate_list = new List<String>();
             List<Autocomplete> custlist = null;
             DataSet ds = new DataSet();

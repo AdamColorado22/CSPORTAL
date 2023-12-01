@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using Apiweb.Properties;
+using Apiweb.Utilidad;
 using log4net;
 
 namespace Apiweb.Models
@@ -16,7 +17,9 @@ namespace Apiweb.Models
 
         // GET: WorkFlow
         Settings settings = Properties.Settings.Default;
-        string usuario = (System.Web.HttpContext.Current.Session["User"] as String).ToUpper();
+        string usuario = SessionManager.GetUsuario();
+        string entidad = SessionManager.GetEntidad();
+
 
         public String ObtenerCorreo(String tipo, int paso)
         {

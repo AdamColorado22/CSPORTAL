@@ -25,8 +25,8 @@ namespace Apiweb.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TERMODATA;Database=TERMOAPP;User Id=aplicaciones;Password=@plicaci0n3" +
-            "$;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TERMOVM9;Database=TERMOAPP;User Id=aplicaciones;Password=@plicaci0n3$" +
+            ";")]
         public string DBConnection {
             get {
                 return ((string)(this["DBConnection"]));
@@ -35,7 +35,7 @@ namespace Apiweb.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TERMODATA;Database=TERMO;User Id=aplicaciones;Password=@plicaci0n3$;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TERMOVM9;Database=TERMO9;User Id=aplicaciones;Password=@plicaci0n3$;")]
         public string DBTERMO {
             get {
                 return ((string)(this["DBTERMO"]));
@@ -44,7 +44,7 @@ namespace Apiweb.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TERMODATA;Database=TERMOAPP;User Id=reportes;Password=termorep;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TERMOVM9;Database=TERMOAPP;User Id=reportes;Password=termorep;")]
         public string DBCONSULTA {
             get {
                 return ((string)(this["DBCONSULTA"]));

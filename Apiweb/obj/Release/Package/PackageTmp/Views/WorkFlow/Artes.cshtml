@@ -1,8 +1,6 @@
 ﻿
-@{
-    ViewBag.Title = "Artes";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewBag.Title = "Artes";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
 <script src="~/Content/js/jquery-3.5.1.js"></script>
@@ -14,7 +12,7 @@
 <script src="~/Content/js/toastr.min.js"></script>
 <link href="~/Content/css/toastr.min.css" rel="stylesheet" />
 @*<script src="~/Content/js/bootstrap-datepicker.es.js"></script>*@
-
+<script src="~/Content/js/FormularioCorreo.js" asp-append-version="true"></script>
 
 <div class="row m-4">
     <div class="col-sm-12">
@@ -27,9 +25,12 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            @*<th>TIPO</th>*@
-                            <th>ARTE</th>
+                            <th>NOMBRE PRODUCTO</th>
+                            <th>USUARIO INICIADOR</th>
+                            <th>REGION</th>
+                            <th>CLIENTE</th>
                             <th>DUI</th>
+                            <th>ARTE</th>
                             <th>RETOQUE</th>
                             <th>IMPRESION</th>
                             @*<th>ASIGNADO</th>*@
@@ -53,6 +54,34 @@
 
     </div>
 
+</div>
+
+<!-- Modal para Muestra y Arte -->
+<div class="modal fade" id="ModalCorreo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">listado de Correos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-sm" id="DtCorreos" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Correo</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 
@@ -118,7 +147,7 @@
 </div>
 
 
-@*!-- Modal Agregar o editar -->*@
+@*!-- Modal Agregar -->*@
 <div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -143,16 +172,16 @@
                         <label for="txtdui">Dui:</label>
                         <input type="text" autocomplete="off" class="form-control" id="txtdui">
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="txtretoque">Retoque:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtretoque">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="txtimpresion">Impresion:</label>
-                        <input type="text" autocomplete="off" class="form-control" id="txtimpresion">
-                    </div>
-                  
-                  
+                    @*<div class="form-group col-md-6">
+                            <label for="txtretoque">Retoque:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtretoque">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtimpresion">Impresion:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtimpresion">
+                        </div>*@
+
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -172,6 +201,58 @@
 </div>
 
 
+@*!-- Modal editar -->*@
+<div class="modal fade" id="FormModaleditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Workflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-row">
+
+
+                    <input type="hidden" id="txtid" />
+
+                    <div class="form-group col-md-6">
+                        <label for="txtartee">Arte:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtartee">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtduie">Dui:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtduie">
+                    </div>
+                    @*<div class="form-group col-md-6">
+                            <label for="txtretoque">Retoque:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtretoque">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtimpresion">Impresion:</label>
+                            <input type="text" autocomplete="off" class="form-control" id="txtimpresion">
+                        </div>*@
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" id="btnguardarie" class="btn btn-primary" onclick="GuardarE()">Guardar</button>
+            </div>
+            @*<div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-sm btn-secondary btn-block">Subir archivo</button>
+                </div>*@
+
+            @*}*@
+
+        </div>
+
+    </div>
+</div>
 
 <div class="modal fade" id="FormModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -308,9 +389,12 @@
                 ajax: "/Workflow/ListaServiciosSar",
                 columns: [
                     { data: "ID" },
-                   /* { data: "TIPO" },*/
-                    { data: "ARTE" },
+                    { data: "NOMBRE_PRODUCTO" },
+                    { data: "USUARIO_INICIADOR" },
+                    { data: "REGION" },
+                    { data: "CLIENTE" },
                     { data: "DUI" },
+                    { data: "ARTE" },
                     { data: "RETOQUE" },
                     { data: "IMPRESION" },
                 /*    { data: "ASIGNADO" },*/
@@ -381,7 +465,7 @@
 
                 ],
 
-                order: [0, 'asc'],
+                order: [0, 'desc'],
 
                 select: true,
                 buttons: [
@@ -392,6 +476,14 @@
                         action: function (e, dt, node, config) {
                             $('#btnguardari').prop("disabled", false);
                             $('#FormModal').modal('show');
+                        }
+                    },
+                    {
+                        text: '<a ><i class="far fa-edit"></i> Editar</a>',
+                        titleAttr: 'Editar',
+                        action: function (e, dt, node, config) {
+                            $('#btnguardari').prop("disabled", false);
+                            $('#FormModaleditar').modal('show');
                         }
                     },
 
@@ -438,10 +530,21 @@
                         }
                     },
                     {
-                        text: '<i class="fas fa-link"></i>',
+                        text: '<i class="fas fa-file-upload"></i>',
                         titleAttr: 'Adjuntos',
                         action: function (e, dt, node, config) {
                             if (table.rows('.selected').data().length > 0) { archivos(table.rows({ selected: true }).data()[0].ID); }
+                            else {
+                                toastr.error('Debe Seleccionar al menos un Registro y en estado Finalizado', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                            }
+
+                        }
+                    },
+                    {
+                        text: '<a><i class="fas fa-at"></i></i>&nbsp; Correo</a>',
+                        titleAttr: 'Correo',
+                        action: function (e, dt, node, config) {
+                            if (table.rows('.selected').data().length > 0) { habilitarCorreo("SAR", table.rows({ selected: true }).data()[0].PASO_ACTUAL); }
                             else {
                                 toastr.error('Debe Seleccionar al menos un Registro y en estado Finalizado', 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
                             }
@@ -469,7 +572,9 @@
                 case 20:
                     Siguiente()
                     break;
-
+                case 30:
+                    Siguiente()
+                    break;
 
             }
         }
@@ -543,7 +648,7 @@
             switch (Seleccion.PASO_ACTUAL) {
 
                 case 10:
-                    
+
                     var adicional = { TIPO: "SAR" };
                     Object.assign(Seleccion, adicional);
                     break;
@@ -608,6 +713,43 @@
                      if (response.success === true) {
                           toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
                             $('#FormModal').modal('hide');
+                            limpiar();
+
+                        }
+                        else { toastr.error(response.message, 'Alerta', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" }); }
+                    }
+
+
+
+             });
+
+
+
+        }
+
+              function GuardarE()
+        {
+                  var Workflow = {
+                      ID: table.rows({ selected: true }).data()[0].ID,
+                      PASO_ACTUAL: table.rows({ selected: true }).data()[0].PASO_ACTUAL,
+                      ARTE: $("#txtartee").val(),
+                      DUI: $("#txtduie").val()
+
+
+                  }
+
+
+
+             jQuery.ajax({
+                    url: "@Url.Action("GuardarSar", "Workflow")",
+                    type: "POST",
+                 data: JSON.stringify({ objeto: Workflow }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                 success: function (response) {
+                     if (response.success === true) {
+                          toastr.success(response.message, 'Completado', { timeOut: 3000, "closeButton": true, "positionClass": "toast-top-left" });
+                         $('#FormModaleditar').modal('hide');
                             limpiar();
 
                         }

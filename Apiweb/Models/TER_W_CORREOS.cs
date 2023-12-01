@@ -15,34 +15,18 @@ namespace Apiweb.Models
 using System;
     using System.Collections.Generic;
     
-public partial class TER_QW6_PLANTILLA_PED
+public partial class TER_W_CORREOS
 {
 
     public int ID { get; set; }
 
-    public string ENCABEZADO { get; set; }
-
-    public string CUSTOMER_ID { get; set; }
-
-    public string PART_ID { get; set; }
-
-    public string CUSTOMER_PART_ID { get; set; }
-
-    public Nullable<decimal> QUANTITY { get; set; }
-
-    public Nullable<decimal> PRICE { get; set; }
-
-    public string ESTADO { get; set; }
-
-    public string MONEDA { get; set; }
-
     public string USUARIO { get; set; }
 
-    public string BASE { get; set; }
+    public string CORREO { get; set; }
 
-    public string PEDIDO { get; set; }
+    public string TIPO { get; set; }
 
-    public string STAGE_ID { get; set; }
+    public Nullable<int> PASO_ACTUAL { get; set; }
 
 }
 

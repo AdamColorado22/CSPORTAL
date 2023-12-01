@@ -22,10 +22,10 @@
         <EntityTypeShape EntityType="TERMOAPP.TER_W_GRUPOS" Width="1.5" PointX="12.625" PointY="5" />
         <EntityTypeShape EntityType="TERMOAPP.TER_W_SLA" Width="1.5" PointX="14.5" PointY="4.75" />
         <EntityTypeShape EntityType="TERMOAPP.TER_W_PARAMETROS_ACC" Width="2.625" PointX="5.375" PointY="12.75" />
-        <EntityTypeShape EntityType="TERMOAPP.TER_W_PARAMETROS_MAQ" Width="1.5" PointX="16.375" PointY="12.75" />
+        <EntityTypeShape EntityType="TERMOAPP.TER_W_PARAMETROS_MAQ" Width="2.75" PointX="15.125" PointY="12.75" />
         <EntityTypeShape EntityType="TERMOAPP.TER_W_PARAMETROS_PAR" Width="2.625" PointX="16.375" PointY="15.75" />
         <EntityTypeShape EntityType="TERMOAPP.TER_W_ADJUNTOS" Width="1.5" PointX="16.375" PointY="7.75" />
-        <EntityTypeShape EntityType="TERMOAPP.TER_W_PARAMETROS_INS" Width="1.5" PointX="11.375" PointY="16.75" />
+        <EntityTypeShape EntityType="TERMOAPP.TER_W_PARAMETROS_INS" Width="2.375" PointX="10.5" PointY="16.75" />
         <EntityTypeShape EntityType="TERMOAPP.TER_W_PARAMETROS_MAT" Width="2" PointX="13.375" PointY="16.75" />
         <EntityTypeShape EntityType="TERMOAPP.TER_W_SERVICIOS_PRODUCCION" Width="1.5" PointX="12.375" PointY="10.75" />
         <EntityTypeShape EntityType="TERMOAPP.TER_W_WORKFLOWB2B" Width="1.5" PointX="18.375" PointY="6.75" />
@@ -33,6 +33,7 @@
         <EntityTypeShape EntityType="TERMOAPP.TER_W_WORKFLOW_MUESTRA" PointX="9.375" PointY="19.75" Width="1.5" />
         <EntityTypeShape EntityType="TERMOAPP.TER_W_WORFLOW_CARTICULO" Width="1.5" PointX="7.375" PointY="16.75" />
         <EntityTypeShape EntityType="TERMOAPP.TER_COMERCIAL" Width="1.5" PointX="17.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TERMOAPP.TER_W_CORREOS" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
