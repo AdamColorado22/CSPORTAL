@@ -107,11 +107,9 @@
           $(document).ready(function () {
             editor = new $.fn.dataTable.Editor({
                 ajax: {
+
                     url: "/ComercialPed/Listar",
-                    // Configura la codificación UTF-8
-                    data: function (data) {
-                        data.charset = "utf-8";
-                    }
+                    contentType: "application/json; charset=utf-8",
                 },
                 table: "#DTComercial",
                 fields: [

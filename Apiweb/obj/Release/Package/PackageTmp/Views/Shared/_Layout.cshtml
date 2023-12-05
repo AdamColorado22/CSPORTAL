@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
 
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/plugin/css")
-   
+   @using Apiweb.Utilidad;
  
 </head>
 <body>
@@ -24,9 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                @{
-
-                    Boolean PedidoDominicana = false;
+                @{ Boolean PedidoDominicana = false;
                     Boolean PreciosSMI = false;
                     Boolean PreciosMH = false;
                     Boolean Historico = false;
@@ -57,90 +55,91 @@
                     {
                         List<Apiweb.Models.USUARIO_ROL> ROl = System.Web.HttpContext.Current.Session["Rol"] as List<Apiweb.Models.USUARIO_ROL>;
 
-                        usuario = System.Web.HttpContext.Current.Session["User"] as String;
+                        usuario = SessionManager.GetUsuario();
+                        string entidad = SessionManager.GetEntidad();
                         foreach (var item in ROl)
                         {
                             switch (item.ROL_ID)
                             {
                                 case 2:
-                                    PedidoDominicana = false;
+                                    PedidoDominicana = true;
                                     break;
                                 case 3:
-                                    PreciosSMI = false;
+                                    PreciosSMI = true;
                                     break;
                                 case 4:
-                                    PreciosMH = false;
+                                    PreciosMH = true;
                                     break;
                                 case 5:
-                                    Historico = false;
+                                    Historico = true;
                                     break;
                                 case 6:
-                                    TexportSocks = false;
+                                    TexportSocks = true;
                                     break;
                                 case 7:
-                                    ColocacionOC = false;
+                                    ColocacionOC = true;
                                     break;
                                 case 8:
-                                    ColocacionPedido = false;
+                                    ColocacionPedido = true;
                                     break;
                                 case 9:
-                                    CortosProduccion = false;
+                                    CortosProduccion = true;
                                     break;
                                 case 10:
-                                    Underwear = false;
+                                    Underwear = true;
                                     break;
                                 case 11:
-                                    Facturacion = false;
+                                    Facturacion = true;
                                     break;
                                 case 12:
-                                    Bodegas = false;
+                                    Bodegas = true;
                                     break;
                                 case 13:
-                                    Workflow = false;
+                                    Workflow = true;
                                     break;
 
                                 case 14:
-                                    creacion = false;
+                                    creacion = true;
                                     break;
                                 case 15:
-                                    muestras = false;
+                                    muestras = true;
                                     break;
                                 case 16:
-                                    servicios = false;
+                                    servicios = true;
                                     break;
 
                                 case 17:
-                                    artes = false;
+                                    artes = true;
                                     break;
 
                                 case 18:
-                                    otros = false;
+                                    otros = true;
                                     break;
                                 case 19:
-                                    comercial = false;
+                                    comercial = true;
                                     break;
                                 case 20:
-                                    ComercialPed = false;
+                                    ComercialPed = true;
                                     break;
                                 case 21:
-                                    Trazabilidad = false;
+                                    Trazabilidad = true;
                                     break;
                                 case 22:
-                                    ComercialPedA = false;
+                                    ComercialPedA = true;
                                     break;
                                 case 23:
                                     ComercialPedT = true;
                                     break;
                                 case 24:
-                                    Material = false;
+                                    Material = true;
                                     break;
                                 case 25:
-                                    Part_id = false;
+                                    Part_id = true;
                                     break;
                                 case 26:
                                     Otif = true;
                                     break;
-
+                                   
 
 
                             }
@@ -149,9 +148,7 @@
                     catch (Exception e)
                     {
                         Response.Redirect(@Url.Action("logoff", "Login"));
-                    }
-
-                }
+                    } }
 
 
 
@@ -248,30 +245,33 @@
                         <a class="nav-link" href="@Url.Action("Index", "Workflow")"><i class="fas fa-water"></i> Costeo</a>
                     </li>
                 }
-                @if (creacion)
-                {
-                    <li id="Workflowbart" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("CreacionArt", "Workflow")"><i class="fas fa-wrench"></i> Creacion Articulo</a>
-                    </li>
-                }
-                @if (muestras)
-                {
-                    <li id="WorkflowMuestra" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Muestras", "Workflow")"><i class="fas fa-vial"></i> Muestras</a>
-                    </li>
-                }
-                @if (servicios)
-                {
-                    <li id="WorkflowServicio" class="nav-item">
-                        <a class="nav-link" href="@Url.Action("ServiciosProd", "Workflow")"><i class="fas fa-tty"></i> Servicios</a>
-                    </li>
-                }
                 @if (artes)
                 {
                     <li id="WorkflowArtes" class="nav-item">
                         <a class="nav-link" href="@Url.Action("Artes", "Workflow")"><i class="fas fa-tty"></i> Artes</a>
                     </li>
                 }
+
+                @if (muestras)
+                {
+                    <li id="WorkflowMuestra" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Muestras", "Workflow")"><i class="fas fa-vial"></i> Muestras</a>
+                    </li>
+                }
+                @if (creacion)
+                {
+                    <li id="Workflowbart" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("CreacionArt", "Workflow")"><i class="fas fa-wrench"></i> Creacion Articulo</a>
+                    </li>
+                }
+
+                @if (servicios)
+                {
+                    <li id="WorkflowServicio" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("ServiciosProd", "Workflow")"><i class="fas fa-tty"></i> Servicios</a>
+                    </li>
+                }
+
                 @if (otros)
                 {
                     <li id="WorkflowOtros" class="nav-item">
@@ -309,6 +309,7 @@
                         <a class="nav-link" href="@Url.Action("Index", "Material")"><i class="fas fa-store"></i>Material</a>
                     </li>
                 }
+
                 @if (Part_id)
                 {
                     <li id="part" class="nav-item">

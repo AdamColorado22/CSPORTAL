@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -95,9 +96,10 @@ namespace Apiweb.Controllers
 
         public ActionResult Listar()
         {
-
+          
             Log.Info("Listando Lista Comercial");
             var formData = HttpContext.Request.Form;
+            //var formData = HttpUtility.UrlDecode(Request.Form["form"]);
             var settings = Properties.Settings.Default;
 
             using (var db = new DataTables.Database("sqlserver", settings.DBConnection))
@@ -143,7 +145,10 @@ namespace Apiweb.Controllers
                 .Process(formData)
                 .Data();
 
-                return Json(response, JsonRequestBehavior.AllowGet);
+                var jsonResult = Json(response, JsonRequestBehavior.AllowGet);
+                jsonResult.ContentEncoding = Encoding.UTF8;
+
+                return jsonResult;
 
             }
 
