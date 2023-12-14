@@ -49,7 +49,8 @@
                     Boolean Material = false;
                     Boolean Part_id = false;
                     Boolean Otif = false;
-
+                    Boolean Recosteo = false;
+                    Boolean RespRecosteo = false;
                     String usuario = "";
                     try
                     {
@@ -139,8 +140,13 @@
                                 case 26:
                                     Otif = true;
                                     break;
-                                   
 
+                                case 27:
+                                    Recosteo = true;
+                                    break;
+                                case 28:
+                                    RespRecosteo = true;
+                                    break;
 
                             }
                         }
@@ -322,6 +328,18 @@
                         <a class="nav-link" href="@Url.Action("Otif", "ComercialPed")"><i class="fas fa-sitemap"></i>Otif</a>
                     </li>
                 }
+                @if (Recosteo)
+                {
+                    <li id="recosteo" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Recosteo", "ComercialPed")"><i class="fas fa-window-restore"></i>Recosteo</a>
+                    </li>
+                }
+                @if (RespRecosteo)
+                {
+                    <li id="resrecosteo" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("RespuestaRecosteo", "ComercialPed")"><i class="fas fa-window-restore"></i>Recosteo Ing</a>
+                    </li>
+                }
                 <li id="Salir" class="nav-item">
                     <a class="nav-link" href="@Url.Action("logoff", "Login")"><i class="fas fa-sign-out-alt"></i> @usuario -  Log out</a>
                 </li>
@@ -352,15 +370,15 @@
 
     <script>
         function test() {
-            var tabsNewAnim = $('#navbarSupportedContent');
-            var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
-            var activeItemNewAnim = tabsNewAnim.find('.active');
-            var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
-            var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
-            var itemPosNewAnimTop = activeItemNewAnim.position();
-            var itemPosNewAnimLeft = activeItemNewAnim.position();
+                        var tabsNewAnim = $('#navbarSupportedContent');
+                        var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
+                        var activeItemNewAnim = tabsNewAnim.find('.active');
+                        var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+                        var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+                        var itemPosNewAnimTop = activeItemNewAnim.position();
+                        var itemPosNewAnimLeft = activeItemNewAnim.position();
             $(".hori-selector").css({
-                "top": itemPosNewAnimTop.top + "px",
+                            "top": itemPosNewAnimTop.top + "px",
                 "left": itemPosNewAnimLeft.left + "px",
                 "height": activeWidthNewAnimHeight + "px",
                 "width": activeWidthNewAnimWidth + "px"
@@ -368,27 +386,27 @@
             $("#navbarSupportedContent").on("click", "li", function (e) {
                 $('#navbarSupportedContent ul li').removeClass("active");
                 $(this).addClass('active');
-                var activeWidthNewAnimHeight = $(this).innerHeight();
-                var activeWidthNewAnimWidth = $(this).innerWidth();
-                var itemPosNewAnimTop = $(this).position();
-                var itemPosNewAnimLeft = $(this).position();
+                            var activeWidthNewAnimHeight = $(this).innerHeight();
+                            var activeWidthNewAnimWidth = $(this).innerWidth();
+                            var itemPosNewAnimTop = $(this).position();
+                            var itemPosNewAnimLeft = $(this).position();
                 $(".hori-selector").css({
-                    "top": itemPosNewAnimTop.top + "px",
+                                "top": itemPosNewAnimTop.top + "px",
                     "left": itemPosNewAnimLeft.left + "px",
                     "height": activeWidthNewAnimHeight + "px",
                     "width": activeWidthNewAnimWidth + "px"
                 });
-            });
-        }
+                        });
+                    }
         $(document).ready(function () {
-            setTimeout(function () { test(); });
-        });
+                        setTimeout(function () { test(); });
+                    });
         $(window).on('resize', function () {
-            setTimeout(function () { test(); }, 500);
-        });
+                        setTimeout(function () { test(); }, 500);
+                    });
         $(".navbar-toggler").click(function () {
-            setTimeout(function () { test(); });
-        });
+                        setTimeout(function () { test(); });
+                    });
     </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using Apiweb.Properties;
 using Apiweb.Utilidad;
@@ -95,5 +96,42 @@ namespace Apiweb.Models
                 return "";
             }
         }
+
+
+        public bool Envio(string para, string asunto, string mensaje)
+        {
+            try
+            {
+
+
+
+                Log.Info(String.Format("Inicio de envio de correo: {0}", mensaje));
+                MailMessage correo = new MailMessage();
+                correo.From = new MailAddress("aplicativos@Ternova.group", "Aplicativos");
+                correo.To.Add(para);
+                //correo.To.Add("soporte.tecnico2@ternova.group;ceramirez@ternova.group;mmangandi@ternova.group;mjsanchez@termo.com.sv;rbonilla@ternova.group");
+                //correo.To.Add("soporte.tecnico2@ternova.group");
+                correo.Subject = asunto;
+                correo.Body = mensaje;
+                correo.IsBodyHtml = true;
+                correo.Priority = MailPriority.Normal;
+                //configuracion smtmp
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp3.termonet.com";
+                smtp.Port = 25;
+                smtp.EnableSsl = false;
+                smtp.UseDefaultCredentials = true;
+                smtp.Send(correo);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(String.Format("Error Enviado correo:  {0}", ex.Message.ToString()));
+                return false;
+
+            }
+        }
+
     }
 }

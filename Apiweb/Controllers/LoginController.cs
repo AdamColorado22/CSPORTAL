@@ -62,7 +62,7 @@ namespace Apiweb.Controllers
 
                 //String Base = System.Web.HttpContext.Current.Session["Base"] as String;
 
-                if (UserId.Equals("iruiz") | UserId.Equals("acolorado") | UserId.Equals("4750"))
+                if (UserId.Equals("lmayorga") | UserId.Equals("acolorado") | UserId.Equals("4750"))
                 {
                     //Sesion de Prueba
                     Session["User"] = UserId;

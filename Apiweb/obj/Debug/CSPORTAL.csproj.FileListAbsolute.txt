@@ -1,7 +1,3 @@
-C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\CSPORTAL.csproj.AssemblyReference.cache
-C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\Apiweb.Properties.Resources.resources
-C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\CSPORTAL.csproj.GenerateResource.cache
-C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\CSPORTAL.csproj.CoreCompileInputs.cache
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\bin\Apiweb.dll.config
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\bin\Apiweb.dll
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\bin\Apiweb.pdb
@@ -150,6 +146,10 @@ C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\bin\es\System.Web.Razor.resour
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\Apiweb.Properties.Resources.resources
+C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\CSPORTAL.csproj.GenerateResource.cache
+C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\CSPORTAL.csproj.CoreCompileInputs.cache
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\CSPORTAL.csproj.CopyComplete
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\Apiweb.dll
 C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\Apiweb.pdb
+C:\Users\Adam\OneDrive\Documentos\CSPORTAL\Apiweb\obj\Debug\CSPORTAL.csproj.AssemblyReference.cache
