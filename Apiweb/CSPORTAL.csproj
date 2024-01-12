@@ -2011,6 +2011,7 @@
     <Content Include="Views\ComercialPed\Otif.cshtml" />
     <Content Include="Views\ComercialPed\Recosteo.cshtml" />
     <Content Include="Views\ComercialPed\RespuestaRecosteo.cshtml" />
+    <Content Include="Views\ComercialPed\SolicitudRecosteoAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -143,6 +143,7 @@ namespace Apiweb.Controllers
             .Select(dataRow => new TER_W_WORFLOW_CARTICULO
             {
                 ID = dataRow.Field<Int32>("ID"),
+                DUI = dataRow.Field<string>("DUI"),
                 TITULO = dataRow.Field<string>("TITULO"),
                 NUM_PEDIDO = dataRow.Field<string>("NUM_PEDIDO"),
                 VALIDACION = dataRow.Field<string>("VALIDACION"),

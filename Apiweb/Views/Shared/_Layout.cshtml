@@ -51,6 +51,7 @@
                     Boolean Otif = false;
                     Boolean Recosteo = false;
                     Boolean RespRecosteo = false;
+                    Boolean RespRecosteoT = false;
                     String usuario = "";
                     try
                     {
@@ -141,11 +142,14 @@
                                     Otif = true;
                                     break;
 
-                                case 27:
+                                case 33:
                                     Recosteo = true;
                                     break;
-                                case 28:
+                                case 34:
                                     RespRecosteo = true;
+                                    break;
+                                case 35:
+                                    RespRecosteoT = true;
                                     break;
 
                             }
@@ -338,6 +342,12 @@
                 {
                     <li id="resrecosteo" class="nav-item">
                         <a class="nav-link" href="@Url.Action("RespuestaRecosteo", "ComercialPed")"><i class="fas fa-window-restore"></i>Recosteo Ing</a>
+                    </li>
+                }
+                @if (RespRecosteoT)
+                {
+                    <li id="resrecosteoT" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("SolicitudRecosteoAll", "ComercialPed")"><i class="fas fa-window-restore"></i>Recosteo</a>
                     </li>
                 }
                 <li id="Salir" class="nav-item">

@@ -57,10 +57,6 @@
                     <thead>
                         <tr>
 
-                            @*<th>ID</th>*@
-                            <th>REVISAR PRECIO</th>
-                            <th>ORDEN</th>
-                            <th>CODES</th>
                             <th>PART ID</th>
                             <th>PO</th>
                             <th>
@@ -80,8 +76,9 @@
                             </th>
                             <th>Date In Inventory at Warehouse</th>
                             <th>VENDOR COMMENTS</th>
-                            <th>ESTADO</th>
-                            <th>ACTUALIZACION</th>
+                            @*<th>ESTADO</th>
+                            <th>ACTUALIZACION</th>*@
+                            <th>PART ID VISUAL</th>
                         </tr>
                     </thead>
 
@@ -343,27 +340,8 @@
 
                 },
                 columns: [
-                    //{   // Responsive control column
-                    //    data: null,
-                    //    defaultContent: '',
-                    //    className: 'control',
-                    //    orderable: false
-                    //},
-                    /*{ data: "ID" },*/
-                    {
-                        data: "REVISION",
-                        render: function (data, type, row) {
-                            if (type === 'display') {
-                                return '<input type="checkbox" class="editor-active">';
-                            }
-                            return data;
-                        },
-                        className: "dt-body-center"
-                    },
-
-                    { data: "ORDEN" },
                     { data: "CODES" },
-                    { data: "PART_ID" },
+               
                     { data: "PO" },
                     { data: "PRECIO_SV", render: $.fn.dataTable.render.number('.', '.', 2, '$') },
                     { data: "HBI_TIL" , render: $.fn.dataTable.render.number(',', ',', 0, '') },
@@ -413,31 +391,31 @@
                     },
                     { data: "DATE_INV_W" },
                     { data: "VENDOR_COMENTS" },
-                    { data: "ESTADO" },
-                    {
-                        data: "EDIT" , render: function (data, type) {
-                            if (type === "display") {
-                                var estado = "";
+                    //{ data: "ESTADO" },
+                    //{
+                    //    data: "EDIT" , render: function (data, type) {
+                    //        if (type === "display") {
+                    //            var estado = "";
 
-                                switch (data) {
-                                    case "1":
-                                        estado = "AUTOMATICO";
-                                        break;
-                                    case "2":
-                                        estado = "MANUAL";
-                                        break;
+                    //            switch (data) {
+                    //                case "1":
+                    //                    estado = "AUTOMATICO";
+                    //                    break;
+                    //                case "2":
+                    //                    estado = "MANUAL";
+                    //                    break;
 
-                                }
+                    //            }
 
-                                return estado;
-                            }
-                            return data;
-                        }},
+                    //            return estado;
+                    //        }
+                    //        return data;
+                    //    }},
 
-
+                    { data: "PART_ID" },
                 ],
 
-                order: [1, 'asc'],
+                order: [0, 'asc'],
                 keys: {
                     /*columns: ':not(:first-child)',*/
                     editor: editor

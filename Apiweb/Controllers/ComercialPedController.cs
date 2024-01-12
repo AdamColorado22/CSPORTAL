@@ -50,6 +50,77 @@ namespace Apiweb.Controllers
             return View();
         }
 
+        public JsonResult  RecosteoTodo()
+        {
+            List<TerSolRecosteo> data = new List<TerSolRecosteo>();
+
+            try
+            {
+                string constr = settings.DBConnection;
+
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+
+                    string query = $@"
+                    SELECT 
+                        T.ID,
+                        T.PASO_ACTUAL,
+                        P.TITULO AS ESTADO,
+                        T.USUARIO_CREACION,
+                        T.SOLICITUD,
+                        T.RESPUESTA,
+                        T.FECHA_CREACION,
+                        T.FECHA_RESPUESTA,
+                        T.FECHA_FIN
+                    FROM 
+                        TER_SOL_RECOSTEO T
+                    INNER JOIN  
+                        TER_W_ESTADOS E ON E.ID_WORKFLOW = T.ID AND T.TIPO = E.TIPO 
+                    INNER JOIN 
+                        TER_W_PASOS P ON P.PASO_ACTUAL = T.PASO_ACTUAL AND P.TIPO = T.TIPO
+                    WHERE 
+                        P.IDGRUPO IN (SELECT IDGRUPO FROM TER_W_USUARIOS_GRUPOS WHERE IDUSARIO = '{usuario}' )
+                    GROUP BY 
+                         T.ID, T.PASO_ACTUAL,P.TITULO, T.USUARIO_CREACION, T.SOLICITUD, T.RESPUESTA, T.FECHA_CREACION, T.FECHA_RESPUESTA, T.FECHA_FIN;
+";
+
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        con.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                TerSolRecosteo terSolRecosteo = new TerSolRecosteo
+                                {
+                                    Id = Convert.ToInt32(reader["ID"]),
+                                    Estado = reader["ESTADO"].ToString(),
+                                    Paso = Convert.ToInt32(reader["PASO_ACTUAL"]),
+                                    UsuarioCreacion = reader["USUARIO_CREACION"].ToString(),
+                                    FechaCreacion = (reader["FECHA_CREACION"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_CREACION"]) : (DateTime?)null,
+                                    Solicitud = reader["SOLICITUD"].ToString(),
+                                    Respuesta = reader["RESPUESTA"].ToString(),
+                                    FechaRespuesta = (reader["FECHA_RESPUESTA"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_RESPUESTA"]) : (DateTime?)null,
+                                    FechaFin = (reader["FECHA_FIN"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_FIN"]) : (DateTime?)null
+                                };
+
+
+                                data.Add(terSolRecosteo);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según tus necesidades
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { success = true, data = data }, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult RespuestaRecosteo()
         {
             return View();
@@ -498,6 +569,77 @@ namespace Apiweb.Controllers
 
                 using (SqlConnection con = new SqlConnection(constr))
                 {
+
+                    string query = $@"
+                    SELECT 
+                        T.ID,
+                        T.PASO_ACTUAL,
+                        P.TITULO AS ESTADO,
+                        T.USUARIO_CREACION,
+                        T.SOLICITUD,
+                        T.RESPUESTA,
+                        T.FECHA_CREACION,
+                        T.FECHA_RESPUESTA,
+                        T.FECHA_FIN
+                    FROM 
+                        TER_SOL_RECOSTEO T
+                    INNER JOIN  
+                        TER_W_ESTADOS E ON E.ID_WORKFLOW = T.ID AND T.TIPO = E.TIPO 
+                    INNER JOIN 
+                        TER_W_PASOS P ON P.PASO_ACTUAL = T.PASO_ACTUAL AND P.TIPO = T.TIPO
+                    WHERE 
+                        P.IDGRUPO IN (SELECT IDGRUPO FROM TER_W_USUARIOS_GRUPOS WHERE IDUSARIO = '{usuario}' AND T.USUARIO_CREACION = '{usuario}')
+                    GROUP BY 
+                         T.ID, T.PASO_ACTUAL,P.TITULO, T.USUARIO_CREACION, T.SOLICITUD, T.RESPUESTA, T.FECHA_CREACION, T.FECHA_RESPUESTA, T.FECHA_FIN;
+";
+
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        con.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                TerSolRecosteo terSolRecosteo = new TerSolRecosteo
+                                {
+                                    Id = Convert.ToInt32(reader["ID"]),
+                                    Estado = reader["ESTADO"].ToString(),
+                                    Paso = Convert.ToInt32(reader["PASO_ACTUAL"]),
+                                    UsuarioCreacion = reader["USUARIO_CREACION"].ToString(),
+                                    FechaCreacion = (reader["FECHA_CREACION"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_CREACION"]) : (DateTime?)null,
+                                    Solicitud = reader["SOLICITUD"].ToString(),
+                                    Respuesta = reader["RESPUESTA"].ToString(),
+                                    FechaRespuesta = (reader["FECHA_RESPUESTA"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_RESPUESTA"]) : (DateTime?)null,
+                                    FechaFin = (reader["FECHA_FIN"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_FIN"]) : (DateTime?)null
+                                };
+
+
+                                data.Add(terSolRecosteo);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según tus necesidades
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { success = true, data = data }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SolicitudRecosteoIng()
+        {
+            List<TerSolRecosteo> data = new List<TerSolRecosteo>();
+
+            try
+            {
+                string constr = settings.DBConnection;
+
+                using (SqlConnection con = new SqlConnection(constr))
+                {
                                    
                                     string query = $@"
                     SELECT 
@@ -517,7 +659,7 @@ namespace Apiweb.Controllers
                     INNER JOIN 
                         TER_W_PASOS P ON P.PASO_ACTUAL = T.PASO_ACTUAL AND P.TIPO = T.TIPO
                     WHERE 
-                        P.IDGRUPO IN (SELECT IDGRUPO FROM TER_W_USUARIOS_GRUPOS WHERE IDUSARIO = '{usuario}')
+                        P.IDGRUPO IN (SELECT IDGRUPO FROM TER_W_USUARIOS_GRUPOS WHERE IDUSARIO = '{usuario}' )
                     GROUP BY 
                          T.ID, T.PASO_ACTUAL,P.TITULO, T.USUARIO_CREACION, T.SOLICITUD, T.RESPUESTA, T.FECHA_CREACION, T.FECHA_RESPUESTA, T.FECHA_FIN;
 ";
@@ -561,6 +703,12 @@ namespace Apiweb.Controllers
         }
 
 
+        public ActionResult SolicitudRecosteoAll()
+        {
+
+            return View();
+            
+        }
 
         [HttpPost]
         public JsonResult GuardarSolicitudRecosteo(TerSolRecosteo solicitudRecosteo)
@@ -589,8 +737,8 @@ namespace Apiweb.Controllers
                         cmd.ExecuteNonQuery();
                     }
                 }
-                if (solicitudRecosteo.Id == 0) { correos.Envio(correos.ObtenerCorreo("PED", 10), "Nueva Solicitud", solicitudRecosteo.Solicitud); } 
-                else { correos.Envio(correos.ObtenerCorreo("PED", 20), "Respuesta a Solicitud", solicitudRecosteo.Solicitud); }
+                if (solicitudRecosteo.Id == 0) { correos.Envio(correos.ObtenerCorreo("PED", 10), "Nueva Solicitud", solicitudRecosteo.Solicitud + "<br> <a href='http://apptermo:8081/'>APP</a>"); } 
+                else { correos.Envio(correos.ObtenerCorreo("PED", 20), "Respuesta a Solicitud", solicitudRecosteo.Solicitud + "<br> <a href='http://apptermo:8081/'>APP</a>"); }
                 
                 return Json(new { success = true, message = "Solicitud guardada correctamente." });
             }

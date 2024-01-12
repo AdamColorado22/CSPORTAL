@@ -20,7 +20,8 @@ public partial class TER_W_WORFLOW_CARTICULO
 
     public int ID { get; set; }
 
-    public string TIPO { get; set; }
+   
+        public string TIPO { get; set; }
 
     public string TITULO { get; set; }
 
