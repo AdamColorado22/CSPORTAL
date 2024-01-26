@@ -172,14 +172,26 @@
                         <label for="txtdui">Dui:</label>
                         <input type="text" autocomplete="off" class="form-control" id="txtdui">
                     </div>
-                    @*<div class="form-group col-md-6">
-                            <label for="txtretoque">Retoque:</label>
-                            <input type="text" autocomplete="off" class="form-control" id="txtretoque">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="txtimpresion">Impresion:</label>
-                            <input type="text" autocomplete="off" class="form-control" id="txtimpresion">
-                        </div>*@
+                    <div class="form-group col-md-6">
+                        <label for="txtproducto">Nombre Producto:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtproducto">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txttipos">Region:</label>
+                        <select class="form-control" id="txttipos">
+                            <option value="MEX">MEX</option>
+                            <option value="USA">USA</option>
+                            <option value="CAM">CAM</option>
+                            <option value="ASIA">ASIA</option>
+
+                        </select>
+
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtcliente">Cliente:</label>
+                        <input type="text" autocomplete="off" class="form-control" id="txtcliente">
+                    </div>
 
 
                 </div>
@@ -697,7 +709,10 @@
                     ARTE : $("#txtarte").val(),
                     DUI : $("#txtdui").val(),
                     RETOQUE : $("#txtretoque").val(),
-                    IMPRESION : $("#txtimpresion").val(),
+                    IMPRESION: $("#txtimpresion").val(),
+                    NOMBRE_PRODUCTO: $("#txtproducto").val(),
+                    REGION: $("#txttipos").val(),
+                    CLIENTE: $("#txtcliente").val(),
 
                 }
 

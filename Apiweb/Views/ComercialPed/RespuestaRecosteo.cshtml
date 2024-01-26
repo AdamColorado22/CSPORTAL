@@ -32,6 +32,7 @@
                     <th>PASO</th>
                     <th>FECHA RESPUESTA</th>
                     <th>FECHA FIN</th>
+                    <th>TIEMPO</th>
                 </tr>
             </thead>
         </table>
@@ -183,6 +184,49 @@
                             }
                         }
                     },
+                    {
+                        data: null,
+                        title: "TIEMPO",
+                        render: function (data, type, row) {
+                            // Verificar si la fecha de creación es válida
+                            if (row.FechaCreacion) {
+                                // Obtener la fecha de creación
+                                var creationDate = moment(row.FechaCreacion);
+
+                                // Obtener la fecha de respuesta o la fecha actual si no hay respuesta
+                                var responseDate = row.FechaRespuesta ? moment(row.FechaRespuesta) : moment();
+
+                                // Establecer la hora de inicio y fin para esos días
+                                var startTime = moment('07:30', 'HH:mm');
+                                var endTime = moment('17:00', 'HH:mm');
+
+                                // Calcular la diferencia en horas solo para el horario laboral
+                                var totalDiffHours = 0;
+
+                                // Iterar desde la fecha de creación hasta la fecha de respuesta o la fecha actual
+                                while (creationDate.isBefore(responseDate, 'day') || creationDate.isSame(responseDate, 'day')) {
+                                    // Calcular la diferencia en horas para cada día
+                                    var diffHours = Math.max(0, Math.min(responseDate.diff(creationDate, 'hours', true), endTime.diff(startTime, 'hours', true)));
+                                    // Acumular la diferencia en horas
+                                    totalDiffHours += diffHours;
+
+                                    // Mover a la siguiente fecha
+                                    creationDate.add(1, 'day');
+                                }
+
+                                // Redondear la diferencia total a dos decimales
+                                var roundedTotalDiff = Math.round(totalDiffHours * 100) / 100;
+
+                                // Devolver la diferencia total formateada como texto
+                                return roundedTotalDiff + ' horas';
+                            } else {
+                                // Si la fecha de creación es nula, no mostrar nada
+                                return "";
+                            }
+                        }
+                    }
+
+
                 ],
 
                 order: [0, 'asc'],

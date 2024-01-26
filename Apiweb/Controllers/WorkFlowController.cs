@@ -587,7 +587,7 @@ namespace Apiweb.Controllers
             try
             {
 
-                string sql = @" EXEC [TER_SP_W_CREACION_SAR] @ID,@ARTE,@DUI,@RETOQUE,@IMPRESION";
+                string sql = @" EXEC [TER_SP_W_CREACION_SAR] @ID,@ARTE,@DUI,@RETOQUE,@IMPRESION,@REGION,@NOMBRE_PRODUCTO,@CLIENTE,@USUARIO";
                 using (TERMOAPPEntities db = new TERMOAPPEntities())
                 {
                     using (var dbContextTransaction = db.Database.BeginTransaction())
@@ -599,7 +599,11 @@ namespace Apiweb.Controllers
                         new SqlParameter("@ARTE", String.IsNullOrEmpty(objeto.ARTE) ? "" : objeto.ARTE),
                         new SqlParameter("@DUI", String.IsNullOrEmpty(objeto.DUI) ? "" : objeto.DUI),
                          new SqlParameter("@RETOQUE", String.IsNullOrEmpty(objeto.RETOQUE) ? "" : objeto.RETOQUE),
-                          new SqlParameter("@IMPRESION", String.IsNullOrEmpty(objeto.IMPRESION) ? "" : objeto.IMPRESION));
+                          new SqlParameter("@IMPRESION", String.IsNullOrEmpty(objeto.IMPRESION) ? "" : objeto.IMPRESION),
+                        new SqlParameter("@REGION", String.IsNullOrEmpty(objeto.REGION) ? "" : objeto.REGION),
+                        new SqlParameter("@NOMBRE_PRODUCTO", String.IsNullOrEmpty(objeto.NOMBRE_PRODUCTO) ? "" : objeto.NOMBRE_PRODUCTO),
+                        new SqlParameter("@CLIENTE", String.IsNullOrEmpty(objeto.CLIENTE) ? "" : objeto.CLIENTE),
+                        new SqlParameter("@USUARIO", SessionManager.GetUsuario()));
                         db.SaveChanges();
                         dbContextTransaction.Commit();
 
@@ -1109,7 +1113,7 @@ namespace Apiweb.Controllers
                         " <br> <strong>Fecha:</strong> " + now.ToString("dd/MM/yyyy");
                    break;
                 case 80:
-                    para = correos.ObtenerCorreo(objeto.TIPO,50);//
+                    para = correos.ObtenerCorreo(objeto.TIPO,80);//
                     asunto = String.Format("Cotizacion Completa correspondiente a Proyecto {0}  ",objeto.TITULO);
                     mensaje = " <strong>Referencia de cotizacion</strong> " + objeto.COTIZACION + "<br> <strong>Notas: </strong> " + objeto.NOTASREQ
                         + "<br> <strong>Correspondiente al DUI: </strong> " + objeto.DUI +
